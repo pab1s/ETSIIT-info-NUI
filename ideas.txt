@@ -1,0 +1,2 @@
+- ruleta
+- autenticación con qr
