@@ -22,59 +22,72 @@ function extractMenu(htmlString) {
   const dom = new JSDOM(htmlString);
   const document = dom.window.document;
 
-  // Obtener el nombre de la facultad
-  const facultyNameElement = document.querySelector('h1');
-  const facultyName = facultyNameElement ? facultyNameElement.textContent.trim() : 'Unknown Faculty';
+  // Inicialmente, un objeto para almacenar la información del menú indexado por facultad
+  let menusByFaculty = {};
 
-  // Obtener todas las filas de la tabla con la clase 'inline'
-  const tableRows = Array.from(document.querySelectorAll('.inline tr'));
+  function exploreAndProcess(node, menuData) {
 
-  // Estructura para almacenar la información del menú
-  let menuData = {
-    faculty: facultyName,
-    dates: {}
-  };
-
-  let currentDate = ''; // Variable para mantener la fecha actual
-  let currentMenuType = ''; // Variable para mantener el tipo de menú actual
-
-  tableRows.forEach(row => {
-    // Verificar si la fila contiene una fecha
-    const dateCell = row.querySelector('th.leftalign');
-    if (dateCell && dateCell.textContent) {
-      currentDate = dateCell.textContent.trim();
-      if (!menuData.dates[currentDate]) {
-        menuData.dates[currentDate] = {};
+    if (node.tagName === 'TR' && node.querySelector('th.leftalign')) {
+      const currentDate = node.textContent.trim();
+      menuData.dates[currentDate] = menuData.dates[currentDate] || {};
+      menuData.currentDate = currentDate;
+    } else if (node.tagName === 'TD' && node.getAttribute('colspan') === "2") {
+      const currentMenuType = node.textContent.trim();
+      if(currentMenuType.includes("Menú")){
+        menuData.dates[menuData.currentDate][currentMenuType] = [];
+        menuData.currentMenuType = currentMenuType;
       }
-      return; // Continuar con la siguiente iteración
+    } else if (node.tagName === 'TR' && menuData.currentMenuType) {
+      const cells = Array.from(node.querySelectorAll('td'));
+      if (cells.length === 3) {
+        const menuItem = {
+          item: cells[0].textContent.trim(),
+          description: cells[1].textContent.trim(),
+          allergens: cells[2].textContent.trim()
+        };
+        menuData.dates[menuData.currentDate][menuData.currentMenuType].push(menuItem);
+      }
     }
 
-    // Verificar si la fila contiene un tipo de menú
-    const menuTypeCell = row.querySelector('td[colspan="2"]');
-    if (menuTypeCell && menuTypeCell.textContent.startsWith('Menú')) {
-      currentMenuType = menuTypeCell.textContent.trim();
-      if (!menuData.dates[currentDate][currentMenuType]) {
-        menuData.dates[currentDate][currentMenuType] = [];
+    // Recorre los nodos hijos recursivamente
+    Array.from(node.children).forEach(child => {
+      exploreAndProcess(child, menuData);
+    });
+  }
+
+  const facultyHeaders = Array.from(document.querySelectorAll('h1'));
+
+  facultyHeaders.forEach(header => {
+    if (header.textContent.includes('Menú semanal | ')) {
+      const facultyName = header.textContent.split('Menú semanal | ')[1].trim();
+
+      // Inicializa la entrada para la facultad si aún no existe
+      if (!menusByFaculty[facultyName]) {
+        menusByFaculty[facultyName] = {
+          dates: {},
+          currentDate: '',
+          currentMenuType: ''
+        };
       }
-      return; // Continuar con la siguiente iteración
-    }
 
-    // Obtener las celdas de la fila actual
-    const cells = Array.from(row.querySelectorAll('td'));
-
-    // Comprobamos si es una fila con información de menú
-    if (cells.length === 3) {
-      const menuItem = {
-        item: cells[0].textContent.trim(),
-        description: cells[1].textContent.trim(),
-        allergens: cells[2].textContent.trim()
-      };
-      menuData.dates[currentDate][currentMenuType].push(menuItem);
+      let contentNode = header.nextElementSibling;
+      while (contentNode && contentNode.tagName !== 'H1') {
+        exploreAndProcess(contentNode, menusByFaculty[facultyName]);
+        contentNode = contentNode.nextElementSibling;
+      }
     }
   });
 
-  return menuData;
+  // Eliminar las propiedades currentDate y currentMenuType antes de retornar los datos
+  for (const faculty in menusByFaculty) {
+    delete menusByFaculty[faculty].currentDate;
+    delete menusByFaculty[faculty].currentMenuType;
+  }
+
+  return menusByFaculty;
 }
+
+
 
 (async () => {
   // URL de la página web que deseas obtener
@@ -84,9 +97,10 @@ function extractMenu(htmlString) {
   const htmlString = await obtenerContenidoHTML(url);
 
   // Extraer el menú del contenido HTML
-  const menu = extractMenu(htmlString);
+
+  const menus = extractMenu(htmlString);
 
   // Guardar el menú en un archivo JSON o realizar otras acciones según tus necesidades
-  fs.writeFileSync('menu.json', JSON.stringify(menu, null, 2));
+  fs.writeFileSync('menu.json', JSON.stringify(menus, null, 2));
   console.log('Menú extraído y guardado en menu.json');
 })();
