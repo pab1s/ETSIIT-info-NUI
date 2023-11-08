@@ -1,5 +1,22 @@
-const fs = require('fs');
+const puppeteer = require('puppeteer');
 const { JSDOM } = require('jsdom');
+const fs = require('fs');
+
+async function obtenerContenidoHTML(url) {
+  const browser = await puppeteer.launch({ headless: 'new' }); // Usar la nueva implementación de headless
+  const page = await browser.newPage();
+
+  // Navegar a la URL deseada
+  await page.goto(url);
+
+  // Obtener el contenido HTML de la página en una variable
+  const contenidoHTML = await page.content();
+
+  // Cerrar el navegador Puppeteer
+  await browser.close();
+
+  return contenidoHTML;
+}
 
 function extractMenu(htmlString) {
   const dom = new JSDOM(htmlString);
@@ -59,7 +76,17 @@ function extractMenu(htmlString) {
   return menuData;
 }
 
-// Reemplaza '/ruta/al/archivo.html' con la ruta real a tu archivo HTML
-const htmlString = fs.readFileSync('../pagina_comedores.html', 'utf8');
-const menu = extractMenu(htmlString);
-console.log(JSON.stringify(menu, null, 2));
+(async () => {
+  // URL de la página web que deseas obtener
+  const url = 'https://scu.ugr.es/';
+
+  // Obtener el contenido HTML de la página web
+  const htmlString = await obtenerContenidoHTML(url);
+
+  // Extraer el menú del contenido HTML
+  const menu = extractMenu(htmlString);
+
+  // Guardar el menú en un archivo JSON o realizar otras acciones según tus necesidades
+  fs.writeFileSync('menu.json', JSON.stringify(menu, null, 2));
+  console.log('Menú extraído y guardado en menu.json');
+})();
