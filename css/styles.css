@@ -1,0 +1,99 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #f4f4f9;
+    font-family: 'Arial', sans-serif;
+}
+
+.vertical-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 1920px;
+    width: 1080px;
+    margin: auto;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-message h1 {
+    font-size: 48px;
+    color: #333;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.icon-container img {
+    width: 200px; /* Adjust the size as necessary */
+    height: auto;
+    margin: 20px 0;
+}
+
+.start-button-container button {
+    padding: 15px 30px;
+    font-size: 24px;
+    color: white;
+    background-color: #0056b3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.start-button-container button:hover {
+    background-color: #00397a;
+}
+
+.vertical-menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1080px;
+    height: 1920px;
+    margin: auto;
+    padding-top: 50px; /* Espacio en la parte superior del menú */
+}
+
+h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 50px;
+}
+
+.menu-item {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.menu-item img {
+    width: 80px; /* Ajusta esto según el tamaño deseado para tus iconos */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.menu-item button {
+    font-size: 20px;
+    color: #fff;
+    background-color: #0056b3;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block; /* Para asegurar que los botones no estén alineados horizontalmente */
+}
+
+.menu-item button:hover {
+    background-color: #00397a;
+}
+
+/* Si necesitas que los botones estén uno al lado del otro horizontalmente */
+@media (min-width: 1080px) {
+    .menu-item {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
