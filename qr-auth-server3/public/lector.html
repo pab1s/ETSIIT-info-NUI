@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Escaneo de QR</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <style>
+        #user-status {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            border: 1px solid black;
+            padding: 5px;
+        }
+        /* Aquí puedes añadir más estilos si lo necesitas */
+    </style>
+</head>
+<body>
+    <div id="user-status">Desconectado</div>
+
+    <h1>Escaneo de Código QR</h1>
+    <div id="reader" style="width:300px"></div>
+    <input type="file" id="qr-input" accept="image/*">
+    <br>
+    <button onclick="window.location.href='/general.html'">Ir a página General</button>
+
+    <script>
+        function onScanSuccess(decodedText, decodedResult) {
+            // Manejar el código QR decodificado
+            console.log(`Código QR decodificado: ${decodedText}`);
+            fetch('/authenticate-qr', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ qrCode: decodedText })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '/result?user=' + encodeURIComponent(data.user);
+                } else {
+                    alert(data.message);
+                }
+            });
+        }
+
+        var html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", { fps: 10, qrbox: 250 });
+        html5QrcodeScanner.render(onScanSuccess);
+
+        // Manejar la carga de archivos
+        document.getElementById('qr-input').addEventListener('change', function() {
+            var reader = new FileReader();
+            reader.onload = function() {
+                html5QrcodeScanner.scanFile(reader.result, true)
+                    .then(decodedText => {
+                        onScanSuccess(decodedText);
+                    })
+                    .catch(err => {
+                        alert("Error al escanear el archivo: " + err);
+                    });
+            };
+            reader.readAsDataURL(this.files[0]);
+        });
+    </script>
+</body>
+</html>
