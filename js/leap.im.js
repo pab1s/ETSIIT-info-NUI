@@ -1,8 +1,9 @@
-const Leap = require('leapjs');
+// const Leap = require('leapjs');
 
 class LeapMotionController {
     constructor() {
       this.controller = new Leap.Controller();
+      this.pointer = document.getElementById('pointer');
     }
   
     onInit() {
@@ -58,9 +59,43 @@ class LeapMotionController {
             console.log(`  Estado: ${gesture.state}`);
           });
         }
+
+        if (frame.hands.length > 0) {
+            const hand = frame.hands[0]; // Usa la primera mano detectada
+            const handX = hand.palmPosition[0];
+            const handY = hand.palmPosition[1];
+
+            // Mapeo de las coordenadas de Leap a las coordenadas de la pantalla (ajusta según sea necesario)
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const screenX = (handX + 150) * screenWidth / 300; // Centramos el eje X: 0 está en el medio de la pantalla
+            const screenY = screenHeight - (handY + 150) * screenHeight / 300; // Centramos el eje Y y lo invertimos para que coincida con el sistema de coordenadas de la pantalla
+
+            // Setear la posición del puntero
+            this.pointer.style.left = `${screenX}px`;
+            this.pointer.style.top = `${screenY}px`;
+
+            this.handleVerticalScroll(hand);
+        }
+    }
+
+    handleVerticalScroll(hand) {
+        // Obtén la velocidad en el eje Y de la mano
+        const verticalSpeed = hand.palmVelocity[1];
+    
+        // Definir una sensibilidad para determinar qué tan rápido debe moverse la mano para que se registre como scroll
+        const sensitivity = 200;
+    
+        if (Math.abs(verticalSpeed) > sensitivity) {
+          // Convertir la velocidad de la mano en un valor de scroll
+          // Usar un divisor para disminuir la velocidad de scroll
+          const scrollAmount = verticalSpeed / 2;
+          
+          // Ejecutar el scroll
+          window.scrollBy(0, -scrollAmount);
+        }
       }
       
-  
     start() {
       this.controller.on('init', this.onInit.bind(this));
       this.controller.on('exit', this.onExit.bind(this));
@@ -76,6 +111,8 @@ class LeapMotionController {
     }
   }
   
-  const leapMotionController = new LeapMotionController();
-  leapMotionController.start();
-  
+// Cuando el DOM esté listo, instancia y arranca el Leap Motion Controller
+window.addEventListener('DOMContentLoaded', (event) => {
+    const leapMotionController = new LeapMotionController();
+    leapMotionController.start();
+});
