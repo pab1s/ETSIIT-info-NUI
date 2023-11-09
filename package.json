@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "jsdom": "^22.1.0",
+    "leapjs": "^1.1.1",
     "puppeteer": "^21.5.0"
   }
 }
