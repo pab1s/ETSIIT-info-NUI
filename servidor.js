@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const sqlite3 = require('sqlite3');
 const path = require('path');
+const fs = require('fs');
 
 // Crear conexión a la base de datos SQLite
 const db = new sqlite3.Database('usuarios.db'); // Asegúrate de que el archivo de la base de datos exista en la raíz del proyecto
@@ -40,7 +41,17 @@ app.get('/main', (req, res) => {
 });
 
 app.get('/comedores', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'html', 'comedores.html'));
+    res.sendFile(path.join(__dirname, 'public', 'html', 'comedores.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+});
+
+app.get('/api/comedores', (req, res) => {
+    fs.readFile('public/sources/menu.json', 'utf8', (err, data) => {
+        if (err) {
+            res.status(500).send('Error al leer el archivo');
+        } else {
+            res.json(JSON.parse(data));
+        }
+    });
 });
 
 
