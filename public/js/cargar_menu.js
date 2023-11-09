@@ -1,78 +1,123 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const facultiesContainer = document.getElementById('faculties');
-  const datesMenuContainer = document.getElementById('dates-menu');
-  const menuTableContainer = document.getElementById('menu-table');
-
-  // Función para cargar el archivo JSON
-  function loadJson() {
-    fetch('sources/menu.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(jsonData => {
-        createFacultyButtons(jsonData);
-      })
-      .catch(error => {
-        console.log('Error al cargar el archivo JSON:', error);
-      });
-  }
-
-  // Función para crear botones para cada facultad
-  function createFacultyButtons(jsonData) {
-    Object.keys(jsonData).forEach(faculty => {
-      let button = document.createElement('button');
-      button.textContent = faculty;
-      button.onclick = function() { showDates(jsonData, faculty); };
-      facultiesContainer.appendChild(button);
-    });
-  }
-
-  // Función para mostrar las fechas cuando se hace clic en una facultad
-  function showDates(jsonData, faculty) {
-    // Limpiar contenedores
-    datesMenuContainer.innerHTML = '';
-    menuTableContainer.innerHTML = '';
-
-    const dates = Object.keys(jsonData[faculty]['dates']);
-    dates.forEach(date => {
-      let dateButton = document.createElement('button');
-      dateButton.textContent = date;
-      dateButton.onclick = function() { showMenu(jsonData, faculty, date); };
-      datesMenuContainer.appendChild(dateButton);
-    });
-  }
-
-  // Función para mostrar el menú cuando se selecciona una fecha
-  function showMenu(jsonData, faculty, date) {
-    menuTableContainer.innerHTML = '';
-    const menus = jsonData[faculty]['dates'][date];
-    Object.keys(menus).forEach(menu => {
-      let table = document.createElement('table');
-      table.className = 'table-menu';
-      let thead = table.createTHead();
-      let tbody = table.createTBody();
-
-      let row = thead.insertRow();
-      let header = document.createElement('th');
-      header.colSpan = 2;
-      header.textContent = menu;
-      row.appendChild(header);
-
-      menus[menu].forEach(item => {
-        let row = tbody.insertRow();
-        let cellItem = row.insertCell();
-        cellItem.textContent = item['item'];
-        let cellDescription = row.insertCell();
-        cellDescription.textContent = `${item['description']} ${item['allergens']}`;
-      });
-
-      menuTableContainer.appendChild(table);
-    });
-  }
-
-  // Iniciar la carga del JSON
-  loadJson();
+    fetch('/api/comedores')
+        .then(response => response.json())
+        .then(data => crearBotonesComedores(data));
 });
+
+function crearBotonesComedores(data) {
+    const comedoresContainer = document.getElementById('comedores-container');
+
+    for (const [nombreComedor, info] of Object.entries(data)) {
+        let comedorButton = document.createElement('button');
+        comedorButton.innerText = nombreComedor;
+        comedorButton.classList.add('comedor-button');
+
+        comedorButton.onmouseover = () => mostrarDias(info.dates, comedorButton);
+
+        comedoresContainer.appendChild(comedorButton);
+    }
+}
+
+function mostrarDias(dates, comedorButton) {
+    let menuContainer = document.getElementById('menu-container');
+    if (!menuContainer) {
+        menuContainer = document.createElement('div');
+        menuContainer.id = 'menu-container';
+        document.body.appendChild(menuContainer);
+        console.log("Menu container creado y añadido al DOM.");
+    }
+
+    menuContainer.style.display = 'block';
+    menuContainer.innerHTML = '';
+
+    Object.keys(dates).forEach(dia => {
+        let esPasado = verificarDiaPasado(dia);
+        let diaButton = document.createElement('button');
+        diaButton.innerText = dia;
+        diaButton.classList.add('dia-button');
+
+        if (esPasado) {
+            diaButton.classList.add('dia-pasado'); // Añadir una clase para días pasados
+        }
+
+        diaButton.onclick = () => {
+            menuContainer.style.display = 'none';
+            mostrarMenus(dates[dia], esPasado);
+        }
+
+        menuContainer.appendChild(diaButton);
+    });
+
+    let rect = comedorButton.getBoundingClientRect();
+    menuContainer.style.top = `${rect.bottom}px`;
+    menuContainer.style.left = `${rect.left}px`;
+}
+
+
+function mostrarMenus(menus, esPasado) {
+    let menusDetailContainer = document.getElementById('menus-detail-container');
+    menusDetailContainer.innerHTML = ''; // Limpiar el contenedor de detalles del menú
+
+
+    for (const [nombreMenu, platos] of Object.entries(menus)) {
+        let tituloMenu = document.createElement('h3');
+        tituloMenu.textContent = nombreMenu;
+        menusDetailContainer.appendChild(tituloMenu);
+
+        let tabla = document.createElement('table');
+        tabla.innerHTML = `<tr><th>Item</th><th>Descripción</th><th>Alérgenos</th></tr>`;
+
+        platos.forEach(plato => {
+            let fila = tabla.insertRow();
+            fila.insertCell().textContent = plato.item;
+            fila.insertCell().textContent = plato.description;
+            fila.insertCell().textContent = plato.allergens;
+        });
+
+        menusDetailContainer.appendChild(tabla);
+    }
+
+    if (esPasado) {
+        let mensaje = document.createElement('p');
+        let mensajeTexto = "Está consultando el menú de un día pasado";
+        
+        // Crear un elemento <strong> y establecer el texto en negrita
+        let textoEnNegrita = document.createElement('strong');
+        textoEnNegrita.textContent = mensajeTexto;
+
+        // Agregar el elemento <strong> como hijo del párrafo
+        mensaje.appendChild(textoEnNegrita);
+
+        // Agregar el párrafo al contenedor
+        menusDetailContainer.appendChild(mensaje);
+    }
+}
+
+function verificarDiaPasado(fechaTexto) {
+    let partesFecha = fechaTexto.match(/\b\d{1,2}\b|\b\d{4}\b/g);
+
+    if (partesFecha.length !== 2) {
+        console.error("Formato de fecha no reconocido:", fechaTexto);
+        return false;
+    }
+
+    let dia = partesFecha[0];
+    let ano = partesFecha[1];
+    let mesTexto = fechaTexto.match(/ENERO|FEBRERO|MARZO|ABRIL|MAYO|JUNIO|JULIO|AGOSTO|SEPTIEMBRE|OCTUBRE|NOVIEMBRE|DICIEMBRE/i)[0];
+    let mes = obtenerMesEnNumero(mesTexto.toUpperCase());
+
+    // Establecemos la fecha a las 15:30
+    let fecha = new Date(ano, mes - 1, dia, 15, 30);
+
+    console.log("Fecha analizada:", fecha);
+
+    return fecha < new Date();
+}
+
+
+
+
+function obtenerMesEnNumero(mesTexto) {
+    const meses = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
+    return meses.indexOf(mesTexto) + 1;
+}
