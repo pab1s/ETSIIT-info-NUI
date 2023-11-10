@@ -3,6 +3,7 @@ const session = require('express-session');
 const sqlite3 = require('sqlite3');
 const path = require('path');
 const fs = require('fs');
+const {updateHTMLInDatabase } = require('./public/js/cargar_html_bs'); // Asegúrate de que la ruta sea correcta
 
 // Crear conexión a la base de datos SQLite
 const db = new sqlite3.Database('usuarios.db'); // Asegúrate de que el archivo de la base de datos exista en la raíz del proyecto
@@ -43,6 +44,28 @@ app.get('/main', (req, res) => {
 app.get('/comedores', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html', 'comedores.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
 });
+
+app.get('/tramites', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'html', 'tramites.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+});
+
+
+//Ruta para cargar el expediente
+
+app.get('/expediente/:userId', (req, res) => {
+    const userId = req.params.userId;
+
+    db.get('SELECT expediente_html FROM usuarios WHERE id = ?', [userId], (err, row) => {
+        if (err) {
+            res.status(500).send('Error en la base de datos');
+        } else if (row) {
+            res.send(row.expediente_html);
+        } else {
+            res.status(404).send('Usuario no encontrado');
+        }
+    });
+});
+
 
 app.get('/logged', (req, res) => {
     const qrCode = req.query.code; // Obtiene el código QR de los parámetros de consulta
@@ -118,6 +141,15 @@ app.post('/login', (req, res) => {
             res.send('Credenciales incorrectas');
         }
     });
+});
+
+// Ruta para actualizar el HTML de un usuario específico
+app.get('/actualizar-html', (req, res) => {
+    // Aquí debes definir la ruta del archivo HTML y el ID del usuario
+    const userId = 1; // Cambia esto por el ID del usuario real
+
+    updateHTMLInDatabase('/home/acarriq/Escritorio/Oficina Virtual de la Universidad de Granada.html', db, 1);
+    res.send('Actualización de HTML iniciada para el usuario ' + userId);
 });
 
 // Ruta para cerrar sesión
