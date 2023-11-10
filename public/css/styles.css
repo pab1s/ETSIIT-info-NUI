@@ -31,7 +31,10 @@ body, html {
     margin: 20px 0;
 }
 
-.start-button-container button {
+.guest-button-container button {
+    position: relative;
+    min-width: 320px; /* Ajustar según sea necesario para acomodar el ancho del botón */
+    margin: 5px;
     padding: 15px 30px;
     font-size: 24px;
     color: white;
@@ -42,9 +45,56 @@ body, html {
     transition: background-color 0.3s ease;
 }
 
-.start-button-container button:hover {
+.guest-button-container button:hover {
     background-color: #00397a;
 }
+
+.user-button-container button {
+    position: relative;
+    min-width: 320px; /* Ajustar según sea necesario para acomodar el ancho del botón */
+    margin: 5px;
+    padding: 15px 30px;
+    font-size: 24px;
+    color: white;
+    background-color: #0056b3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.user-button-container button:hover {
+    background-color: #00397a;
+}
+
+.user-button-container {
+    position: relative;
+}
+
+#webcam-container {
+    position: absolute;
+    top: 100%; /* Alineado justo debajo del botón */
+    left: 50%; /* Centrado horizontalmente */
+    transform: translateX(-50%); /* Ajuste para centrar exactamente */
+    border: 5px solid #007bff !important; /* Color del borde */
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.5s ease; /* Transición suave para abrir y cerrar */
+    max-height: 0; /* Inicialmente oculto */
+    width: 320px; /* Ancho del marco de la cámara */
+    display: none; /* Inicialmente no visible */
+}
+
+#webcam-container.active {
+    max-height: 240px; /* Altura del marco de la cámara, igual que el ancho para hacerlo cuadrado */
+    display: block; /* Asegura que se muestra */
+}
+
+#webcam {
+    width: 100%; /* Asegura que el video llene el contenedor */
+    height: 100%; /* Asegura que el video llene el contenedor */
+}
+
 
 .vertical-menu-container {
     display: flex;
@@ -221,5 +271,3 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
-
-

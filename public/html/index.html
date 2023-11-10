@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenidos a la ETSIIT</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
@@ -20,14 +21,25 @@
         <img src="../assets/icono-etsiit.png" alt="Icono ETSIIT">
     </div>
 
-    <div class="start-button-container">
-        <button onclick="window.location.href='/main'">Comenzar</button>
+    <div class="guest-button-container">
+        <button id="guest-access" onclick="window.location.href='/main'">Acceder como invitado</button>
+    </div>
+    <div class="user-button-container">
+        <button id="authenticate">
+        Autenticarse
+        <img src="../assets/icon-qr.png" alt="QR Icon" style="height: 24px; width: 24px; margin-left: 5px; vertical-align: middle;">
+        </button>
+        <!-- Contenedor para el video de la webcam, inicialmente oculto -->
+        <div id="webcam-container">
+        <video id="webcam" autoplay></video>
+    </div>
     </div>
 
 </div>
 
 <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
 <script src="../js/leap.im.js"></script>
+<script src="../js/handleCam.js"></script>
 
 </body>
 </html>
