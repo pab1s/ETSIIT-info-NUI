@@ -1,3 +1,7 @@
 https://www.flaticon.com/free-icon/teacher_3307318?term=teachers&page=1&position=3&origin=search&related_id=3307318
 <a href="https://www.flaticon.com/free-icons/document" title="document icons">Document icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/location" title="location icons">Location icons created by Freepik - Flaticon</a>
+
+<a href="https://www.flaticon.es/iconos-gratis/codigo-qr" title="código qr iconos">Código qr iconos creados por Pixelmeetup - Flaticon</a>
+
+https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js
