@@ -3,7 +3,7 @@ const session = require('express-session');
 const sqlite3 = require('sqlite3');
 const path = require('path');
 const fs = require('fs');
-const {updateHTMLInDatabase } = require('./public/js/cargar_html_bs'); // Asegúrate de que la ruta sea correcta
+const {updateHTMLInDatabase } = require('./public/js/cargar_html_bs'); 
 
 // Crear conexión a la base de datos SQLite
 const db = new sqlite3.Database('usuarios.db'); // Asegúrate de que el archivo de la base de datos exista en la raíz del proyecto
@@ -148,7 +148,7 @@ app.get('/actualizar-html', (req, res) => {
     // Aquí debes definir la ruta del archivo HTML y el ID del usuario
     const userId = 1; // Cambia esto por el ID del usuario real
 
-    updateHTMLInDatabase('/home/acarriq/Escritorio/Oficina Virtual de la Universidad de Granada.html', db, 1);
+    updateHTMLInDatabase('./public/ExpedienteProvisional/Oficina Virtual de la Universidad de Granada.html', db, 1);
     res.send('Actualización de HTML iniciada para el usuario ' + userId);
 });
 
