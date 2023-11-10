@@ -44,6 +44,22 @@ app.get('/comedores', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html', 'comedores.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
 });
 
+app.get('/logged', (req, res) => {
+    const qrCode = req.query.code; // Obtiene el código QR de los parámetros de consulta
+    const htmlContent = `
+        <html>
+            <head>
+                <title>Autenticación</title>
+            </head>
+            <body>
+                <p>Estás autenticado, ${qrCode}</p>
+            </body>
+        </html>`;
+
+    res.send(htmlContent); // Envía el contenido HTML generado
+});
+
+
 app.get('/api/comedores', (req, res) => {
     fs.readFile('public/sources/menu.json', 'utf8', (err, data) => {
         if (err) {
@@ -52,6 +68,24 @@ app.get('/api/comedores', (req, res) => {
             res.json(JSON.parse(data));
         }
     });
+});
+
+app.get('/api/qrcode', (req, res) => {
+  const qrCode = req.query;
+
+  // En verdad, devolvería el identificador de la tabla de SQL.
+  res.send("Código recibido");
+  /*
+  db.get('SELECT * FROM users WHERE qrCode = ?', [qrCode], (err, row) => {
+    if (err) {
+      res.status(500).send("Error en la base de datos");
+    } else if (row) {
+      res.send("Autenticación válida");
+    } else {
+      res.send("Código QR no válido");
+    }
+  });
+  */
 });
 
 
