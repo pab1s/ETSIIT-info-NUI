@@ -310,3 +310,103 @@ th {
     background-color: #cccccc;
     cursor: default;
 }
+
+
+/* Estilos para la sección de citas */
+#agenda-citas-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Estilo para el input de fecha y el botón de buscar citas */
+#fecha-cita,
+#buscar-citas {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilo para la lista de citas disponibles */
+#citas-disponibles {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    width: 100%;
+    max-width: 600px; /* Ajustar según el diseño */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para cada cita disponible individual */
+.cita-disponible {
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #e7e7e7;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cita-disponible:hover {
+    background-color: #d7d7d7;
+}
+
+/* Estilos para mostrar la cita seleccionada y el botón de confirmación */
+#confirmacion-cita {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#confirmacion-cita p {
+    font-size: 18px;
+    color: #333;
+}
+
+#confirmar-cita {
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 18px;
+    color: white;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#confirmar-cita:hover {
+    background-color: #218838;
+}
+
+/* Estilos para la visualización de mensajes de alerta o confirmación */
+.alerta,
+.confirmacion {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+}
+
+.alerta {
+    background-color: #dc3545;
+}
+
+.confirmacion {
+    background-color: #28a745;
+}
+
+.cita-disponible.reservado {
+    background-color: #cccccc;
+    color: #666666;
+    text-decoration: line-through;
+    cursor: default;
+}
+
