@@ -1,15 +1,17 @@
+// Script para cargar y mostrar el expediente en formato PDF
 
 document.getElementById('consulta-expediente').addEventListener('click', function() {
-    const userId = 1; // Aquí deberiamos obtener el ID del usuario de alguna manera
+    const userId = 1; // Asegúrate de obtener el ID del usuario de alguna manera
     fetch(`/expediente/${userId}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Expediente no encontrado');
             }
-            return response.text();
+            return response.blob();
         })
-        .then(htmlExpediente => {
-            document.body.innerHTML = htmlExpediente; // O muestra el HTML de alguna otra manera
+        .then(blob => {
+            const url = URL.createObjectURL(blob);
+            window.open(url, '_blank'); // Abre el PDF en una nueva pestaña
         })
         .catch(error => {
             console.error('Error al recuperar el expediente:', error);

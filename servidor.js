@@ -3,7 +3,7 @@ const session = require('express-session');
 const sqlite3 = require('sqlite3');
 const path = require('path');
 const fs = require('fs');
-const {updateHTMLInDatabase } = require('./public/js/cargar_html_bs'); 
+const {updatePDFInDatabase } = require('./public/js/cargar_pdf_bd'); 
 
 // Crear conexión a la base de datos SQLite
 const db = new sqlite3.Database('usuarios.db'); // Asegúrate de que el archivo de la base de datos exista en la raíz del proyecto
@@ -50,21 +50,23 @@ app.get('/tramites', (req, res) => {
 });
 
 
-//Ruta para cargar el expediente
-
+// Ruta para cargar el expediente en formato PDF
 app.get('/expediente/:userId', (req, res) => {
     const userId = req.params.userId;
 
-    db.get('SELECT expediente_html FROM usuarios WHERE id = ?', [userId], (err, row) => {
+    db.get('SELECT expediente_pdf FROM usuarios WHERE id = ?', [userId], (err, row) => {
         if (err) {
             res.status(500).send('Error en la base de datos');
-        } else if (row) {
-            res.send(row.expediente_html);
+        } else if (row && row.expediente_pdf) {
+            // Configura los encabezados de respuesta para indicar que se trata de un PDF
+            res.setHeader('Content-Type', 'application/pdf');
+            res.send(row.expediente_pdf);
         } else {
-            res.status(404).send('Usuario no encontrado');
+            res.status(404).send('Usuario no encontrado o expediente no disponible');
         }
     });
 });
+
 
 
 app.get('/logged', (req, res) => {
@@ -143,13 +145,13 @@ app.post('/login', (req, res) => {
     });
 });
 
-// Ruta para actualizar el HTML de un usuario específico
-app.get('/actualizar-html', (req, res) => {
+// Ruta para actualizar el PDF de un usuario específico
+app.get('/actualizar-pdf', (req, res) => {
     // Aquí debes definir la ruta del archivo HTML y el ID del usuario
     const userId = 1; // Cambia esto por el ID del usuario real
 
-    updateHTMLInDatabase('./public/ExpedienteProvisional/Oficina Virtual de la Universidad de Granada.html', db, 1);
-    res.send('Actualización de HTML iniciada para el usuario ' + userId);
+    updatePDFInDatabase('/home/acarriq/Documentos/77555779_296.pdf',  1);
+    res.send('Actualización de PDF iniciada para el usuario ' + userId);
 });
 
 // Ruta para cerrar sesión
