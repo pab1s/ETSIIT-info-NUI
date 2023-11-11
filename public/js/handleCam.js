@@ -36,12 +36,21 @@ function startQRScanner() {
 function onScanSuccess(decodedText) {
     console.log(`Código QR decodificado: ${decodedText}`);
     fetch('/api/qrcode?qr=' + encodeURIComponent(decodedText))
-        .then(response => window.location.href = '/logged?code=' + encodeURIComponent(decodedText))
+        .then(response => response.json()) // Convertir la respuesta a JSON
+        .then(data => {
+            if(data.username) {
+                // Redirigir a /logged con el username como parámetro
+                window.location.href = '/logged?username=' + encodeURIComponent(data.username);
+            } else {
+                console.error('Usuario no encontrado');
+            }
+        })
         .catch(err => console.error('Error:', err));
 
     // Opcionalmente detener el escaneo aquí, si lo deseas
     html5QrCodeScanner.clear();
 }
+
 
 function onScanError(error) {
     // console.error(`Error al escanear: ${error}`);
