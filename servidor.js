@@ -3,13 +3,18 @@ const session = require('express-session');
 const sqlite3 = require('sqlite3');
 const path = require('path');
 const fs = require('fs');
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
+require('dotenv').config();
 const {updatePDFInDatabase } = require('./public/js/cargar_pdf_bd'); 
 
 // Crear conexión a la base de datos SQLite
 const db = new sqlite3.Database('usuarios.db'); // Asegúrate de que el archivo de la base de datos exista en la raíz del proyecto
 
+const SECRET_KEY = process.env.SECRET_KEY;
 
 const app = express();
+app.use(cookieParser());
 
 // Configuración de la sesión
 app.use(session({
@@ -36,11 +41,6 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html', 'index.html'));
 });
 
-// Ruta para la página de inicio de sesión
-app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'html', 'login.html'));
-});
-
 app.get('/main', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html', 'main.html'));
 });
@@ -58,7 +58,7 @@ app.get('/tramites', (req, res) => {
 app.get('/expediente/:userId', (req, res) => {
     const userId = req.params.userId;
 
-    db.get('SELECT expediente_pdf FROM usuarios WHERE id = ?', [userId], (err, row) => {
+    db.get('SELECT expediente_pdf FROM usuarios WHERE username = ?', [userId], (err, row) => {
         if (err) {
             res.status(500).send('Error en la base de datos');
         } else if (row && row.expediente_pdf) {
@@ -73,22 +73,6 @@ app.get('/expediente/:userId', (req, res) => {
 
 
 
-app.get('/logged', (req, res) => {
-    const username = req.query.username; // Obtiene el código QR de los parámetros de consulta
-    const htmlContent = `
-        <html>
-            <head>
-                <title>Autenticación</title>
-            </head>
-            <body>
-                <p>Estás autenticado, ${username}</p>
-            </body>
-        </html>`;
-
-    res.send(htmlContent); // Envía el contenido HTML generado
-});
-
-
 app.get('/api/comedores', (req, res) => {
     fs.readFile('public/sources/menu.json', 'utf8', (err, data) => {
         if (err) {
@@ -99,22 +83,54 @@ app.get('/api/comedores', (req, res) => {
     });
 });
 
-app.get('/api/qrcode', (req, res) => {
+app.get('/api/login', (req, res) => {
   const qrCode = req.query.qr;
-
-  console.log(qrCode);
 
   db.get('SELECT username FROM usuarios WHERE uuid = ?', [qrCode], (err, row) => {
     if (err) {
-      res.status(500).send("Error en la base de datos");
+      res.status(500).json({ error: "Error en la base de datos" });
     } else if (row) {
-      res.status(200).json({ username: row.username });
+      const token = jwt.sign({ username: row.username }, SECRET_KEY, { expiresIn: '1h' });
+      res.cookie('authToken', token, { httpOnly: true, sameSite: 'strict' });
+      res.json({ message: 'Autenticación exitosa' });
     } else {
-      res.status(404).send("Código QR no válido");
+      res.status(404).json({ error: "Código QR no válido" });
     }
   });
 });
 
+// Ruta para verificar si el usuario está logueado
+app.get('/api/userinfo', (req, res) => {
+    try {
+        const token = req.cookies.authToken;
+        if (!token) {
+            return res.status(401).json({ error: 'No autenticado' });
+        }
+
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const username = decoded.username;
+
+        // Modificar la consulta para obtener el nombre y apellidos del usuario
+        db.get('SELECT nombre, apellidos FROM usuarios WHERE username = ?', [username], (err, row) => {
+            if (err) {
+                return res.status(500).json({ error: 'Error en la base de datos' });
+            }
+            if (row) {
+                res.json({ username: username, nombre: row.nombre, apellidos: row.apellidos });
+            } else {
+                res.status(404).json({ error: 'Usuario no encontrado' });
+            }
+        });
+    } catch (error) {
+        res.status(401).json({ error: 'No autenticado' });
+    }
+});
+
+// Ruta para cerrar sesión
+app.get('/api/logout', (req, res) => {
+    res.clearCookie('authToken');
+    res.json({ message: 'Sesión cerrada' });
+});
 
 
 // Ruta para la página privada que requiere autenticación
@@ -126,33 +142,12 @@ app.get('/pagina-privada', (req, res) => {
     }
 });
 
-// Ruta para procesar el POST de inicio de sesión
-app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-
-    db.get('SELECT * FROM usuarios WHERE username = ? AND password = ?', [username, password], (err, row) => {
-        if (err) {
-            console.error(err);
-            res.send('Error en la base de datos');
-            return;
-        }
-
-        if (row) {
-            req.session.loggedin = true;
-            req.session.username = username;
-            res.redirect('/pagina-privada');
-        } else {
-            res.send('Credenciales incorrectas');
-        }
-    });
-});
-
 // Ruta para actualizar el PDF de un usuario específico
 app.get('/actualizar-pdf', (req, res) => {
     // Aquí debes definir la ruta del archivo HTML y el ID del usuario
-    const userId = 1; // Cambia esto por el ID del usuario real
+    const userId = "pablolivares"; // Cambia esto por el ID del usuario real
 
-    updatePDFInDatabase('/home/acarriq/Documentos/77555779_296.pdf',  1);
+    updatePDFInDatabase('/home/acarriq/Documentos/77555779_296.pdf',  userId);
     res.send('Actualización de PDF iniciada para el usuario ' + userId);
 });
 
