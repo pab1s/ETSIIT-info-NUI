@@ -410,3 +410,39 @@ th {
     cursor: default;
 }
 
+#user-info {
+    text-align: center;
+    background-color: #0056b3;
+    color: white;
+    padding: 5px 10px; /* Reducir el padding vertical y horizontal */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 10%; /* Hacer el contenedor aún más estrecho */
+    margin: 0 auto; /* Centra el bloque */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    font-size: 0.8em; /* Reducir un poco más el tamaño de la fuente */
+}
+
+#user-info p {
+    margin: 5px 0; /* Reducir el margen alrededor del texto */
+}
+
+
+#user-info button {
+    background-color: white; /* Fondo blanco */
+    color: #007bff; /* Texto azul */
+    border: 2px solid #007bff; /* Borde azul */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 5px 10px; /* Padding interior */
+    cursor: pointer; /* Cambiar el cursor al pasar el ratón */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave de colores */
+}
+
+#user-info button:hover {
+    background-color: #0056b3; /* Cambio de color al pasar el ratón */
+    color: white; /* Texto blanco al pasar el ratón */
+}
+
+
+
