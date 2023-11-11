@@ -16,7 +16,7 @@ function updatePDFInDatabase(filePath, userId) {
             }
         });
 
-        const sql = `UPDATE usuarios SET expediente_pdf = ? WHERE id = ?`;
+        const sql = `UPDATE usuarios SET expediente_pdf = ? WHERE username = ?`;
         db.run(sql, [pdfBuffer, userId], (err) => {
             if (err) {
                 console.error('Error al actualizar datos:', err);

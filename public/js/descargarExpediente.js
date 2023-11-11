@@ -1,7 +1,7 @@
 // Script para cargar y mostrar el expediente en formato PDF
 
 document.getElementById('consulta-expediente').addEventListener('click', function() {
-    const userId = 1; // Asegúrate de obtener el ID del usuario de alguna manera
+    const userId = "pablolivares"; // Asegúrate de obtener el ID del usuario de alguna manera
     fetch(`/expediente/${userId}`)
         .then(response => {
             if (!response.ok) {
