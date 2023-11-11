@@ -74,14 +74,14 @@ app.get('/expediente/:userId', (req, res) => {
 
 
 app.get('/logged', (req, res) => {
-    const qrCode = req.query.code; // Obtiene el código QR de los parámetros de consulta
+    const username = req.query.username; // Obtiene el código QR de los parámetros de consulta
     const htmlContent = `
         <html>
             <head>
                 <title>Autenticación</title>
             </head>
             <body>
-                <p>Estás autenticado, ${qrCode}</p>
+                <p>Estás autenticado, ${username}</p>
             </body>
         </html>`;
 
@@ -100,21 +100,19 @@ app.get('/api/comedores', (req, res) => {
 });
 
 app.get('/api/qrcode', (req, res) => {
-  const qrCode = req.query;
+  const qrCode = req.query.qr;
 
-  // En verdad, devolvería el identificador de la tabla de SQL.
-  res.send("Código recibido");
-  /*
-  db.get('SELECT * FROM users WHERE qrCode = ?', [qrCode], (err, row) => {
+  console.log(qrCode);
+
+  db.get('SELECT username FROM usuarios WHERE uuid = ?', [qrCode], (err, row) => {
     if (err) {
       res.status(500).send("Error en la base de datos");
     } else if (row) {
-      res.send("Autenticación válida");
+      res.status(200).json({ username: row.username });
     } else {
-      res.send("Código QR no válido");
+      res.status(404).send("Código QR no válido");
     }
   });
-  */
 });
 
 
