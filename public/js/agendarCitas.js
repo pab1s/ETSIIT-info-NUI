@@ -31,7 +31,7 @@ btnBuscarCitas.addEventListener('click', function() {
 // Función para reservar una cita
 // Asumiendo que tienes una variable global o una forma de obtener el ID del usuario actual
 // En un escenario real, esto lo proporcionaría el sistema de autenticación de tu aplicación
-const usuarioId = 1; // Reemplaza esto con la lógica para obtener el usuario real
+const usuarioId = "pablolivares"; // Reemplaza esto con la lógica para obtener el usuario real
 
 // Esta función se llamará cuando un usuario haga clic en una cita disponible
 function reservarCita(citaId, fecha, horaInicio) {
