@@ -32,24 +32,33 @@ function startQRScanner() {
     );
     html5QrCodeScanner.render(onScanSuccess, onScanError);
 }
-
 function onScanSuccess(decodedText) {
     console.log(`Código QR decodificado: ${decodedText}`);
-    fetch('/api/qrcode?qr=' + encodeURIComponent(decodedText))
-        .then(response => response.json()) // Convertir la respuesta a JSON
+    fetch('/api/login?qr=' + encodeURIComponent(decodedText))
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Respuesta del servidor no fue exitosa');
+            }
+            return response.json();
+        })
         .then(data => {
-            if(data.username) {
-                // Redirigir a /logged con el username como parámetro
-                window.location.href = '/logged?username=' + encodeURIComponent(data.username);
+            if (data.message === 'Autenticación exitosa') {
+                // Redirigir a main.html
+                window.location.href = '/main';
             } else {
-                console.error('Usuario no encontrado');
+                // Manejar los casos de error
+                alert(data.error || 'Se ha producido un error desconocido');
             }
         })
-        .catch(err => console.error('Error:', err));
+        .catch(err => {
+            console.error('Error:', err);
+            alert('Se ha producido un error al procesar el código QR');
+        });
 
     // Opcionalmente detener el escaneo aquí, si lo deseas
     html5QrCodeScanner.clear();
 }
+
 
 
 function onScanError(error) {
