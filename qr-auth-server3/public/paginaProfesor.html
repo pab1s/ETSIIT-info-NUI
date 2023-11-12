@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Página del Profesor</title>
+    <style>
+        #user-status {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            border: 1px solid black;
+            padding: 5px;
+        }
+        /* Aquí puedes añadir más estilos específicos para esta página */
+    </style>
+</head>
+<body>
+    <div id="user-status">Desconectado</div>
+
+    <h1>Bienvenido, Profesor</h1>
+    
+    <!-- Contenido específico para la página del profesor -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const user = params.get('user');
+            const userStatusDiv = document.getElementById('user-status');
+
+            if (user) {
+                userStatusDiv.textContent = `Conectado: ${user}`;
+            } else {
+                window.location.href = 'lector.html';
+            }
+        });
+    </script>
+</body>
+</html>

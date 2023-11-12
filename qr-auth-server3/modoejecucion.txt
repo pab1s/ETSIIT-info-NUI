@@ -1,0 +1,11 @@
+Primeramente corremos el servidor con node server.js
+Luego nos dará un localhost normalmente el 3000.
+Buscamos en internet: http://localhost:3000/lector.html
+
+
+Cosas relevantes;
+Esa será la pagina principal donde identificarse y podremos navegar al resto.
+Los qr para identificarse estan en la carpeta qr, el primero es de alumno y el segundo de profesor.
+Tambien he creado una pagina general a la que se puede entrar sin tener que identificarse aunque se puede entrar identificado tambien.
+La seguridad es 0 el usuario se pasa por medio de la URL, muy mala praxis. Sin embargo, la practica busca el diseño optimo y gestos con el leap.
+Podemos cambiar entre paginas y usuarios con alterar la URL en caso de haber algun problema de navegabilidad.
