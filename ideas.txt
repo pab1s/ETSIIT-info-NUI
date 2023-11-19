@@ -4,3 +4,5 @@
 - tramites es para pedir citas principalmente
 - los menus diferenciados por facultad  
 - Meter inglés como idioma con un icono
+- Añadir reloj en la parte superior
+- Añadir un carrusel de imagenes al empezar la app
