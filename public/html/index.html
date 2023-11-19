@@ -14,50 +14,47 @@
     <!-- Contenedor para el puntero -->
     <div id="pointer"></div>
 
-    <div class="vertical-container">
-        <div class="welcome-message">
-            <h1>¡Bienvenidos a la ETSIIT!</h1>
-        </div>
-
+    <!-- Contenedor para la página -->
+    <div class="content">
         <div class="icon-container">
-            <img src="../assets/icono-etsiit.png" alt="Icono ETSIIT">
+            <img src="../assets/etsiit-logo.png" alt="Icono ETSIIT">
         </div>
 
-        <!-- Bottom Bar -->
-        <div class="bottom-bar">
-            <!-- Avatar with Welcome Message -->
-            <div class="avatar-container">
-                <img src="../assets/avatar.png" alt="Avatar">
-                <p>Welcome!</p>
-            </div>
+        <div class="welcome-message">
+            <h1>¡Bienvenido a la ETSIIT!</h1>
+            <h2> ¿Cómo quieres acceder? </h2>
         </div>
 
-
-        <div class="horizontal-button-container">
+        <div class="horizontal-container">
             <div class="button-container">
-                <button id="guest-access" onclick="window.location.href='/main'">Acceder como invitado</button>
+                <button id="guest-access" onclick="window.location.href='./main.html'">Acceder como invitado</button>
             </div>
             <div class="button-container">
                 <button id="authenticate">
-                    <img src="../assets/icon-qr.png" alt="QR Icon"
-                        style="height: 144px; width: 144px; margin-left: 5px; vertical-align: middle;
-                               padding: 20px;">
+                    <img src="../assets/icon-qr.png" alt="QR Icon">
                     <br>
                     Autenticarse
                 </button>
-                <!-- Contenedor para el video de la webcam, inicialmente oculto -->
                 <div id="webcam-container">
                     <video id="webcam" autoplay></video>
                 </div>
             </div>
         </div>
-
     </div>
 
-    <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
-    <script src="../js/leap.im.js"></script>
-    <script src="../js/handleCam.js"></script>
+    <!-- Bottom Bar -->
+    <div class="bottom-bar"></div>
 
+    <!-- Avatar with Welcome Message -->
+    <!--
+    <div class="avatar-container" >
+        <img src="../assets/avatar.png" alt="Avatar" class="avatar" >
+        <div class="avatar-text" id="bocadillo">Hola, soy un bocadillo de texto!</div>
+    </div>
+    -->
+
+    <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
+    <script src="../js/handleCam.js"></script>
 </body>
 
 </html>

@@ -1,75 +1,114 @@
-body, html {
+/* GENERAL STYLES */ 
+
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    width: 2160px;
-    height: 3840px;
-    background-color: #f4f4f9;
-    font-family: 'Arial', sans-serif;
-}
-
-.icon-container {
-    position: absolute; /* Position it relative to the first positioned (not static) ancestor element */
-    top: 0; /* Align to the top */
-    left: 0; /* Align to the left */
-    width: 10vw; /* Adjust the width as necessary */
-    height: auto; /* Adjust the height as necessary */
-    padding: 10px; /* Add some padding around the logo */
-    margin: 60px; /* Add some margin around the logo */
-}
-
-/* Adjust the image size within the container if needed */
-.icon-container img {
-    width: 10vw; /* Adjust the width as necessary */
-    height: auto; /* Maintain the aspect ratio of the image */
-}
-
-.vertical-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    margin: auto;
     background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-image: url('../assets/background.jpg'); /* Your image path */
-    background-size: cover;
-    background-position: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5vw;
+}
+
+body {
+    display: flex-inline;
+    flex-direction: column;
+
 }
 
 .welcome-message h1 {
-    font-size: 48px;
+    font-size: 48px;    /* Set the font size to 48px */
+    color: #333; /* Set the font color to #333 (dark gray) */
+    margin: 20px 0; /* Set the top and bottom margin to 20px */
+    text-align: center; /* Center the text */
+}
+
+h2 {
+    font-size: 32px;
     color: #333;
-    margin: 20px 0;
+    margin-bottom: 50px;
     text-align: center;
+}
+
+.content {
+    position: relative;
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* POINTER FOR LEAP MOTION */
+
+#pointer {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    border-radius: 50%;
+    pointer-events: none; /* Asegúrate de que el puntero no interfiera con otros eventos del mouse */
+}
+
+/* INDEX PAGE */
+
+.icon-container {
+    position: relative; /* Position it relative to the first positioned (not static) ancestor element */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
 }
 
 .icon-container img {
-    width: 200px; /* Adjust the size as necessary */
+    width: 50%; /* Adjust as needed */
+    height: auto; /* Adjust as needed */
+}
+
+.bottom-bar {
+    position: relative;
+    width: 100%;
+    height: 25%;
+    background-color: rgb(208, 96, 18);
+}
+
+.horizontal-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 25% 5%;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 40%;
     height: auto;
-    margin: 20px 0;
+    padding: auto;
 }
 
 .button-container button {
-    position: relative;
-    min-width: 30vw; /* Relative to viewport width */
-    height: 15vh; /* Relative to viewport height */
-    font-size: 1.5vw; /* Adjust based on your design needs */
-    margin: 10px; /* Adjust margin as needed */
-    padding: 20px 30px; /* Increased padding */
-    font-size: 28px; /* Larger font size */
+    display: flex; /* Flex layout for internal alignment */
+    flex-direction: column; /* Places icon above the text */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    width: 100%; /* Set a specific width */
+    aspect-ratio: 1 / 1; /* Adjust aspect ratio as needed */
+    padding: 5%; /* Adjust padding as needed */
+    font-size: 2rem; /* Adjust font size as needed */
     color: white;
     background-color: #d06012;
     border: none;
-    border-radius: 20px; /* Rounded corners */
+    border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    text-align: center;
+    overflow: hidden; /* In case content overflows */
 }
 
 .button-container button:hover {
     background-color: #9d480d;
+}
+
+.button-container img {
+    height: 70%;
+    width: 70%;
+    vertical-align: middle;
 }
 
 #webcam-container {
@@ -77,7 +116,7 @@ body, html {
     top: 100%; /* Alineado justo debajo del botón */
     left: 50%; /* Centrado horizontalmente */
     transform: translateX(-50%); /* Ajuste para centrar exactamente */
-    border: 5px solid #007bff !important; /* Color del borde */
+    border: 5px solid #d06012 !important; /* Color del borde */
     border-radius: 20px;
     overflow: hidden;
     transition: all 0.5s ease; /* Transición suave para abrir y cerrar */
@@ -96,37 +135,58 @@ body, html {
     height: 100%; /* Asegura que el video llene el contenedor */
 }
 
-.bottom-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 25vh; /* Adjust as needed */
-    background-color: rgb(255, 153, 0);
-}
-
 .avatar-container {
-    width: 20vw;
-    height: 20vh;
-    position: absolute;
-    top: -50px; /* Adjust to half of the avatar size */
-    left: 20%;
-    transform: translateX(-50%);
-    text-align: center;
+    position: relative;
+    display: flex;
+    left: 10%; /* Centra el avatar horizontalmente */
+    top: -35%;
+    width: 20%; /* Tamaño relativo del contenedor del avatar */
 }
 
 .avatar-container img {
-    width: 400px; /* Adjust as needed */
-    height: 400px; /* Adjust as needed */
+    width: 80%; /* Adjust as needed */
+    height: auto; /* Adjust as needed */
     border-radius: 50%;
     border: 3px solid #fff; /* Optional */
+    display: inline-block;
 }
 
-.horizontal-button-container {
-    display: flex;
-    justify-content: space-around; /* Adjust as needed */
-    align-items: center;
-    margin-top: 20px; /* Adjust as needed */
+.avatar {
+    width: 100%; /* El avatar ocupa todo el ancho de su contenedor */
+    height: auto; /* Altura automática para mantener la proporción */
+    border-radius: 50%; /* Para hacerlo circular */
+}
+
+.avatar-text {
+    background: #ddd;
+    color: #333;
+    display: inline-block;
+      font-size: 2rem;
+    line-height: 1.2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+      padding: 0 1em;
+      position: relative;
+      text-align: center;
+      vertical-align: top;
+          min-width: 7em;
+          border-radius: .4em;
+  }
+  .avatar-text:after {
+      border: 1em solid transparent;
+      border-top-color: #ddd;
+      content: '';
+      margin-left: -1em;
+      position: absolute;
+          top: 100%;
+          left: 50%;
+      width: 0;
+      height: 0;
+      border-top-color: #ddf;
+  }
+
+.avatar-container:hover .avatar-text {
+    display: block; /* Muestra el bocadillo al pasar el cursor sobre el avatar */
 }
 
 .vertical-menu-container {
@@ -139,11 +199,7 @@ body, html {
     padding-top: 50px; /* Espacio en la parte superior del menú */
 }
 
-h2 {
-    font-size: 32px;
-    color: #333;
-    margin-bottom: 50px;
-}
+/* MENU PAGE */
 
 .menu-item {
     margin: 20px 0;
@@ -215,16 +271,6 @@ h2 {
 .login-form p {
     text-align: center;
     margin: 20px 0;
-}
-
-/* Estilos para el puntero */
-#pointer {
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    background-color: red;
-    border-radius: 50%;
-    pointer-events: none; /* Asegúrate de que el puntero no interfiera con otros eventos del mouse */
 }
 
 #comedores-container {
