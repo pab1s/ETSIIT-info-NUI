@@ -53,6 +53,10 @@ app.get('/tramites', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'html', 'tramites.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
 });
 
+app.get('/docencia', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'html', 'docencia.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+});
+
 
 // Ruta para cargar el expediente en formato PDF
 app.get('/expediente/:userId', (req, res) => {
@@ -130,6 +134,41 @@ app.get('/api/userinfo', (req, res) => {
 app.get('/api/logout', (req, res) => {
     res.clearCookie('authToken');
     res.json({ message: 'Sesión cerrada' });
+});
+
+// Ruta para obtener información de docencia
+app.get('/api/docencia/', (req, res) => {
+    try {
+        const token = req.cookies.authToken;
+        if (!token) {
+            return res.status(401).json({ error: 'No autenticado' });
+        }
+
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const username = decoded.username;
+
+        console.log(username);
+
+        // Consulta para obtener la información de docencia
+        const query = `
+            SELECT a.asignatura, a.dia_de_la_semana, a.hora_inicio, a.hora_fin
+            FROM asignaturas a
+            JOIN matriculas m ON a.indice = m.indice
+            WHERE m.username = ?`;
+
+        db.all(query, [username], (err, rows) => {
+            if (err) {
+                return res.status(500).json({ error: 'Error en la base de datos' });
+            }
+            if (rows.length > 0) {
+                res.json({ docencia: rows });
+            } else {
+                res.status(404).json({ error: 'Información de docencia no encontrada' });
+            }
+        });
+    } catch (error) {
+        res.status(401).json({ error: 'No autenticado' });
+    }
 });
 
 
