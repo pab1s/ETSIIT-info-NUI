@@ -11,7 +11,7 @@ import csv
 from unidecode import unidecode
 
 # Choose the language (es for Spanish, en for English)
-language = 'en'  # Change to 'en' for English
+language = 'es'  # Change to 'en' for English
 
 # Define URLs based on the selected language
 if language == 'es':
@@ -197,10 +197,10 @@ for grado in grados:
 
 # Define the filename based on the selected language
 if language == 'es':
-    filename = 'data/ugr_data_es.csv'
+    filename = '../data/ugr_data_es.csv'
     print('Datos guardados en ugr_data_es.csv')
 elif language == 'en':
-    filename = 'data/ugr_data_en.csv'
+    filename = '../data/ugr_data_en.csv'
     print('Data saved in ugr_data_en.csv')
 
 # Save the data to a CSV file
