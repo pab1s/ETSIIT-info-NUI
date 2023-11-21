@@ -40,12 +40,12 @@ jobs:
           git merge --no-ff develop
           git push origin docencia
 
-      - name: Merge to Administracion
+      - name: Merge to Tramites
         run: |
           git fetch origin
-          git checkout administracion
+          git checkout tramites
           git merge --no-ff develop
-          git push origin administracion
+          git push origin tramites
 
       - name: Merge to Localizacion
         run: |
