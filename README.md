@@ -16,7 +16,8 @@ En GitHub hemos montado *GitHub Workflows* que realizan las siguientes acciones:
 
  - La rama `main` es **solo de lectura**. Esta rama reflejará todos los cambios que se realicen en el proyecto. De esta forma, se puede probar la totalidad del programa desde esta rama.
  - Los cambios que se hagan en la rama `develop` se retransmitirán a **todas los demás ramas**. De esta forma, cuando cambiemos algo común se aplicará a todo.
- - Las ramas de características específicas aplicarán sus cambios en su propia rama y en la rama `main`. 
+ - Las ramas de características específicas aplicarán sus cambios en su propia rama y en la rama `main`.
+ - 
 *Nota*: Estos cambios **no hay que aplicarlos manualmente a cada rama**. Basta que apliques los cambios en la rama correspondiente en la que hayas hecho los cambios. *GitHub Workflows* se encargará de propagar los cambios a las demás ramas.
 
 ### Comandos de Git a tener en cuenta
