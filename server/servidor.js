@@ -6,7 +6,7 @@ const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
-const {updatePDFInDatabase } = require('./public/js/cargar_pdf_bd'); 
+const {updatePDFInDatabase } = require('./../public/js/cargar_pdf_bd'); 
 
 // Crear conexión a la base de datos SQLite
 const db = new sqlite3.Database('usuarios.db'); // Asegúrate de que el archivo de la base de datos exista en la raíz del proyecto
@@ -34,27 +34,27 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Middleware para servir archivos estáticos
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..' , 'public')));
 
 // Ruta para servir la página de inicio
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'html', 'index.html'));
+    res.sendFile(path.join(__dirname, '..' , 'public', 'html', 'index.html'));
 });
 
 app.get('/main', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'html', 'main.html'));
+    res.sendFile(path.join(__dirname, '..' , 'public', 'html', 'main.html'));
 });
 
 app.get('/comedores', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'html', 'comedores.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+    res.sendFile(path.join(__dirname, '..' , 'public', 'html', 'comedores.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
 });
 
 app.get('/tramites', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'html', 'tramites.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+    res.sendFile(path.join(__dirname, '..' , 'public', 'html', 'tramites.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
 });
 
 app.get('/docencia', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'html', 'docencia.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+    res.sendFile(path.join(__dirname, '..' , 'public', 'html', 'docencia.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
 });
 
 
@@ -78,7 +78,7 @@ app.get('/expediente/:userId', (req, res) => {
 
 
 app.get('/api/comedores', (req, res) => {
-    fs.readFile('public/sources/menu.json', 'utf8', (err, data) => {
+    fs.readFile('../public/sources/menu.json', 'utf8', (err, data) => {
         if (err) {
             res.status(500).send('Error al leer el archivo');
         } else {
@@ -208,7 +208,7 @@ app.listen(3000, () => {
 
 
 app.get('/citas', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'html', 'citas.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+    res.sendFile(path.join(__dirname, '..' , 'public', 'html', 'citas.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
 });
 
 // Obtener las citas disponibles 

@@ -3,68 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Calendario de Docencia</title>
-    <style>
-
-        .calendario-contenedor {
-            width: 80%; /* 80% del ancho de la ventana */
-            height: 80vh; /* 80% del alto de la ventana */
-            margin: auto;
-            overflow: auto; /* Para el desplazamiento si es necesario */
-        }
-
-
-       body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        h1 {
-            font-family: 'Arial', sans-serif; /* Elige la fuente que prefieras */
-            font-size: 2em; /* Ajusta el tamaño según tus preferencias */
-            text-align: center;
-            margin: 20px 0; /* Espacio arriba y abajo del título */
-        }
-
-        .calendario {
-            font-size: 0.8vw;
-
-            display: grid;
-            grid-template-columns: repeat(5, 1fr); /* Ajusta según tus necesidades */
-            grid-template-rows: repeat(28, 1fr);
-            height: 100%;
-            grid-gap: 1px;
-            background-color: #f0f0f0;
-        }
-
-
-        .calendario > div {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid #e0e0e0; /* Líneas del grid */
-        }
-
-        .calendario > div:first-child,
-        .calendario > div:nth-child(-n+6) {
-            background-color: #d0d0d0; /* Color de fondo más oscuro para los encabezados */
-        }
-
-        .sesion {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid #ccc;
-            background-color: lightblue;
-            padding: 5px;
-            overflow: hidden;
-            position: relative; /* Para manejar superposiciones */
-        }
-    </style>
+    <link rel="stylesheet" href="../css/docencia.css">
 </head>
 <body> 
     <h1 id="titulo"></h1>
@@ -160,9 +99,6 @@
                 }
             }
         }
-
-
-
     </script>
 </body>
 </html>

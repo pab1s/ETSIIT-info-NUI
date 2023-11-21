@@ -6,3 +6,33 @@
 - Meter inglés como idioma con un icono
 - Añadir reloj en la parte superior
 - Añadir un carrusel de imagenes al empezar la app
+
+
+
+Disposicion de menus
+localizacion:
+se puede pasar al movil y
+-api sitios cercanos y servicios
+-mapa 3D ETSIIT (si es 3D yo lo dejaria implementado y metería leap)
+despachos y aulas lo haría en una foto desde la entrada de la etsiit
+-despachos de profesores consultar por profesor
+-aulas donde estan (esto podríamos ponerlas todas) marcarlas con un punto en el mapa
+esto ya que mande un marcador de google
+-espacios comunes (biblio, sercre, direccion, salas de uso comun, comedores)
+-servicios externos (rectorado, espacios deportivos, espacios administrativos, tiendas)
+
+menu:
+-pagina luis menus semana
+-pago(necesita id)
+
+docencia:
+-horario personal (necesita id)
+-consultar asignaturas:
+--horario y aula (con el aula poder entrar a localizacion y que te de la localizacion)
+-consultar profesores:
+--informacion
+-eventos(con id debería dar mas informacion)
+
+tramites:
+-pedir cita
+-solicitar certificado de notas oficial (citas de otro ambito)
