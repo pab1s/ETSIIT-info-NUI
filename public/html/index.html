@@ -11,11 +11,13 @@
 
 <body>
 
-    <!-- Contenedor para el puntero -->
-    <div id="pointer"></div>
+    
 
     <!-- Contenedor para la página -->
     <div class="content">
+            <!-- Contenedor para el puntero -->
+    <div id="pointer"></div>
+
         <div class="icon-container">
             <img src="../assets/etsiit-logo.png" alt="Icono ETSIIT">
         </div>
@@ -27,7 +29,7 @@
 
         <div class="horizontal-container">
             <div class="button-container">
-                <button id="guest-access" onclick="window.location.href='./main.html'">Acceder como invitado</button>
+                <button id="guest-access" onclick="window.location.href='/main'">Acceder como invitado</button>
             </div>
             <div class="button-container">
                 <button id="authenticate">
@@ -35,12 +37,16 @@
                     <br>
                     Autenticarse
                 </button>
-                <div id="webcam-container">
-                    <video id="webcam" autoplay></video>
-                </div>
             </div>
         </div>
+
+        <div id="webcam-container">
+                <video id="webcam" autoplay></video>
+            </div>
+
+
     </div>
+
 
     <!-- Bottom Bar -->
     <div class="bottom-bar"></div>
@@ -52,6 +58,7 @@
         <div class="avatar-text" id="bocadillo">Hola, soy un bocadillo de texto!</div>
     </div>
     -->
+    <script src="../js/leap.im.js"></script>
 
     <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
     <script src="../js/handleCam.js"></script>
