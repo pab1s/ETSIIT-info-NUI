@@ -1,0 +1,49 @@
+name: Auto Merge Child Branches to Main
+
+on:
+  push:
+    branches:
+      - menu
+      - docencia
+      - administracion
+      - localizacion
+
+jobs:
+  merge-child-branches-to-main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Configuring Git
+        run: |
+          git config user.name "pab1s"
+          git config user.email "pablolivares1502@gmail.com"
+
+      - name: Merge Menu to Main
+        if: github.ref == 'refs/heads/menu'
+        run: |
+          git checkout main
+          git merge --no-ff menu
+          git push origin main
+
+      - name: Merge Docencia to Main
+        if: github.ref == 'refs/heads/docencia'
+        run: |
+          git checkout main
+          git merge --no-ff docencia
+          git push origin main
+
+      - name: Merge Administracion to Main
+        if: github.ref == 'refs/heads/administracion'
+        run: |
+          git checkout main
+          git merge --no-ff administracion
+          git push origin main
+
+      - name: Merge Localizacion to Main
+        if: github.ref == 'refs/heads/localizacion'
+        run: |
+          git checkout main
+          git merge --no-ff localizacion
+          git push origin main

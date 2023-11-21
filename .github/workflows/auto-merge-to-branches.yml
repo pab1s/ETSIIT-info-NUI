@@ -1,0 +1,48 @@
+name: Auto Merge to Branches
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  merge-from-develop-to-branches:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Configuring Git
+        run: |
+          git config user.name "pab1s"
+          git config user.email "pablolivares1502@gmail.com"
+
+      - name: Merge to Main
+        run: |
+          git checkout main
+          git merge --no-ff develop
+          git push origin main
+
+      - name: Merge to Menu
+        run: |
+          git checkout menu
+          git merge --no-ff develop
+          git push origin menu
+
+      - name: Merge to Docencia
+        run: |
+          git checkout docencia
+          git merge --no-ff develop
+          git push origin docencia
+
+      - name: Merge to Administracion
+        run: |
+          git checkout administracion
+          git merge --no-ff develop
+          git push origin administracion
+
+      - name: Merge to Localizacion
+        run: |
+          git checkout localizacion
+          git merge --no-ff develop
+          git push origin localizacion
