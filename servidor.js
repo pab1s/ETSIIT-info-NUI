@@ -147,11 +147,9 @@ app.get('/api/docencia/', (req, res) => {
         const decoded = jwt.verify(token, SECRET_KEY);
         const username = decoded.username;
 
-        console.log(username);
-
         // Consulta para obtener la información de docencia
         const query = `
-            SELECT a.asignatura, a.dia_de_la_semana, a.hora_inicio, a.hora_fin
+            SELECT a.asignatura, a.dia_de_la_semana, a.hora_inicio, a.hora_fin, a.profesor, a.tipo_de_grupo, a.grupo
             FROM asignaturas a
             JOIN matriculas m ON a.indice = m.indice
             WHERE m.username = ?`;
