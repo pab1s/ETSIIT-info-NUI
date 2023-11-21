@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Configuring Git
         run: |
@@ -19,30 +21,35 @@ jobs:
 
       - name: Merge to Main
         run: |
+          git fetch origin
           git checkout main
           git merge --no-ff develop
           git push origin main
 
       - name: Merge to Menu
         run: |
+          git fetch origin
           git checkout menu
           git merge --no-ff develop
           git push origin menu
 
       - name: Merge to Docencia
         run: |
+          git fetch origin
           git checkout docencia
           git merge --no-ff develop
           git push origin docencia
 
       - name: Merge to Administracion
         run: |
+          git fetch origin
           git checkout administracion
           git merge --no-ff develop
           git push origin administracion
 
       - name: Merge to Localizacion
         run: |
+          git fetch origin
           git checkout localizacion
           git merge --no-ff develop
           git push origin localizacion
