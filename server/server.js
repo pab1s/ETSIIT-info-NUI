@@ -9,7 +9,7 @@ require('dotenv').config();
 const {updatePDFInDatabase } = require('./utils/cargar_pdf_bd'); 
 
 // Crear conexión a la base de datos SQLite
-const db = new sqlite3.Database('./server/usuarios.db'); // Asegúrate de que el archivo de la base de datos exista en la raíz del proyecto
+const db = new sqlite3.Database('usuarios.db'); // Asegúrate de que el archivo de la base de datos exista en la raíz del proyecto
 
 const SECRET_KEY = process.env.SECRET_KEY;
 
