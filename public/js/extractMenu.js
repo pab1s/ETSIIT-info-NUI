@@ -101,6 +101,6 @@ function extractMenu(htmlString) {
   const menus = extractMenu(htmlString);
 
   // Guardar el menú en un archivo JSON o realizar otras acciones según tus necesidades
-  fs.writeFileSync('menu.json', JSON.stringify(menus, null, 2));
+  fs.writeFileSync('../sources/menu.json', JSON.stringify(menus, null, 2));
   console.log('Menú extraído y guardado en menu.json');
 })();

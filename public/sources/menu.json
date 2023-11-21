@@ -1,67 +1,26 @@
 {
   "Comedores de Fuentenueva, Aynadamar y Cartuja -Carlos V-": {
     "dates": {
-      "LUNES,  6  DE  NOVIEMBRE  DE  2023": {
+      "LUNES,  20  DE  NOVIEMBRE  DE  2023": {
         "Menú 1": [
           {
             "item": "Primero",
-            "description": "Fideos de montaña",
-            "allergens": "Apio  Gluten  Sulfitos"
+            "description": "Pote marinero",
+            "allergens": "Crustáceos  Moluscos  Pescado"
           },
           {
             "item": "Segundo",
-            "description": "Flamenquines de jamón y queso con salsa de tomate dulce",
-            "allergens": "Gluten  Huevos  Lácteos"
+            "description": "Crepineta de jamón cocido y queso",
+            "allergens": "Gluten  Huevos  Lácteos  Soja"
           },
           {
             "item": "Acompañamiento",
-            "description": "Pimientos fritos (VG)",
-            "allergens": "Gluten*"
-          },
-          {
-            "item": "Postre",
-            "description": "Piña",
+            "description": "Pisto de membrillo",
             "allergens": ""
-          }
-        ],
-        "Menú 2": [
-          {
-            "item": "Primero",
-            "description": "Fideua de verduras y mahonesa verde",
-            "allergens": "Apio  Gluten  Lácteos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Queso de Burgos en crocanti",
-            "allergens": "Frutos secos (almendra)  Gluten  Huevos  Lácteos"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Pimientos fritos (VG)",
-            "allergens": "Gluten*"
           },
           {
             "item": "Postre",
-            "description": "Piña",
-            "allergens": ""
-          }
-        ]
-      },
-      "MARTES,  7  DE  NOVIEMBRE  DE  2023": {
-        "Menú 1": [
-          {
-            "item": "Primero",
-            "description": "Puchero de hinojos",
-            "allergens": "Sulfitos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Bacalao al estilo tradicional",
-            "allergens": "Frutos secos (piñones)  Gluten  Huevos  Pescado"
-          },
-          {
-            "item": "Postre",
-            "description": "Naranja",
+            "description": "Banana",
             "allergens": ""
           }
         ],
@@ -73,202 +32,32 @@
           },
           {
             "item": "Segundo",
-            "description": "Croquetas de setas (OV)",
-            "allergens": "Apio  Gluten  Huevos  Lácteos  Mostaza  Soja"
+            "description": "Pimientos del piquillo rellenos de verdura",
+            "allergens": "Apio  Gluten  Sulfitos"
           },
           {
             "item": "Acompañamiento",
-            "description": "Huevo frito con patatas española",
-            "allergens": "Gluten*  Huevos  Sulfitos"
+            "description": "Pisto de membrillo",
+            "allergens": ""
           },
           {
             "item": "Postre",
-            "description": "Naranja",
+            "description": "Banana",
             "allergens": ""
           }
         ]
       },
-      "MIÉRCOLES,  8  DE  NOVIEMBRE  DE  2023": {
+      "MARTES,  21  DE  NOVIEMBRE  DE  2023": {
         "Menú 1": [
           {
             "item": "Primero",
-            "description": "Arroz pilaf con ternera cazadora",
-            "allergens": "Apio  Lácteos  Sulfitos"
+            "description": "Ensalada Elizabeth",
+            "allergens": "Huevos  Pescado  Soja  Sulfitos"
           },
           {
             "item": "Segundo",
-            "description": "Suprema de pollo a la sajona",
-            "allergens": "Apio  Frutos secos  Gluten  Lácteos*  Soja"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Patatas risoladas",
-            "allergens": "Gluten*"
-          },
-          {
-            "item": "Postre",
-            "description": "Pera",
-            "allergens": ""
-          }
-        ],
-        "Menú 2": [
-          {
-            "item": "Primero",
-            "description": "Arroz con fritada",
-            "allergens": "Apio  Lácteos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Rollitos de primavera",
-            "allergens": "Gluten"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Patatas risoladas",
-            "allergens": "Gluten*"
-          },
-          {
-            "item": "Postre",
-            "description": "Pera",
-            "allergens": ""
-          }
-        ]
-      },
-      "JUEVES,  9  DE  NOVIEMBRE  DE  2023": {
-        "Menú 1": [
-          {
-            "item": "Acompañamiento",
-            "description": "Ensalada de patatas con naranja (OV)",
-            "allergens": "Sulfitos"
-          },
-          {
-            "item": "Primero",
-            "description": "Pizza jamón cocido y queso",
-            "allergens": "Gluten  Lácteos  Soja  Sulfitos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Paleta de cerdo a los aromas de la sierra",
-            "allergens": "Apio  Frutos secos (almendra)  Gluten*  Sulfitos"
-          },
-          {
-            "item": "Postre",
-            "description": "Melón",
-            "allergens": ""
-          }
-        ],
-        "Menú 2": [
-          {
-            "item": "Acompañamiento",
-            "description": "Ensalada de patatas con naranja (OV)",
-            "allergens": "Sulfitos"
-          },
-          {
-            "item": "Primero",
-            "description": "Pizza 4 quesos",
-            "allergens": "Gluten  Lácteos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Tajín de verduras",
-            "allergens": "Sulfitos"
-          },
-          {
-            "item": "Postre",
-            "description": "Melón",
-            "allergens": ""
-          }
-        ]
-      },
-      "VIERNES,  10  DE  NOVIEMBRE  DE  2023": {
-        "Menú 1": [
-          {
-            "item": "Primero",
-            "description": "Espaguetis en salsa aurora",
-            "allergens": "Frutos secos (nuez)  Gluten  Huevos  Lácteos  Soja"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Tortilla española",
-            "allergens": "Gluten*  Huevos  Sulfitos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Merluza a la andaluza",
-            "allergens": "Gluten  Pescado"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Ensalada mixta",
-            "allergens": "Soja"
-          },
-          {
-            "item": "Postre",
-            "description": "Manzana",
-            "allergens": ""
-          }
-        ],
-        "Menú 2": [
-          {
-            "item": "Primero",
-            "description": "Espaguetis con boronía",
-            "allergens": "Apio  Gluten  Huevos  Sulfitos"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Empanadillas de verduras",
-            "allergens": "Apio  Frutos secos  Gluten  Huevos  Lácteos  Sésamo  Sulfitos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Tortilla española",
-            "allergens": "Gluten*  Huevos  Sulfitos"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Ensalada mixta",
-            "allergens": "Soja"
-          },
-          {
-            "item": "Postre",
-            "description": "Manzana",
-            "allergens": ""
-          }
-        ]
-      },
-      "SÁBADO,  11  DE  NOVIEMBRE  DE  2023": {
-        "Menú 1": [
-          {
-            "item": "Cremas y sopas",
-            "description": "Sopa de cebolla",
-            "allergens": "Apio  Gluten  Huevos  Lácteos"
-          },
-          {
-            "item": "Primero",
-            "description": "Quiche de membrillo y queso",
-            "allergens": "Frutos secos  Huevos  Lácteos  Pescado  Soja*  Sulfitos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Albóndigas en salsa de almendras con verduras",
-            "allergens": "Apio  Frutos secos (almendras)  Gluten  Huevos  Sulfitos"
-          },
-          {
-            "item": "Postre",
-            "description": "Mandarinas",
-            "allergens": ""
-          }
-        ],
-        "Menú 2": [
-          {
-            "item": "Primero",
-            "description": "Sopa de cebolla",
-            "allergens": "Apio  Gluten  Huevos  Lácteos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Hamburguesas de calabaza",
-            "allergens": "Gluten  Huevos  Lácteos"
+            "description": "Pollo con ciruelas y piñones",
+            "allergens": "Apio  Frutos secos (piñones y almendras)  Gluten  Sulfitos"
           },
           {
             "item": "Acompañamiento",
@@ -277,8 +66,224 @@
           },
           {
             "item": "Postre",
+            "description": "Naranja",
+            "allergens": ""
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Ensalada Elizabeth",
+            "allergens": "Lácteos*  Soja"
+          },
+          {
+            "item": "Segundo",
+            "description": "Rollitos de primavera",
+            "allergens": "Gluten"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Menestra",
+            "allergens": ""
+          },
+          {
+            "item": "Postre",
+            "description": "Naranja",
+            "allergens": ""
+          }
+        ]
+      },
+      "MIÉRCOLES,  22  DE  NOVIEMBRE  DE  2023": {
+        "Menú 1": [
+          {
+            "item": "Primero",
+            "description": "Fideua",
+            "allergens": "Crustáceos  Gluten  Moluscos  Pescado  Sulfitos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Escalope de cerdo",
+            "allergens": "Gluten  Huevos  Lácteos  Sulfitos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Pimientos fritos (VG)",
+            "allergens": "Gluten*"
+          },
+          {
+            "item": "Postre",
             "description": "Mandarinas",
             "allergens": ""
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Fideuá de verduras",
+            "allergens": "Apio  Gluten  Sulfitos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Tortilla de calabacín, queso y almendras",
+            "allergens": "Frutos secos (almendra)  Huevos  Lácteos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Pimientos fritos (VG)",
+            "allergens": "Gluten*"
+          },
+          {
+            "item": "Postre",
+            "description": "Mandarinas",
+            "allergens": ""
+          }
+        ]
+      },
+      "JUEVES,  23  DE  NOVIEMBRE  DE  2023": {
+        "Menú 1": [
+          {
+            "item": "Primero",
+            "description": "Lasaña",
+            "allergens": "Apio  Gluten  Huevos  Lácteos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Cazón en adobo",
+            "allergens": "Gluten  Pescado  Sulfitos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Ensalada verde",
+            "allergens": ""
+          },
+          {
+            "item": "Postre",
+            "description": "Pera",
+            "allergens": ""
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Lasaña de verduras (OV)",
+            "allergens": "Apio  Gluten  Huevos  Lácteos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Pastel de boniato, patata y cebolla caramelizada",
+            "allergens": "Frutos secos  Sésamo"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Ensalada verde",
+            "allergens": ""
+          },
+          {
+            "item": "Postre",
+            "description": "Pera",
+            "allergens": ""
+          }
+        ]
+      },
+      "VIERNES,  24  DE  NOVIEMBRE  DE  2023": {
+        "Menú 1": [
+          {
+            "item": "Primero",
+            "description": "Arroz a la cubana",
+            "allergens": "Apio  Huevos  Lácteos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Rulada de pollo",
+            "allergens": "Apio  Gluten  Huevos  Soja  Sulfitos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Fritada de calabaza",
+            "allergens": "Sulfitos"
+          },
+          {
+            "item": "Postre",
+            "description": "Manzana",
+            "allergens": ""
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Arroz a la cubana (OV)",
+            "allergens": "Apio  Huevos  Lácteos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Puding de verduras con salsa de ali- oli",
+            "allergens": "Gluten  Huevos  Lácteos  Sulfitos"
+          },
+          {
+            "item": "Postre",
+            "description": "Manzana",
+            "allergens": ""
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Fritada de calabaza",
+            "allergens": "Sulfitos"
+          }
+        ]
+      },
+      "SÁBADO,  25  DE  NOVIEMBRE  DE  2023": {
+        "Menú 1": [
+          {
+            "item": "Cremas y sopas",
+            "description": "Sopa albaicinera",
+            "allergens": "Apio  Frutos secos (almendra)  Gluten  Huevos"
+          },
+          {
+            "item": "Primero",
+            "description": "Calamares andaluza",
+            "allergens": "Gluten  Moluscos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Filete de cerdo a la parrilla",
+            "allergens": ""
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Patatas a la brava",
+            "allergens": "Apio  Gluten*  Sulfitos"
+          },
+          {
+            "item": "Postre",
+            "description": "Natillas",
+            "allergens": "Gluten  Huevos  Lácteos  Sésamo*  Soja  Sulfitos"
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Sopa albaicinera (OV)",
+            "allergens": "Apio  Frutos secos (almendra)  Gluten  Huevos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Queso rebozado en crocante",
+            "allergens": "Frutos secos (almendra)  Gluten  Huevos  Lácteos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Huevo frito",
+            "allergens": "Huevos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Patatas a la brava",
+            "allergens": "Apio  Sulfitos"
+          },
+          {
+            "item": "Postre",
+            "description": "Natillas",
+            "allergens": "Gluten  Huevos  Lácteos  Sésamo*  Soja  Sulfitos"
           }
         ]
       }
@@ -286,38 +291,130 @@
   },
   "Comedor del Parque Tecnológico de Ciencias de la Salud (PTS)": {
     "dates": {
-      "LUNES,  6  DE  NOVIEMBRE  DE  2023": {
+      "LUNES,  20  DE  NOVIEMBRE  DE  2023": {
         "Menú 1": [
           {
             "item": "Primero",
-            "description": "Estofado de patatas a la marinera",
-            "allergens": "Crustáceos  Moluscos  Pescado  Sulfitos"
+            "description": "Pote marinero",
+            "allergens": "Crustáceos  Moluscos  Pescado"
           },
           {
             "item": "Segundo",
-            "description": "Gallina al chilindrón",
-            "allergens": "Sulfitos"
+            "description": "Filete de cerdo a la parrilla",
+            "allergens": ""
           },
           {
             "item": "Acompañamiento",
-            "description": "Coliflor ajo arriero",
-            "allergens": "Sulfitos"
+            "description": "Pisto de membrillo",
+            "allergens": ""
           },
           {
             "item": "Postre",
-            "description": "Piña",
+            "description": "Banana",
             "allergens": ""
           }
         ],
         "Menú 2": [
           {
             "item": "Primero",
-            "description": "Sopa albaicinera",
-            "allergens": "Apio  Frutos secos (almendras)  Huevos"
+            "description": "Patatas en ajo pollo",
+            "allergens": "Apio  Frutos secos (almendra)  Sulfitos"
           },
           {
             "item": "Segundo",
-            "description": "Queso de Burgos en crocanti",
+            "description": "Pimientos del piquillo rellenos de verduras",
+            "allergens": "Apio  Sulfitos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Pisto de membrillo",
+            "allergens": ""
+          },
+          {
+            "item": "Postre",
+            "description": "Banana",
+            "allergens": ""
+          }
+        ]
+      },
+      "MARTES,  21  DE  NOVIEMBRE  DE  2023": {
+        "Menú 1": [
+          {
+            "item": "Primero",
+            "description": "Ensalada Elizabeth",
+            "allergens": "Huevos  Pescado  Soja  Sulfitos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Pechuga de pollo a la parrilla",
+            "allergens": ""
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Menestra",
+            "allergens": ""
+          },
+          {
+            "item": "Postre",
+            "description": "Naranja",
+            "allergens": ""
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Ensalada Elizabeth",
+            "allergens": "Lácteos*  Soja"
+          },
+          {
+            "item": "Segundo",
+            "description": "Hamburguesa de falafel",
+            "allergens": ""
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Menestra",
+            "allergens": ""
+          },
+          {
+            "item": "Postre",
+            "description": "Naranja",
+            "allergens": ""
+          }
+        ]
+      },
+      "MIÉRCOLES,  22  DE  NOVIEMBRE  DE  2023": {
+        "Menú 1": [
+          {
+            "item": "Primero",
+            "description": "Estofado de ternera",
+            "allergens": "Frutos secos (almendra)  Sulfitos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Lomo braseado",
+            "allergens": "Apio  Sulfitos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Pimientos fritos",
+            "allergens": ""
+          },
+          {
+            "item": "Postre",
+            "description": "Mandarinas",
+            "allergens": ""
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Estofado de judías",
+            "allergens": "Sulfitos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Tortilla de calabacín, queso y almendras",
             "allergens": "Frutos secos (almendra)  Huevos  Lácteos"
           },
           {
@@ -327,68 +424,27 @@
           },
           {
             "item": "Postre",
-            "description": "Piña",
+            "description": "Mandarinas",
             "allergens": ""
           }
         ]
       },
-      "MARTES,  7  DE  NOVIEMBRE  DE  2023": {
+      "JUEVES,  23  DE  NOVIEMBRE  DE  2023": {
         "Menú 1": [
           {
+            "item": "Entrante",
+            "description": "Caponata agridulce",
+            "allergens": "Apio  Frutos secos (piñones)  Sulfitos"
+          },
+          {
             "item": "Primero",
-            "description": "Puchero de hinojos",
-            "allergens": "Sulfitos"
+            "description": "Macarrones en salsa aurora",
+            "allergens": "Frutos secos (trazas)  Huevos  Lácteos  Soja  Sulfitos"
           },
           {
             "item": "Segundo",
-            "description": "Bacalao al estilo tradicional",
-            "allergens": "Frutos secos  Huevos  Pescado"
-          },
-          {
-            "item": "Postre",
-            "description": "Naranja",
-            "allergens": ""
-          }
-        ],
-        "Menú 2": [
-          {
-            "item": "Primero",
-            "description": "Estofado de judías",
-            "allergens": "Sulfitos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Tofu a la parrilla",
-            "allergens": "Soja"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Huevo frito con patatas a la española",
-            "allergens": "Huevos"
-          },
-          {
-            "item": "Postre",
-            "description": "Naranja",
-            "allergens": ""
-          }
-        ]
-      },
-      "MIÉRCOLES,  8  DE  NOVIEMBRE  DE  2023": {
-        "Menú 1": [
-          {
-            "item": "Primero",
-            "description": "Arroz pilaf con ternera cazadora",
-            "allergens": "Apio  Lácteos  Sulfitos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Suprema de pollo a la sajona",
-            "allergens": "Apio  Frutos secos  Lácteos*  Soja"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Patatas risoladas",
-            "allergens": "Sulfitos"
+            "description": "Cazón en amarillo",
+            "allergens": "Crustáceos  Pescado  Sulfitos"
           },
           {
             "item": "Postre",
@@ -399,18 +455,18 @@
         "Menú 2": [
           {
             "item": "Primero",
-            "description": "Arroz con fritada",
-            "allergens": "Apio  Lácteos"
+            "description": "Caponata agridulce",
+            "allergens": "Apio  Frutos secos (piñones)  Sulfitos"
           },
           {
             "item": "Segundo",
-            "description": "Ceviche de palmito y aguacate",
-            "allergens": ""
+            "description": "Macarrones al pesto",
+            "allergens": "Apio  Frutos secos  Gluten  Lácteos  Sulfitos"
           },
           {
             "item": "Acompañamiento",
-            "description": "Patatas con coliflor y requesón",
-            "allergens": "Apio  Lácteos  Mostaza  Sulfitos"
+            "description": "Pastel de boniato, patata y cebolla caramelizada",
+            "allergens": "Frutos secos  Sésamo"
           },
           {
             "item": "Postre",
@@ -419,73 +475,22 @@
           }
         ]
       },
-      "JUEVES,  9  DE  NOVIEMBRE  DE  2023": {
+      "VIERNES,  24  DE  NOVIEMBRE  DE  2023": {
         "Menú 1": [
           {
-            "item": "Ensaladas",
-            "description": "Ensalada de patatas con naranja",
-            "allergens": "Pescado  Sulfitos"
-          },
-          {
             "item": "Primero",
-            "description": "Pimientos de piquillo rellenos de revuelto de bacalao con crujiente de cebolla",
-            "allergens": "Frutos secos  Lácteos  Pescado  Sulfitos"
+            "description": "Arroz a la cubana",
+            "allergens": "Apio  Huevos  Lácteos"
           },
           {
             "item": "Segundo",
-            "description": "Paleta de cerdo a los aromas de la sierra",
-            "allergens": "Apio  Frutos secos (almendra)  Sulfitos"
-          },
-          {
-            "item": "Postre",
-            "description": "Melón",
-            "allergens": ""
-          }
-        ],
-        "Menú 2": [
-          {
-            "item": "Primero",
-            "description": "Ensalada de patatas con naranja (OV)",
-            "allergens": "Sulfitos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Zarangollo murciano",
-            "allergens": "Huevos  Sulfitos"
+            "description": "Rulada de pollo",
+            "allergens": "Apio  Huevos  Soja  Sulfitos"
           },
           {
             "item": "Acompañamiento",
-            "description": "Tajín de verduras",
+            "description": "Fritada de calabaza",
             "allergens": "Sulfitos"
-          },
-          {
-            "item": "Postre",
-            "description": "Melón",
-            "allergens": ""
-          }
-        ]
-      },
-      "VIERNES,  10  DE  NOVIEMBRE  DE  2023": {
-        "Menú 1": [
-          {
-            "item": "Cremas y sopas",
-            "description": "Sopa minestrone",
-            "allergens": "Apio"
-          },
-          {
-            "item": "Primero",
-            "description": "Tortilla española",
-            "allergens": "Huevos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Merluza a la parrilla",
-            "allergens": "Pescado"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Ensalada mixta",
-            "allergens": "Soja"
           },
           {
             "item": "Postre",
@@ -496,18 +501,18 @@
         "Menú 2": [
           {
             "item": "Primero",
-            "description": "Sopa a la paisana",
-            "allergens": "Apio  Sulfitos"
+            "description": "Arroz a la cubana",
+            "allergens": "Apio  Huevos  Lácteos"
           },
           {
             "item": "Segundo",
-            "description": "Tempe en salsa de tomate (VG)",
-            "allergens": "Soja  Sulfitos"
+            "description": "Puding de verduras con salsa de ali- oli",
+            "allergens": "Huevos  Lácteos  Sulfitos"
           },
           {
             "item": "Acompañamiento",
-            "description": "Ensalada mixta",
-            "allergens": "Soja"
+            "description": "Fritada de calabaza",
+            "allergens": "Sulfitos"
           },
           {
             "item": "Postre",
