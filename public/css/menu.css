@@ -1,0 +1,47 @@
+/* GENERAL STYLES */ 
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5vw;
+}
+
+body {
+    display: flex-inline;
+    flex-direction: column;
+
+}
+
+#comedores-container {
+    display: flex;
+    flex-direction: row; /* Alinea los elementos en fila */
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+    overflow-x: auto; /* Para scrolling horizontal si hay muchos botones */
+    /* Resto de tus estilos... */
+}
+
+.comedor-button {
+    display: block;
+    align-items: center;
+    margin: 5px;
+    padding: 10px;
+    background-color: #FA7D07;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.comedor-button:hover {
+    background-color: #FA5407;
+}
+
+#menus-detail-container {
+    width: 80%; /* Ancho al 80% */
+    padding: 30px;
+}
