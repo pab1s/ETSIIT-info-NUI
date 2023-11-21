@@ -286,6 +286,7 @@ h2 {
 
 .comedor-button {
     display: block;
+    align-items: center;
     margin: 5px;
     padding: 10px;
     background-color: #FA7D07;
