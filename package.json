@@ -6,6 +6,7 @@
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.2",
     "leapjs": "^1.1.1",
+    "sqlite": "^5.1.1",
     "sqlite3": "^5.1.6"
   }
 }
