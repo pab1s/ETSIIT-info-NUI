@@ -5,7 +5,7 @@ on:
     branches:
       - menu
       - docencia
-      - administracion
+      - tramites
       - localizacion
 
 jobs:
@@ -38,12 +38,12 @@ jobs:
           git merge --no-ff docencia
           git push origin main
 
-      - name: Merge Administracion to Main
-        if: github.ref == 'refs/heads/administracion'
+      - name: Merge Tramites to Main
+        if: github.ref == 'refs/heads/tramites'
         run: |
           git fetch origin
           git checkout main
-          git merge --no-ff administracion
+          git merge --no-ff tramites
           git push origin main
 
       - name: Merge Localizacion to Main
