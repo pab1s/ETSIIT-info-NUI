@@ -1,5 +1,3 @@
-/* GENERAL STYLES */ 
-
 html, body {
     height: 100%;
     margin: 0;
@@ -15,6 +13,26 @@ body {
 
 }
 
+.welcome-message h1 {
+    font-size: 48px;    /* Set the font size to 48px */
+    color: #333; /* Set the font color to #333 (dark gray) */
+    margin: 20px 0; /* Set the top and bottom margin to 20px */
+    text-align: center; /* Center the text */
+}
+
+h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.content {
+    position: relative;
+    flex: 1;
+    margin-bottom: 0;
+}
+
 #comedores-container {
     display: flex;
     flex-direction: row; /* Alinea los elementos en fila */
@@ -28,7 +46,6 @@ body {
 
 .comedor-button {
     display: block;
-    align-items: center;
     margin: 5px;
     padding: 10px;
     background-color: #FA7D07;
@@ -41,7 +58,53 @@ body {
     background-color: #FA5407;
 }
 
+.dia-button {
+    display: inline-block;
+    margin: 5px;
+    padding: 8px;
+    background-color: #6A6A6A;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.dia-button:hover {
+    background-color: #000000;
+}
+
+.dia-pasado {
+    background-color: #cccccc;
+}
+
+#menu-container {
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px;
+    z-index: 1;
+    max-height: 300px; /* Añade un límite de altura */
+    overflow-y: auto; /* Permite el desplazamiento vertical si es necesario */
+}
+
 #menus-detail-container {
     width: 80%; /* Ancho al 80% */
     padding: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
 }
