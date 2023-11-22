@@ -33,24 +33,20 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 1080px;
-    height: 1920px;
+    width: 100%;
+    height: 90%;
     margin: auto;
-    padding-top: 50px; /* Espacio en la parte superior del menú */
+    margin-top: 5%; /* Espacio en la parte superior del menú */
 }
 
 
 #user-info {
     text-align: center;
-    background-color: #0056b3;
+    background-color: rgb(208, 96, 18);
     color: white;
-    padding: 5px 10px; /* Reducir el padding vertical y horizontal */
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    width: 10%; /* Hacer el contenedor aún más estrecho */
-    margin: 0 auto; /* Centra el bloque */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    width: 100%; 
+    height: 5%;
+    margin: 0; /* Centra el bloque */
     font-size: 0.8em; /* Reducir un poco más el tamaño de la fuente */
 }
 
@@ -75,38 +71,38 @@ body {
 }
 
 .menu-item {
-    margin: 20px 0;
+    width: 30%;
+    height: 18%;
+    margin: 5%;
     text-align: center;
 }
 
 .menu-item img {
-    width: 80px; /* Ajusta esto según el tamaño deseado para tus iconos */
-    height: auto;
-    margin-bottom: 10px;
+    width: 100%; /* Ajusta esto según el tamaño deseado para tus iconos */
+    height: 100%;
 }
 
 .menu-item button {
-    font-size: 20px;
+    width: 100%;
+    font-size: 200%;
     color: #fff;
-    background-color: #0056b3;
+    background-color: rgb(208, 96, 18);
     border: none;
-    border-radius: 5px;
-    padding: 15px 30px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    border-radius: 20px;
     display: block; /* Para asegurar que los botones no estén alineados horizontalmente */
 }
 
 .menu-item button:hover {
-    background-color: #00397a;
+    background-color: rgb(255, 2, 2);
 }
 
-/* Si necesitas que los botones estén uno al lado del otro horizontalmente */
-@media (min-width: 1080px) {
-    .menu-item {
-        flex-direction: row;
-        justify-content: center;
-    }
+.texto-importante {
+    width: 100%;
+    height: 2%;
+    font-size: 450%;
+    text-align: center;
 }
 
 .icon-container {
