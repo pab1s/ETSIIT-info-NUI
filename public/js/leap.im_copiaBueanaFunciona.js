@@ -2,7 +2,6 @@ class LeapMotionController {
     constructor() {
       this.controller = new Leap.Controller();
       this.pointer = document.getElementById('pointer');
-      this.isInTimeout = false;
     }
   
     onInit() {
@@ -22,24 +21,22 @@ class LeapMotionController {
     }
 
     onFrame(frame) {
-      if (frame.gestures.length > 0) {
-        frame.gestures.forEach(gesture => {
-          if (gesture.type === 'swipe') {
-            this.handleSwipeGesture(gesture);
-          }
-        });
-      }
-    }
-  
-    handleSwipeGesture(gesture) {
-      // Determinar la dirección del deslizamiento
-      const swipeDirection = gesture.direction[0] > 0 ? 'right' : 'left';
-  
-      // Realizar acción basada en la dirección
-      if (swipeDirection === 'right') {
-        this.clickGuestAccessIDButton();
-      } else {
-        this.clickGuestAccessButton();
+      if (frame.hands.length > 0) {
+        const hand = frame.hands[0];
+        const position = hand.palmPosition;
+        const ciertaDistanciaX = 13;
+    
+        // Movimiento hacia la izquierda para invitado
+        if (this.lastPosition && position[0] < this.lastPosition[0] - ciertaDistanciaX) {
+          this.clickGuestAccessButton();
+        }
+        // Movimiento hacia la derecha para autenticarse
+        if (this.lastPosition && position[0] > this.lastPosition[0] + ciertaDistanciaX) {
+          this.clickGuestAccessIDButton();
+        }
+    
+        // Actualiza la última posición de la mano
+        this.lastPosition = position;
       }
     }
     
@@ -72,10 +69,8 @@ class LeapMotionController {
       this.controller.on('connect', this.onConnect.bind(this));
       this.controller.on('disconnect', this.onDisconnect.bind(this));
       this.controller.on('frame', this.onFrame.bind(this));
-      this.controller.enableGesture(Leap.Gesture.TYPE_SWIPE, true);
   
       this.controller.connect();
-      this.startTimeout();
     }
   
     stop() {
