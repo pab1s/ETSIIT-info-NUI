@@ -30,7 +30,7 @@ function actualizarUIUsuarioNoLogueado() {
     const userInfoDiv = document.getElementById('user-info');
     userInfoDiv.innerHTML = `
         <p>No estás logueado.</p>
-        <button onclick="window.location.href='/'">Iniciar sesión</button>
+        <button onclick="window.location.href='/'">Menú principal</button>
     `;
 }
 

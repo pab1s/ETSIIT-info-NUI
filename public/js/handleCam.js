@@ -4,7 +4,6 @@ document.getElementById('authenticate').addEventListener('click', function() {
     var webcamContainer = document.getElementById('webcam-container');
 
     if (webcamContainer.classList.contains('active')) {
-
         // Oculta el contenedor de la webcam
         webcamContainer.classList.remove('active');
         setTimeout(() => { 
@@ -32,6 +31,7 @@ function startQRScanner() {
     );
     html5QrCodeScanner.render(onScanSuccess, onScanError);
 }
+
 function onScanSuccess(decodedText) {
     console.log(`Código QR decodificado: ${decodedText}`);
     fetch('/api/login?qr=' + encodeURIComponent(decodedText))
@@ -62,5 +62,5 @@ function onScanSuccess(decodedText) {
 
 
 function onScanError(error) {
-    // console.error(`Error al escanear: ${error}`);
+     console.error(`Error al escanear: ${error}`);
 }
