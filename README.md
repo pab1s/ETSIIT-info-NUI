@@ -34,6 +34,10 @@ git checkout 'rama'
 ```shell
 git pull
 ```
+ - Si no te aclaras con los pull en cada rama puedes usar el script en la carpeta raíz para actualizar todas las ramas
+```shell
+./git_pull.sh
+```
  - Aplicar cambios concretos en la rama (pueden ser carpetas o archivos):
 ```shell
 git add './carpeta/o/archivo.txt'
