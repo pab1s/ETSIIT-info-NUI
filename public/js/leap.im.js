@@ -2,7 +2,7 @@ class LeapMotionController {
   constructor() {
     this.controller = new Leap.Controller();
     this.isInTimeout = false;
-  }
+    this.lastPosition = null;}
 
   onInit() {
     console.log('Leap Motion se ha inicializado.');
