@@ -23,14 +23,14 @@ function actualizarUIUsuarioLogueado(nombre, apellidos) {
     const userInfoDiv = document.getElementById('user-info');
     userInfoDiv.innerHTML = `
         <p>Hola, <strong>${nombre} ${apellidos}</strong></p>
-        <button onclick="logout()">Cerrar Sesión</button>
+        <button id="vuelta-menu" onclick="logout()">Cerrar Sesión</button>
     `;
 }
 function actualizarUIUsuarioNoLogueado() {
     const userInfoDiv = document.getElementById('user-info');
     userInfoDiv.innerHTML = `
         <p>No estás logueado.</p>
-        <button onclick="window.location.href='/'">Menú principal</button>
+        <button id="vuelta-menu" onclick="window.location.href='/'">Menú principal</button>
     `;
 }
 

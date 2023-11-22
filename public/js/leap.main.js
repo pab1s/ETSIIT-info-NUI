@@ -24,12 +24,12 @@ class LeapMotionController {
       if (frame.hands.length > 0) {
         const hand = frame.hands[0];
         const position = hand.palmPosition;
-        const ciertaDistanciaX = 10;
+        const ciertaDistanciaX = 13;
     
         // Suponiendo que 'lastPosition' es una propiedad de la clase que guarda la última posición conocida de la mano
         if (this.lastPosition && position[0] < this.lastPosition[0] - ciertaDistanciaX) {
           // El usuario ha movido la mano hacia la izquierda
-          this.clickGuestAccessButton();
+          this.clickMenuButton();
         }
     
         // Actualiza la última posición de la mano
@@ -37,15 +37,20 @@ class LeapMotionController {
       }
     }
     
-    clickGuestAccessButton() {
-      const guestAccessButton = document.getElementById('user-info');
+    clickMenuButton() {
+      const guestAccessButton = document.getElementById('vuelta-menu');
       if (guestAccessButton) {
+        this.startTimeout();
         guestAccessButton.click();
       }
-      else{
-        print("No encuentro el DIV puto Luis Gilipollas")
-      }
-    }    
+    } 
+    
+    startTimeout() {
+      this.isInTimeout = true;
+      setTimeout(() => {
+        this.isInTimeout = false;
+      }, 20000); // Pequeña espera para que no se acumulen gestos
+    }
       
     start() {
       this.controller.on('init', this.onInit.bind(this));
