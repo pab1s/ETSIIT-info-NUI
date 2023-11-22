@@ -50,7 +50,21 @@ git commit -m "Mensaje breve descriptivo del cambio realizado"
 ```shell
 git push
 ```
- - Añadir los cambios de otra rama **a la actual**. **No hacer a menos que sea estrictamente necesario**:
+ - Añadir los cambios de otra rama **a la actual**. **NO HACER, PREGUNTAR PREVIAMENTE**:
 ```shell
 git merge 'la_otra_rama'
 ```
+### Comandos del servidor a tener en cuenta
+
+ - Los modulos no sabemos porque al cambiar de ordenador funcionan mal, para reinstalar todo si se quiere ejecutar el servidor
+```shell
+npm rebuild
+```
+ - Hay un error en el servidor que no sabemos solucionar así que hay que meterse en la carpeta del servidor antes de ejecutarlo.
+```shell
+cd server
+```
+```shell
+node server.js
+```
+ - Despues de ejecutar esto escribiendo http://localhost:3000 en internet deberías poder ver tu pagina web y navegar por el resto. Aclaración, **solo navegas por las paginas de tu rama si lo quieres probar en el global del proyecto vete a la rama main y vuelve a hacer lo mismo.**
