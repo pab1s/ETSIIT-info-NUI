@@ -1,9 +1,3 @@
-/*
-Abandono este tipo de implementacion, los css estan mal hecho es imposible adivinar donde esta el error sin 
-revisar todo el codigo. Funciona el puntero pero nunca cosigue llegar hasta abajo, se tendria que agachar hasta 
-el bajo de la pantalla 4K para presionar un boton a media altura.
-*/
-
 class LeapMotionController {
     constructor() {
       this.controller = new Leap.Controller();
@@ -27,15 +21,13 @@ class LeapMotionController {
     }
 
     onFrame(frame) {
-      console.log('Registra algo');
       if (frame.hands.length > 0) {
         const hand = frame.hands[0];
         const position = hand.palmPosition;
-        const ciertaDistanciaX = 15;
+        const ciertaDistanciaX = 10;
     
         // Suponiendo que 'lastPosition' es una propiedad de la clase que guarda la última posición conocida de la mano
         if (this.lastPosition && position[0] < this.lastPosition[0] - ciertaDistanciaX) {
-          console.log('Registra el gesto');
           // El usuario ha movido la mano hacia la izquierda
           this.clickGuestAccessButton();
         }
@@ -46,9 +38,12 @@ class LeapMotionController {
     }
     
     clickGuestAccessButton() {
-      const guestAccessButton = document.getElementById('guest-access');
+      const guestAccessButton = document.getElementById('user-info');
       if (guestAccessButton) {
         guestAccessButton.click();
+      }
+      else{
+        print("No encuentro el DIV puto Luis Gilipollas")
       }
     }    
       
@@ -60,6 +55,8 @@ class LeapMotionController {
       this.controller.on('frame', this.onFrame.bind(this));
   
       this.controller.connect();
+
+      this.initializePointerPosition(); // Inicializar la posición del puntero
     }
   
     stop() {
