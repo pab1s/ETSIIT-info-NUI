@@ -1,9 +1,9 @@
 class LeapMotionController {
     constructor() {
       this.controller = new Leap.Controller();
-      this.pointer = document.getElementById('pointer');
       this.menuItems = document.querySelectorAll('.menu-item');
       this.selectedMenuItemIndex = 0; // Índice del menú seleccionado
+      this.isInTimeout = false;
     }
   
     onInit() {
@@ -23,29 +23,28 @@ class LeapMotionController {
     }
 
     onFrame(frame) {
-      if (frame.hands.length > 0) {
+      if (!this.isInTimeout && frame.hands.length > 0) {
         const hand = frame.hands[0];
         const position = hand.palmPosition;
-        const ciertaDistanciaXiz = 13;
-        const ciertaDistanciaXder = 20;
-        const ciertaDistanciaY = 10;
-    
-        if (this.lastPosition) {
-          if (position[0] < this.lastPosition[0] - ciertaDistanciaXiz) {
-            // El usuario ha movido la mano hacia la izquierda
-            this.clickVueltaMenuButton();
-          } else if (position[0] > this.lastPosition[0] + ciertaDistanciaXder) {
-            // El usuario ha movido la mano hacia la derecha
-            this.clickMenuButton();
-          } else if (position[1] < this.lastPosition[1] - ciertaDistanciaY) {
-            // El usuario ha movido la mano hacia abajo
-            this.navigateMenuItems();
-          }
-        }
-    
-        // Actualiza la última posición de la mano
-        this.lastPosition = position;
+        this.processHandMovement(position);
       }
+    }
+  
+    processHandMovement(position) {
+      const ciertaDistanciaXiz = 13;
+      const ciertaDistanciaXder = 20;
+      const ciertaDistanciaY = 10;
+  
+      if (this.lastPosition) {
+        if (position[0] < this.lastPosition[0] - ciertaDistanciaXiz) {
+          this.clickVueltaMenuButton();
+        } else if (position[0] > this.lastPosition[0] + ciertaDistanciaXder) {
+          this.clickMenuButton();
+        } else if (position[1] < this.lastPosition[1] - ciertaDistanciaY) {
+          this.navigateMenuItems();
+        }
+      }
+      this.lastPosition = position;
     }    
     
     navigateMenuItems() {
