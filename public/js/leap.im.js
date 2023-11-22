@@ -1,5 +1,5 @@
 // const Leap = require('leapjs');
-
+/* Prueba a ver si funciona */
 class LeapMotionController {
     constructor() {
       this.controller = new Leap.Controller();
