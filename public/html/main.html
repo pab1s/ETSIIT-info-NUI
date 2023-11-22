@@ -7,27 +7,34 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-
-<div class="vertical-menu-container">
     <div id="user-info"></div>
-    <h2>Menú Principal</h2>
-    <div class="menu-item">
-        <img src="../assets/docencia-icon.png" alt="Docencia">
-        <button onclick="window.location.href='/docencia'">Docencia</button>
+    <div class="vertical-menu-container">
+        <div class="texto-importante">Menú Principal</div>
+        <div class="menu-item">
+            <img src="../assets/docencia-icon.png" alt="Docencia">
+            <div class="texto-menu-item">
+            <button onclick="window.location.href='/docencia'">Docencia</button>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="../assets/tramites-icon.png" alt="Trámites Administrativos">
+            <div class="texto-menu-item">
+            <button onclick="window.location.href='/tramites'">Trámites Administrativos</button>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="../assets/comedores-icon.png" alt="Comedores">
+            <div class="texto-menu-item">
+            <button onclick="window.location.href='/comedores'">Comedores</button>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="../assets/location.png" alt="Localizaciones">
+            <div class="texto-menu-item">
+            <button onclick="window.location.href='localizacion.html';">Localizaciones</button>
+            </div>
+        </div>
     </div>
-    <div class="menu-item">
-        <img src="../assets/tramites-icon.png" alt="Trámites Administrativos">
-        <button onclick="window.location.href='/tramites'">Trámites Administrativos</button>
-    </div>
-    <div class="menu-item">
-        <img src="../assets/comedores-icon.png" alt="Comedores">
-        <button onclick="window.location.href='/comedores'">Comedores</button>
-    </div>
-    <div class="menu-item">
-        <img src="../assets/location.png" alt="Localizaciones">
-        <button onclick="window.location.href='localizacion.html';">Docencia</button>
-    </div>
-</div>
 
     <script src="../js/user-auth.js"></script>
     <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
