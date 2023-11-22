@@ -27,17 +27,18 @@ class LeapMotionController {
     }
 
     onFrame(frame) {
-      console.log('Registra algo');
       if (frame.hands.length > 0) {
         const hand = frame.hands[0];
         const position = hand.palmPosition;
-        const ciertaDistanciaX = 15;
+        const ciertaDistanciaX = 13;
     
-        // Suponiendo que 'lastPosition' es una propiedad de la clase que guarda la última posición conocida de la mano
+        // Movimiento hacia la izquierda para invitado
         if (this.lastPosition && position[0] < this.lastPosition[0] - ciertaDistanciaX) {
-          console.log('Registra el gesto');
-          // El usuario ha movido la mano hacia la izquierda
           this.clickGuestAccessButton();
+        }
+        // Movimiento hacia la derecha para autenticarse
+        if (this.lastPosition && position[0] > this.lastPosition[0] + ciertaDistanciaX) {
+          this.clickGuestAccessIDButton();
         }
     
         // Actualiza la última posición de la mano
@@ -48,9 +49,25 @@ class LeapMotionController {
     clickGuestAccessButton() {
       const guestAccessButton = document.getElementById('guest-access');
       if (guestAccessButton) {
+        this.startTimeout();
         guestAccessButton.click();
       }
-    }    
+    }
+    
+    clickGuestAccessIDButton() {
+      const guestAccessButton = document.getElementById('authenticate');
+      if (guestAccessButton) {
+        this.startTimeout();
+        guestAccessButton.click();
+      }
+    }
+
+    startTimeout() {
+      this.isInTimeout = true;
+      setTimeout(() => {
+        this.isInTimeout = false;
+      }, 20000); // Espera de 1 segundo
+    }
       
     start() {
       this.controller.on('init', this.onInit.bind(this));
