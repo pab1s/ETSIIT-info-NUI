@@ -98,6 +98,13 @@ body {
     background-color: rgb(255, 2, 2);
 }
 
+.menu-item.selected,
+.menu-item.selected button {
+    background-color: red; /* Cambia el color de fondo a rojo */
+    color: white; /* Cambia el color del texto a blanco para mejor contraste */
+}
+
+
 .texto-importante {
     width: 100%;
     height: 2%;
