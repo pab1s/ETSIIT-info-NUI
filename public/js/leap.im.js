@@ -60,7 +60,7 @@ class LeapMotionController {
     this.isInTimeout = true;
     setTimeout(() => {
       this.isInTimeout = false;
-    }, 20000); // Espera de 1 segundo
+    }, 1500); // Espera de 1 segundo y medio
   }
     
   start() {
