@@ -25,13 +25,14 @@ class LeapMotionController {
       const hand = frame.hands[0];
       const position = hand.palmPosition;
       const ciertaDistanciaX = 13;
+      const ciertaDistanciaXder = 15;
   
       // Movimiento hacia la izquierda para invitado
       if (this.lastPosition && position[0] < this.lastPosition[0] - ciertaDistanciaX) {
         this.clickGuestAccessButton();
       }
       // Movimiento hacia la derecha para autenticarse
-      if (this.lastPosition && position[0] > this.lastPosition[0] + ciertaDistanciaX) {
+      if (this.lastPosition && position[0] > this.lastPosition[0] + ciertaDistanciaXder) {
         this.clickGuestAccessIDButton();
       }
   
@@ -42,16 +43,16 @@ class LeapMotionController {
   
   clickGuestAccessButton() {
     const guestAccessButton = document.getElementById('guest-access');
+    this.startTimeout();  
     if (guestAccessButton) {
-      this.startTimeout();
       guestAccessButton.click();
     }
   }
   
   clickGuestAccessIDButton() {
+    this.startTimeout();
     const guestAccessButton = document.getElementById('authenticate');
     if (guestAccessButton) {
-      this.startTimeout();
       guestAccessButton.click();
     }
   }
@@ -60,7 +61,7 @@ class LeapMotionController {
     this.isInTimeout = true;
     setTimeout(() => {
       this.isInTimeout = false;
-    }, 1500); // Espera de 1 segundo y medio
+    }, 3000); // Espera de 1 segundo y medio
   }
     
   start() {
