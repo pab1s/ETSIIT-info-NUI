@@ -32,13 +32,16 @@ class LeapMotionController {
   }
 
   processHandMovement(position, hand) {
-    const ciertaDistanciaXiz = 20;
+    const ciertaDistanciaXiz = 15;
     const ciertaDistanciaXder = 20;
+    const ciertaDistanciaZ = 14;
 
     if (this.lastPosition) {
       if (position[0] < this.lastPosition[0] - ciertaDistanciaXiz) {
         this.clickVueltaMenuButton();
-      } else if (position[0] > this.lastPosition[0] + ciertaDistanciaXder) {
+      } //else if (position[0] > this.lastPosition[0] + ciertaDistanciaXder) {
+      //  this.clickMenuButton();
+      else if (Math.abs(position[2] - this.lastPosition[2]) > ciertaDistanciaZ) {
         this.clickMenuButton();
       } else if (this.areFingersPointingDown(hand)) {
         this.navigateMenuItems();
@@ -65,7 +68,7 @@ class LeapMotionController {
     this.selectedMenuItemIndex = (this.selectedMenuItemIndex + 1) % this.menuItems.length;
     // Marca el nuevo ítem de menú seleccionado
     this.menuItems[this.selectedMenuItemIndex].classList.add('selected');
-    this.startTimeout();
+    this.TimeoutMenu();
   }
 
   clickMenuButton() {
@@ -89,7 +92,14 @@ class LeapMotionController {
     this.isInTimeout = true;
     setTimeout(() => {
       this.isInTimeout = false;
-    }, 1000); // Pequeña espera para que no se acumulen gestos
+    }, 1500); // Pequeña espera para que no se acumulen gestos
+  }
+
+  TimeoutMenu() {
+    this.isInTimeout = true;
+    setTimeout(() => {
+      this.isInTimeout = false;
+    }, 300); // Cambiamos los tiempos de desplazamiento de menu
   }
     
   start() {
