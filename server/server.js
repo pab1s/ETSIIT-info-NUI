@@ -213,7 +213,7 @@ app.post('/citas/reservar', (req, res) => {
         const { fecha, hora_inicio} = req.body;
         console.log(`Intentando reservar cita en fecha: ${fecha}, hora inicio: ${hora_inicio}, para usuario ID: ${username}`); // Imprime los detalles de la cita
 
-        db.run('UPDATE citas SET ocupado = 1, username = ? WHERE fecha = ? AND hora_inicio = ? AND ocupado = 0', [username, fecha, hora_inicio], function(err) {
+        db.run('UPDATE citas SET ocupado = 1, usuario_id = ? WHERE fecha = ? AND hora_inicio = ? AND ocupado = 0', [username, fecha, hora_inicio], function(err) {
             if (err) {
                 console.error('Error al intentar reservar cita:', err.message); // Imprime el error si lo hay
                 res.status(500).json({ error: err.message });
@@ -249,7 +249,7 @@ app.post('/citas/cancelar', (req, res) => {
 
         const { cita_id} = req.body; // cita_id es el ID único de la cita
 
-        db.run('UPDATE citas SET ocupado = 0, username = NULL WHERE id = ? AND username = ?', [cita_id, username], function(err) {
+        db.run('UPDATE citas SET ocupado = 0, usuario_id = NULL WHERE id = ? AND usuario_id = ?', [cita_id, username], function(err) {
             if (err) {
                 res.status(500).json({ error: err.message });
                 return;
