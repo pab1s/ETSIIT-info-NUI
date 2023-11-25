@@ -150,3 +150,31 @@ body {
     text-decoration: line-through;
     cursor: default;
 }
+
+#expediente-modal {
+    position: fixed;
+    top: 10%; /* Ajusta esto para dejar espacio para ver los botones debajo */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Puedes hacerlo más ancho si es necesario */
+    height: 60vh; /* Ajusta la altura para que no ocupe toda la pantalla */
+    overflow-y: auto; /* Permite desplazamiento vertical si el contenido es largo */
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1000;
+    display: block; /* O cambia a 'none' y muestra mediante JavaScript */
+}
+
+#expediente-iframe {
+    width: 100%;
+    height: 100%; /* Hace que el iframe llene el modal completamente */
+    border: none;
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño del contenido del iframe */
+    transform-origin: 0 0; /* Asegúrate de que el contenido se escale desde la parte superior izquierda */
+}
+
+
+
+
