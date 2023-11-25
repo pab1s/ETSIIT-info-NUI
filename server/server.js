@@ -201,42 +201,69 @@ app.get('/citas/disponibles/:fecha', (req, res) => {
 //Reservar una cita
 
 app.post('/citas/reservar', (req, res) => {
-    const { fecha, hora_inicio, usuario_id } = req.body;
-    console.log(`Intentando reservar cita en fecha: ${fecha}, hora inicio: ${hora_inicio}, para usuario ID: ${usuario_id}`); // Imprime los detalles de la cita
+    try {
+        const token = req.cookies.authToken;
+        if (!token) {
+            return res.status(401).json({ error: 'No autenticado' });
+        }
 
-    db.run('UPDATE citas SET ocupado = 1, usuario_id = ? WHERE fecha = ? AND hora_inicio = ? AND ocupado = 0', [usuario_id, fecha, hora_inicio], function(err) {
-        if (err) {
-            console.error('Error al intentar reservar cita:', err.message); // Imprime el error si lo hay
-            res.status(500).json({ error: err.message });
-            return;
-        }
-        if (this.changes === 0) {
-            console.log('No se reservó ninguna cita, es posible que ya estuviera ocupada o que los datos no coincidan.'); // Mensaje si no se cambió ninguna fila
-            res.status(409).json({ error: 'Cita no disponible o ya reservada' });
-            return;
-        }
-        console.log('Cita reservada con éxito.'); // Confirma que la reserva fue exitosa
-        res.json({ message: 'Cita reservada con éxito' });
-    });
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const username = decoded.username;
+
+        const { fecha, hora_inicio} = req.body;
+        console.log(`Intentando reservar cita en fecha: ${fecha}, hora inicio: ${hora_inicio}, para usuario ID: ${username}`); // Imprime los detalles de la cita
+
+        db.run('UPDATE citas SET ocupado = 1, username = ? WHERE fecha = ? AND hora_inicio = ? AND ocupado = 0', [username, fecha, hora_inicio], function(err) {
+            if (err) {
+                console.error('Error al intentar reservar cita:', err.message); // Imprime el error si lo hay
+                res.status(500).json({ error: err.message });
+                return;
+            }
+            if (this.changes === 0) {
+                console.log('No se reservó ninguna cita, es posible que ya estuviera ocupada o que los datos no coincidan.'); // Mensaje si no se cambió ninguna fila
+                res.status(409).json({ error: 'Cita no disponible o ya reservada' });
+                return;
+            }
+            console.log('Cita reservada con éxito.'); // Confirma que la reserva fue exitosa
+            res.json({ message: 'Cita reservada con éxito' });
+        });
+    } catch (error) {
+        res.status(401).json({ error: 'No autenticado' });
+    }
+
+
 });
 
 
 //Cancelar una cita
 
 app.post('/citas/cancelar', (req, res) => {
-    const { cita_id, usuario_id } = req.body; // cita_id es el ID único de la cita
+    try {
+        const token = req.cookies.authToken;
+        if (!token) {
+            return res.status(401).json({ error: 'No autenticado' });
+        }
 
-    db.run('UPDATE citas SET ocupado = 0, usuario_id = NULL WHERE id = ? AND usuario_id = ?', [cita_id, usuario_id], function(err) {
-        if (err) {
-            res.status(500).json({ error: err.message });
-            return;
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const username = decoded.username;
+
+        const { cita_id} = req.body; // cita_id es el ID único de la cita
+
+        db.run('UPDATE citas SET ocupado = 0, username = NULL WHERE id = ? AND username = ?', [cita_id, username], function(err) {
+            if (err) {
+                res.status(500).json({ error: err.message });
+                return;
+            }
+            if (this.changes === 0) {
+                res.status(404).json({ error: 'Cita no encontrada o no corresponde al usuario' });
+                return;
+            }
+            res.json({ message: 'Cita cancelada con éxito' });
+         });
+        } catch (error) {
+            res.status(401).json({ error: 'No autenticado' });
         }
-        if (this.changes === 0) {
-            res.status(404).json({ error: 'Cita no encontrada o no corresponde al usuario' });
-            return;
-        }
-        res.json({ message: 'Cita cancelada con éxito' });
-    });
+
 });
 
 
