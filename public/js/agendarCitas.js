@@ -5,7 +5,7 @@ const inputFechaCita = document.getElementById('fecha-cita');
 
 // Evento para buscar citas disponibles
 btnBuscarCitas.addEventListener('click', function() {
-    const fechaSeleccionada = inputFechaCita.value;
+    let fechaSeleccionada = inputFechaCita.value; // Define la variable aquí para que esté disponible en este contexto
     if (!fechaSeleccionada) {
         alert('Por favor, selecciona una fecha.');
         return;
@@ -22,12 +22,13 @@ btnBuscarCitas.addEventListener('click', function() {
                 citaDiv.textContent = `Hora: ${cita.hora_inicio} - ${cita.hora_fin}`;
                 if (!cita.ocupado) {
                     citaDiv.dataset.id = cita.id;
-                    citaDiv.addEventListener('click', () => reservarCita(cita.id, fecha, cita.hora_inicio));
+                    citaDiv.addEventListener('click', () => reservarCita(cita.id, fechaSeleccionada, cita.hora_inicio)); // Usa fechaSeleccionada aquí
                 }
                 citasDisponiblesContenedor.appendChild(citaDiv);
             });
         });
 });
+
 
 
 // Función para reservar una cita
