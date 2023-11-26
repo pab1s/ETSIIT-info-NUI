@@ -36,6 +36,19 @@ app.use(express.json());
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
+db.serialize(() => {
+    eliminarCitasPasadas(db)
+        .then(() => agregarNuevasCitas(db))
+        .then(() => {
+            app.listen(3000, () => {
+                console.log('Servidor en funcionamiento en http://localhost:3000');
+            });
+        })
+        .catch(err => console.error('Error al iniciar el servidor:', err));
+});
+
+
+
 // Ruta para servir la página de inicio
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'html', 'index.html'));
@@ -175,14 +188,7 @@ app.get('/logout', (req, res) => {
     });
 });
 
-db.serialize(() => {
-    eliminarCitasPasadas(db);
-    agregarNuevasCitas(db);
 
-    app.listen(3000, () => {
-        console.log('Servidor en funcionamiento en http://localhost:3000');
-    });
-});
 
 
 
@@ -195,7 +201,7 @@ app.get('/citas/disponibles/:fecha', (req, res) => {
     const fecha = req.params.fecha;
 
     // Cambia la consulta para seleccionar también el campo 'ocupado'
-    db.all('SELECT id, hora_inicio, hora_fin, ocupado FROM citas WHERE fecha = ?', [fecha], (err, rows) => {
+    db.all('SELECT id, hora_inicio, hora_fin, ocupado FROM citas WHERE fecha = ? ORDER BY hora_inicio ASC', [fecha], (err, rows) => {
         if (err) {
             res.status(500).json({ error: err.message });
             return;
@@ -274,6 +280,31 @@ app.post('/citas/cancelar', (req, res) => {
 
 });
 
+app.get('/api/fechas-citas-disponibles', (req, res) => {
+    const hoy = new Date().toISOString().split('T')[0];
+
+    const sql = `
+        SELECT DISTINCT fecha
+        FROM citas
+        WHERE fecha >= ?
+        AND strftime('%w', fecha) NOT IN ('0', '6')
+        ORDER BY fecha
+        LIMIT 5
+    `;
+
+    db.all(sql, [hoy], (err, rows) => {
+        if (err) {
+            res.status(500).json({ error: 'Error al realizar la consulta en la base de datos' });
+        } else {
+            // Devuelve un array de fechas disponibles
+            const fechas = rows.map(row => row.fecha);
+            res.json({ fechas });
+        }
+    });
+});
+
+
+
 
 
 app.get('/api/expediente', (req, res) => {
@@ -299,5 +330,7 @@ app.get('/api/expediente', (req, res) => {
         res.status(401).json({ error: 'No autenticado' });
     }
 });
+
+
 
 
