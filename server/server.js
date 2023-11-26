@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const sqlite3 = require('sqlite3');
 const path = require('path');
+const { eliminarCitasPasadas, agregarNuevasCitas } = require('./citasManager');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
@@ -174,9 +175,13 @@ app.get('/logout', (req, res) => {
     });
 });
 
-// Inicia el servidor en el puerto 3000
-app.listen(3000, () => {
-    console.log('Servidor en funcionamiento en http://localhost:3000');
+db.serialize(() => {
+    eliminarCitasPasadas(db);
+    agregarNuevasCitas(db);
+
+    app.listen(3000, () => {
+        console.log('Servidor en funcionamiento en http://localhost:3000');
+    });
 });
 
 
