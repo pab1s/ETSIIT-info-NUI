@@ -189,14 +189,17 @@ app.get('/citas', (req, res) => {
 app.get('/citas/disponibles/:fecha', (req, res) => {
     const fecha = req.params.fecha;
 
-    db.all('SELECT * FROM citas WHERE fecha = ? AND ocupado = 0', [fecha], (err, rows) => {
+    // Cambia la consulta para seleccionar también el campo 'ocupado'
+    db.all('SELECT id, hora_inicio, hora_fin, ocupado FROM citas WHERE fecha = ?', [fecha], (err, rows) => {
         if (err) {
             res.status(500).json({ error: err.message });
             return;
         }
+        // Las filas incluirán ahora un campo 'ocupado' que indica si la cita está ocupada o no
         res.json(rows);
     });
 });
+
 
 //Reservar una cita
 
