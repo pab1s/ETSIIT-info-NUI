@@ -18,10 +18,12 @@ btnBuscarCitas.addEventListener('click', function() {
             citasDisponiblesContenedor.innerHTML = ''; // Limpiar contenedor
             citas.forEach(cita => {
                 const citaDiv = document.createElement('div');
-                citaDiv.className = 'cita-disponible';
+                citaDiv.className = cita.ocupado ? 'cita-disponible reservado' : 'cita-disponible';
                 citaDiv.textContent = `Hora: ${cita.hora_inicio} - ${cita.hora_fin}`;
-                citaDiv.dataset.id = cita.id;
-                citaDiv.addEventListener('click', () => reservarCita(cita.id, fechaSeleccionada, cita.hora_inicio));
+                if (!cita.ocupado) {
+                    citaDiv.dataset.id = cita.id;
+                    citaDiv.addEventListener('click', () => reservarCita(cita.id, fecha, cita.hora_inicio));
+                }
                 citasDisponiblesContenedor.appendChild(citaDiv);
             });
         });
@@ -29,10 +31,6 @@ btnBuscarCitas.addEventListener('click', function() {
 
 
 // Función para reservar una cita
-// Asumiendo que tienes una variable global o una forma de obtener el ID del usuario actual
-// En un escenario real, esto lo proporcionaría el sistema de autenticación de tu aplicación
-const usuarioId = "pablolivares"; // Reemplaza esto con la lógica para obtener el usuario real
-
 // Esta función se llamará cuando un usuario haga clic en una cita disponible
 function reservarCita(citaId, fecha, horaInicio) {
     fetch('/citas/reservar', {
@@ -43,8 +41,7 @@ function reservarCita(citaId, fecha, horaInicio) {
         },
         body: JSON.stringify({
             fecha: fecha,
-            hora_inicio: horaInicio,
-            usuario_id: usuarioId // Envías el ID del usuario que reserva la cita
+            hora_inicio: horaInicio
         })
     })
     .then(response => response.json())
