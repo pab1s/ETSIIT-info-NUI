@@ -36,19 +36,6 @@ app.use(express.json());
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-db.serialize(() => {
-    eliminarCitasPasadas(db)
-        .then(() => agregarNuevasCitas(db))
-        .then(() => {
-            app.listen(3000, () => {
-                console.log('Servidor en funcionamiento en http://localhost:3000');
-            });
-        })
-        .catch(err => console.error('Error al iniciar el servidor:', err));
-});
-
-
-
 // Ruta para servir la página de inicio
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'html', 'index.html'));
@@ -188,12 +175,28 @@ app.get('/logout', (req, res) => {
     });
 });
 
+db.serialize(() => {
+    agregarNuevasCitas(db);
+    eliminarCitasPasadas(db);
+    
 
+    app.listen(3000, () => {
+        console.log('Servidor en funcionamiento en http://localhost:3000');
+    });
+});
 
 
 
 app.get('/citas', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'html', 'citas.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+});
+
+app.get('/pedir-cita', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'pedircita.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+});
+
+app.get('/mis-citas', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'miscitas.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
 });
 
 // Obtener las citas disponibles 
@@ -210,7 +213,6 @@ app.get('/citas/disponibles/:fecha', (req, res) => {
         res.json(rows);
     });
 });
-
 
 //Reservar una cita
 
@@ -249,36 +251,6 @@ app.post('/citas/reservar', (req, res) => {
 });
 
 
-//Cancelar una cita
-
-app.post('/citas/cancelar', (req, res) => {
-    try {
-        const token = req.cookies.authToken;
-        if (!token) {
-            return res.status(401).json({ error: 'No autenticado' });
-        }
-
-        const decoded = jwt.verify(token, SECRET_KEY);
-        const username = decoded.username;
-
-        const { cita_id} = req.body; // cita_id es el ID único de la cita
-
-        db.run('UPDATE citas SET ocupado = 0, usuario_id = NULL WHERE id = ? AND usuario_id = ?', [cita_id, username], function(err) {
-            if (err) {
-                res.status(500).json({ error: err.message });
-                return;
-            }
-            if (this.changes === 0) {
-                res.status(404).json({ error: 'Cita no encontrada o no corresponde al usuario' });
-                return;
-            }
-            res.json({ message: 'Cita cancelada con éxito' });
-         });
-        } catch (error) {
-            res.status(401).json({ error: 'No autenticado' });
-        }
-
-});
 
 app.get('/api/fechas-citas-disponibles', (req, res) => {
     const hoy = new Date().toISOString().split('T')[0];
@@ -305,8 +277,6 @@ app.get('/api/fechas-citas-disponibles', (req, res) => {
 
 
 
-
-
 app.get('/api/expediente', (req, res) => {
     try {
         const token = req.cookies.authToken;
@@ -326,6 +296,59 @@ app.get('/api/expediente', (req, res) => {
             res.status(404).send('Expediente no encontrado');
         }
     });
+    } catch (error) {
+        res.status(401).json({ error: 'No autenticado' });
+    }
+});
+
+
+app.get('/api/mis-citas', (req, res) => {
+    try {
+        const token = req.cookies.authToken;
+        if (!token) {
+            return res.status(401).json({ error: 'No autenticado' });
+        }
+
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const username = decoded.username;
+
+        db.all('SELECT id, fecha, hora_inicio, hora_fin FROM citas WHERE usuario_id = ? ORDER BY fecha, hora_inicio', [username], (err, rows) => {
+            if (err) {
+                res.status(500).json({ error: err.message });
+            } else if (rows.length === 0) {
+                // Enviar una respuesta específica si no hay citas
+                res.json({ message: 'No tienes citas programadas.' });
+            } else {
+                res.json(rows);
+            }
+        });
+    } catch (error) {
+        res.status(401).json({ error: 'No autenticado' });
+    }
+});
+
+
+app.post('/api/cancelar-cita', (req, res) => {
+    try {
+        const token = req.cookies.authToken;
+        if (!token) {
+            return res.status(401).json({ error: 'No autenticado' });
+        }
+
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const username = decoded.username;
+        const { cita_id } = req.body;
+
+        // Consulta para cancelar la cita especificada
+        db.run('UPDATE citas SET ocupado = 0, usuario_id = NULL WHERE id = ? AND usuario_id = ?', [cita_id, username], function(err) {
+            if (err) {
+                res.status(500).json({ error: err.message });
+            } else if (this.changes === 0) {
+                res.status(404).json({ error: 'Cita no encontrada o no corresponde al usuario' });
+            } else {
+                res.json({ message: 'Cita cancelada con éxito' });
+            }
+        });
     } catch (error) {
         res.status(401).json({ error: 'No autenticado' });
     }
