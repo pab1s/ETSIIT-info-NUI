@@ -53,6 +53,103 @@ body {
 }
 
 
+#body-citas {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#container-citas {
+    text-align: center;
+}
+
+#titulo-citas {
+    color: #333;
+    margin-bottom: 50px;
+}
+
+.button-citas {
+    display: inline-block;
+    margin: 20px;
+    padding: 20px 40px;
+    font-size: 2vw;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.button-citas:hover {
+    background-color: #0056b3;
+}
+
+@media (min-width: 2560px) {
+    .button-citas {
+        padding: 30px 60px;
+        font-size: 1.5vw;
+    }
+}
+
+#body-mis-citas {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#container-mis-citas {
+    text-align: center;
+}
+
+#titulo-mis-citas {
+    color: #333;
+    margin-bottom: 50px;
+}
+
+#lista-citas {
+    margin-top: 20px;
+}
+
+.cita-item {
+    background-color: #e7e7e7;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.button-cancelar {
+    padding: 10px 20px;
+    font-size: 1vw;
+    color: #fff;
+    background-color: #dc3545;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-cancelar:hover {
+    background-color: #c82333;
+}
+
+@media (min-width: 2560px) {
+    .button-cancelar {
+        font-size: 0.8vw;
+    }
+}
+
+
+
 /* Estilos para la sección de citas */
 #agenda-citas-container {
     display: flex;
