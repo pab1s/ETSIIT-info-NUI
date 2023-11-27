@@ -192,11 +192,11 @@ app.get('/citas', (req, res) => {
 });
 
 app.get('/pedir-cita', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'pedircita.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'pedirCita.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
 });
 
 app.get('/mis-citas', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'miscitas.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'misCitas.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
 });
 
 // Obtener las citas disponibles 
