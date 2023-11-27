@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Cita</title>
+    <link rel="stylesheet" href="../css/tramites.css"> <!-- Enlace a tu hoja de estilos CSS -->
+</head>
+<body>
+
+<div id="agenda-citas-container">
+    <h1>Agendar Cita en Secretaría</h1>
+    <input type="date" id="fecha-cita">
+    <button id="buscar-citas">Buscar Citas Disponibles</button>
+    <div id="citas-disponibles"></div>
+</div>
+
+<script src="../js/agendarCitas.js"></script> <!-- Enlace a tu script de JavaScript -->
+<script>
+// Este código debe ir al final del archivo, antes de cerrar la etiqueta </body>
+
+// Actualizar los valores mínimos y máximos de las fechas en el input de fecha
+function actualizarRangoFechas() {
+    fetch('/api/fechas-citas-disponibles') // Asegúrate de que este endpoint exista en tu servidor
+    .then(response => response.json())
+    .then(data => {
+        if(data.fechas && data.fechas.length > 0) {
+            // Asumiendo que data.fechas es un arreglo con las fechas disponibles
+            const inputFechaCita = document.getElementById('fecha-cita');
+            inputFechaCita.min = data.fechas[0];
+            inputFechaCita.max = data.fechas[data.fechas.length - 1];
+        }
+    })
+    .catch(error => {
+        console.error('Error al obtener fechas de citas:', error);
+    });
+}
+
+// Llamar a la función al cargar la página
+document.addEventListener('DOMContentLoaded', actualizarRangoFechas);
+</script>
+</body>
+</html>
