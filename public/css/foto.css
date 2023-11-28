@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f4; /* Color de fondo ligero */
+}
+
+/* Estilos para la tarjeta de identificación */
+.tarjeta {
+    position: relative;
+    max-width: 800px; /* Ajusta este valor al ancho de tu imagen de tarjeta */
+    margin: 20px auto; /* Centrar la tarjeta en la página */
+}
+
+.tarjeta img {
+    width: 100%;
+    height: auto;
+    display: block; /* Asegurar que la imagen se muestre como bloque */
+}
+
+/* Posicionar la información del usuario sobre la tarjeta */
+#info{
+    position: absolute;
+    top: 400px; /* Ajustar según sea necesario para colocar el nombre debajo del icono amarillo */
+    left: 150px; /* Ajustar según sea necesario para alinear con el borde izquierdo de la tarjeta */
+    color: #000; /* El color del texto */
+    width: 200px; /* Ajustar según el ancho de la tarjeta */
+}
+
+#foto-usuario {
+    position: absolute; /* Posicionar sobre el recuadro blanco */
+    top: 270px; /* Ajustar según sea necesario para colocar dentro del recuadro blanco */
+    left: 520px; /* Ajustar según sea necesario para alinear con el recuadro blanco */
+    width: 225px; /* Ajustar al tamaño del recuadro blanco */
+    height: 200px; /* Ajustar al tamaño del recuadro blanco */
+    object-fit: cover; /* Asegurar que la imagen cubra todo el espacio sin distorsionarse */
+    border-radius: 5px; /* Bordes redondeados para la foto, si es necesario */
+}
+
+
+#qr-usuario {
+    position: absolute; /* Posicionar sobre el recuadro blanco */
+    top: 125px; /* Ajustar según sea necesario para colocar dentro del recuadro blanco */
+    left: 100px; /* Ajustar según sea necesario para alinear con el recuadro blanco */
+    width: 190px; /* Ajustar al tamaño del recuadro blanco */
+    height: 190px; /* Ajustar al tamaño del recuadro blanco */
+    object-fit: cover; /* Asegurar que la imagen cubra todo el espacio sin distorsionarse */
+    border-radius: 5px; /* Bordes redondeados para la foto, si es necesario */
+    z-index: 10;
+}
+
+#info {
+    font-size: 2em; /* Ajustar el tamaño de la fuente del nombre */
+    font-weight: bold; /* Hacer el nombre en negrita */
+    margin: 0; /* Eliminar márgenes por defecto */
+    padding-bottom: 10px; /* Espacio debajo del nombre */
+}
+
+#contenedor-camara {
+    width: 640px; /* Ajustar al tamaño deseado */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    display: none; /* Inicialmente oculto */
+}
+
+video, canvas {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+#foto-capturada {
+    /* Estilos para la foto capturada si es necesario */
+}
+
+/* Estilos generales para los botones */
+button {
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049; /* Color al pasar el mouse */
+}
+
+button img {
+    height: 20px; /* Altura del icono de la cámara */
+    vertical-align: middle;
+}
+
+
+button#boton-capturar {
+    background: none; /* Sin color de fondo */
+    border: none; /* Sin bordes */
+    cursor: pointer;
+    padding: 10px; /* Espaciado interno para el botón */
+}
+
+button#boton-capturar:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Ligera sombra al pasar el mouse */
+}
+
+/* Ajustar el tamaño del icono dentro del botón */
+button#boton-capturar img {
+    height: auto; /* Altura automática para mantener la relación de aspecto */
+    width: 50px; /* Ancho del icono ajustado */
+}
+
+
+
+/* Estilos para el mensaje de actualización */
+.mensaje-oculto {
+    display: none;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #28a745;
+    border-radius: 5px;
+    background-color: #dff0d8;
+    color: #155724;
+    text-align: center;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
