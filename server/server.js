@@ -7,6 +7,10 @@ const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
+const multer = require('multer');
+const upload = multer({ limits: { fileSize: 10000000 } }); // 10MB como límite
+
+
 
 // Crear conexión a la base de datos SQLite
 const db = new sqlite3.Database('./usuarios.db'); // Asegúrate de que el archivo de la base de datos exista en la raíz del proyecto
@@ -35,6 +39,9 @@ app.use(express.json());
 
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.static(path.join(__dirname, 'server/qr-codes')))
+
+
 
 // Ruta para servir la página de inicio
 app.get('/', (req, res) => {
@@ -199,6 +206,8 @@ app.get('/mis-citas', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'html', 'misCitas.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
 });
 
+
+
 // Obtener las citas disponibles 
 app.get('/citas/disponibles/:fecha', (req, res) => {
     const fecha = req.params.fecha;
@@ -353,6 +362,75 @@ app.post('/api/cancelar-cita', (req, res) => {
         res.status(401).json({ error: 'No autenticado' });
     }
 });
+
+
+app.get('/fotoUGR', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'mifotoUgr.html')); 
+});
+
+app.get('/api/informacion-usuario', (req, res) => {
+    try {
+        const token = req.cookies.authToken;
+        if (!token) {
+            return res.status(401).json({ error: 'No autenticado' });
+        }
+
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const username = decoded.username;
+
+        // Buscar la información del usuario en la base de datos
+        db.get('SELECT * FROM usuarios WHERE username = ?', [username], (err, row) => {
+            if (err) {
+                res.status(500).json({ error: 'Error en la base de datos' });
+            } else if (row) {
+                let fotoBase64 = null;
+                if (row.foto) {
+                    fotoBase64 = Buffer.from(row.foto).toString('base64');
+                }
+                res.json({ 
+                    nombre: row.nombre,
+                    apellidos: row.apellidos,
+                    foto: fotoBase64, // Envía la foto como una cadena Base64
+                    username: row.username,
+                });
+            } else {
+                res.status(404).json({ error: 'Usuario no encontrado' });
+            }
+        });
+    } catch (error) {
+        res.status(401).json({ error: 'No autenticado' });
+    }
+});
+
+
+app.post('/api/guardar-foto', upload.single('foto'), (req, res) => {
+    try {
+        const token = req.cookies.authToken;
+        if (!token) {
+            return res.status(401).json({ error: 'No autenticado' });
+        }
+
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const username = decoded.username;
+        const fotoBuffer = req.file.buffer; // Datos binarios de la imagen
+
+        // Actualizar la base de datos con la foto en formato BLOB
+        db.run('UPDATE usuarios SET foto = ? WHERE username = ?', [fotoBuffer, username], (err) => {
+            if (err) {
+                console.error('Error al actualizar la base de datos', err);
+                return res.status(500).json({ error: 'Error al guardar la foto en la base de datos' });
+            } else {
+                // Convertir el buffer de la imagen a Base64 y enviarlo como respuesta
+                const fotoBase64 = Buffer.from(fotoBuffer).toString('base64');
+                res.json({ success: 'Foto actualizada', foto: fotoBase64 });
+            }
+        });
+    } catch (error) {
+        res.status(401).json({ error: 'No autenticado' });
+    }
+});
+
+
 
 
 
