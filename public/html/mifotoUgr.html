@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi Foto UGR</title>
+    <link rel="stylesheet" type="text/css" href="../css/foto.css">
+</head>
+<body>
+    <!-- Contenedor de la tarjeta de identificación -->
+    <div id="tarjeta-identificacion" class="tarjeta">
+        <!-- Imagen de fondo de la tarjeta de identificación -->
+        <img src="../assets/tui.png" alt="Tarjeta de Identificación" style="width:100%;"/>
+        <!-- Contenedor de información del usuario -->
+        <div id="info-usuario">
+            <!-- Nombre y apellidos del usuario -->
+            <h1 id="info" style="color: #000;">Nombre y Apellidos</h1>
+            <!-- Foto del usuario -->
+            <img id="foto-usuario" src="" alt="Foto del Usuario"/>
+            <img id="qr-usuario"  src=""/>
+        </div>
+
+    </div>
+    <div id="mensaje-actualizacion" class="mensaje-oculto">
+        La foto se actualizó correctamente. Por favor, <a href="javascript:location.reload()">recarga la página</a> para ver los cambios.
+    </div>
+    
+    <button id="boton-activar-camara">Cambiar Foto</button>
+
+    <div id="contenedor-camara" style="display:none;">
+        <video id="video" width="640" height="480" autoplay></video>
+        <button id="boton-capturar">
+            <img src="../assets/camara.png" alt="Capturar">
+        </button>
+        <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+        <img id="foto-capturada" src="" alt="Foto Capturada" style="display:none;">
+        <button id="boton-guardar" style="display:none;">Guardar Foto</button>
+        <button id="boton-repetir" style="display:none;">Repetir Foto</button>
+    </div>
+
+    <script src="../js/gestionFoto.js"></script>
+</body>
+</html>
