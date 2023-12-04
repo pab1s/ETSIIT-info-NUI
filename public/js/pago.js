@@ -6,18 +6,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 function checkAndPay() {
+    saldoRestante = 0;
+
     fetch('/api/checkSaldo')
         .then(response => response.json())
         .then(data => {
+
             const messageContainer = document.getElementById('message-container');
             const payButton = document.getElementById('pay-button');
             if (data.saldo >= 3.5) {
                 payButton.style.display='none';
                 messageContainer.innerHTML = `
-                    <p>¿Confirmas el pago del menú?</p>
+                    <p>¿Confirmas el pago del menú (3.50€)?</p>
                     <button onclick="realizarPago()">✅</button>
                     <button onclick="cancelarPago()">❌</button>
+                    <p>Saldo restante: ${data.saldo}€</p>
                 `;
+
             } else {
                 showMessage('Saldo insuficiente');
             }
@@ -32,9 +37,14 @@ function checkAndPay() {
 function realizarPago() {
     fetch('/api/realizarPago', { method: 'POST' })
         .then(response => {
-            const messageArea = document.getElementById('message-area');
+            
             if (response.ok) {
-                showMessage('Pago realizado con éxito');
+                fetch('/api/correo')
+                    .then(resCorreo => resCorreo.text())
+                    .then(correo => {
+                        showMessage("Ha adquirido usted el menú de <strong>" + estadoSeleccion.comedor + "</strong> para la fecha <strong>" + estadoSeleccion.fecha + "</strong>" +
+                            "<br>Se enviará el ticket a su correo electrónico: <strong>" + correo+"</strong>");
+                    });
             } else {
                 showMessage('Error al realizar el pago');
             }

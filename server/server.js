@@ -314,6 +314,30 @@ app.get('/api/expediente', (req, res) => {
     }
 });
 
+app.get('/api/correo', (req, res) => {
+    try {
+        const token = req.cookies.authToken;
+        if (!token) {
+            return res.status(401).json({ error: 'No autenticado' });
+        }
+
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const username = decoded.username;
+   
+        db.get('SELECT correo FROM usuarios WHERE username = ?', [username], (err, row) => {
+            if (err) {
+                res.status(500).send('Error en la base de datos');
+            } else if (row) {
+                res.send(row.correo);
+            } else {
+                res.status(404).send('Correo electrónico no encontrado');
+            }
+        });
+    } catch (error) {
+        res.status(401).json({ error: 'No autenticado' });
+    }
+});
+
 
 app.get('/api/mis-citas', (req, res) => {
     try {

@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => crearBotonesComedores(data));
 });
 
+let estadoSeleccion = {
+    comedor: null,
+    fecha: null
+};
+
 function crearBotonesComedores(data) {
     const comedoresContainer = document.getElementById('comedores-container');
 
@@ -12,7 +17,10 @@ function crearBotonesComedores(data) {
         comedorButton.innerText = nombreComedor;
         comedorButton.classList.add('comedor-button');
 
-        comedorButton.onmouseover = () => mostrarDias(info.dates, comedorButton);
+        comedorButton.onmouseover = () => {
+            estadoSeleccion.comedor = nombreComedor;
+            mostrarDias(info.dates, comedorButton);
+        }
 
         comedoresContainer.appendChild(comedorButton);
     }
@@ -42,6 +50,7 @@ function mostrarDias(dates, comedorButton) {
 
         diaButton.onclick = () => {
             menuContainer.style.display = 'none';
+            estadoSeleccion.fecha = dia;
             mostrarMenus(dates[dia], esPasado);
         }
 
