@@ -142,6 +142,7 @@ body {
     height: auto; /* Adjust as needed */
 }
 
+/*Esto seguramente haya que mandarlo a la mierda*/
 #pointer {
     position: absolute;
     height: 50px;
