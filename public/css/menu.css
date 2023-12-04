@@ -152,3 +152,22 @@ th {
     background-color: #0056b3;
     color: white;
 }
+
+#pay-button {
+    display: block; /* Hace que el botón sea un bloque para permitir el centrado */
+    margin: 0 auto; /* Centra el botón horizontalmente */
+    width: 30%; /* Ancho del botón como un porcentaje del contenedor */
+    padding: 1% 2%; /* Espaciado interno basado en porcentajes para mantener la proporción */
+    font-size: 1.5em; /* Tamaño de fuente relativo */
+    color: white; /* Color del texto */
+    background-color: rgba(208, 96, 18, 0.9); /* Color de fondo (puedes cambiarlo) */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+    display: none;
+}
+
+#pay-button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón por encima */
+}
