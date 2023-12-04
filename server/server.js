@@ -56,6 +56,14 @@ app.get('/comedores', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'html', 'comedores.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
 });
 
+app.get('/consultar-menu', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'comedoresconsultar.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+});
+
+app.get('/pagar-menu', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'comedorespagar.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+});
+
 app.get('/tramites', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'html', 'tramites.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
 });
