@@ -183,8 +183,8 @@ h2 {
 }
 
 #webcam-container {
-    position: absolute;
-    top: 100%; /* Alineado justo debajo del botón */
+    position: relative;
+    top: -20%; /* Alineado justo debajo del botón */
     left: 50%; /* Centrado horizontalmente */
     transform: translateX(-50%); /* Ajuste para centrar exactamente */
     border: 5px solid #d06012 !important; /* Color del borde */
@@ -197,7 +197,7 @@ h2 {
 }
 
 #webcam-container.active {
-    max-height: 240px; /* Altura del marco de la cámara, igual que el ancho para hacerlo cuadrado */
+    max-height: 14vh; /* Altura del marco de la cámara, igual que el ancho para hacerlo cuadrado */
     display: block; /* Asegura que se muestra */
 }
 
