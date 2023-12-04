@@ -3,22 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Calendario de Docencia</title>
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/docencia.css">
 </head>
 <body> 
-    <h1 id="titulo"></h1>
+    <div class="content">
+    <div class="icon-container">
+        <img src="../assets/etsiit-logo.png" alt="Icono ETSIIT">
+    </div>
+    <div id="text-container"></div>
     <div class="calendario-contenedor">
         <div id="calendario" class="calendario">
             <!-- El calendario se construirá aquí -->
         </div>
     </div>
+
+    <!-- bottom-bar.html -->
+    <div id="bottom-bar">
+        <div id="auth-status"></div>
+        <div id="auth-actions">
+            <button id="auth-button" onclick="window.location.href = '/'">Iniciar sesión</button>
+        </div>
+    </div>
+    </div>
+
+    <script src="../js/bottomBar.js"></script>
     <script>
 
     document.addEventListener('DOMContentLoaded', function() {
         fetch('/api/userinfo')
         .then(response => response.json())
         .then(data => {
-            const titulo = document.getElementById('titulo');
+            const titulo = document.getElementById('text-container');
             titulo.textContent = `Horario de ${data.nombre} ${data.apellidos}`;
         })
         .catch(error => console.error('Error:', error));
