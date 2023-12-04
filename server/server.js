@@ -64,6 +64,10 @@ app.get('/docencia', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'html', 'docencia.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
 });
 
+app.get('/localizacion', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'localizacion.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+});
+
 
 
 
