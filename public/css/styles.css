@@ -181,7 +181,7 @@ h2 {
     width: 100%; /* Set a specific width */
     aspect-ratio: 1 / 1; /* Adjust aspect ratio as needed */
     padding: 5%; /* Adjust padding as needed */
-    font-size: 2rem; /* Adjust font size as needed */
+    font-size: 230%; /* Adjust font size as needed */
     color: white;
     background-color: #d06012;
     border: none;
