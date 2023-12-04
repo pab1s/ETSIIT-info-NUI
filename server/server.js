@@ -434,7 +434,64 @@ app.post('/api/guardar-foto', upload.single('foto'), (req, res) => {
     }
 });
 
+const PRECIO_MENU = 3.5;
 
+app.get('/api/checkSaldo', (req, res) => {
+    try {
+        const token = req.cookies.authToken;
+        if (!token) {
+            return res.status(401).json({ error: 'No autenticado' });
+        }
+
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const username = decoded.username;
+
+        db.get('SELECT saldo FROM usuarios WHERE username = ?', [username], (err, row) => {
+            if (err) {
+                return res.status(500).json({ error: 'Error en la base de datos' });
+            }
+            if (row && row.saldo >= PRECIO_MENU) {
+                res.json({ saldo: row.saldo, puedePagar: true });
+            } else {
+                res.json({ saldo: row ? row.saldo : 0, puedePagar: false });
+            }
+        });
+    } catch (error) {
+        res.status(401).json({ error: 'No autenticado' });
+    }
+});
+
+app.post('/api/realizarPago', (req, res) => {
+    try {
+        const token = req.cookies.authToken;
+        if (!token) {
+            return res.status(401).json({ error: 'No autenticado' });
+        }
+
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const username = decoded.username;
+
+        // Comienzo de la transacción
+        db.get('SELECT saldo FROM usuarios WHERE username = ?', [username], (err, row) => {
+            if (err) {
+                return res.status(500).json({ error: 'Error en la base de datos' });
+            }
+            if (row && row.saldo >= PRECIO_MENU) {
+                const nuevoSaldo = row.saldo - PRECIO_MENU;
+                db.run('UPDATE usuarios SET saldo = ? WHERE username = ?', [nuevoSaldo, username], (updateErr) => {
+                    if (updateErr) {
+                        return res.status(500).json({ error: 'Error al actualizar la base de datos' });
+                    }
+                    res.json({ success: true, nuevoSaldo });
+                });
+            } else {
+                res.status(400).json({ error: 'Saldo insuficiente' });
+            }
+        });
+    } catch (error) {
+        res.status(401).json({ error: 'No autenticado' });
+    }
+});
 
 
 

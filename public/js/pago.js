@@ -1,3 +1,11 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+    const payButton = document.getElementById('pay-button');
+    if (payButton) {
+        payButton.addEventListener('click', checkAndPay);
+    }
+});
+
+
 function checkAndPay() {
     fetch('/api/checkSaldo')
         .then(response => response.json())
