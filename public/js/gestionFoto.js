@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('foto-usuario').src = fotoPredeterminadaUrl;
         }
         
-        const qrUrl = '../../server/qr-codes/' + encodeURIComponent(data.username) + '-QR.png';
+        const qrUrl = '../qr-codes/' + encodeURIComponent(data.username) + '-QR.png';
         console.log('Ruta del QR: ', qrUrl); // Imprime la ruta en la consola
         document.getElementById('qr-usuario').src = qrUrl; 
         
