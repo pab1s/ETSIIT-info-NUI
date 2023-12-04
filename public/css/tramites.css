@@ -15,6 +15,12 @@ body {
     flex-direction: column;
 }
 
+.welcome-message h1 {
+    font-size: 300%;    /* Set the font size to 48px */
+    color: #333; /* Set the font color to #333 (dark gray) */
+    text-align: center; /* Center the text */
+}
+
 .icon-container {
     position: relative; /* Position it relative to the first positioned (not static) ancestor element */
     top: 0; /* Align to the top */
