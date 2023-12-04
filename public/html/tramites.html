@@ -1,28 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trámites Administrativos</title>
-    <link rel="stylesheet" href="../css/tramites.css"> <!-- Enlace a CSS -->
-    <script src="../js/cargarExpediente.js" defer></script> <!-- Enlace a JS -->
-</head>
-<body>
-<div id="expediente-modal" style="display:none;">
-    <iframe id="expediente-iframe" src="" width="100%" height="600" style="border:none;"></iframe>
-</div>
-<div id="Tramites-container">
-    <h1>Trámites Administrativos</h1>
-    <div id="Tramites-button-container">
-        <button class="tramites-button" id="solicitudes-generales" disabled>Solicitudes Generales</button>
-        <button class="tramites-button" id="consulta-expediente" onclick="mostrarExpediente()">Consulta de Expediente</button>
-        <button class="tramites-button" id="cita-secretaria" onclick="window.location.href='/citas'">Gestion de Citas Secretaria</button>
-        <button class="tramites-button" id="gestion-foto" onclick="window.location.href='/fotoUGR'">Gestion de mi Foto UGR</button>
-    </div>
-</div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Trámites Administrativos</title>
+        <link rel="stylesheet" href="../css/tramites.css">
+        <link rel="stylesheet" href="../css/carousel.css">
+        <!--    <script src="../js/cargarExpediente.js" defer></script>  Esto lo haremos si hacemos al final lo de expediente -->
+    </head>
+    <body>
+        <div class="icon-container">
+            <img src="../assets/etsiit-logo.png" alt="Icono ETSIIT">
+        </div>
 
+        <div id="text-container">
+            Trámites
+        </div>
 
+        <div class="responsive-slider">
+            <ul class="list">
+                <div class="hide"></div>
+                <div class="new-next"></div>
+                <div class="prev"></div>
+                <div class="next"></div>
+                <div class="act">
+                    <button class="act-button" onclick="window.location.href='/mis-citas'">
+                        <img src="../assets/PedirCita.png">
+                    </button>
+                </div>
+            </ul>
+            <div class="swipe"></div>
+        </div>
 
+        <div id="bottom-bar">
+            <div id="auth-status"></div>
+            <div id="auth-actions">
+                <button id="auth-button" onclick="window.location.href = '/'">Iniciar sesión</button>
+            </div>
+        </div>
 
-</body>
+        <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+        <script src="../js/carouselTramites.js"></script>
+    </body>
 </html>

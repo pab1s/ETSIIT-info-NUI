@@ -199,15 +199,19 @@ db.serialize(() => {
 
 
 app.get('/citas', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'citas.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'citas.html')); 
+});
+
+app.get('/expediente', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'expediente.html')); 
 });
 
 app.get('/pedir-cita', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'pedirCita.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'pedirCita.html')); 
 });
 
 app.get('/mis-citas', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'misCitas.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'misCitas.html')); 
 });
 
 
