@@ -55,6 +55,7 @@ function mostrarDias(dates, comedorButton) {
 
 function mostrarMenus(menus, esPasado) {
     let menusDetailContainer = document.getElementById('menus-detail-container');
+    let payButton = document.getElementById('pay-button');
     menusDetailContainer.innerHTML = ''; // Limpiar el contenedor de detalles del menú
 
 
@@ -89,7 +90,11 @@ function mostrarMenus(menus, esPasado) {
 
         // Agregar el párrafo al contenedor
         menusDetailContainer.appendChild(mensaje);
+    }else {
+        payButton.style.display = 'block';
     }
+
+
 }
 
 function verificarDiaPasado(fechaTexto) {
