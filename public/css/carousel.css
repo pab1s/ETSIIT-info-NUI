@@ -39,6 +39,7 @@
 }
 
   .list .act-button {
+    z-index: 2; /* Asegura que esté encima de otros elementos */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -49,6 +50,7 @@
     background: #d06012;
     border: none;
     padding: 0; /* Remove default padding */
+    cursor: pointer;
     /* Add other necessary styling */
   }
 

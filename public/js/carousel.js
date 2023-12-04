@@ -1,5 +1,5 @@
 // Array of URLs
-const urls = ["http://example1.com", "http://example2.com", "http://example3.com", "http://example4.com"];
+const urls = ["/docencia", "/tramites", "/comedores", "/localizacion"];
 const images = ["../assets/docencia-icon.png", "../assets/tramites-icon.png", "../assets/comedores-icon.png", "../assets/location.png"];
 let currentUrlIndex = 0;
 

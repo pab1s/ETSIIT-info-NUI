@@ -49,7 +49,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/main', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'main.html'));
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'main-carousel.html'));
 });
 
 app.get('/comedores', (req, res) => {
