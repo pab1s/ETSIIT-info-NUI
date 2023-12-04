@@ -50,7 +50,6 @@ function mostrarDias(dates, comedorButton) {
 
     let rect = comedorButton.getBoundingClientRect();
     menuContainer.style.top = `${rect.bottom}px`;
-    menuContainer.style.left = `${rect.left}px`;
 }
 
 
