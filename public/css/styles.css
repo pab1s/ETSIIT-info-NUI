@@ -33,6 +33,24 @@ body {
 }
 
 
+#text-container {
+    font-family: 'Ginebra', serif;
+    font-weight: bold;
+    text-align: center; /* Centra el texto horizontalmente */
+    font-size: 4vw; /* Tamaño de la fuente como un porcentaje del ancho de la ventana */
+    color: #333333; /* Color del texto, ajustable */
+    margin-top: 3vh;
+    margin-bottom: 0; /* Espaciado vertical basado en la altura de la ventana */
+    padding: 1vh 1vw; /* Relleno interno basado en la altura y el ancho de la ventana */
+    border: 0.1vw solid #cccccc; /* Borde proporcional al ancho de la ventana */
+    border-radius: 1vh; /* Radio del borde basado en la altura de la ventana */
+    max-width: 50%; /* Ancho máximo del div para evitar que sea demasiado ancho en pantallas grandes */
+    margin-left: auto; /* Centra el div horizontalmente */
+    margin-right: auto; /* Centra el div horizontalmente */
+}
+
+
+
 /* bottom-bar.css */
 #bottom-bar {
     text-align: center;
@@ -43,6 +61,7 @@ body {
     margin: 0;
     font-size: 1.6vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1vh 0;
@@ -50,10 +69,12 @@ body {
     bottom: 0;
     left: 0;
     z-index: 1000;
+    font-family: 'Arial', sans-serif;
 }
 
 #auth-status {
-    margin-right: 20px;
+    font-size: 1.2em;
+    margin-bottom: 1vh;
 }
 
 #auth-actions button {
@@ -64,7 +85,7 @@ body {
     padding: 1vh 2vw;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
-    font-size: 1.6vh;
+    font-size: 1em;
 }
 
 #auth-actions button:hover {

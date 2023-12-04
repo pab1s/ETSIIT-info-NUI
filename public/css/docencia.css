@@ -9,7 +9,7 @@ body {
 
 .calendario-contenedor {
     width: 80%; /* 80% del ancho de la ventana */
-    height: 80vh; /* 80% del alto de la ventana */
+    height: 30vh; /* 80% del alto de la ventana */
     margin: auto;
     overflow: auto; /* Para el desplazamiento si es necesario */
 }

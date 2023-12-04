@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => {
             console.error('Error al obtener la información del usuario:', error);
-            document.getElementById('auth-status').textContent = 'No autenticado';
+            document.getElementById('auth-status').textContent = '';
             authButton.textContent = 'Iniciar sesión'; // Mantiene o cambia el texto a "Iniciar sesión"
         });
 
