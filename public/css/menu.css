@@ -171,3 +171,35 @@ th {
 #pay-button:hover {
     background-color: #0056b3; /* Color de fondo al pasar el ratón por encima */
 }
+
+#message-area {
+    width: 80%; /* Ancho relativo a la ventana */
+    margin: 2% auto; /* Margen superior e inferior como porcentaje, centrado horizontal */
+    padding: 2%; /* Espaciado interno como porcentaje del ancho */
+    text-align: center; /* Texto centrado */
+    background-color: white; /* Fondo blanco */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2% 4% rgba(0, 0, 0, 0.1); /* Sombra suave, utilizando porcentajes */
+    transition: opacity 0.5s ease; /* Transición suave para el desvanecimiento */
+    opacity: 1; /* Visible inicialmente */
+}
+
+#message-area button {
+    padding: 1% 2%; /* Espaciado interno como porcentaje */
+    font-size: 1em; /* Tamaño de fuente relativo */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor tipo mano */
+}
+
+/* Estilos adicionales para botones de acción */
+#message-area button.confirm {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+}
+
+#message-area button.cancel {
+    background-color: #f44336; /* Rojo */
+    color: white;
+}
+
