@@ -50,6 +50,7 @@ body {
     bottom: 0;
     left: 0;
     z-index: 1000;
+    font-size: 200%;
 }
 
 #auth-status {
@@ -129,7 +130,7 @@ body {
 }
 
 .welcome-message h1 {
-    font-size: 48px;    /* Set the font size to 48px */
+    font-size: 400%;    /* Set the font size to 48px */
     color: #333; /* Set the font color to #333 (dark gray) */
     margin: 20px 0; /* Set the top and bottom margin to 20px */
     text-align: center; /* Center the text */
