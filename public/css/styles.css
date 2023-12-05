@@ -268,3 +268,19 @@ h2 {
     text-align: center;
     margin: 20px 0;
 }
+
+/* styles.css */
+.titulo-estado-seleccion {
+    text-align: center;
+    font-size: 100%; /* Tamaño del texto ajustado al 100% del tamaño predeterminado */
+    font-style: italic; /* Cursiva */
+    color: white; /* Texto en blanco */
+    background-color: rgba(208, 96, 18, 0.9); /* Fondo naranja */
+    border: 1px solid #ccc; /* Borde discreto */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 1%; /* Espaciado interno en porcentaje para una mejor presentación */
+    margin: 2% 0; /* Margen superior e inferior en porcentaje */
+    width: 98%; /* Ancho en porcentaje, ajustado para considerar el padding y el borde */
+    box-sizing: border-box; /* Incluir el padding y el borde en el ancho total */
+}
+

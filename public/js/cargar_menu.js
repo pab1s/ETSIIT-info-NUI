@@ -66,7 +66,7 @@ function mostrarMenus(menus, esPasado) {
     let menusDetailContainer = document.getElementById('menus-detail-container');
     let payButton = document.getElementById('pay-button');
     menusDetailContainer.innerHTML = ''; // Limpiar el contenedor de detalles del menú
-
+    menusDetailContainer.appendChild(crearTituloEstadoSeleccion());
 
     for (const [nombreMenu, platos] of Object.entries(menus)) {
         let tituloMenu = document.createElement('h3');
@@ -127,7 +127,14 @@ function verificarDiaPasado(fechaTexto) {
     return fecha < new Date();
 }
 
+function crearTituloEstadoSeleccion() {
+    let titulo = document.createElement('h1');
+    titulo.innerHTML = `Menú del ${estadoSeleccion.fecha} en ${estadoSeleccion.comedor}:`;
 
+    titulo.classList.add('titulo-estado-seleccion');
+    
+    return titulo;
+}
 
 
 function obtenerMesEnNumero(mesTexto) {
