@@ -155,9 +155,9 @@ th {
 #pay-button {
     display: block; /* Hace que el botón sea un bloque para permitir el centrado */
     margin: 0 auto; /* Centra el botón horizontalmente */
-    width: 30%; /* Ancho del botón como un porcentaje del contenedor */
+    width: 50%; /* Ancho del botón como un porcentaje del contenedor */
     padding: 1% 2%; /* Espaciado interno basado en porcentajes para mantener la proporción */
-    font-size: 1.5em; /* Tamaño de fuente relativo */
+    font-size: 4em; /* Tamaño de fuente relativo */
     color: white; /* Color del texto */
     background-color: rgba(208, 96, 18, 0.9); /* Color de fondo (puedes cambiarlo) */
     border: none; /* Sin bordes */

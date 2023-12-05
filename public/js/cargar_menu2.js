@@ -38,34 +38,32 @@ function mostrarDias(dates, comedorButton) {
     menuContainer.style.display = 'block';
     menuContainer.innerHTML = '';
 
-    Object.keys(dates).forEach(dia => {
-        let esPasado = verificarDiaPasado(dia);
-        let diaButton = document.createElement('button');
-        diaButton.innerText = dia;
-        diaButton.classList.add('dia-button');
-
-        if (esPasado) {
-            diaButton.classList.add('dia-pasado'); // Añadir una clase para días pasados
-        }
-
-        diaButton.onclick = () => {
-            menuContainer.style.display = 'none';
-            estadoSeleccion.fecha = dia;
-            mostrarMenus(dates[dia], esPasado);
-        }
-
-        menuContainer.appendChild(diaButton);
-    });
+    let proximoDiaDisponible = buscarProximoDiaDisponible(dates);
+    if (proximoDiaDisponible) {
+        estadoSeleccion.fecha = proximoDiaDisponible;
+        mostrarMenus(dates[proximoDiaDisponible], false);
+    } else {
+        console.log("No hay días disponibles próximamente.");
+    }
 
     let rect = comedorButton.getBoundingClientRect();
     menuContainer.style.top = `${rect.bottom}px`;
 }
 
+function buscarProximoDiaDisponible(dates) {
+    for (const dia of Object.keys(dates)) {
+        if (!verificarDiaPasado(dia)) {
+            return dia;
+        }
+    }
+    return null;
+}
 
 function mostrarMenus(menus, esPasado) {
     let menusDetailContainer = document.getElementById('menus-detail-container');
     let payButton = document.getElementById('pay-button');
     menusDetailContainer.innerHTML = ''; // Limpiar el contenedor de detalles del menú
+    menusDetailContainer.appendChild(crearTituloEstadoSeleccion());
 
 
     for (const [nombreMenu, platos] of Object.entries(menus)) {
@@ -127,6 +125,14 @@ function verificarDiaPasado(fechaTexto) {
     return fecha < new Date();
 }
 
+function crearTituloEstadoSeleccion() {
+    let titulo = document.createElement('h1');
+    titulo.innerHTML = `Menú del ${estadoSeleccion.fecha} en ${estadoSeleccion.comedor}:`;
+
+    titulo.classList.add('titulo-estado-seleccion');
+    
+    return titulo;
+}
 
 
 
