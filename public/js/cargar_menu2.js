@@ -1,7 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     fetch('/api/comedores')
         .then(response => response.json())
-        .then(data => crearBotonesComedores(data));
+        .then(data => {
+            crearBotonesComedores(data);
+            // Después de crear botones, selecciona el primero
+            const primerBoton = document.querySelector('.comedor-button');
+            if (primerBoton) {
+                seleccionarBoton(primerBoton);
+            }
+        });
 });
 
 let estadoSeleccion = {
@@ -9,19 +16,27 @@ let estadoSeleccion = {
     fecha: null
 };
 
+
 function crearBotonesComedores(data) {
     const comedoresContainer = document.getElementById('comedores-container');
+
+    if (comedoresContainer.children.length > 0) {
+        seleccionarBoton(comedoresContainer.children[0]);
+    }
+
+    let botonIndice = 0;
 
     for (const [nombreComedor, info] of Object.entries(data)) {
         let comedorButton = document.createElement('button');
         comedorButton.innerText = nombreComedor;
         comedorButton.classList.add('comedor-button');
+        comedorButton.dataset.info = JSON.stringify(info);
 
-        comedorButton.onmouseover = () => {
-            estadoSeleccion.comedor = nombreComedor;
-            mostrarDias(info.dates, comedorButton);
+        comedorButton.onclick = () => {
+            seleccionarBoton(comedorButton);
         }
 
+        comedorButton.dataset.index = botonIndice++;
         comedoresContainer.appendChild(comedorButton);
     }
 }
@@ -49,6 +64,19 @@ function mostrarDias(dates, comedorButton) {
     let rect = comedorButton.getBoundingClientRect();
     menuContainer.style.top = `${rect.bottom}px`;
 }
+
+function seleccionarBoton(boton) {
+    document.querySelectorAll('.comedor-button').forEach(b => b.classList.remove('boton-seleccionado'));
+    boton.classList.add('boton-seleccionado');
+    boton.focus(); // Opcional: Enfocar el botón seleccionado
+
+    // Llama a la función que maneja el cambio de selección
+    estadoSeleccion.comedor = boton.innerText;
+    // Suponiendo que `info` esté disponible globalmente o de alguna manera
+    const infoComedor = JSON.parse(boton.dataset.info);
+    mostrarDias(infoComedor.dates, boton);
+}
+
 
 function buscarProximoDiaDisponible(dates) {
     for (const dia of Object.keys(dates)) {
@@ -140,3 +168,25 @@ function obtenerMesEnNumero(mesTexto) {
     const meses = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
     return meses.indexOf(mesTexto) + 1;
 }
+
+document.addEventListener('keydown', function(event) {
+    if (estadoSeleccion.comedor === null) return; // Si no hay selección, no hacer nada
+
+    let indiceActual = parseInt(document.querySelector('.comedor-button.boton-seleccionado')?.dataset.index);
+    if (isNaN(indiceActual)) indiceActual = -1; // Si no hay botón seleccionado, establecer a -1
+
+    if (event.key === 'ArrowRight') {
+        indiceActual++;
+    } else if (event.key === 'ArrowLeft') {
+        indiceActual--;
+    } else {
+        return; // Si la tecla no es flecha izquierda o derecha, no hacer nada
+    }
+
+    const botones = document.querySelectorAll('.comedor-button');
+    if (indiceActual >= botones.length) indiceActual = 0;
+    if (indiceActual < 0) indiceActual = botones.length - 1;
+
+    seleccionarBoton(botones[indiceActual]);
+});
+

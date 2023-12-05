@@ -183,6 +183,15 @@ th {
     opacity: 1; /* Visible inicialmente */
 }
 
+.boton-seleccionado {
+    transform: scale(1.1); /* Aumentar el tamaño del botón */
+    border: 4px solid #FA7D07; /* Borde más grueso y de color naranja */
+    box-shadow: 0 0 10px #FA7D07; /* Sombra para más énfasis */
+    box-sizing: border-box;
+    outline: none;
+    transition: transform 0.3s ease; /* Animación suave al cambiar de tamaño */
+}
+
 #message-area button {
     padding: 1% 2%; /* Espaciado interno como porcentaje */
     font-size: 1em; /* Tamaño de fuente relativo */

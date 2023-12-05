@@ -1,7 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     fetch('/api/comedores')
         .then(response => response.json())
-        .then(data => crearBotonesComedores(data));
+        .then(data => {
+            crearBotonesComedores(data);
+            // Después de crear botones, selecciona el primero
+            const primerBoton = document.querySelector('.comedor-button');
+            if (primerBoton) {
+                seleccionarBoton(primerBoton, true);
+            }
+        });
 });
 
 let estadoSeleccion = {
@@ -16,10 +23,10 @@ function crearBotonesComedores(data) {
         let comedorButton = document.createElement('button');
         comedorButton.innerText = nombreComedor;
         comedorButton.classList.add('comedor-button');
+        comedorButton.dataset.info = JSON.stringify(info);
 
-        comedorButton.onmouseover = () => {
-            estadoSeleccion.comedor = nombreComedor;
-            mostrarDias(info.dates, comedorButton);
+        comedorButton.onclick = () => {
+            seleccionarBoton(comedorButton, true);
         }
 
         comedoresContainer.appendChild(comedorButton);
@@ -43,6 +50,8 @@ function mostrarDias(dates, comedorButton) {
         let diaButton = document.createElement('button');
         diaButton.innerText = dia;
         diaButton.classList.add('dia-button');
+        diaButton.dataset.dia = dia; 
+        diaButton.dataset.info = JSON.stringify(dates[dia]);
 
         if (esPasado) {
             diaButton.classList.add('dia-pasado'); // Añadir una clase para días pasados
@@ -50,8 +59,7 @@ function mostrarDias(dates, comedorButton) {
 
         diaButton.onclick = () => {
             menuContainer.style.display = 'none';
-            estadoSeleccion.fecha = dia;
-            mostrarMenus(dates[dia], esPasado);
+            seleccionarBoton(diaButton, false);
         }
 
         menuContainer.appendChild(diaButton);
@@ -141,3 +149,101 @@ function obtenerMesEnNumero(mesTexto) {
     const meses = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
     return meses.indexOf(mesTexto) + 1;
 }
+
+function seleccionarBoton(boton, esComedor) {
+    // Eliminar la clase 'boton-seleccionado' de todos los botones relevantes
+    if (esComedor) {
+        document.querySelectorAll('.comedor-button').forEach(b => b.classList.remove('boton-seleccionado'));
+        estadoSeleccion.comedor = boton.innerText; // Actualizar el comedor seleccionado
+        const infoComedor = JSON.parse(boton.dataset.info); // Obtener información del comedor
+        mostrarDias(infoComedor.dates, boton); // Mostrar los días para el comedor seleccionado
+        // Seleccionar el primer día no pasado
+        const primerDiaNoPasado = encontrarPrimerDiaNoPasado(infoComedor.dates);
+        setTimeout(() => {
+            const botonDia = document.querySelector(`.dia-button[data-dia="${primerDiaNoPasado}"]`);
+            if (botonDia) {
+                seleccionarBoton(botonDia, false); // Falso porque es un botón de día
+            }
+        }, 0);
+
+    } else {
+        document.querySelectorAll('.dia-button').forEach(b => b.classList.remove('boton-seleccionado'));
+        estadoSeleccion.fecha = boton.innerText; // Actualizar la fecha seleccionada
+        const infoDia = JSON.parse(boton.dataset.info);
+        mostrarMenus(infoDia, boton);
+    }
+
+    boton.classList.add('boton-seleccionado'); // Resaltar el botón seleccionado
+    boton.focus(); // Enfocar el botón seleccionado
+}
+function mostrarDiasComedorSeleccionado() {
+    const comedorSeleccionado = document.querySelector('.comedor-button.boton-seleccionado');
+    console.log(comedorSeleccionado.dataset.info);
+    if (comedorSeleccionado) {
+        const infoComedor = JSON.parse(comedorSeleccionado.dataset.info);
+        mostrarDias(infoComedor.dates, comedorSeleccionado); // Mostrar los días para el comedor seleccionado
+    }
+}
+
+function encontrarPrimerDiaNoPasado(dates) {
+    for (const dia of Object.keys(dates)) {
+        if (!verificarDiaPasado(dia)) {
+            return dia; // Retorna el primer día no pasado
+        }
+    }
+    return Object.keys(dates)[0]; // Retorna el primer día si todos son pasados
+}
+
+
+let enfoqueEnComedores = true; // Para saber si el enfoque está en los comedores o en los días
+
+document.addEventListener('keydown', function(event) {
+    const botonesComedores = document.querySelectorAll('.comedor-button');
+    const botonesDias = document.querySelectorAll('.dia-button');
+    let indiceActual, botones;
+
+    if (enfoqueEnComedores) {
+        botones = botonesComedores;
+    } else {
+        botones = botonesDias;
+    }
+
+    indiceActual = Array.from(botones).findIndex(boton => boton.classList.contains('boton-seleccionado'));
+
+    event.preventDefault();
+
+    switch (event.key) {
+        case 'ArrowRight':
+            indiceActual = (indiceActual + 1) % botones.length;
+            break;
+        case 'ArrowLeft':
+            indiceActual = (indiceActual - 1 + botones.length) % botones.length;
+            break;
+        case 'ArrowDown':
+            if (enfoqueEnComedores) {
+                mostrarDiasComedorSeleccionado(); // Implementar esta función
+                enfoqueEnComedores = false;
+                const primerBoton = document.querySelector('.dia-button');
+                if (primerBoton) {
+                    seleccionarBoton(primerBoton);
+                }
+                return;
+            }
+            break;
+        case 'ArrowUp':
+            if (!enfoqueEnComedores) {
+                const menuContainer = document.getElementById('menu-container');
+                if (menuContainer) {
+                    menuContainer.style.display = 'none'; // Ocultar el menú de días
+                }
+                enfoqueEnComedores = true;
+                return;
+            }
+            break;
+        default:
+            return;
+    }
+
+    seleccionarBoton(botones[indiceActual], enfoqueEnComedores);
+});
+
