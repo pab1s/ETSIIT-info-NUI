@@ -11,8 +11,8 @@
     <div class="content">
     <div class="icon-container">
         <img src="../assets/etsiit-logo.png" alt="Icono ETSIIT">
-    </div>
-    <div id="text-container"></div>
+
+    <div id="welcome-message"><h1></h1></div>
     <div class="calendario-contenedor">
         <div id="calendario" class="calendario">
             <!-- El calendario se construirá aquí -->
@@ -35,7 +35,7 @@
         fetch('/api/userinfo')
         .then(response => response.json())
         .then(data => {
-            const titulo = document.getElementById('text-container');
+            const titulo = document.querySelector('#welcome-message h1');;
             titulo.textContent = `Horario de ${data.nombre} ${data.apellidos}`;
         })
         .catch(error => console.error('Error:', error));
