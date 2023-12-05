@@ -215,11 +215,11 @@ app.get('/expediente', (req, res) => {
 });
 
 app.get('/pedir-cita', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'pedirCita.html')); 
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'pedircita.html')); 
 });
 
 app.get('/mis-citas', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'misCitas.html')); 
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'miscitas.html')); 
 });
 
 
