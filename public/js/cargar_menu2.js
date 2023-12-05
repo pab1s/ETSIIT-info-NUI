@@ -175,6 +175,8 @@ document.addEventListener('keydown', function(event) {
     let indiceActual = parseInt(document.querySelector('.comedor-button.boton-seleccionado')?.dataset.index);
     if (isNaN(indiceActual)) indiceActual = -1; // Si no hay botón seleccionado, establecer a -1
 
+    event.preventDefault();
+    
     if (event.key === 'ArrowRight') {
         indiceActual++;
     } else if (event.key === 'ArrowLeft') {
