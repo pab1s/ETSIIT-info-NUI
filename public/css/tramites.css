@@ -129,49 +129,69 @@ body {
 }
 
 
-#body-citas {
-    height: 100%;
-    margin: 0;
+#agenda-citas-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    background-color: #f0f0f0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
 }
 
-#container-citas {
-    text-align: center;
+#fechas-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas más grandes */
+    gap: 10px; /* Espacio entre los elementos */
+    margin-bottom: 20px;
 }
 
-#titulo-citas {
-    color: #333;
-    margin-bottom: 50px;
-}
-
-.button-citas {
-    display: inline-block;
-    margin: 20px;
-    padding: 20px 40px;
-    font-size: 2vw;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
+.fecha {
+    padding: 20px;
+    background-color: orange;
+    border: 2px solid transparent; /* Borde transparente para evitar saltos al cambiar a naranja */
+    border-radius: 10px; /* Esquinas redondeadas */
     cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
+    text-align: center; /* Asegura que el texto esté centrado */
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    text-align: center; /* Para asegurar el centrado del texto */
+    font-size: 45px;
+    width: 800px;
+    height: 100px;
 }
 
-.button-citas:hover {
-    background-color: #0056b3;
+.fecha:hover {
+    background-color: rgb(0, 187, 255); /* Cambia a azul al pasar el cursor */
+    border-color: orange; /* Borde naranja al pasar el cursor */
 }
 
-@media (min-width: 2560px) {
-    .button-citas {
-        padding: 30px 60px;
-        font-size: 1.5vw;
-    }
+.oculto {
+    display: none; /* Este contenedor estará oculto */
+  }
+  
+/* Cuando el contenedor tenga contenido, puedes tener una clase para mostrarlo */
+.visible1 {
+    padding: 10px; /* Espaciado interno */
+    margin-top: 20px; /* Margen superior para separarlo del contenido anterior */
+    background-color: lightblue; /* Color de fondo suave para destacarlo, ajusta según tu paleta de colores */
+    border: 1px solid orange; /* Borde para que coincida con el estilo de citas-disponibles */
+    border-radius: 5px; /* Esquinas redondeadas, menos pronunciadas que en citas-disponibles */
+    text-align: center; /* Centrar el título */
 }
+
+.visible2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+    padding: 20px;
+    background-color: blue;
+    border: 2px solid orange;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+  
+
 
 #body-mis-citas {
     height: 100%;
@@ -355,6 +375,9 @@ body {
     transform: scale(1.1); /* Aumenta ligeramente el tamaño del contenido del iframe */
     transform-origin: 0 0; /* Asegúrate de que el contenido se escale desde la parte superior izquierda */
 }
+
+
+
 
 
 
