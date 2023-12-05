@@ -1,8 +1,8 @@
 
 
 // Array of URLs
-const urls = ["/pedir-cita", "/mis-citas", "/fotoUGR"];
-const images = ["../assets/PedirCita.png", "../assets/ConsultarCitas.png", "../assets/FotoUGR.png"];
+const urls = ["/pedir-cita", "/mis-citas", "/fotoUGR" , "/expediente"];
+const images = ["../assets/PedirCita.png", "../assets/ConsultarCitas.png", "../assets/FotoUGR.png" , "../assets/Expediente.png"];
 let currentUrlIndex = 0;
 
 function getNextUrl() {
