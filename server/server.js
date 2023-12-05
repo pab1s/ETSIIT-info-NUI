@@ -2,7 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const sqlite3 = require('sqlite3');
 const path = require('path');
-const { eliminarCitasPasadas, agregarNuevasCitas } = require('../public/js/citasManager');
+const { inicializarCitas } = require('../public/js/citasManager');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
@@ -195,10 +195,7 @@ app.get('/logout', (req, res) => {
 });
 
 db.serialize(() => {
-    agregarNuevasCitas(db);
-    eliminarCitasPasadas(db);
-    
-
+    inicializarCitas(db)
     app.listen(3000, () => {
         console.log('Servidor en funcionamiento en http://localhost:3000');
     });
@@ -286,7 +283,7 @@ app.get('/api/fechas-citas-disponibles', (req, res) => {
         WHERE fecha >= ?
         AND strftime('%w', fecha) NOT IN ('0', '6')
         ORDER BY fecha
-        LIMIT 5
+        LIMIT 6
     `;
 
     db.all(sql, [hoy], (err, rows) => {
@@ -299,6 +296,7 @@ app.get('/api/fechas-citas-disponibles', (req, res) => {
         }
     });
 });
+
 
 
 
