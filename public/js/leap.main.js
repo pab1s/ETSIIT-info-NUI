@@ -3,7 +3,8 @@ class LeapMotionController {
     this.controller = new Leap.Controller();
     this.tapCooldown = false;
     this.forwardGestureDetected = false;
-    
+    this.leftGestureDetected = false;
+    this.lastClickTime = 0;
   }
 
   onInit() {
@@ -22,26 +23,41 @@ class LeapMotionController {
     console.log('Leap Motion se ha desconectado.');
   }
 
+  isHandValid(hand) {
+    return hand.fingers.filter(finger => finger.type !== 0).every(finger => {
+        return finger.extended && finger.direction[1] < -0.7;
+    });
+  }
+
+
   onFrame(frame) {
     if (frame.hands.length > 0) {
       const hand = frame.hands[0];
 
-      // Gestos para cambiar de elemento en la lista
-      if (!this.isInCooldown && hand.fingers.filter(finger => !finger.extended).length === 4) {
-        this.clickNextButtonInList();
-        this.startCooldown();
+      // Gestos para moverse en la lista
+      if (this.isHandValid(hand)) {
+        const currentTime = new Date().getTime();
+        if (currentTime - this.lastClickTime > 400) {
+            this.clickNextButtonInList();
+            this.lastClickTime = currentTime;
+        }
       }
 
       // Gestos de swipe
-      if (hand.palmPosition[0] < -800) {
-        this.clickBackButton();
+      if (!this.leftGestureDetected && hand.palmVelocity[0] < -300) { // Ajusta la sensibilidad según sea necesario
+        this.leftGestureDetected = true;
       }
 
-      // Gestos de "tap in"
-      if (!this.forwardGestureDetected && hand.palmVelocity[2] < -800) {
+      if (this.leftGestureDetected && hand.palmVelocity[0] > 300) { // Ajusta la sensibilidad según sea necesario
+        this.clickBackButton();
+        this.leftGestureDetected = false;
+      }
+
+      // Gestos de tap in
+      if (!this.forwardGestureDetected && hand.palmVelocity[2] < -700) {
         this.forwardGestureDetected = true;
       }
-      if (this.forwardGestureDetected && hand.palmVelocity[2] > 800) {
+      if (this.forwardGestureDetected && hand.palmVelocity[2] > 700) {
         this.clickCurrentItemButton();
         this.forwardGestureDetected = false;
       }
@@ -53,6 +69,13 @@ class LeapMotionController {
     setTimeout(() => {
       this.isInCooldown = false;
     }, 400); // Cooldown de 1 segundo, ajustable según necesidad
+  }
+
+  clickBackButton() {
+    const backButton = document.getElementById('vuelta-atras');
+    if (backButton) {
+      backButton.click();
+    }
   }
 
 

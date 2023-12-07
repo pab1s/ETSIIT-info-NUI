@@ -50,7 +50,7 @@ class LeapMotionController {
     this.isInCooldown = true;
     setTimeout(() => {
       this.isInCooldown = false;
-    }, 300); // Cooldown de 1 segundo, ajustable según necesidad
+    }, 400); // Cooldown de 1 segundo, ajustable según necesidad
   }
 
   startTapCooldown() {
