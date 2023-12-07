@@ -1,17 +1,11 @@
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
     height: 100vh; /* Altura completa de la ventana */
 }
 
-
-.icon-container {
-    position: relative; /* Position it relative to the first positioned (not static) ancestor element */
-    top: 0; /* Align to the top */
-    left: 0; /* Align to the left */
-    z-index: 1000;
-}
 
 .content {
     justify-content: center; /* Centra horizontalmente */
@@ -21,7 +15,7 @@ body {
 }
 
 #contenedor-botones {
-    width: 70%;
+    width: 60%;
     height: 72%;
     overflow-y: auto;
     display: flex;
@@ -30,7 +24,7 @@ body {
 }
 
 .profesor-button {
-    font-size: 4.5em;
+    font-size: 4em;
     margin: 1% 0; /* Menos margen */
     width: 90%; /* Más estrecho */
     height: 30%; /* Aumentar la altura para cada botón */
@@ -59,7 +53,7 @@ body {
 }
 
 #info-despacho {
-    width: 30%;
+    width: 40%;
     font-size: 3em;
     display: flex;
     align-items: center; /* Alineación vertical al centro */
