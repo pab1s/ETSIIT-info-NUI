@@ -81,19 +81,36 @@ class LeapMotionController {
 
   // Función para hacer clic en el botón "Siguiente"
   clickNextButtonInList() {
-    const nextButton = document.querySelector('.responsive-slider .next'); // Asumiendo que el botón "Siguiente" tiene la clase 'next'
-    if (nextButton) {
-      nextButton.click();
-    }
+    var event = new KeyboardEvent('keydown', {
+      key: 'ArrowRight',
+      code: 'ArrowRight',
+      keyCode: 39, // código de la tecla de flecha derecha
+      which: 39,
+      shiftKey: false,
+      ctrlKey: false,
+      altKey: false
+    });
+  
+    // Despachar el evento
+    document.dispatchEvent(event);
   }
 
   // Función para hacer clic en el botón del elemento actual
   clickCurrentItemButton() {
-    const currentItemButton = document.querySelector('.responsive-slider .act .act-button'); // Asumiendo que el botón del elemento actual tiene la clase 'act-button'
-    if (currentItemButton) {
-      currentItemButton.click();
-    }
-  }
+    // Crear un nuevo evento de teclado para la tecla de flecha hacia arriba
+    var event = new KeyboardEvent('keydown', {
+      key: 'ArrowUp',
+      code: 'ArrowUp',
+      keyCode: 38, // Código de la tecla de flecha hacia arriba
+      which: 38,
+      shiftKey: false,
+      ctrlKey: false,
+      altKey: false
+    });
+  
+    // Despachar el evento
+    document.dispatchEvent(event);
+  }  
 
 
   start() {
