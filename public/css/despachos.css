@@ -19,8 +19,9 @@ body {
 }
 
 #contenedor-botones {
-    width: 60%;
-    height: 72%;
+    margin-top: -50%;
+    width: 50%;
+    height: 70%;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
