@@ -6,6 +6,10 @@ body {
     height: 100vh; /* Altura completa de la ventana */
 }
 
+.icon-container {
+    /* Añade margen si es necesario */
+    margin-top: 30%; /* Ejemplo de margen */
+}
 
 .content {
     justify-content: center; /* Centra horizontalmente */
