@@ -1,12 +1,3 @@
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-}
-
 .calendario-contenedor {
     width: 90%; /* 80% del ancho de la ventana */
     height: 40vh; /* 80% del alto de la ventana */
