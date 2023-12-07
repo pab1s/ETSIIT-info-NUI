@@ -165,6 +165,11 @@ body {
     border-color: #d06012; /* Borde naranja al pasar el cursor */
 }
 
+.fecha.selected {
+    background-color: red;
+  }
+  
+
 .oculto {
     display: none; /* Este contenedor estará oculto */
   }
