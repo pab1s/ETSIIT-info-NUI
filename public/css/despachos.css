@@ -1,0 +1,68 @@
+body {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Altura completa de la ventana */
+}
+
+
+.icon-container {
+    position: relative; /* Position it relative to the first positioned (not static) ancestor element */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    z-index: 1000;
+}
+
+.content {
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Altura completa de la ventana */
+    display: flex;
+}
+
+#contenedor-botones {
+    width: 70%;
+    height: 72%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profesor-button {
+    font-size: 4.5em;
+    margin: 1% 0; /* Menos margen */
+    width: 90%; /* Más estrecho */
+    height: 30%; /* Aumentar la altura para cada botón */
+    padding: 10px;
+    background-color: #FA7D07;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box; /* Asegurar que el padding no afecte el ancho total */
+    border-radius: 10px; /* Efecto redondeado */
+}
+
+.profesor-button:hover {
+    background-color: #FA5407;
+}
+
+.profesor-seleccionado {
+    transform: scale(1.1);
+    border: 6px solid black;
+    box-shadow: 0 0 10px #FA7D07;
+    transition: transform 0.3s ease;
+}
+
+.departamento {
+    font-size: 0.8em; /* Tamaño de fuente más pequeño */
+}
+
+#info-despacho {
+    width: 30%;
+    font-size: 3em;
+    display: flex;
+    align-items: center; /* Alineación vertical al centro */
+    justify-content: center; /* Alineación horizontal al centro */
+    padding: 20px;
+}

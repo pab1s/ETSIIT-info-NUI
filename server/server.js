@@ -406,6 +406,10 @@ app.get('/fotoUGR', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'html', 'mifotoUgr.html')); 
 });
 
+app.get('/despachos', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'despachos.html')); 
+});
+
 app.get('/api/informacion-usuario', (req, res) => {
     try {
         const token = req.cookies.authToken;
@@ -525,6 +529,17 @@ app.post('/api/realizarPago', (req, res) => {
     } catch (error) {
         res.status(401).json({ error: 'No autenticado' });
     }
+});
+
+app.get('/api/despachos', (req, res) => {
+    // Suponiendo que usas una base de datos SQLite
+    db.all('SELECT nombre, departamento, despacho FROM profesores ORDER BY nombre ASC', [], (err, rows) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        }
+        res.json(rows);
+    });
 });
 
 

@@ -1,7 +1,7 @@
 
 
 // Array of URLs
-const urls = ["/profesorado", "/clases", "/comunes"];
+const urls = ["/despachos", "/clases", "/comunes"];
 const images = ["../assets/profesorado-icon.png", "../assets/clases-icon.png", "../assets/espacios-comunes-icon.png"];
 let currentUrlIndex = 0;
 
