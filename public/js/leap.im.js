@@ -1,8 +1,12 @@
 class LeapMotionController {
   constructor() {
     this.controller = new Leap.Controller();
-    this.isInTimeout = false;
-    this.lastPosition = null;}
+    this.selectedButton = 'guest'; // Comienza con el botón 'guest' seleccionado
+    this.toggleButtonColor(); // Actualizar el color al inicio
+    this.tapCooldown = false;
+    this.forwardGestureDetected = false;
+    
+  }
 
   onInit() {
     console.log('Leap Motion se ha inicializado.');
@@ -23,83 +27,85 @@ class LeapMotionController {
   onFrame(frame) {
     if (frame.hands.length > 0) {
       const hand = frame.hands[0];
-      const position = hand.palmPosition;
-      const ciertaDistanciaX = 13;
-      const ciertaDistanciaXder = 15;
-  
-      // Movimiento hacia la izquierda para invitado
-      if (this.lastPosition && position[0] < this.lastPosition[0] - ciertaDistanciaX) {
-        this.clickGuestAccessButton();
+
+      if (!this.isInCooldown && hand.fingers.filter(finger => !finger.extended && finger.type !== 0).length === 4) {
+        this.toggleSelectedButton();
+        this.startCooldown(); // Iniciar el cooldown después de ejecutar la acción
       }
-      // Movimiento hacia la derecha para autenticarse
-      if (this.lastPosition && position[0] > this.lastPosition[0] + ciertaDistanciaXder) {
-        this.clickGuestAccessIDButton();
+
+      // Detectar la primera parte del gesto "tap in" (movimiento hacia adelante)
+      if (!this.forwardGestureDetected && hand.palmVelocity[2] < -800) {
+        this.forwardGestureDetected = true;
       }
+
+      // Detectar la segunda parte del gesto "tap in" (movimiento hacia atrás)
+      if (this.forwardGestureDetected && hand.palmVelocity[2] > 800) {
+        this.clickSelectedButton();
+        this.forwardGestureDetected = false; // Resetear para el próximo gesto
+      }
+    }
+  }
+
+  startCooldown() {
+    this.isInCooldown = true;
+    setTimeout(() => {
+      this.isInCooldown = false;
+    }, 300); // Cooldown de 1 segundo, ajustable según necesidad
+  }
+
+  startTapCooldown() {
+    this.tapCooldown = true;
+    setTimeout(() => {
+      this.tapCooldown = false;
+    }, 150); // Cooldown de 500 ms
+  }
+
+  toggleSelectedButton() {
+    this.selectedButton = this.selectedButton === 'guest' ? 'id' : 'guest';
+    this.toggleButtonColor();
+  }
+
+  toggleButtonColor() {
+    const guestButton = document.getElementById('guest-access');
+    const idButton = document.getElementById('authenticate');
   
-      // Actualiza la última posición de la mano
-      this.lastPosition = position;
+    if (guestButton && idButton) {
+      // Quitar la clase 'selected' de ambos botones
+      guestButton.classList.remove('selected');
+      idButton.classList.remove('selected');
+  
+      // Añadir la clase 'selected' al botón activo
+      if (this.selectedButton === 'guest') {
+        guestButton.classList.add('selected');
+      } else if (this.selectedButton === 'id') {
+        idButton.classList.add('selected');
+      }
     }
   }
   
+
+  clickSelectedButton() {
+    if (this.selectedButton === 'guest') {
+      this.clickGuestAccessButton();
+    } else if (this.selectedButton === 'id') {
+      this.clickGuestAccessIDButton();
+    }
+  }
+
   clickGuestAccessButton() {
     const guestAccessButton = document.getElementById('guest-access');
-    this.startTimeout();  
     if (guestAccessButton) {
       guestAccessButton.click();
     }
   }
   
   clickGuestAccessIDButton() {
-    // Primero, intentamos cerrar cualquier stream de cámara activo.
-    this.closeCameraStreams();
-  
-    // Luego, desactivamos el Leap Motion.
-    this.deactivateLeapMotion();
-  
-    // Esperamos un poco para que el hardware de la cámara se libere tras desconectar el Leap Motion.
-    setTimeout(() => {
-      // Ahora intentamos acceder al botón de autenticación.
-      const guestAccessButton = document.getElementById('authenticate');
-      if (guestAccessButton) {
-        guestAccessButton.click();
-      }
-  
-      // Después de intentar la autenticación, esperamos 10 segundos antes de reactivar el Leap Motion.
-      setTimeout(() => {
-        this.activateLeapMotion();
-      }, 10000);
-    }, 1000); // Retraso para dar tiempo a la cámara de liberarse, ajusta este tiempo según sea necesario.
+    const idAccessButton = document.getElementById('authenticate');
+    if (idAccessButton) {
+      idAccessButton.click();
+    }
   }
-  
-  closeCameraStreams() {
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(stream => {
-        stream.getTracks().forEach(track => {
-          track.stop();
-        });
-      })
-      .catch(err => console.error('Error al cerrar streams de la cámara:', err));
-  }
-  
-  deactivateLeapMotion() {
-    this.controller.disconnect(); // Desconectar el Leap Motion
-  }
-  
-  activateLeapMotion() {
-    // Antes de reconectar el Leap Motion, asegurémonos de que los streams de la cámara están cerrados.
-    this.closeCameraStreams();
-    setTimeout(() => {
-      this.controller.connect(); // Reconectar el Leap Motion
-    }, 1000); // Retraso para dar tiempo a la cámara de ser cerrada, ajusta este tiempo según sea necesario.
-  }
-  
-  startTimeout() {
-    this.isInTimeout = true;
-    setTimeout(() => {
-      this.isInTimeout = false;
-    }, 3000); // Espera de 1 segundo y medio
-  }
-    
+
   start() {
     this.controller.on('init', this.onInit.bind(this));
     this.controller.on('exit', this.onExit.bind(this));

@@ -201,6 +201,11 @@ h2 {
     vertical-align: middle;
 }
 
+.button-container button.selected {
+    background-color: red; /* O el color rojo que prefieras */
+}
+
+
 #webcam-container {
     position: relative;
     top: -20%; /* Alineado justo debajo del botón */
