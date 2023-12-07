@@ -1,3 +1,96 @@
+/* GENERAL STYLES */ 
+
+body {
+    height: 3840px;
+    width: 2160px;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5vw;
+}
+
+body {
+    display: flex-inline;
+    flex-direction: column;
+}
+
+.welcome-message h1 {
+    font-size: 300%;    /* Set the font size to 48px */
+    color: #333; /* Set the font color to #333 (dark gray) */
+    text-align: center; /* Center the text */
+}
+
+.icon-container {
+    position: relative; /* Position it relative to the first positioned (not static) ancestor element */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    z-index: 1000;
+}
+
+.icon-container img {
+    width: 50%; /* Adjust as needed */
+    height: auto; /* Adjust as needed */
+}
+
+#text-container {
+    font-family: 'Ginebra', serif;
+    font-weight: bold;
+    text-align: center; /* Centra el texto horizontalmente */
+    font-size: 4vw; /* Tamaño de la fuente como un porcentaje del ancho de la ventana */
+    color: rgb(255, 255, 255); /* Color del texto, ajustable */
+    margin-top: 3vh;
+    margin-bottom: 0; /* Espaciado vertical basado en la altura de la ventana */
+    padding: 1vh 1vw; /* Relleno interno basado en la altura y el ancho de la ventana */
+    background-color:#d06012;
+    border: 0.1vw solid #cccccc; /* Borde proporcional al ancho de la ventana */
+    border-radius: 1vh; /* Radio del borde basado en la altura de la ventana */
+    max-width: 50%; /* Ancho máximo del div para evitar que sea demasiado ancho en pantallas grandes */
+    margin-left: auto; /* Centra el div horizontalmente */
+    margin-right: auto; /* Centra el div horizontalmente */
+}
+
+#bottom-bar {
+    text-align: center;
+    background-color: #d06012; /* Usar RGBA para un poco de transparencia */
+    color: white;
+    width: 100vw; /* Ancho completo de la ventana gráfica */
+    height: 10vh; /* Altura ajustada al diseño */
+    margin: 0;
+    font-size: 1.6vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    font-family: 'Arial', sans-serif;
+}
+
+#auth-status {
+    font-size: 1.2em;
+    margin-bottom: 1vh;
+}
+
+#auth-actions button {
+    background-color: white;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 2vh;
+    padding: 1vh 2vw;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 1em;
+}
+
+#auth-actions button:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
 /* Estilos específicos para la página de Trámites Administrativos */
 #Tramites-container {
     display: flex;
@@ -52,7 +145,7 @@
 
 .fecha {
     padding: 20px;
-    background-color: orange;
+    background-color:  #d06012;
     border: 2px solid transparent; /* Borde transparente para evitar saltos al cambiar a naranja */
     border-radius: 10px; /* Esquinas redondeadas */
     cursor: pointer;
@@ -69,8 +162,13 @@
 
 .fecha:hover {
     background-color: rgb(0, 187, 255); /* Cambia a azul al pasar el cursor */
-    border-color: orange; /* Borde naranja al pasar el cursor */
+    border-color: #d06012; /* Borde naranja al pasar el cursor */
 }
+
+.fecha.selected {
+    background-color: red;
+  }
+  
 
 .oculto {
     display: none; /* Este contenedor estará oculto */
@@ -81,7 +179,7 @@
     padding: 10px; /* Espaciado interno */
     margin-top: 20px; /* Margen superior para separarlo del contenido anterior */
     background-color: lightblue; /* Color de fondo suave para destacarlo, ajusta según tu paleta de colores */
-    border: 1px solid orange; /* Borde para que coincida con el estilo de citas-disponibles */
+    border: 1px solid  #d06012; /* Borde para que coincida con el estilo de citas-disponibles */
     border-radius: 5px; /* Esquinas redondeadas, menos pronunciadas que en citas-disponibles */
     text-align: center; /* Centrar el título */
 }
@@ -93,7 +191,7 @@
     width: 100%;
     padding: 20px;
     background-color: blue;
-    border: 2px solid orange;
+    border: 2px solid #d06012;
     border-radius: 10px;
     margin-top: 20px;
 }
@@ -120,7 +218,8 @@
 }
 
 #lista-citas {
-    margin-top: 20px;
+    width: 70%;
+    margin-left: 15%;
 }
 
 .cita-item {
@@ -128,6 +227,7 @@
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 5px;
+    margin: 5%;
 }
 
 .button-cancelar {
@@ -145,6 +245,11 @@
     background-color: #c82333;
 }
 
+.button-cancelar.selected {
+    background-color: green;
+    color: white; /* Para mejor contraste de texto */
+  }
+  
 @media (min-width: 2560px) {
     .button-cancelar {
         font-size: 0.8vw;
@@ -289,7 +394,7 @@
 
 /* Estilos específicos para la página expediente.html */
 .expediente-page {
-    background-color: orange; /* Fondo de color naranja */
+    background-color: #d06012; /* Fondo de color naranja */
     margin: 0; /* Elimina el margen predeterminado del cuerpo */
 }
 
