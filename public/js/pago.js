@@ -18,7 +18,7 @@ function checkAndPay() {
                 payButton.style.display='none';
                 messageContainer.innerHTML = `
                     <p>¿Confirmas el pago del menú (3.50€)?</p>
-                    <button onclick="realizarPago()">✅</button>
+                    <button id="pay-button2" onclick="realizarPago()">✅</button>
                     <button onclick="cancelarPago()">❌</button>
                     <p>Saldo restante: ${data.saldo}€</p>
                 `;
