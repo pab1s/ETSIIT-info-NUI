@@ -50,13 +50,49 @@ class LeapMotionController {
   }
   
   clickGuestAccessIDButton() {
-    this.startTimeout();
-    const guestAccessButton = document.getElementById('authenticate');
-    if (guestAccessButton) {
-      guestAccessButton.click();
-    }
+    // Primero, intentamos cerrar cualquier stream de cámara activo.
+    this.closeCameraStreams();
+  
+    // Luego, desactivamos el Leap Motion.
+    this.deactivateLeapMotion();
+  
+    // Esperamos un poco para que el hardware de la cámara se libere tras desconectar el Leap Motion.
+    setTimeout(() => {
+      // Ahora intentamos acceder al botón de autenticación.
+      const guestAccessButton = document.getElementById('authenticate');
+      if (guestAccessButton) {
+        guestAccessButton.click();
+      }
+  
+      // Después de intentar la autenticación, esperamos 10 segundos antes de reactivar el Leap Motion.
+      setTimeout(() => {
+        this.activateLeapMotion();
+      }, 10000);
+    }, 1000); // Retraso para dar tiempo a la cámara de liberarse, ajusta este tiempo según sea necesario.
   }
-
+  
+  closeCameraStreams() {
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        stream.getTracks().forEach(track => {
+          track.stop();
+        });
+      })
+      .catch(err => console.error('Error al cerrar streams de la cámara:', err));
+  }
+  
+  deactivateLeapMotion() {
+    this.controller.disconnect(); // Desconectar el Leap Motion
+  }
+  
+  activateLeapMotion() {
+    // Antes de reconectar el Leap Motion, asegurémonos de que los streams de la cámara están cerrados.
+    this.closeCameraStreams();
+    setTimeout(() => {
+      this.controller.connect(); // Reconectar el Leap Motion
+    }, 1000); // Retraso para dar tiempo a la cámara de ser cerrada, ajusta este tiempo según sea necesario.
+  }
+  
   startTimeout() {
     this.isInTimeout = true;
     setTimeout(() => {
