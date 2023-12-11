@@ -81,6 +81,7 @@ function mostrarMenus(menus, esPasado) {
         menusDetailContainer.appendChild(tituloMenu);
 
         let tabla = document.createElement('table');
+        tabla.classList.add('styled-table');
         tabla.innerHTML = `<tr><th>Item</th><th>Descripción</th><th>Alérgenos</th></tr>`;
 
         platos.forEach(plato => {

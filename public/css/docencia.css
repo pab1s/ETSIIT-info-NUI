@@ -7,7 +7,7 @@
 }
 
 h1 {
-    font-family: 'Arial', sans-serif; /* Elige la fuente que prefieras */
+    font-family: "Gill Sans", sans-serif; /* Elige la fuente que prefieras */
     font-size: 2em; /* Ajusta el tamaño según tus preferencias */
     text-align: center;
     margin: 20px 0; /* Espacio arriba y abajo del título */
@@ -15,7 +15,6 @@ h1 {
 
 .calendario {
     font-size: 0.8vw;
-
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* Ajusta según tus necesidades */
     grid-template-rows: repeat(28, 1fr);

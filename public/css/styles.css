@@ -1,11 +1,14 @@
 /* GENERAL STYLES */ 
+
+@import url('https://fonts.cdnfonts.com/css/gill-sans-mt-2');
+
 body {
     height: 3840px;
     width: 2160px;
     margin: 0;
     padding: 0;
     background-color: #ffffff;
-    font-family: 'Arial', sans-serif;
+    font-family: "Gill Sans", sans-serif;
     font-size: 1.5vw;
 }
 
@@ -34,7 +37,7 @@ main {
 
 
 #text-container {
-    font-family: 'Ginebra', serif;
+    font-family: "Gill Sans", sans-serif;
     font-weight: bold;
     text-align: center; /* Centra el texto horizontalmente */
     font-size: 4vw; /* Tamaño de la fuente como un porcentaje del ancho de la ventana */
@@ -70,7 +73,7 @@ main {
     bottom: 0;
     left: 0;
     z-index: 1000;
-    font-family: 'Arial', sans-serif;
+    font-family: "Gill Sans", sans-serif;
 }
 
 #auth-status {
@@ -113,12 +116,12 @@ main {
 }
 
 .menu-item button:hover {
-    background-color: rgb(255, 2, 2);
+    background-color: #9d480d;
 }
 
 .menu-item.selected,
 .menu-item.selected button {
-    background-color: red; /* Cambia el color de fondo a rojo */
+    background-color: #9d480d; /* Cambia el color de fondo a rojo */
     color: white; /* Cambia el color del texto a blanco para mejor contraste */
 }
 
@@ -147,7 +150,7 @@ main {
     position: absolute;
     height: 50px;
     width: 50px;
-    background-color: red;
+    background-color: #9d480d;
     border-radius: 50px;
     pointer-events: none; /* Asegúrate de que el puntero no interfiera con otros eventos del mouse */
 }
@@ -180,7 +183,7 @@ h2 {
     align-items: center; /* Center content vertically */
     width: 100%; /* Set a specific width */
     aspect-ratio: 1 / 1; /* Adjust aspect ratio as needed */
-    padding: 5%; /* Adjust padding as needed */
+    padding: 8%; /* Adjust padding as needed */
     font-size: 230%; /* Adjust font size as needed */
     color: white;
     background-color: #d06012;
@@ -202,7 +205,7 @@ h2 {
 }
 
 .button-container button.selected {
-    background-color: red; /* O el color rojo que prefieras */
+    background-color: #9d480d; /* O el color rojo que prefieras */
 }
 
 
