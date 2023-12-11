@@ -1,31 +1,47 @@
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 100vh; /* Altura completa de la ventana */
+    justify-content: flex-start; /* Cambio para alinear desde arriba */
+    align-items: stretch; /* Ajustar para que los elementos ocupen todo el ancho */
+    height: 100vh;
+    margin: 0; /* Eliminar margen por defecto */
 }
 
 .icon-container {
-    /* Añade margen si es necesario */
-    margin-top: 30%; /* Ejemplo de margen */
+    position: fixed;
+    top: 0;
+    width: 100%; /* Ajustar al ancho completo */
+    height: 10vh; /* Altura fija para el icono */
+    z-index: 100; /* Asegurar que esté sobre otros elementos */
+    /* Añadir más estilos si es necesario */
 }
-
 .content {
+    margin-top: 10vh; /* Hacer espacio para el icono */
+    height: 80vh; /* Altura ajustada para dejar espacio al bottom-bar */
+    overflow-y: auto; /* Permitir desplazamiento si el contenido es muy largo *
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
-    height: 100vh; /* Altura completa de la ventana */
     display: flex;
 }
 
 #contenedor-botones {
-    margin-top: -50%;
     width: 50%;
-    height: 70%;
+    height: 100%;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    /* Ocultar la barra de desplazamiento en navegadores basados en WebKit/Blink (como Chrome, Safari, Opera) */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Ocultar la barra de desplazamiento en IE y Edge */
+    -ms-overflow-style: none;
+
+    /* Ocultar la barra de desplazamiento en Firefox */
+    scrollbar-width: none;
 }
 
 .profesor-button {
@@ -58,10 +74,80 @@ body {
 }
 
 #info-despacho {
-    width: 40%;
-    font-size: 3em;
+    width: 50%;
     display: flex;
-    align-items: center; /* Alineación vertical al centro */
-    justify-content: center; /* Alineación horizontal al centro */
-    padding: 20px;
+    flex-direction: column;
+    align-items: center; /* Alineación horizontal al centro */
+    text-align: center; /* Centrar el texto */
 }
+
+#texto-despacho {
+    font-size: 4em;
+}
+
+#mapa-contenedor {
+    position: relative;
+    width: 100%; /* O el ancho que prefieras */
+    height: auto; /* Ajusta esto según sea necesario para un tamaño más grande */
+    margin-top: 20px; /* Espacio entre el texto y la imagen del mapa */
+}
+
+#mapa-imagen {
+    width: 95%; /* Aumenta el tamaño de la imagen */
+    height: auto;
+}
+
+#marcador-posicion {
+    width: 50px;
+    height: auto;
+    position: absolute;
+    /* Calcular posición relativa según pixelx y pixely */
+    left: calc((var(--pixelx) / var(--map-width)) * 100%);
+    top: calc((var(--pixely) / var(--map-height)) * 100% - 50%); 
+}
+
+/* bottom-bar.css */
+#bottom-bar {
+    text-align: center;
+    background-color: rgba(208, 96, 18, 1); /* Usar RGBA para un poco de transparencia */
+    color: white;
+    width: 100vw; /* Ancho completo de la ventana gráfica */
+    height: 10vh; /* Altura ajustada al diseño */
+    margin: 0;
+    font-size: 1.6vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    font-family: 'Arial', sans-serif;
+
+    position: fixed;
+    bottom: 0;
+}
+
+#auth-status {
+    font-size: 1.2em;
+    margin-bottom: 1vh;
+}
+
+#auth-actions button {
+    background-color: white;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 2vh;
+    padding: 1vh 2vw;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 1em;
+}
+
+#auth-actions button:hover {
+    background-color: #0056b3;
+    color: white;
+}
+

@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Profesores</title>
-    <link rel="stylesheet" type="text/css" href="../css/bottom-bar.css">
     <link rel="stylesheet" type="text/css" href="../css/despachos.css">
 </head>
 <body>
@@ -14,7 +13,14 @@
         
     <div class="content">
         <div id="contenedor-botones"></div>
-        <div id="info-despacho"></div>
+        <div id="info-despacho">
+        <span id="texto-despacho"></span> <!-- Elemento para el texto del despacho -->
+        <div id="mapa-contenedor">
+            <img id="mapa-imagen" src="" alt="Mapa ETSIIT">
+            <img id="marcador-posicion" src="../assets/marcador-de-posicion.png" alt="Marcador de Posición" style="position: absolute;">
+        </div>
+</div>
+
     </div>
 
     <!-- Bottom-bar -->
