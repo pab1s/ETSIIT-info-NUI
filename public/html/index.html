@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Cabecera de la página -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
@@ -12,30 +13,30 @@
 <body>
     <!-- Contenedor para la página -->
     <div class="content">
-            <!-- Contenedor para el puntero -->
+        <!-- Contenedor para el puntero -->
         <div id="pointer"></div>
 
-        <div class="icon-container">
+        <div class="header-container">
             <img src="../assets/etsiit-logo.png" alt="Icono ETSIIT">
+            <div id="clock"></div>
         </div>
 
         <div class="welcome-message">
-            <h1>¡Bienvenido a la ETSIIT!</h1>
+            <h1>¡Bienvenido a la ETS de Ingenierías Informática y de Telecomunicación!</h1>
+            <h2>¿Qué desea hacer?</h2>
         </div>
 
         <div class="horizontal-container">
             <div class="button-container">
                 <button id="guest-access" onclick="window.location.href='/main'">
                     <img src="../assets/guest-icon.png" alt="Guest Icon">
-                    <br>
-                    Acceder como invitado
+                    <p style="text-align: center;"> Acceder como invitado </p>
                 </button>
             </div>
             <div class="button-container">
                 <button id="authenticate">
                     <img src="../assets/icon-qr.png" alt="QR Icon">
-                    <br>
-                    Autenticarse
+                    <p style="text-align: center;">Iniciar sesión</p>
                 </button>
             </div>
         </div>
@@ -51,6 +52,7 @@
     <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
     <script src="../js/handleCam.js"></script>
     <script src="../js/leap.im.js"></script>
+    <script src="../js/updateClock.js"></script>
 </body>
 
 </html>

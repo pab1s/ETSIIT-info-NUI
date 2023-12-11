@@ -10,11 +10,24 @@ body {
     background-color: #ffffff;
     font-family: "Gill Sans", sans-serif;
     font-size: 1.5vw;
-}
-
-body {
     display: flex-inline;
     flex-direction: column;
+    overflow: hidden;
+}
+
+p {
+    font-size: 3.5vw;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 5%;
+    font-family: "Gill Sans MT", sans-serif;
+}
+
+h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 50px;
+    text-align: center;
 }
 
 main {
@@ -58,7 +71,7 @@ main {
 /* bottom-bar.css */
 #bottom-bar {
     text-align: center;
-    background-color: rgba(208, 96, 18, 0.9); /* Usar RGBA para un poco de transparencia */
+    background-color: rgb(208, 96, 18, 0.9); /* Usar RGBA para un poco de transparencia */
     color: white;
     width: 100vw; /* Ancho completo de la ventana gráfica */
     height: 10vh; /* Altura ajustada al diseño */
@@ -142,18 +155,15 @@ main {
 
 .icon-container img {
     width: 50%; /* Adjust as needed */
+    font-family: "Gill Sans MT", sans-serif;
+    font-weight: bold;
     height: auto; /* Adjust as needed */
 }
 
-/*Esto seguramente haya que mandarlo a la mierda*/
-#pointer {
-    position: absolute;
-    height: 50px;
-    width: 50px;
-    background-color: #9d480d;
-    border-radius: 50px;
-    pointer-events: none; /* Asegúrate de que el puntero no interfiera con otros eventos del mouse */
-}
+#clock {
+    font-size: 3.5vw;
+    color: #333;
+  }
 
 .welcome-message h1 {
     font-size: 300%;    /* Set the font size to 48px */
@@ -161,10 +171,9 @@ main {
     text-align: center; /* Center the text */
 }
 
-h2 {
-    font-size: 32px;
+.welcome-message h2 {
+    font-size: 250%;
     color: #333;
-    margin-bottom: 50px;
     text-align: center;
 }
 
@@ -174,6 +183,13 @@ h2 {
     width: 40%;
     height: auto;
     padding: auto;
+}
+
+.button-container p {
+    font-size: 110%;
+    font-weight: normal;
+    color: #ffffff;
+    text-align: center;
 }
 
 .button-container button {
@@ -208,6 +224,23 @@ h2 {
     background-color: #9d480d; /* O el color rojo que prefieras */
 }
 
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.header-container img {
+    width: 50%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
 
 #webcam-container {
     position: relative;
@@ -277,15 +310,12 @@ h2 {
     margin: 20px 0;
 }
 
-/* styles.css */
 .titulo-estado-seleccion {
     text-align: center;
-    font-size: 100%; /* Tamaño del texto ajustado al 100% del tamaño predeterminado */
+    font-size: 160%; /* Tamaño del texto ajustado al 100% del tamaño predeterminado */
+    font-family: "Gill Sans", sans-serif;
     font-style: italic; /* Cursiva */
-    color: white; /* Texto en blanco */
-    background-color: rgba(208, 96, 18, 0.9); /* Fondo naranja */
-    border: 1px solid #ccc; /* Borde discreto */
-    border-radius: 10px; /* Bordes redondeados */
+    color: rgba(208, 96, 18, 0.9); /* Texto en blanco */
     padding: 1%; /* Espaciado interno en porcentaje para una mejor presentación */
     margin: 2% 0; /* Margen superior e inferior en porcentaje */
     width: 98%; /* Ancho en porcentaje, ajustado para considerar el padding y el borde */

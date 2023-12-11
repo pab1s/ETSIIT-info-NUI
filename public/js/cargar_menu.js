@@ -68,7 +68,6 @@ function mostrarDias(dates, comedorButton) {
     menuContainer.style.top = `${rect.bottom}px`;
 }
 
-
 function mostrarMenus(menus, esPasado) {
     let menusDetailContainer = document.getElementById('menus-detail-container');
     let payButton = document.getElementById('pay-button');
