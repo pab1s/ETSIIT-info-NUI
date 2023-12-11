@@ -11,9 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     departamento: profesor.departamento,
                     despacho: profesor.despacho,
                     piso: profesor.piso,
-                    pixelx: profesor.pixelx,
-                    pixely: profesor.pixely
+                    porcX: profesor.porcX, // Nuevo
+                    porcY: profesor.porcY  // Nuevo
                 }));
+
+                todosLosProfesores = profesores;
                 inicializarInterfaz();
             })
             .catch(error => console.error('Error al cargar los profesores:', error));
@@ -24,6 +26,14 @@ document.addEventListener('DOMContentLoaded', function() {
         infoDespacho = document.getElementById('info-despacho');
         botones = [];
         botonActivo = 0;
+
+        mostrarTodos = false;
+
+        if (!mostrarTodos) {
+            profesores = profesores.filter(profesor =>
+                profesor.piso && profesor.porcX != null && profesor.porcY != null
+            );
+        }
 
         profesores.forEach((profesor, index) => {
             const boton = document.createElement('button');
@@ -37,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             botones.push(boton);
         });
 
-        seleccionarBoton(Math.floor(profesores.length / 2)); // Seleccionar el botón del medio
+        seleccionarBoton(profesores.findIndex(profesor => profesor.nombre === 'Marcelino Jose Cabrera Cuevas')); // Seleccionar el botón del medio
     }
 
     function seleccionarBoton(index) {
@@ -47,32 +57,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function mostrarDespacho(index) {
-        // Actualizar texto del despacho
         let textoDespacho = document.getElementById('texto-despacho');
+        let mapaImagen = document.getElementById('mapa-imagen');
+        let marcador = document.getElementById('marcador-posicion');
+
         textoDespacho.textContent = profesores[index].despacho;
 
-        // Cargar la imagen del mapa
-        let numMapa = profesores[index].piso;
-        let mapaImagen = document.getElementById('mapa-imagen');
-        mapaImagen.src = `../assets/mapa-etsiit-${numMapa}.jpeg`;
+        // Verificar si el profesor tiene información de localización
+        if (profesores[index].piso && profesores[index].porcX != null && profesores[index].porcY != null) {
+            mapaImagen.src = `../assets/mapa-etsiit-${profesores[index].piso}.jpeg`;
 
-        // Posicionar el marcador
+            mapaImagen.onload = function() {
+                let marcadorHeight = marcador.offsetHeight;
+                let imagenRect = mapaImagen.getBoundingClientRect();
 
-        document.documentElement.style.setProperty('--pixelx', profesores[index].pixelx + 'px');
-        document.documentElement.style.setProperty('--pixely', profesores[index].pixely + 'px');
-        document.documentElement.style.setProperty('--map-width', mapaImagen.width + 'px');
-        document.documentElement.style.setProperty('--map-height', mapaImagen.height + 'px');
-
-            // Console.log para verificar las propiedades CSS
-    console.log('--pixelx:', document.documentElement.style.getPropertyValue('--pixelx'));
-    console.log('--pixely:', document.documentElement.style.getPropertyValue('--pixely'));
-    console.log('--map-width:', document.documentElement.style.getPropertyValue('--map-width'));
-    console.log('--map-height:', document.documentElement.style.getPropertyValue('--map-height'));
-         let marcador = document.getElementById('marcador-posicion');
-        let marcadorHeight = marcador.offsetHeight; // Altura del marcador
-        marcador.style.left = profesores[index].pixelx + 'px';
-        marcador.style.top = (profesores[index].pixely - marcadorHeight / 2) + 'px'; // Ajuste para centrar la parte inferior del marcador
+                marcador.style.left = (imagenRect.width * profesores[index].porcX / 100) + 'px';
+                marcador.style.top = (imagenRect.height * profesores[index].porcY / 100 - marcadorHeight / 2) + 'px';
+                marcador.style.display = 'block'; // Ocultar el marcador
+            };
+        } else {
+            mapaImagen.onload = function() {
+            marcador.style.display = 'none'; // Ocultar el marcador
+        };
+        mapaImagen.src = '../assets/location.png'; // Asegúrate de que esta sea la ruta correcta a tu imagen
+        }
     }
+
 
     function reordenarBotones() {
         botones.forEach(boton => boton.classList.remove('profesor-seleccionado'));
@@ -97,4 +107,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         seleccionarBoton(botonActivo);
     });
+
+    window.addEventListener('resize', function() {
+    if (profesores.length > 0) {
+        mostrarDespacho(botonActivo);
+    }
+});
+
 });
