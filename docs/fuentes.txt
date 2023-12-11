@@ -5,3 +5,5 @@ https://www.flaticon.com/free-icon/teacher_3307318?term=teachers&page=1&position
 <a href="https://www.flaticon.es/iconos-gratis/codigo-qr" title="código qr iconos">Código qr iconos creados por Pixelmeetup - Flaticon</a>
 
 https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js
+
+https://www.flaticon.es/icono-gratis/marcador-de-posicion_684908?term=ubicacion&page=1&position=6&origin=search&related_id=684908

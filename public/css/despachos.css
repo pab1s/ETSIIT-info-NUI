@@ -74,12 +74,36 @@ body {
 }
 
 #info-despacho {
-    width: 40%;
-    font-size: 3em;
+    width: 50%;
     display: flex;
-    align-items: center; /* Alineación vertical al centro */
-    justify-content: center; /* Alineación horizontal al centro */
-    padding: 20px;
+    flex-direction: column;
+    align-items: center; /* Alineación horizontal al centro */
+    text-align: center; /* Centrar el texto */
+}
+
+#texto-despacho {
+    font-size: 4em;
+}
+
+#mapa-contenedor {
+    position: relative;
+    width: 100%; /* O el ancho que prefieras */
+    height: auto; /* Ajusta esto según sea necesario para un tamaño más grande */
+    margin-top: 20px; /* Espacio entre el texto y la imagen del mapa */
+}
+
+#mapa-imagen {
+    width: 95%; /* Aumenta el tamaño de la imagen */
+    height: auto;
+}
+
+#marcador-posicion {
+    width: 50px;
+    height: auto;
+    position: absolute;
+    /* Calcular posición relativa según pixelx y pixely */
+    left: calc((var(--pixelx) / var(--map-width)) * 100%);
+    top: calc((var(--pixely) / var(--map-height)) * 100% - 50%); 
 }
 
 /* bottom-bar.css */

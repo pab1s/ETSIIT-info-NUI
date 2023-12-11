@@ -533,7 +533,7 @@ app.post('/api/realizarPago', (req, res) => {
 
 app.get('/api/despachos', (req, res) => {
     // Suponiendo que usas una base de datos SQLite
-    db.all('SELECT nombre, departamento, despacho FROM profesores ORDER BY nombre ASC', [], (err, rows) => {
+    db.all('SELECT nombre, departamento, despacho, piso, pixelx, pixely FROM profesores ORDER BY nombre ASC', [], (err, rows) => {
         if (err) {
             res.status(500).json({ error: err.message });
             return;
