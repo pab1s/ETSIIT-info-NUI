@@ -155,13 +155,14 @@ main {
 
 .icon-container img {
     width: 50%; /* Adjust as needed */
-    font-family: "Gill Sans MT", sans-serif;
-    font-weight: bold;
     height: auto; /* Adjust as needed */
 }
 
 #clock {
-    font-size: 3.5vw;
+    font-size: 4vw;
+    font-family: "Gill Sans MT", sans-serif;
+    font-weight: bold;
+    margin-right: 10%;
     color: #333;
   }
 
@@ -233,6 +234,13 @@ main {
     height: auto;
     padding: 0;
     margin: 0;
+}
+
+.header-container text {
+    font-size: 110%;
+    font-weight: normal;
+    color: #ffffff;
+    text-align: center;
 }
 
 .header-container img {

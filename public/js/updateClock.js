@@ -7,8 +7,8 @@ function updateClock() {
   const formattedHours = (hours % 12 || 12).toString().padStart(2, '0');
   const day = now.toLocaleDateString('es-ES', { weekday: 'long' }).replace(/^\w/, c => c.toUpperCase());
 
-  const timeString = `${formattedHours}:${minutes}:${seconds} ${ampm}`;
-  document.getElementById('clock').innerText = timeString;
+  // It gives the day and time separated by a line break centered
+  document.getElementById('clock').innerHTML = `${day}<br>${formattedHours}:${minutes}:${seconds} ${ampm}`;
 }
 
 // Update the clock every second
