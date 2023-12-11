@@ -11,7 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "multer": "^1.4.5-lts.1",
-    "sqlite3": "^5.1.6"
+    "package.json": "^0.0.0",
+    "sqlite3": "^5.1.6",
+    "swup": "^4.5.0"
   },
   "description": ""
 }

@@ -14,7 +14,7 @@ body {
     flex-direction: column;
 }
 
-.content {
+main {
     position: relative;
     margin-bottom: 0;
     height: 80%;

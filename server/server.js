@@ -10,8 +10,6 @@ require('dotenv').config();
 const multer = require('multer');
 const upload = multer({ limits: { fileSize: 10000000 } }); // 10MB como límite
 
-
-
 // Crear conexión a la base de datos SQLite
 const db = new sqlite3.Database('./usuarios.db'); // Asegúrate de que el archivo de la base de datos exista en la raíz del proyecto
 
@@ -39,9 +37,7 @@ app.use(express.json());
 
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, '..', 'public')));
-app.use(express.static(path.join(__dirname, 'server/qr-codes')))
-
-
+app.use(express.static(path.join(__dirname, 'server/qr-codes')));
 
 // Ruta para servir la página de inicio
 app.get('/', (req, res) => {
@@ -75,10 +71,6 @@ app.get('/docencia', (req, res) => {
 app.get('/localizacion', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'html', 'localizacion.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
 });
-
-
-
-
 
 app.get('/api/comedores', (req, res) => {
     fs.readFile('../public/sources/menu.json', 'utf8', (err, data) => {
@@ -268,8 +260,6 @@ app.post('/citas/reservar', (req, res) => {
     } catch (error) {
         res.status(401).json({ error: 'No autenticado' });
     }
-
-
 });
 
 
@@ -296,9 +286,6 @@ app.get('/api/fechas-citas-disponibles', (req, res) => {
         }
     });
 });
-
-
-
 
 app.get('/api/expediente', (req, res) => {
     try {
@@ -348,7 +335,6 @@ app.get('/api/correo', (req, res) => {
     }
 });
 
-
 app.get('/api/mis-citas', (req, res) => {
     try {
         const token = req.cookies.authToken;
@@ -373,7 +359,6 @@ app.get('/api/mis-citas', (req, res) => {
         res.status(401).json({ error: 'No autenticado' });
     }
 });
-
 
 app.post('/api/cancelar-cita', (req, res) => {
     try {
@@ -400,7 +385,6 @@ app.post('/api/cancelar-cita', (req, res) => {
         res.status(401).json({ error: 'No autenticado' });
     }
 });
-
 
 app.get('/fotoUGR', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'html', 'mifotoUgr.html')); 
@@ -443,7 +427,6 @@ app.get('/api/informacion-usuario', (req, res) => {
         res.status(401).json({ error: 'No autenticado' });
     }
 });
-
 
 app.post('/api/guardar-foto', upload.single('foto'), (req, res) => {
     try {
