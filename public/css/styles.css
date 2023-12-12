@@ -1,6 +1,7 @@
 /* GENERAL STYLES */ 
 
 @import url('https://fonts.cdnfonts.com/css/gill-sans-mt-2');
+@import url('https://fonts.cdnfonts.com/css/lemonmilk');
 
 body {
     height: 3840px;
@@ -138,7 +139,6 @@ main {
     color: white; /* Cambia el color del texto a blanco para mejor contraste */
 }
 
-
 .texto-importante {
     width: 100%;
     height: 2%;
@@ -166,14 +166,20 @@ main {
     color: #333;
   }
 
+.welcome-message {
+    margin-top: 10%;
+}
+
 .welcome-message h1 {
     font-size: 300%;    /* Set the font size to 48px */
+    font-family: "Lemon/Milk", sans-serif; /* Set the font family to "Lemon/Milk" */
     color: #333; /* Set the font color to #333 (dark gray) */
     text-align: center; /* Center the text */
 }
 
 .welcome-message h2 {
-    font-size: 250%;
+    font-size: 72px;
+    font-family: "Lemon/Milk", sans-serif;
     color: #333;
     text-align: center;
 }
@@ -194,21 +200,21 @@ main {
 }
 
 .button-container button {
-    display: flex; /* Flex layout for internal alignment */
-    flex-direction: column; /* Places icon above the text */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    width: 100%; /* Set a specific width */
-    aspect-ratio: 1 / 1; /* Adjust aspect ratio as needed */
-    padding: 8%; /* Adjust padding as needed */
-    font-size: 230%; /* Adjust font size as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    padding: 8%;
+    font-size: 230%;
     color: white;
     background-color: #d06012;
     border: none;
-    border-radius: 20px;
+    border-radius: 60px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    overflow: hidden; /* In case content overflows */
+    overflow: hidden;
 }
 
 .button-container button:hover {
@@ -251,8 +257,8 @@ main {
 }
 
 #webcam-container {
-    position: relative;
-    top: -20%; /* Alineado justo debajo del botón */
+    position: absolute;
+    top: -10%; /* Alineado justo debajo del botón */
     left: 50%; /* Centrado horizontalmente */
     transform: translateX(-50%); /* Ajuste para centrar exactamente */
     border: 5px solid #d06012 !important; /* Color del borde */
