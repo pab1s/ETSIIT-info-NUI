@@ -526,5 +526,41 @@ app.get('/api/despachos', (req, res) => {
 });
 
 
+app.post('/api/mis-profesores', (req, res) => {
+
+    try {
+        const token = req.cookies.authToken;
+        if (!token) {
+            return res.status(401).json({ error: 'No autenticado' });
+        }
+
+        const decoded = jwt.verify(token, SECRET_KEY);
+        const username = decoded.username;
+
+
+        // Consulta para obtener profesores de las asignaturas en las que está matriculado el usuario
+        const query = `
+            SELECT DISTINCT p.nombre, p.departamento, p.despacho, p.piso, p.porcX, p.porcY
+            FROM profesores p
+            INNER JOIN asignaturas a ON p.nombre = a.profesor
+            INNER JOIN matriculas m ON a.indice = m.indice
+            WHERE m.username = ?
+        `;
+
+
+        db.all(query, [username], (err, rows) => {
+            if (err) {
+                res.status(500).json({ error: err.message });
+            } else {
+                res.json(rows);
+            }
+        });
+
+    } catch (error) {
+        res.status(401).json({ error: 'Token inválido o expirado' });
+    }
+});
+
+
 
 
