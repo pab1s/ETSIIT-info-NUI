@@ -40,7 +40,7 @@
                     .then(response => response.json())
                     .then(data => {
                         const titulo = document.querySelector('#welcome-message h1');
-                        titulo.textContent = `Horario de ${data.nombre} ${data.apellidos}`;
+                        titulo.textContent = `Tu horario`;
                     })
                     .catch(error => console.error('Error:', error));
 
