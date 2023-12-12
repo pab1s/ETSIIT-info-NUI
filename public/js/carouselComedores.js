@@ -2,7 +2,8 @@
 
 // Array of URLs
 const urls = ["/consultar-menu", "/pagar-menu"];
-const images = ["../assets/consultarMenu.png", "../assets/pagarMenu.png"];
+const images = ["../assets/menu-icon.png", "../assets/pay-icon.png"];
+const titles = ["CONSULTAR MENÚ", "PAGAR MENÚ"];
 let currentUrlIndex = 0;
 
 function getNextUrl() {
@@ -83,6 +84,7 @@ function next() {
     // If there is no image in act-button, create it in the button
     if (!$(".act-button").innerHTML.includes("img")) {
         $(".act-button").innerHTML = "<img src='" + getImage() + "' alt='icon' class='icon'>" + $(".act-button").innerHTML;
+        $(".act-button").innerHTML += "<p>" + titles[currentUrlIndex] + "</p>";
     }
 }
 
@@ -136,6 +138,7 @@ function prev() {
     // If there is no image in act-button, create it in the button
     if (!$(".act-button").innerHTML.includes("img")) {
         $(".act-button").innerHTML = "<img src='" + getImage() + "' alt='icon' class='icon'>" + $(".act-button").innerHTML;
+        $(".act-button").innerHTML += "<p>" + titles[currentUrlIndex] + "</p>";
     }
 }
 
