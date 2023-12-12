@@ -1,7 +1,7 @@
 @import url('https://fonts.cdnfonts.com/css/gill-sans-mt-2');
 @import url('https://fonts.cdnfonts.com/css/lemonmilk');
 
-body {
+main {
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* Cambio para alinear desde arriba */
@@ -10,16 +10,8 @@ body {
     margin: 0; /* Eliminar margen por defecto */
 }
 
-.icon-container {
-    position: fixed;
-    top: 0;
-    width: 100%; /* Ajustar al ancho completo */
-    height: 10vh; /* Altura fija para el icono */
-    z-index: 100; /* Asegurar que esté sobre otros elementos */
-    /* Añadir más estilos si es necesario */
-}
-.content {
-    margin-top: 25vh; /* Hacer espacio para el icono */
+.location-scroll {
+    margin-top: 10vh; /* Hacer espacio para el icono */
     height: 60vh; /* Altura ajustada para dejar espacio al bottom-bar */
     overflow-y: auto; /* Permitir desplazamiento si el contenido es muy largo */
     justify-content: center; /* Centra horizontalmente */
@@ -48,13 +40,13 @@ body {
 }
 
 .profesor-button {
-    font-family: "Gill Sans", sans-serif;
-    font-size: 3em;
+    font-family: "Gill Sans MT", sans-serif;
+    font-size: 1.5em;
     margin: 1% 0; /* Menos margen */
     width: 90%; /* Más estrecho */
     height: 40%; /* Aumentar la altura para cada botón */
     padding: 10px;
-    background-color: #FA7D07;
+    background-color: rgb(208, 96, 18);
     color: white;
     border: none;
     cursor: pointer;
@@ -63,13 +55,13 @@ body {
 }
 
 .profesor-button:hover {
-    background-color: #FA5407;
+    background-color: rgb(208, 96, 18);
 }
 
 .profesor-seleccionado {
     transform: scale(1.1);
     border: 6px solid black;
-    box-shadow: 0 0 10px #FA7D07;
+    box-shadow: 0 0 10px rgb(208, 96, 18);
     transition: transform 0.3s ease;
 }
 
@@ -87,7 +79,7 @@ body {
 
 #texto-despacho {
     font-size: 4em;
-    font-family: "Gill Sans", sans-serif;;
+    font-family: "Gill Sans MT", sans-serif;
 }
 
 #mapa-contenedor {
@@ -96,8 +88,6 @@ body {
     height: auto; /* Ajusta esto según sea necesario para un tamaño más grande */
     margin-top: 20px; /* Espacio entre el texto y la imagen del mapa */
 }
-
-
 
 #mapa-imagen {
     width: 92%; /* Aumenta el tamaño de la imagen */
@@ -116,8 +106,10 @@ body {
 }
 
 #botones-filtro {
-    width: 100%; /* Ocupar todo el ancho */
+    width: 80%; /* Ocupar todo el ancho */
     margin-top: 15vh;
+    margin-left: 10%;
+    margin-right: 10%;
     display: flex;
     justify-content: space-between; /* Distribuir espacio entre los botones */
     padding: 10px 10px; /* Añadir algo de relleno arriba y abajo */
@@ -130,72 +122,25 @@ body {
 
 .filtro-button {
     font-family: "Lemon/Milk", sans-serif;;
-    font-size: 4em;
+    font-size: 2em;
     height: 8vh;
-    background-color: #FA7D07; /* Igual que los botones de profesor */
+    background-color: rgb(208, 96, 18); /* Igual que los botones de profesor */
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 30px; /* Efecto redondeado */
-    width: 48%; /* Cada botón es el 48% del ancho del contenedor para permitir el 4% de espacio (2% de margen en cada lado) */
-    margin: 0 1%; /* Margen entre botones */
+    width: 44%; /* Cada botón es el 48% del ancho del contenedor para permitir el 4% de espacio (2% de margen en cada lado) */
+    margin: 1% 1%; /* Margen entre botones */
     box-sizing: border-box; /* Incluye padding y border en el cálculo del ancho y altura */
 }
 
 .filtro-button:hover {
-    background-color: #FA5407; /* Color al pasar el ratón por encima */
+    background-color: rgb(208, 96, 18); /* Color al pasar el ratón por encima */
 }
 
 .filtro-seleccionado {
     transform: scale(1.1);
     border: 4px solid black;
-    box-shadow: 0 0 10px #FA7D07;
+    box-shadow: 0 0 10px rgb(208, 96, 18);
     transition: transform 0.3s ease;
 }
-
-
-/* bottom-bar.css */
-#bottom-bar {
-    text-align: center;
-    background-color: rgba(208, 96, 18, 1); /* Usar RGBA para un poco de transparencia */
-    color: white;
-    width: 100vw; /* Ancho completo de la ventana gráfica */
-    height: 10vh; /* Altura ajustada al diseño */
-    margin: 0;
-    font-size: 1.6vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1vh 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    font-family: 'Arial', sans-serif;
-
-    position: fixed;
-    bottom: 0;
-}
-
-#auth-status {
-    font-size: 1.2em;
-    margin-bottom: 1vh;
-}
-
-#auth-actions button {
-    background-color: white;
-    color: #007bff;
-    border: 1px solid #007bff;
-    border-radius: 2vh;
-    padding: 1vh 2vw;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    font-size: 1em;
-}
-
-#auth-actions button:hover {
-    background-color: #0056b3;
-    color: white;
-}
-

@@ -1,46 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>Mi Foto UGR</title>
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../css/foto.css">
 </head>
+
 <body>
     <button id="vuelta-atras" style="display: none;" onclick="window.location.href='/tramites';"></button>
-    <!-- Contenedor de la tarjeta de identificación -->
-    <div id="tarjeta-identificacion" class="tarjeta">
-        <!-- Imagen de fondo de la tarjeta de identificación -->
-        <img src="../assets/tui.png" alt="Tarjeta de Identificación" class="tarjeta-img"/>
-        <!-- Contenedor de información del usuario -->
-        <div id="info-usuario">
-            <!-- Nombre y apellidos del usuario -->
-            <h1 id="info" style="color: #000;">Nombre y Apellidos</h1>
-            <!-- Foto del usuario -->
-            <img id="foto-usuario" src="" alt="Foto del Usuario"/>
-            <img id="qr-usuario"  src=""/>
+    <div class="header-container">
+        <img src="../assets/etsiit-logo.png" alt="Icono ETSIIT">
+        <div id="clock"></div>
+    </div>
+    <div class="welcome-message">
+        <h1>¿No le gusta su foto actual?</h1>
+        <h2>¡Sonría a cámara!</h2>
+    </div>
+
+    <div class="vertical-menu-container">
+        <!-- Contenedor de la tarjeta de identificación -->
+        <div id="tarjeta-identificacion" class="tarjeta">
+            <!-- Imagen de fondo de la tarjeta de identificación -->
+            <img src="../assets/tui.png" alt="Tarjeta de Identificación" class="tarjeta-img" />
+            <!-- Contenedor de información del usuario -->
+            <div id="info-usuario">
+                <h1 id="info" style="color: #000;">Nombre y Apellidos</h1>
+                <img id="foto-usuario" src="" alt="Foto del Usuario" />
+                <img id="qr-usuario" src="" />
+            </div>
+            <button id="boton-activar-camara">Cambiar Foto</button>
+
+        </div>
+        <div id="mensaje-actualizacion" class="mensaje-oculto">
+            La foto se actualizó correctamente. Por favor, <a href="javascript:location.reload()">recarga la página</a>
+            para
+            ver los cambios.
         </div>
 
-    </div>
-    <div id="mensaje-actualizacion" class="mensaje-oculto">
-        La foto se actualizó correctamente. Por favor, <a href="javascript:location.reload()">recarga la página</a> para ver los cambios.
-    </div>
-    
-    <button id="boton-activar-camara">Cambiar Foto</button>
-
-    <div id="contenedor-camara" style="display:none;">
-        <video id="video" width="640" height="480" autoplay></video>
-        <button id="boton-capturar">
-            <img src="../assets/camara.png" alt="Capturar">
-        </button>
-        <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
-        <img id="foto-capturada" src="" alt="Foto Capturada" style="display:none;">
-        <button id="boton-guardar" style="display:none;">Guardar Foto</button>
-        <button id="boton-repetir" style="display:none;">Repetir Foto</button>
+        <div id="contenedor-camara" style="display:none;">
+            <video id="video" width="640" height="480" autoplay></video>
+            <button id="boton-capturar">
+                <img src="../assets/camara.png" alt="Capturar">
+            </button>
+            <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+            <img id="foto-capturada" src="" alt="Foto Capturada" style="display:none;">
+            <button id="boton-guardar" style="display:none;">Guardar Foto</button>
+            <button id="boton-repetir" style="display:none;">Repetir Foto</button>
+        </div>
     </div>
 
-    <img src="../assets/logoUGR.png" alt="Foto guardada" style="width:100%; display: block; margin: 0 auto; margin-top: 500px;">
+    <div id="bottom-bar">
+        <div id="auth-status"></div>
+        <div id="auth-actions">
+            <button id="auth-button" onclick="window.location.href = '/'">Iniciar sesión</button>
+        </div>
+    </div>
 
+    <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
+    <script src="../js/leap.main.js"></script>
     <script src="../js/gestionFoto.js"></script>
     <script src="../js/bottomBar.js"></script>
+    <script src="../js/updateClock.js"></script>
 </body>
-</html>
 
+</html>

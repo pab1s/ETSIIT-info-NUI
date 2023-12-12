@@ -40,7 +40,7 @@ h3 {
     height: 90%;
     width: 50%;
     display: block;
-    background-color: #FA7D07;
+    background-color: rgb(208, 96, 18);
     color: white;
     border: none;
     cursor: pointer;
@@ -48,7 +48,7 @@ h3 {
 }
 
 .comedor-button:hover {
-    background-color: rgb(208, 96, 18);
+    background-color: rgb(177, 74, 0);
 }
 
 .dia-button {
@@ -124,15 +124,14 @@ tr {
 
 #message-container {
     padding: 20px; /* Espaciado interno para no tocar los bordes */
-    background-color: #C6C6C6; /* Un fondo claro, pero no blanco puro */
-    border: 1px solid #ccc; /* Un borde sutil */
-    border-radius: 5px; /* Bordes redondeados suavemente */
+    background-color: rgb(208, 96, 18); /* Un fondo claro, pero no blanco puro */
+    border: 1px solid rgb(208, 96, 18); /* Un borde sutil */
+    border-radius: 25px; /* Bordes redondeados suavemente */
     color: #333; /* Un color de texto oscuro para contraste */
     text-align: center; /* Alinea el texto al centro */
     margin-top: 20px; /* Espacio arriba del botón */
     display: none; /* Asegurarse de que es un bloque y no inline */
 }
-
 
 #auth-status {
     margin-right: 20px;
@@ -150,7 +149,7 @@ tr {
 }
 
 #auth-actions button:hover {
-    background-color: #0056b3;
+    background-color: #007bff;
     color: white;
 }
 
@@ -161,7 +160,7 @@ tr {
     padding: 1% 2%; /* Espaciado interno basado en porcentajes para mantener la proporción */
     font-size: 4em; /* Tamaño de fuente relativo */
     color: white; /* Color del texto */
-    background-color: #FA7D07; /* Color de fondo (puedes cambiarlo) */
+    background-color: rgb(208, 96, 18); /* Color de fondo (puedes cambiarlo) */
     border: none; /* Sin bordes */
     border-radius: 5px; /* Bordes redondeados */
     cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
@@ -188,8 +187,8 @@ tr {
 
 .boton-seleccionado {
     transform: scale(1.1); /* Aumentar el tamaño del botón */
-    border: 4px solid #FA7D07; /* Borde más grueso y de color naranja */
-    box-shadow: 0 0 10px #FA7D07; /* Sombra para más énfasis */
+    border: 4px solid rgb(208, 96, 18); /* Borde más grueso y de color naranja */
+    box-shadow: 0 0 10px rgb(208, 96, 18); /* Sombra para más énfasis */
     box-sizing: border-box;
     outline: none;
     transition: transform 0.3s ease; /* Animación suave al cambiar de tamaño */

@@ -154,7 +154,7 @@
 }
 
 .cita-item {
-    background-color: #C6C6C6;
+    background-color: #555555;
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 20px;
@@ -164,6 +164,7 @@
 .button-cancelar {
     padding: 2% 4%;
     font-size: 2vw;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #fff;
     background-color: #dc3545;
     border: none;
@@ -176,7 +177,6 @@
 .cita-seleccionada {
     border: 10px solid black;
 }
-
 
 .button-cancelar:hover {
     background-color: #c82333;
@@ -192,8 +192,6 @@
         font-size: 0.8vw;
     }
 }
-
-
 
 /* Estilos para la sección de citas */
 #agenda-citas-container {

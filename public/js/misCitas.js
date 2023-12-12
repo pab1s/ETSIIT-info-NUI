@@ -43,7 +43,7 @@ function mostrarCitasEnPantalla(citas) {
         citaDiv.innerHTML = `
             <p><strong>Fecha:</strong> ${cita.fecha}</p>
             <p><strong>Hora:</strong> ${cita.hora_inicio} - ${cita.hora_fin}</p>
-            <button class="button-cancelar" onclick="cancelarCita(${cita.id})">Cancelar Cita</button>
+            <button class="button-cancelar" onclick="cancelarCita(${cita.id})">CANCELAR CITA</button>
         `;
 
         citaDiv.addEventListener('click', () => seleccionarCita(indice));
