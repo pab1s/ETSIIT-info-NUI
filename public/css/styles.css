@@ -258,7 +258,7 @@ main {
 
 #webcam-container {
     position: absolute;
-    top: -10%; /* Alineado justo debajo del botón */
+    top: -5%; /* Alineado justo debajo del botón */
     left: 50%; /* Centrado horizontalmente */
     transform: translateX(-50%); /* Ajuste para centrar exactamente */
     border: 5px solid #d06012 !important; /* Color del borde */
@@ -286,7 +286,7 @@ main {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin: 25% 5%;
+    margin: 15% 5%;
 }
 
 .login-form {

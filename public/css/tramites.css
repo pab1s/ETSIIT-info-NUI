@@ -138,23 +138,29 @@
 }
 
 .cita-item {
-    background-color: #e7e7e7;
+    background-color: #C6C6C6;
     padding: 15px;
     margin-bottom: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
     margin: 5%;
 }
 
 .button-cancelar {
-    padding: 10px 20px;
-    font-size: 1vw;
+    padding: 2% 4%;
+    font-size: 2vw;
     color: #fff;
     background-color: #dc3545;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-bottom: 2%;
 }
+
+.cita-seleccionada {
+    border: 10px solid black;
+}
+
 
 .button-cancelar:hover {
     background-color: #c82333;
