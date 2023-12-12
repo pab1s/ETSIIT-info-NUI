@@ -10,28 +10,25 @@
 
 <body>
     <button id="vuelta-atras" style="display: none;" onclick="window.location.href='/main';"></button>
-    <div class="content">
         <div class="icon-container">
             <img src="../assets/etsiit-logo.png" alt="Icono ETSIIT">
 
             <div id="welcome-message">
                 <h1></h1>
             </div>
+        </div>
 
-            <main id="swup" class="transition-fade">
-                <div class="calendario-contenedor">
-                    <div id="calendario" class="calendario">
-                        <!-- El calendario se construirá aquí -->
-                    </div>
-                </div>
-            </main>
+        <div class="calendario-contenedor">
+            <div id="calendario" class="calendario">
+                <!-- El calendario se construirá aquí -->
+            </div>
+        </div>
 
-            <!-- bottom-bar.html -->
-            <div id="bottom-bar">
-                <div id="auth-status"></div>
-                <div id="auth-actions">
-                    <button id="auth-button" onclick="window.location.href = '/'">Iniciar sesión</button>
-                </div>
+        <!-- bottom-bar.html -->
+        <div id="bottom-bar">
+            <div id="auth-status"></div>
+            <div id="auth-actions">
+                <button id="auth-button" onclick="window.location.href = '/'">Iniciar sesión</button>
             </div>
         </div>
 
@@ -42,7 +39,7 @@
                 fetch('/api/userinfo')
                     .then(response => response.json())
                     .then(data => {
-                        const titulo = document.querySelector('#welcome-message h1');;
+                        const titulo = document.querySelector('#welcome-message h1');
                         titulo.textContent = `Horario de ${data.nombre} ${data.apellidos}`;
                     })
                     .catch(error => console.error('Error:', error));

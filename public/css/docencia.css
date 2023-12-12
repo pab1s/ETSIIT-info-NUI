@@ -1,39 +1,38 @@
 .calendario-contenedor {
-    width: 90%; /* 80% del ancho de la ventana */
-    height: 40vh; /* 80% del alto de la ventana */
+    width: 90%;
+    height: 60%;
     margin: auto;
     margin-top: 10%;
-    overflow: auto; /* Para el desplazamiento si es necesario */
+    overflow: auto;
 }
 
 h1 {
-    font-family: "Gill Sans", sans-serif; /* Elige la fuente que prefieras */
-    font-size: 2em; /* Ajusta el tamaño según tus preferencias */
-    text-align: center;
-    margin: 20px 0; /* Espacio arriba y abajo del título */
+    font-size: 300%;    /* Set the font size to 48px */
+    font-family: "Lemon/Milk", sans-serif; /* Set the font family to "Lemon/Milk" */
+    color: #333; /* Set the font color to #333 (dark gray) */
+    text-align: center; /* Center the text */
 }
 
 .calendario {
     font-size: 0.8vw;
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Ajusta según tus necesidades */
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(28, 1fr);
     height: 100%;
     grid-gap: 1px;
-    background-color: #f0f0f0;
-}
 
+}
 
 .calendario > div {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #e0e0e0; /* Líneas del grid */
+    border: 1px solid #e0e0e0;
 }
 
 .calendario > div:first-child,
 .calendario > div:nth-child(-n+6) {
-    background-color: #d0d0d0; /* Color de fondo más oscuro para los encabezados */
+    background-color: #d0d0d0;
 }
 
 .sesion {
@@ -45,5 +44,5 @@ h1 {
     background-color: lightblue;
     padding: 5px;
     overflow: hidden;
-    position: relative; /* Para manejar superposiciones */
+    position: relative;
 }
