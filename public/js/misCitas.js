@@ -37,7 +37,7 @@ function mostrarCitasEnPantalla(citas) {
         return;
     }
 
-    citas.forEach(cita => {
+    citas.forEach((cita, indice) => {
         const citaDiv = document.createElement('div');
         citaDiv.className = 'cita-item';
         citaDiv.innerHTML = `
@@ -46,12 +46,18 @@ function mostrarCitasEnPantalla(citas) {
             <button class="button-cancelar" onclick="cancelarCita(${cita.id})">Cancelar Cita</button>
         `;
 
+        citaDiv.addEventListener('click', () => seleccionarCita(indice));
+
         citasContenedor.appendChild(citaDiv);
     });
        // Asegúrate de que la primera cita esté seleccionada inicialmente
     actualizarSeleccionCita(); // Esto seleccionará la primera cita después de cargarlas
 }
 
+function seleccionarCita(indice) {
+    indiceCitaActual = indice;
+    actualizarSeleccionCita();
+}
 
 function cancelarCita(citaId) {
     fetch(`/api/cancelar-cita`, {
@@ -81,13 +87,10 @@ function manejarTeclasFlecha(evento) {
     evento.preventDefault();
     if (evento.key === 'ArrowDown') {
         indiceCitaActual = (indiceCitaActual + 1) % numCitas;
-        console.log("Índice cita actual:", indiceCitaActual); // Para depuración
-        actualizarSeleccionCita();
     } else if (evento.key === 'ArrowUp') {
         indiceCitaActual = (indiceCitaActual - 1 + numCitas) % numCitas;
-        console.log("Índice cita actual:", indiceCitaActual); // Para depuración
-        actualizarSeleccionCita();
     }
+    seleccionarCita(indiceCitaActual);
 }
 
 function actualizarSeleccionCita() {

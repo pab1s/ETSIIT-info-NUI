@@ -1,3 +1,5 @@
+let indiceFechaActual = 0;
+
 function formatearFecha(fecha) {
     const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     let fechaFormateada = new Date(fecha).toLocaleDateString('es-ES', opciones);
@@ -79,6 +81,28 @@ function reservarCita(citaId, fecha, horaInicio) {
     .catch(error => {
         console.error('Error al realizar la solicitud:', error);
     });
+
+    document.querySelectorAll('.cita-item').forEach((elemento, indice) => {
+        if (indice === indiceFechaActual) {
+            elemento.classList.add('cita-seleccionada');
+            elemento.scrollIntoView({ behavior: "smooth", block: "center" });
+        } else {
+            elemento.classList.remove('cita-seleccionada');
+        }
+    });
+}
+
+function actualizarSeleccionFecha() {
+    const fechas = document.querySelectorAll('.fecha');
+    fechas.forEach((fecha, indice) => {
+        fecha.classList.remove('cita-seleccionada');
+        if (indice === indiceFechaActual) {
+            fecha.classList.add('cita-seleccionada');
+            fecha.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    });
+
+    cargarCitasDisponibles(document.querySelectorAll('.fecha')[indiceFechaActual].getAttribute('data-fecha'));
 }
 
 // Función para cargar las fechas disponibles al cargar la página
@@ -93,17 +117,38 @@ function cargarFechasDisponibles() {
                 const fechaDiv = document.createElement('div');
                 fechaDiv.className = 'fecha';
                 fechaDiv.setAttribute('data-fecha', fecha);
+                console.log(fechaDiv);
                 fechaDiv.textContent = formatearFecha(fecha);
                 fechaDiv.addEventListener('click', function() {
-                    cargarCitasDisponibles(fecha);
+                     indiceFechaActual = Array.from(document.querySelectorAll('.fecha')).indexOf(fechaDiv);
+                     actualizarSeleccionFecha();
                 });
                 contenedorFechas.appendChild(fechaDiv);
             });
+
+            actualizarSeleccionFecha();
+
         })
         .catch(error => {
             console.error('Error al obtener fechas de citas:', error);
         });
+
 }
 
 // Llamamos a cargarFechasDisponibles al cargar la página y eliminamos el botón buscar citas ya que no es necesario
-document.addEventListener('DOMContentLoaded', cargarFechasDisponibles);
+document.addEventListener('DOMContentLoaded', () => {
+    cargarFechasDisponibles();
+
+    document.addEventListener('keydown', (event) => {
+        const totalFechas = document.querySelectorAll('.fecha').length;
+
+        if (event.key === 'ArrowRight') {
+            indiceFechaActual = (indiceFechaActual + 1) % totalFechas;
+            console.log(indiceFechaActual)
+            actualizarSeleccionFecha();
+        } else if (event.key === 'ArrowLeft') {
+            indiceFechaActual = (indiceFechaActual - 1 + totalFechas) % totalFechas;
+            actualizarSeleccionFecha();
+        }
+    });
+});

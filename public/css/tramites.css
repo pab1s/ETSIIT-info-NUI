@@ -70,7 +70,6 @@
 
 .fecha:hover {
     background-color: #b44f07; /* Cambia a azul al pasar el cursor */
-    border-color: rgb(208, 96, 18, 0.9); /* Borde naranja al pasar el cursor */
 }
 
 .fecha.selected {
@@ -134,7 +133,13 @@
 
 #lista-citas {
     width: 70%;
-    margin-left: 15%;
+    margin: 0 auto; /* Centra el contenedor */
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+    max-height: 70vh; /* Ajusta esto según la altura disponible de tu ventana de visualización */
+    padding-top: 20vh; /* Asegura que la primera cita sea visible en el centro al principio */
+    padding-bottom: 20vh; /* Asegura que la última cita pueda ser desplazada al centro */
+    position: relative;
+    z-index: 5;
 }
 
 .cita-item {
