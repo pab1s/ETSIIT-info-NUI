@@ -3,6 +3,7 @@
 // Array of URLs
 const urls = ["/despachos", "/clases", "/comunes"];
 const images = ["../assets/profesorado-icon.png", "../assets/clases-icon.png", "../assets/espacios-comunes-icon.png"];
+const titles = ["DESPACHOS", "CLASES", "ESPACIOS COMUNES"];
 let currentUrlIndex = 0;
 
 function getNextUrl() {
@@ -83,6 +84,7 @@ function next() {
     // If there is no image in act-button, create it in the button
     if (!$(".act-button").innerHTML.includes("img")) {
         $(".act-button").innerHTML = "<img src='" + getImage() + "' alt='icon' class='icon'>" + $(".act-button").innerHTML;
+        $(".act-button").innerHTML += "<p>" + titles[currentUrlIndex] + "</p>";
     }
 }
 
@@ -136,6 +138,7 @@ function prev() {
     // If there is no image in act-button, create it in the button
     if (!$(".act-button").innerHTML.includes("img")) {
         $(".act-button").innerHTML = "<img src='" + getImage() + "' alt='icon' class='icon'>" + $(".act-button").innerHTML;
+        $(".act-button").innerHTML += "<p>" + titles[currentUrlIndex] + "</p>";
     }
 }
 
