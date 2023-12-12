@@ -1,8 +1,12 @@
 // Suponiendo que tienes un endpoint que devuelve las citas del usuario como '/api/mis-citas'
 // y otro para cancelar una cita como '/api/cancelar-cita'
 
+let indiceCitaActual = 0;
+let citas = [];
+
 document.addEventListener('DOMContentLoaded', () => {
     cargarCitasUsuario();
+    document.addEventListener('keydown', manejarTeclasFlecha);
 });
 
 function cargarCitasUsuario() {
@@ -44,6 +48,8 @@ function mostrarCitasEnPantalla(citas) {
 
         citasContenedor.appendChild(citaDiv);
     });
+       // Asegúrate de que la primera cita esté seleccionada inicialmente
+    actualizarSeleccionCita(); // Esto seleccionará la primera cita después de cargarlas
 }
 
 
@@ -67,5 +73,30 @@ function cancelarCita(citaId) {
     })
     .catch(error => {
         console.error('Error al cancelar cita:', error);
+    });
+}
+
+function manejarTeclasFlecha(evento) {
+    const numCitas = document.getElementsByClassName('cita-item').length;
+    evento.preventDefault();
+    if (evento.key === 'ArrowDown') {
+        indiceCitaActual = (indiceCitaActual + 1) % numCitas;
+        console.log("Índice cita actual:", indiceCitaActual); // Para depuración
+        actualizarSeleccionCita();
+    } else if (evento.key === 'ArrowUp') {
+        indiceCitaActual = (indiceCitaActual - 1 + numCitas) % numCitas;
+        console.log("Índice cita actual:", indiceCitaActual); // Para depuración
+        actualizarSeleccionCita();
+    }
+}
+
+function actualizarSeleccionCita() {
+    document.querySelectorAll('.cita-item').forEach((elemento, indice) => {
+        if (indice === indiceCitaActual) {
+            elemento.classList.add('cita-seleccionada');
+            elemento.scrollIntoView({ behavior: "smooth", block: "center" });
+        } else {
+            elemento.classList.remove('cita-seleccionada');
+        }
     });
 }
