@@ -25,7 +25,8 @@ function checkAndPay() {
                 `;
 
             } else {
-                showMessage('Saldo insuficiente');
+
+                showMessage("Saldo insuficiente: " + data.saldo + "€");
             }
         })
         .catch(error => {
@@ -64,6 +65,7 @@ function showMessage(message) {
     const messageContainer = document.getElementById('message-container');
     const payButton = document.getElementById('pay-button');
 
+    messageContainer.style.display='block';
     messageContainer.innerHTML = `<p>${message}</p>`;
     payButton.style.display = 'none'; // Ocultar botón de pago
 
