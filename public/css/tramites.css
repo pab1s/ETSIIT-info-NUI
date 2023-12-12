@@ -1,103 +1,10 @@
-/* GENERAL STYLES */ 
-
-body {
-    height: 3840px;
-    width: 2160px;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-    font-family: 'Arial', sans-serif;
-    font-size: 1.5vw;
-}
-
-body {
-    display: flex-inline;
-    flex-direction: column;
-}
-
-.welcome-message h1 {
-    font-size: 300%;    /* Set the font size to 48px */
-    color: #333; /* Set the font color to #333 (dark gray) */
-    text-align: center; /* Center the text */
-}
-
-.icon-container {
-    position: relative; /* Position it relative to the first positioned (not static) ancestor element */
-    top: 0; /* Align to the top */
-    left: 0; /* Align to the left */
-    z-index: 1000;
-}
-
-.icon-container img {
-    width: 50%; /* Adjust as needed */
-    height: auto; /* Adjust as needed */
-}
-
-#text-container {
-    font-family: 'Ginebra', serif;
-    font-weight: bold;
-    text-align: center; /* Centra el texto horizontalmente */
-    font-size: 4vw; /* Tamaño de la fuente como un porcentaje del ancho de la ventana */
-    color: rgb(255, 255, 255); /* Color del texto, ajustable */
-    margin-top: 3vh;
-    margin-bottom: 0; /* Espaciado vertical basado en la altura de la ventana */
-    padding: 1vh 1vw; /* Relleno interno basado en la altura y el ancho de la ventana */
-    background-color:#d06012;
-    border: 0.1vw solid #cccccc; /* Borde proporcional al ancho de la ventana */
-    border-radius: 1vh; /* Radio del borde basado en la altura de la ventana */
-    max-width: 50%; /* Ancho máximo del div para evitar que sea demasiado ancho en pantallas grandes */
-    margin-left: auto; /* Centra el div horizontalmente */
-    margin-right: auto; /* Centra el div horizontalmente */
-}
-
-#bottom-bar {
-    text-align: center;
-    background-color: #d06012; /* Usar RGBA para un poco de transparencia */
-    color: white;
-    width: 100vw; /* Ancho completo de la ventana gráfica */
-    height: 10vh; /* Altura ajustada al diseño */
-    margin: 0;
-    font-size: 1.6vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1vh 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    font-family: 'Arial', sans-serif;
-}
-
-#auth-status {
-    font-size: 1.2em;
-    margin-bottom: 1vh;
-}
-
-#auth-actions button {
-    background-color: white;
-    color: #007bff;
-    border: 1px solid #007bff;
-    border-radius: 2vh;
-    padding: 1vh 2vw;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    font-size: 1em;
-}
-
-#auth-actions button:hover {
-    background-color: #0056b3;
-    color: white;
-}
-
 /* Estilos específicos para la página de Trámites Administrativos */
 #Tramites-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 70%;
 }
 
 #Tramites-button-container {
@@ -128,7 +35,6 @@ body {
     cursor: default;
 }
 
-
 #agenda-citas-container {
     display: flex;
     flex-direction: column;
@@ -147,10 +53,12 @@ body {
     padding: 20px;
     background-color:  #d06012;
     border: 2px solid transparent; /* Borde transparente para evitar saltos al cambiar a naranja */
-    border-radius: 10px; /* Esquinas redondeadas */
+    border-radius: 30px; /* Esquinas redondeadas */
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
     text-align: center; /* Asegura que el texto esté centrado */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white; /* Asegura que el texto sea visible */
     display: flex;
     align-items: center; /* Centra verticalmente */
     justify-content: center; /* Centra horizontalmente */
@@ -161,8 +69,8 @@ body {
 }
 
 .fecha:hover {
-    background-color: rgb(0, 187, 255); /* Cambia a azul al pasar el cursor */
-    border-color: #d06012; /* Borde naranja al pasar el cursor */
+    background-color: #b44f07; /* Cambia a azul al pasar el cursor */
+    border-color: rgb(208, 96, 18, 0.9); /* Borde naranja al pasar el cursor */
 }
 
 .fecha.selected {
@@ -176,11 +84,13 @@ body {
   
 /* Cuando el contenedor tenga contenido, puedes tener una clase para mostrarlo */
 .visible1 {
+    text-align: center;
+    font-size: 4em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 10px; /* Espaciado interno */
     margin-top: 20px; /* Margen superior para separarlo del contenido anterior */
-    background-color: lightblue; /* Color de fondo suave para destacarlo, ajusta según tu paleta de colores */
-    border: 1px solid  #d06012; /* Borde para que coincida con el estilo de citas-disponibles */
-    border-radius: 5px; /* Esquinas redondeadas, menos pronunciadas que en citas-disponibles */
+    background-color: rgb(208, 96, 18, 0.9); /* Color de fondo suave para destacarlo, ajusta según tu paleta de colores */
+    border-radius: 20px; /* Esquinas redondeadas, menos pronunciadas que en citas-disponibles */
     text-align: center; /* Centrar el título */
 }
 
@@ -190,13 +100,18 @@ body {
     gap: 10px;
     width: 100%;
     padding: 20px;
-    background-color: blue;
-    border: 2px solid #d06012;
+    background-color: #b44f07;
     border-radius: 10px;
     margin-top: 20px;
 }
-  
 
+.visible1 h2 {
+    max-width: 1000px;
+    text-align: center;
+    font-size: 0.5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
 
 #body-mis-citas {
     height: 100%;
@@ -281,15 +196,17 @@ body {
 #citas-disponibles {
     margin-top: 20px;
     padding: 20px;
-    border-radius: 5px;
-    background-color: #f8f8f8;
+    background-color: #ffffff;
     width: 100%;
-    max-width: 600px; /* Ajustar según el diseño */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1000px; /* Ajustar según el diseño */
+    height: 1200px;
 }
 
 /* Estilo para cada cita disponible individual */
 .cita-disponible {
+    font-size: 1.5em;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 15px;
     margin: 10px 0;
     background-color: #e7e7e7;
@@ -304,7 +221,6 @@ body {
     color: #666666;
     cursor: default;
 }
-
 
 .cita-disponible:hover {
     background-color: #d7d7d7;

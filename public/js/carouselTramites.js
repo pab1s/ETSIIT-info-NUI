@@ -2,7 +2,8 @@
 
 // Array of URLs
 const urls = ["/pedir-cita", "/mis-citas", "/fotoUGR" , "/expediente"];
-const images = ["../assets/PedirCita.png", "../assets/ConsultarCitas.png", "../assets/FotoUGR.png" , "../assets/Expediente.png"];
+const images = ["../assets/new-cites-icon.png", "../assets/cites-icon.png", "../assets/camera-icon.png" , "../assets/grades-icon.png"];
+const titles = ["PEDIR CITA", "MIS CITAS", "FOTO UGR" , "EXPEDIENTE"];
 let currentUrlIndex = 0;
 
 function getNextUrl() {
@@ -83,6 +84,7 @@ function next() {
     // If there is no image in act-button, create it in the button
     if (!$(".act-button").innerHTML.includes("img")) {
         $(".act-button").innerHTML = "<img src='" + getImage() + "' alt='icon' class='icon'>" + $(".act-button").innerHTML;
+        $(".act-button").innerHTML += "<p>" + titles[currentUrlIndex] + "</p>";
     }
 }
 
@@ -136,6 +138,7 @@ function prev() {
     // If there is no image in act-button, create it in the button
     if (!$(".act-button").innerHTML.includes("img")) {
         $(".act-button").innerHTML = "<img src='" + getImage() + "' alt='icon' class='icon'>" + $(".act-button").innerHTML;
+        $(".act-button").innerHTML += "<p>" + titles[currentUrlIndex] + "</p>";
     }
 }
 
