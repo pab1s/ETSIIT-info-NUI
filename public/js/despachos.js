@@ -2,6 +2,7 @@ let profesoresTodos = [];
 let profesoresMis = [];
 let profesoresActuales = [];
 let contenedorBotones, infoDespacho, botones, botonActivo;
+let indiceFiltroActivo = 0;
 const botonTodos = document.getElementById('todos-profesores');
 const botonMis = document.getElementById('mis-profesores');
 
@@ -9,41 +10,55 @@ document.addEventListener('DOMContentLoaded', function() {
     // Carga inicial de ambos conjuntos de datos.
     Promise.all([
         cargarProfesores('/api/despachos').then(data => profesoresTodos = data),
-        cargarProfesores('/api/mis-profesores', true).then(data => profesoresMis = data)
-    ]).then(() => {
-        seleccionarFiltro(0);
-    });
-});
+        cargarProfesores('/api/mis-profesores', true).then(data => profesoresMis = data).catch(error => {
+            console.error('Error al cargar profesoresMis:', error);
+        })
+    ])
+    .then(() => {
+        // Verifica si se cargaron datos en ambos conjuntos antes de seleccionar un filtro
+        if (profesoresTodos.length > 0 || profesoresMis.length > 0) {
+            seleccionarFiltro();
+            console.log("Hola");
+        } else {
+            // Maneja el caso en el que no hay datos disponibles
+            console.log('No se pudieron cargar los datos de los profesores.');
+            // Puedes actualizar la interfaz de usuario aquí para reflejar que no hay datos
+        }
+    })
+})
+
 
 botonTodos.addEventListener('click', function() {
-    seleccionarFiltro(1);
+    indiceFiltroActivo = 0;
+    seleccionarFiltro();
 });
 
 botonMis.addEventListener('click', function() {
-    seleccionarFiltro(0);
+    indiceFiltroActivo = 1;
+    seleccionarFiltro();
 });
 
 window.addEventListener('resize', function() {
-    if (profesores.length > 0) {
+    if (profesoresActuales.length > 0) {
         mostrarDespacho(botonActivo);
     }
 });
 
 document.addEventListener('keydown', function(event) {
     const botonesFiltro = document.querySelectorAll('.filtro-button');
-    let indiceFiltroActivo = Array.from(botonesFiltro).findIndex(boton => boton.classList.contains('filtro-seleccionado'));
+    indiceFiltroActivo = Array.from(botonesFiltro).findIndex(boton => boton.classList.contains('filtro-seleccionado'));
 
     event.preventDefault();
     switch (event.key) {
         case 'ArrowLeft':
             // Mover hacia el botón "MIS PROFESORES"
-            indiceFiltroActivo = (1 + indiceFiltroActivo)%2;
-            actualizarInterfaz(indiceFiltroActivo);
+            indiceFiltroActivo = (indiceFiltroActivo +1)%2;
+            seleccionarFiltro();
             break;
         case 'ArrowRight':
             // Mover hacia el botón "TODOS LOS PROFESORES"
-            indiceFiltroActivo = (1 + indiceFiltroActivo)%2;
-            seleccionarFiltro(indiceFiltroActivo);
+            indiceFiltroActivo = (indiceFiltroActivo + 1)%2;
+            seleccionarFiltro();
             break;
         // Resto de tu manejo de teclas
         case 'ArrowUp':
@@ -84,10 +99,19 @@ function cargarProfesores(ruta, esPost = false) {
             }));
         });
 }
+
 function actualizarInterfaz() {
+    contenedorBotones = document.getElementById('contenedor-botones');
+    infoDespacho = document.getElementById('info-despacho');
     limpiarContenedorBotones();
-    inicializarInterfaz();
+    if (profesoresActuales.length > 0) {
+        infoDespacho.style.display = 'block';
+        inicializarInterfaz();
+    } else {
+        infoDespacho.style.display = 'none';
+    }
 }
+
 
 // Llama esta función antes de inicializar la interfaz para limpiar el contenedor
 function limpiarContenedorBotones() {
@@ -186,17 +210,15 @@ function reordenarBotones() {
 
 
 
-function seleccionarFiltro(indice) {
+function seleccionarFiltro() {
     const botonesFiltro = document.querySelectorAll('.filtro-button');
     botonesFiltro.forEach(boton => boton.classList.remove('filtro-seleccionado'));
-    botonesFiltro[indice].classList.add('filtro-seleccionado');
-    botonesFiltro[indice].focus();
+    botonesFiltro[indiceFiltroActivo].classList.add('filtro-seleccionado');
+    botonesFiltro[indiceFiltroActivo].focus();
 
-    if(indice == 0)
-        profesoresActuales = profesoresMis;
-    else
-        profesoresActuales = profesoresTodos;
+    // Aquí intercambia los conjuntos de profesores dependiendo del índice
+    profesoresActuales = (indiceFiltroActivo == 0) ? profesoresTodos : profesoresMis;
 
     actualizarInterfaz();
-
 }
+

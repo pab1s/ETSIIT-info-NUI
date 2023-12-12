@@ -1,3 +1,6 @@
+@import url('https://fonts.cdnfonts.com/css/gill-sans-mt-2');
+@import url('https://fonts.cdnfonts.com/css/lemonmilk');
+
 body {
     display: flex;
     flex-direction: column;
@@ -45,6 +48,7 @@ body {
 }
 
 .profesor-button {
+    font-family: "Gill Sans", sans-serif;
     font-size: 3em;
     margin: 1% 0; /* Menos margen */
     width: 90%; /* Más estrecho */
@@ -83,6 +87,7 @@ body {
 
 #texto-despacho {
     font-size: 4em;
+    font-family: "Gill Sans", sans-serif;;
 }
 
 #mapa-contenedor {
@@ -124,9 +129,9 @@ body {
 }
 
 .filtro-button {
-    font-size: 2em;
-    height: 20%;
-    padding: 5%; /* Ajustar al contenido */
+    font-family: "Lemon/Milk", sans-serif;;
+    font-size: 4em;
+    height: 8vh;
     background-color: #FA7D07; /* Igual que los botones de profesor */
     color: white;
     border: none;
