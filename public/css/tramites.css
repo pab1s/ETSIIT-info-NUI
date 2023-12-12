@@ -136,10 +136,21 @@
     margin: 0 auto; /* Centra el contenedor */
     overflow-y: auto; /* Habilita el desplazamiento vertical */
     max-height: 70vh; /* Ajusta esto según la altura disponible de tu ventana de visualización */
-    padding-top: 20vh; /* Asegura que la primera cita sea visible en el centro al principio */
+    padding-top: 5vh; /* Asegura que la primera cita sea visible en el centro al principio */
     padding-bottom: 20vh; /* Asegura que la última cita pueda ser desplazada al centro */
     position: relative;
     z-index: 5;
+
+    /* Ocultar la barra de desplazamiento en navegadores basados en WebKit/Blink (como Chrome, Safari, Opera) */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Ocultar la barra de desplazamiento en IE y Edge */
+    -ms-overflow-style: none;
+
+    /* Ocultar la barra de desplazamiento en Firefox */
+    scrollbar-width: none;
 }
 
 .cita-item {

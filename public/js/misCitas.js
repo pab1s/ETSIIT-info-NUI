@@ -86,9 +86,11 @@ function manejarTeclasFlecha(evento) {
     const numCitas = document.getElementsByClassName('cita-item').length;
     evento.preventDefault();
     if (evento.key === 'ArrowDown') {
-        indiceCitaActual = (indiceCitaActual + 1) % numCitas;
+        if(indiceCitaActual+1 < numCitas)
+            indiceCitaActual = indiceCitaActual + 1;
     } else if (evento.key === 'ArrowUp') {
-        indiceCitaActual = (indiceCitaActual - 1 + numCitas) % numCitas;
+        if(indiceCitaActual-1 >= 0)
+            indiceCitaActual = indiceCitaActual - 1;
     }
     seleccionarCita(indiceCitaActual);
 }

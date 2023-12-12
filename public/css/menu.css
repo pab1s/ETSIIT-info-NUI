@@ -122,6 +122,18 @@ tr {
     border-bottom: 1px solid #f2f2f2
 }
 
+#message-container {
+    padding: 20px; /* Espaciado interno para no tocar los bordes */
+    background-color: #C6C6C6; /* Un fondo claro, pero no blanco puro */
+    border: 1px solid #ccc; /* Un borde sutil */
+    border-radius: 5px; /* Bordes redondeados suavemente */
+    color: #333; /* Un color de texto oscuro para contraste */
+    text-align: center; /* Alinea el texto al centro */
+    margin-top: 20px; /* Espacio arriba del botón */
+    display: none; /* Asegurarse de que es un bloque y no inline */
+}
+
+
 #auth-status {
     margin-right: 20px;
 }

@@ -84,7 +84,7 @@ app.get('/api/comedores', (req, res) => {
 
 app.get('/api/login', (req, res) => {
   const qrCode = req.query.qr;
-
+  res.setHeader('Cache-Control', 'no-store');
   db.get('SELECT username FROM usuarios WHERE uuid = ?', [qrCode], (err, row) => {
     if (err) {
       res.status(500).json({ error: "Error en la base de datos" });
@@ -100,6 +100,7 @@ app.get('/api/login', (req, res) => {
 
 // Ruta para verificar si el usuario está logueado
 app.get('/api/userinfo', (req, res) => {
+    res.setHeader('Cache-Control', 'no-store');
     try {
         const token = req.cookies.authToken;
         if (!token) {
@@ -127,6 +128,7 @@ app.get('/api/userinfo', (req, res) => {
 
 // Ruta para cerrar sesión
 app.get('/api/logout', (req, res) => {
+    res.setHeader('Cache-Control', 'no-store');
     res.clearCookie('authToken');
     res.json({ message: 'Sesión cerrada' });
 });

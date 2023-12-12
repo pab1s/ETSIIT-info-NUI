@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const authButton = document.getElementById('auth-button');
+    const authStatus = document.getElementById('auth-status');
     
     fetch('/api/userinfo')
         .then(response => {
@@ -19,18 +20,29 @@ document.addEventListener('DOMContentLoaded', function () {
             authButton.textContent = 'Iniciar sesión'; // Mantiene o cambia el texto a "Iniciar sesión"
         });
 
-    authButton.addEventListener('click', function () {
-        if (authButton.textContent === 'Cerrar sesión') {
-            // Proceso de logout
+       authButton.addEventListener('click', function () {
+        if (authButton.classList.contains('logged-in')) {
             fetch('/api/logout')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Error al cerrar la sesión');
                     }
+                    return response.text(); // O puedes esperar un JSON, dependiendo de tu API
+                })
+                .then(() => {
+                    // Actualiza la UI para reflejar que el usuario está deslogueado
+                    authStatus.textContent = '';
+                    authButton.textContent = 'Iniciar sesión';
+                    authButton.classList.remove('logged-in');
+                    // Redirige al usuario a la página de inicio o pantalla de login
+                    window.location.href = '/';
                 })
                 .catch(error => {
                     console.error('Error al cerrar la sesión:', error);
                 });
+        } else {
+            // Redirige al usuario a la pantalla de login si no está logueado
+            window.location.href = '/';
         }
     });
 });

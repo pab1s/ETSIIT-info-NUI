@@ -16,6 +16,7 @@ function checkAndPay() {
             const payButton = document.getElementById('pay-button');
             if (data.saldo >= 3.5) {
                 payButton.style.display='none';
+                messageContainer.style.display='block';
                 messageContainer.innerHTML = `
                     <p>¿Confirmas el pago del menú (3.50€)?</p>
                     <button id="pay-button2" onclick="realizarPago()">✅</button>
@@ -69,6 +70,7 @@ function showMessage(message) {
     // Restablecer después de 5 segundos
     setTimeout(() => {
         messageContainer.innerHTML = ''; // Limpiar mensaje
+        messageContainer.style.display='none';
         payButton.style.display = 'block'; // Mostrar botón de pago
     }, 5000);
 }
