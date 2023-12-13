@@ -1,5 +1,19 @@
+/**
+ * @file agendarCitas.js - Script para la página de agendar citas de la aplicación web de la ETSIT ULL.
+ * @author Alvaro Carrión
+ * @version 1.0
+ */
+
+// Función para formatear una fecha en formato legible
 let indiceFechaActual = 0;
 
+/**
+ * Formatea una fecha dada en un formato legible en español.
+ *
+ * @function
+ * @param {string} fecha - Cadena que representa la fecha en formato ISO o similar.
+ * @returns {string} - Fecha formateada en formato legible.
+ */
 function formatearFecha(fecha) {
     const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     let fechaFormateada = new Date(fecha).toLocaleDateString('es-ES', opciones);
@@ -12,7 +26,12 @@ function formatearFecha(fecha) {
     return partes.join(' ');
 }
 
-// Función para cargar las citas disponibles de una fecha seleccionada
+/**
+ * Carga las citas disponibles para una fecha específica y actualiza la interfaz de usuario.
+ *
+ * @function
+ * @param {string} fecha - Cadena que representa la fecha en formato ISO o similar.
+ */
 function cargarCitasDisponibles(fecha) {
     fetch(`/citas/disponibles/${fecha}`)
         .then(response => response.json())
@@ -47,14 +66,19 @@ function cargarCitasDisponibles(fecha) {
         });
 }
 
-// Función para reservar una cita
-// Esta función se llamará cuando un usuario haga clic en una cita disponible
+/**
+ * Reserva una cita para la fecha y hora especificadas.
+ *
+ * @function
+ * @param {number} citaId - Identificador de la cita.
+ * @param {string} fecha - Cadena que representa la fecha en formato ISO o similar.
+ * @param {string} horaInicio - Cadena que representa la hora de inicio en formato 'HH:mm'.
+ */
 function reservarCita(citaId, fecha, horaInicio) {
     fetch('/citas/reservar', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            // Aquí agregarías cualquier encabezado adicional como tokens de autenticación si es necesario
         },
         body: JSON.stringify({
             fecha: fecha,
@@ -92,6 +116,11 @@ function reservarCita(citaId, fecha, horaInicio) {
     });
 }
 
+/**
+ * Actualiza la interfaz de usuario para reflejar la fecha seleccionada y carga las citas disponibles.
+ *
+ * @function
+ */
 function actualizarSeleccionFecha() {
     const fechas = document.querySelectorAll('.fecha');
     fechas.forEach((fecha, indice) => {
@@ -105,7 +134,11 @@ function actualizarSeleccionFecha() {
     cargarCitasDisponibles(document.querySelectorAll('.fecha')[indiceFechaActual].getAttribute('data-fecha'));
 }
 
-// Función para cargar las fechas disponibles al cargar la página
+/**
+ * Carga las fechas disponibles al cargar la página y establece los eventos de clic en las fechas.
+ *
+ * @function
+ */
 function cargarFechasDisponibles() {
     fetch('/api/fechas-citas-disponibles')
         .then(response => response.json())
@@ -135,7 +168,14 @@ function cargarFechasDisponibles() {
 
 }
 
-// Llamamos a cargarFechasDisponibles al cargar la página y eliminamos el botón buscar citas ya que no es necesario
+/**
+ * Evento que se ejecuta cuando el DOM se ha cargado completamente.
+ *
+ * Carga las fechas disponibles al iniciar la página y maneja eventos de teclado para cambiar la fecha seleccionada.
+ *
+ * @event DOMContentLoaded
+ * @callback
+ */
 document.addEventListener('DOMContentLoaded', () => {
     cargarFechasDisponibles();
 

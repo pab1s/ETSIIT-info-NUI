@@ -1,7 +1,30 @@
+/**
+ * @file bottomBar.js - Script para la barra inferior de la página principal.
+ * @author Luis Crespo Orti
+ * @version 1.0
+ */
+
+/**
+ * Evento que se ejecuta cuando el DOM se ha cargado completamente.
+ *
+ * Realiza una solicitud a la API '/api/userinfo' para obtener información del usuario y
+ * actualiza la interfaz de usuario en consecuencia. También maneja el evento de clic en
+ * el botón de autenticación para iniciar o cerrar sesión.
+ *
+ * @event DOMContentLoaded
+ * @callback
+ */
 document.addEventListener('DOMContentLoaded', function () {
     const authButton = document.getElementById('auth-button');
     const authStatus = document.getElementById('auth-status');
-    
+
+    /**
+     * Realiza una solicitud a la API '/api/userinfo' para obtener información del usuario y
+     * actualiza la interfaz de usuario según el estado de autenticación.
+     *
+     * @function
+     * @returns {Promise<void>} - Promesa que se resuelve después de actualizar la interfaz de usuario.
+     */
     fetch('/api/userinfo')
         .then(response => {
             if (!response.ok) {
@@ -20,7 +43,13 @@ document.addEventListener('DOMContentLoaded', function () {
             authButton.textContent = 'Iniciar sesión'; // Mantiene o cambia el texto a "Iniciar sesión"
         });
 
-       authButton.addEventListener('click', function () {
+    /**
+     * Maneja el evento de clic en el botón de autenticación.
+     *
+     * @event click
+     * @callback
+     */
+    authButton.addEventListener('click', function () {
         if (authButton.classList.contains('logged-in')) {
             fetch('/api/logout')
                 .then(response => {

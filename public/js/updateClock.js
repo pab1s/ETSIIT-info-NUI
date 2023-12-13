@@ -1,3 +1,14 @@
+/**
+ * @fileoverview Funciones para actualizar el reloj en la interfaz de usuario.
+ * @author Pablo Olivares Martinez
+ * @version 1.0
+*/
+
+/**
+ * Función para actualizar el reloj en la interfaz de usuario.
+ *
+ * @function
+ */
 function updateClock() {
   const now = new Date();
   const hours = now.getHours();
@@ -7,12 +18,9 @@ function updateClock() {
   const formattedHours = (hours % 12 || 12).toString().padStart(2, '0');
   const day = now.toLocaleDateString('es-ES', { weekday: 'long' }).replace(/^\w/, c => c.toUpperCase());
 
-  // It gives the day and time separated by a line break centered
   document.getElementById('clock').innerHTML = `${day}<br>${formattedHours}:${minutes}:${seconds} ${ampm}`;
 }
 
-// Update the clock every second
 setInterval(updateClock, 1000);
 
-// Initial clock update
 updateClock();

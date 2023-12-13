@@ -1,4 +1,8 @@
-
+/**
+ * @file carouselLocalizacion.js - Script para el carrusel de la página de localización de la aplicación web de la ETSIT ULL.
+ * @author leusrox - https://codepen.io/leusrox (Modified by Pablo Olivares Martinez)
+ * @version 1.0
+ */
 
 // Array of URLs
 const urls = ["/despachos", "/clases", "/comunes"];
@@ -6,18 +10,37 @@ const images = ["../assets/profesorado-icon.png", "../assets/clases-icon.png", "
 const titles = ["DESPACHOS", "CLASES", "ESPACIOS COMUNES"];
 let currentUrlIndex = 0;
 
+
+/**
+ * Obtiene la siguiente URL en el array y actualiza el índice.
+ *
+ * @function
+ * @returns {string} - URL siguiente.
+ */
 function getNextUrl() {
     // Get the next URL and update the index
     currentUrlIndex = (currentUrlIndex + 1) % urls.length;
     return urls[currentUrlIndex];
 }
 
+/**
+ * Obtiene la URL anterior en el array y actualiza el índice.
+ *
+ * @function
+ * @returns {string} - URL anterior.
+ */
 function getPrevUrl() {
     // Get the previous URL and update the index
     currentUrlIndex = (currentUrlIndex - 1 + urls.length) % urls.length;
     return urls[currentUrlIndex];
 }
 
+/**
+ * Obtiene la ruta de la imagen correspondiente a la URL actual.
+ *
+ * @function
+ * @returns {string} - Ruta de la imagen.
+ */
 function getImage() {
     return images[currentUrlIndex];
 }
@@ -28,7 +51,11 @@ const $ = selector => {
     return document.querySelector(selector);
 };
 
-// Function to handle the "next" action
+/**
+ * Función para manejar la acción "siguiente" en la interfaz de usuario.
+ *
+ * @function
+ */
 function next() {
     // Check if an element with class "hide" exists
     if ($(".hide")) {
@@ -88,7 +115,11 @@ function next() {
     }
 }
 
-// Function to handle the "prev" action
+/**
+ * Función para manejar la acción "anterior" en la interfaz de usuario.
+ *
+ * @function
+ */
 function prev() {
     // Remove the element with class "new-next" from the DOM
     $(".new-next").remove();

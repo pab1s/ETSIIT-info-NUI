@@ -1,33 +1,65 @@
+/**
+ * @file leap.im.js - Script para el controlador Leap Motion de la aplicación web de la ETSIT.
+ * @author Ximo Sanz Tornero
+ * @version 1.2
+ */
+
+/**
+ * Clase que representa el controlador Leap Motion para la aplicación web de la ETSIT.
+ *
+ * @class
+ * @version 1.2
+ */
 class LeapMotionController {
+
+  /**
+   * Constructor de la clase LeapMotionController.
+   */
   constructor() {
-    this.controller = new Leap.Controller();
-    this.selectedButton = 'guest'; // Comienza con el botón 'guest' seleccionado
-    this.toggleButtonColor(); // Actualizar el color al inicio
+    this.controller = new Leap.Controller({ enableGestures: true });
+    this.selectedButton = 'guest';
+    this.toggleButtonColor();
     this.tapCooldown = false;
     this.forwardGestureDetected = false;
-    
   }
 
+  /**
+   * Manejador de eventos cuando se inicializa el Leap Motion.
+   */
   onInit() {
     console.log('Leap Motion se ha inicializado.');
   }
 
+  /**
+   * Manejador de eventos cuando se cierra el Leap Motion.
+   */
   onExit() {
     console.log('Leap Motion se ha cerrado.');
   }
 
+  /**
+   * Manejador de eventos cuando se conecta el Leap Motion.
+   */
   onConnect() {
     console.log('Leap Motion se ha conectado.');
   }
 
+  /**
+   * Manejador de eventos cuando se desconecta el Leap Motion.
+   */
   onDisconnect() {
     console.log('Leap Motion se ha desconectado.');
   }
 
+  /**
+   * Manejador de eventos cuando se obtiene un nuevo frame del Leap Motion.
+   *
+   * @param {Leap.Frame} frame - Marco de Leap Motion.
+   */
   onFrame(frame) {
     if (frame.hands.length > 0) {
       const hand = frame.hands[0];
-
+      
       if (!this.isInCooldown && hand.fingers.filter(finger => !finger.extended && finger.type !== 0).length === 4) {
         this.toggleSelectedButton();
         this.startCooldown(); // Iniciar el cooldown después de ejecutar la acción
@@ -46,34 +78,46 @@ class LeapMotionController {
     }
   }
 
+  /**
+   * Inicia el cooldown para evitar acciones consecutivas.
+   */
   startCooldown() {
     this.isInCooldown = true;
     setTimeout(() => {
       this.isInCooldown = false;
-    }, 400); // Cooldown de 1 segundo, ajustable según necesidad
+    }, 400);
   }
 
+  /**
+   * Inicia el cooldown para evitar acciones consecutivas de "tap".
+   */
   startTapCooldown() {
     this.tapCooldown = true;
     setTimeout(() => {
       this.tapCooldown = false;
-    }, 150); // Cooldown de 500 ms
+    }, 150);
   }
 
+  /**
+   * Alterna entre los botones 'guest' e 'id' y actualiza su color.
+   */
   toggleSelectedButton() {
     this.selectedButton = this.selectedButton === 'guest' ? 'id' : 'guest';
     this.toggleButtonColor();
   }
 
+  /**
+   * Actualiza el color del botón activo.
+   */
   toggleButtonColor() {
     const guestButton = document.getElementById('guest-access');
     const idButton = document.getElementById('authenticate');
-  
+
     if (guestButton && idButton) {
       // Quitar la clase 'selected' de ambos botones
       guestButton.classList.remove('selected');
       idButton.classList.remove('selected');
-  
+
       // Añadir la clase 'selected' al botón activo
       if (this.selectedButton === 'guest') {
         guestButton.classList.add('selected');
@@ -82,8 +126,10 @@ class LeapMotionController {
       }
     }
   }
-  
 
+  /**
+   * Ejecuta la acción correspondiente al botón seleccionado.
+   */
   clickSelectedButton() {
     if (this.selectedButton === 'guest') {
       this.clickGuestAccessButton();
@@ -92,13 +138,19 @@ class LeapMotionController {
     }
   }
 
+  /**
+   * Simula el clic en el botón de acceso de invitado.
+   */
   clickGuestAccessButton() {
     const guestAccessButton = document.getElementById('guest-access');
     if (guestAccessButton) {
       guestAccessButton.click();
     }
   }
-  
+
+  /**
+   * Simula el clic en el botón de acceso ID.
+   */
   clickGuestAccessIDButton() {
     const idAccessButton = document.getElementById('authenticate');
     if (idAccessButton) {
@@ -106,6 +158,9 @@ class LeapMotionController {
     }
   }
 
+  /**
+   * Inicia el controlador Leap Motion y establece los manejadores de eventos.
+   */
   start() {
     this.controller.on('init', this.onInit.bind(this));
     this.controller.on('exit', this.onExit.bind(this));
@@ -116,12 +171,17 @@ class LeapMotionController {
     this.controller.connect();
   }
 
+  /**
+   * Detiene el controlador Leap Motion.
+   */
   stop() {
     this.controller.disconnect();
   }
 }
 
-// Cuando el DOM esté listo, instancia y arranca el Leap Motion Controller
+/**
+ * Manejador de eventos cuando el DOM está listo, instancia y arranca el Leap Motion Controller.
+ */
 window.addEventListener('DOMContentLoaded', (event) => {
   const leapMotionController = new LeapMotionController();
   leapMotionController.start();

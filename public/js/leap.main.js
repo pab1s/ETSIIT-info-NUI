@@ -78,7 +78,6 @@ class LeapMotionController {
     }
   }
 
-
   // Función para hacer clic en el botón "Siguiente"
   clickNextButtonInList() {
     const nextButton = document.querySelector('.responsive-slider .next'); // Asumiendo que el botón "Siguiente" tiene la clase 'next'
@@ -94,7 +93,6 @@ class LeapMotionController {
       currentItemButton.click();
     }
   }
-
 
   start() {
     this.controller.on('init', this.onInit.bind(this));
