@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>Error page</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/bottomBar.css">
+</head>
+
+<body>
+    <div class="content">
+        <div class="header-container">
+            <img src="../assets/etsiit-logo.png" alt="UGR Icon">
+            <div id="clock"></div>
+        </div>
+
+        <div class="welcome-message">
+            <h1>Su solicitud no ha podido llevarse a cabo</h1>
+            <h2>Por favor, pruebe a iniciar sesión o consulte al encargado</h2>
+        </div>
+
+        <div class="horizontal-container">
+            <div class="button-container">
+                <button id="guest-access" onclick="window.location.href='/main'">
+                    <img src="../assets/error.png" alt="ERROR Icon">
+                    <p style="text-align: center;"> VOLVER AL INICIO </p>
+                </button>
+            </div>
+    </div>
+
+    <div id="bottom-bar"></div>
+
+    <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
+    <script src="../js/leap-index.js"></script>
+    <script src="../js/updateClock.js"></script>
+</body>
+
+</html>
