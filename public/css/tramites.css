@@ -1,4 +1,5 @@
-/* Estilos específicos para la página de Trámites Administrativos */
+/* TRAMITES */
+
 #Tramites-container {
     display: flex;
     flex-direction: column;
@@ -13,7 +14,6 @@
     align-items: center;
 }
 
-/* Si los botones son diferentes de los ya existentes, puedes crear una clase nueva para ellos */
 .tramites-button {
     margin: 10px;
     padding: 10px 20px;
@@ -44,32 +44,32 @@
 
 #fechas-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas en pantallas más grandes */
-    gap: 10px; /* Espacio entre los elementos */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     margin-bottom: 20px;
 }
 
 .fecha {
     padding: 20px;
     background-color:  #d06012;
-    border: 2px solid transparent; /* Borde transparente para evitar saltos al cambiar a naranja */
-    border-radius: 30px; /* Esquinas redondeadas */
+    border: 2px solid transparent;
+    border-radius: 30px;
     cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
-    text-align: center; /* Asegura que el texto esté centrado */
+    transition: background-color 0.3s, border-color 0.3s;
+    text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white; /* Asegura que el texto sea visible */
+    color: white;
     display: flex;
-    align-items: center; /* Centra verticalmente */
-    justify-content: center; /* Centra horizontalmente */
-    text-align: center; /* Para asegurar el centrado del texto */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     font-size: 45px;
     width: 800px;
     height: 100px;
 }
 
 .fecha:hover {
-    background-color: #b44f07; /* Cambia a azul al pasar el cursor */
+    background-color: #b44f07;
 }
 
 .fecha.selected {
@@ -78,7 +78,7 @@
   
 
 .oculto {
-    display: none; /* Este contenedor estará oculto */
+    display: none;
   }
   
 /* Cuando el contenedor tenga contenido, puedes tener una clase para mostrarlo */
@@ -86,11 +86,10 @@
     text-align: center;
     font-size: 4em;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 10px; /* Espaciado interno */
-    margin-top: 20px; /* Margen superior para separarlo del contenido anterior */
-    background-color: rgb(208, 96, 18, 0.9); /* Color de fondo suave para destacarlo, ajusta según tu paleta de colores */
-    border-radius: 20px; /* Esquinas redondeadas, menos pronunciadas que en citas-disponibles */
-    text-align: center; /* Centrar el título */
+    padding: 10px;
+    margin-top: 20px;
+    background-color: rgb(208, 96, 18, 0.9);
+    border-radius: 20px;
 }
 
 .visible2 {
@@ -133,11 +132,11 @@
 
 #lista-citas {
     width: 70%;
-    margin: 0 auto; /* Centra el contenedor */
-    overflow-y: auto; /* Habilita el desplazamiento vertical */
-    max-height: 70vh; /* Ajusta esto según la altura disponible de tu ventana de visualización */
-    padding-top: 5vh; /* Asegura que la primera cita sea visible en el centro al principio */
-    padding-bottom: 20vh; /* Asegura que la última cita pueda ser desplazada al centro */
+    margin: 0 auto;
+    overflow-y: auto;
+    max-height: 70vh;
+    padding-top: 5vh;
+    padding-bottom: 20vh;
     position: relative;
     z-index: 5;
 
@@ -184,7 +183,7 @@
 
 .button-cancelar.selected {
     background-color: green;
-    color: white; /* Para mejor contraste de texto */
+    color: white;
   }
   
 @media (min-width: 2560px) {
@@ -218,7 +217,7 @@
     padding: 20px;
     background-color: #ffffff;
     width: 100%;
-    max-width: 1000px; /* Ajustar según el diseño */
+    max-width: 1000px;
     height: 1200px;
 }
 
@@ -302,36 +301,35 @@
 
 #expediente-modal {
     position: fixed;
-    top: 50%; /* Centrado vertical */
-    left: 50%; /* Centrado horizontal */
-    transform: translate(-50%, -50%); /* Ajusta la posición exacta al centro */
-    width: 90%; /* Aumenta el ancho del modal */
-    height: 80vh; /* Aumenta la altura del modal */
-    overflow-y: auto; /* Permite desplazamiento vertical si el contenido es largo */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 80vh;
+    overflow-y: auto;
     background: white;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     z-index: 1000;
-    display: flex; /* Usa flex para asegurarte de que los ítems internos se centren */
-    align-items: center; /* Centra los ítems verticalmente */
-    justify-content: center; /* Centra los ítems horizontalmente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #expediente-iframe {
     width: 100%;
-    height: 95%; /* Ajusta esto para que el iframe se adapte bien dentro del modal */
+    height: 95%;
     border: none;
-    margin-left: 300px; /* Esto empujará el iframe hacia la derecha */
-    /*margin-right: 20px; /* Añade un poco de espacio a la derecha si es necesario */
-    transform: scale(1.8); /* Aumenta el contenido del iframe en un 10% */
-    transform-origin: top; /* Asegura que el contenido se escale desde la parte superior */
+    margin-left: 300px;
+    transform: scale(1.8);
+    transform-origin: top;
 }
 
 /* Estilos específicos para la página expediente.html */
 .expediente-page {
-    background-color: #d06012; /* Fondo de color naranja */
-    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+    background-color: #d06012;
+    margin: 0;
 }
 
 

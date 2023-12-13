@@ -38,7 +38,6 @@ main {
     width: 100%;
 }
 
-
 .vertical-menu-container {
     display: flex;
     flex-direction: column;
@@ -46,97 +45,24 @@ main {
     width: 100%;
     height: 90%;
     margin: auto;
-    margin-top: 5%; /* Espacio en la parte superior del menú */
+    margin-top: 5%;
 }
-
 
 #text-container {
     font-family: "Gill Sans", sans-serif;
     font-weight: bold;
-    text-align: center; /* Centra el texto horizontalmente */
-    font-size: 4vw; /* Tamaño de la fuente como un porcentaje del ancho de la ventana */
-    color: rgb(255, 255, 255); /* Color del texto, ajustable */
-    margin-top: 3vh;
-    margin-bottom: 0; /* Espaciado vertical basado en la altura de la ventana */
-    padding: 1vh 1vw; /* Relleno interno basado en la altura y el ancho de la ventana */
-    background-color:#d06012;
-    border: 0.1vw solid #cccccc; /* Borde proporcional al ancho de la ventana */
-    border-radius: 1vh; /* Radio del borde basado en la altura de la ventana */
-    max-width: 50%; /* Ancho máximo del div para evitar que sea demasiado ancho en pantallas grandes */
-    margin-left: auto; /* Centra el div horizontalmente */
-    margin-right: auto; /* Centra el div horizontalmente */
-}
-
-
-
-/* bottom-bar.css */
-#bottom-bar {
     text-align: center;
-    background-color: rgb(208, 96, 18, 0.9); /* Usar RGBA para un poco de transparencia */
-    color: white;
-    width: 100vw; /* Ancho completo de la ventana gráfica */
-    height: 10vh; /* Altura ajustada al diseño */
-    margin: 0;
-    font-size: 1.6vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1vh 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    font-family: "Gill Sans", sans-serif;
-}
-
-#auth-status {
-    font-size: 1.2em;
-    margin-bottom: 1vh;
-}
-
-#auth-actions button {
-    background-color: white;
-    color: #007bff;
-    border: 1px solid #007bff;
-    border-radius: 2vh;
-    padding: 1vh 2vw;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    font-size: 1em;
-}
-
-#auth-actions button:hover {
-    background-color: #0056b3;
-    color: white;
-}
-
-
-.menu-item img {
-    width: 100%; /* Ajusta esto según el tamaño deseado para tus iconos */
-    height: 100%;
-}
-
-.menu-item button {
-    width: 100%;
-    font-size: 200%;
-    color: #fff;
-    background-color: rgb(208, 96, 18);
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 20px;
-    display: block; /* Para asegurar que los botones no estén alineados horizontalmente */
-}
-
-.menu-item button:hover {
-    background-color: #9d480d;
-}
-
-.menu-item.selected,
-.menu-item.selected button {
-    background-color: #9d480d; /* Cambia el color de fondo a rojo */
-    color: white; /* Cambia el color del texto a blanco para mejor contraste */
+    font-size: 4vw;
+    color: rgb(255, 255, 255);
+    margin-top: 3vh;
+    margin-bottom: 0;
+    padding: 1vh 1vw;
+    background-color:#d06012;
+    border: 0.1vw solid #cccccc;
+    border-radius: 1vh;
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .texto-importante {
@@ -147,16 +73,18 @@ main {
 }
 
 .icon-container {
-    position: relative; /* Position it relative to the first positioned (not static) ancestor element */
-    top: 0; /* Align to the top */
-    left: 0; /* Align to the left */
+    position: relative;
+    top: 0;
+    left: 0;
     z-index: 1000;
 }
 
 .icon-container img {
-    width: 50%; /* Adjust as needed */
-    height: auto; /* Adjust as needed */
+    width: 50%;
+    height: auto;
 }
+
+/* HEADER STYLES */
 
 #clock {
     font-size: 4vw;
@@ -171,10 +99,10 @@ main {
 }
 
 .welcome-message h1 {
-    font-size: 300%;    /* Set the font size to 48px */
-    font-family: "Lemon/Milk", sans-serif; /* Set the font family to "Lemon/Milk" */
-    color: #333; /* Set the font color to #333 (dark gray) */
-    text-align: center; /* Center the text */
+    font-size: 300%;
+    font-family: "Lemon/Milk", sans-serif;
+    color: #333;
+    text-align: center;
 }
 
 .welcome-message h2 {
@@ -183,6 +111,33 @@ main {
     color: #333;
     text-align: center;
 }
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.header-container text {
+    font-size: 110%;
+    font-weight: normal;
+    color: #ffffff;
+    text-align: center;
+}
+
+.header-container img {
+    width: 50%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+
+/* MAIN STYLES */
 
 .button-container {
     display: flex;
@@ -228,56 +183,7 @@ main {
 }
 
 .button-container button.selected {
-    background-color: #9d480d; /* O el color rojo que prefieras */
-}
-
-.header-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    padding: 0;
-    margin: 0;
-}
-
-.header-container text {
-    font-size: 110%;
-    font-weight: normal;
-    color: #ffffff;
-    text-align: center;
-}
-
-.header-container img {
-    width: 50%;
-    height: auto;
-    padding: 0;
-    margin: 0;
-}
-
-#webcam-container {
-    position: absolute;
-    top: -5%; /* Alineado justo debajo del botón */
-    left: 50%; /* Centrado horizontalmente */
-    transform: translateX(-50%); /* Ajuste para centrar exactamente */
-    border: 5px solid #d06012 !important; /* Color del borde */
-    border-radius: 20px;
-    overflow: hidden;
-    transition: all 0.5s ease; /* Transición suave para abrir y cerrar */
-    max-height: 0; /* Inicialmente oculto */
-    width: 30vw; /* Ancho del marco de la cámara */
-    display: none; /* Inicialmente no visible */
-}
-
-#webcam-container.active {
-    max-height: 12vh; /* Altura del marco de la cámara, igual que el ancho para hacerlo cuadrado */
-    display: block; /* Asegura que se muestra */
-}
-
-#webcam {
-    width: 100%; /* Asegura que el video llene el contenedor */
-    height: 100%; /* Asegura que el video llene el contenedor */
+    background-color: #9d480d;
 }
 
 .horizontal-container {
@@ -289,11 +195,37 @@ main {
     margin: 15% 5%;
 }
 
+/* WEB CAM STYLES */
+
+#webcam-container {
+    position: absolute;
+    top: -5%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid #d06012 !important;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    max-height: 0;
+    width: 30vw;
+    display: none;
+}
+
+#webcam-container.active {
+    max-height: 12vh;
+    display: block;
+}
+
+#webcam {
+    width: 100%;
+    height: 100%;
+}
+
 .login-form {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 300px; /* Puede cambiar esto según sus necesidades */
+    max-width: 300px;
 }
 
 .login-form input {
@@ -326,13 +258,13 @@ main {
 
 .titulo-estado-seleccion {
     text-align: center;
-    font-size: 160%; /* Tamaño del texto ajustado al 100% del tamaño predeterminado */
+    font-size: 160%;
     font-family: "Gill Sans", sans-serif;
-    font-style: italic; /* Cursiva */
-    color: rgba(208, 96, 18, 0.9); /* Texto en blanco */
-    padding: 1%; /* Espaciado interno en porcentaje para una mejor presentación */
-    margin: 2% 0; /* Margen superior e inferior en porcentaje */
-    width: 98%; /* Ancho en porcentaje, ajustado para considerar el padding y el borde */
-    box-sizing: border-box; /* Incluir el padding y el borde en el ancho total */
+    font-style: italic;
+    color: rgba(208, 96, 18, 0.9);
+    padding: 1%;
+    margin: 2% 0;
+    width: 98%;
+    box-sizing: border-box;
 }
 

@@ -1,21 +1,20 @@
-@import url('https://fonts.cdnfonts.com/css/gill-sans-mt-2');
-@import url('https://fonts.cdnfonts.com/css/lemonmilk');
+/* DESPACHOS STYLES */
 
 main {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Cambio para alinear desde arriba */
-    align-items: stretch; /* Ajustar para que los elementos ocupen todo el ancho */
+    justify-content: flex-start;
+    align-items: stretch;
     height: 100vh;
-    margin: 0; /* Eliminar margen por defecto */
+    margin: 0;
 }
 
 .location-scroll {
-    margin-top: 10vh; /* Hacer espacio para el icono */
-    height: 60vh; /* Altura ajustada para dejar espacio al bottom-bar */
-    overflow-y: auto; /* Permitir desplazamiento si el contenido es muy largo */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
+    margin-top: 10vh;
+    height: 60vh;
+    overflow-y: auto;
+    justify-content: center;
+    align-items: center;
     display: flex;
 }
 
@@ -42,16 +41,16 @@ main {
 .profesor-button {
     font-family: "Gill Sans MT", sans-serif;
     font-size: 1.5em;
-    margin: 1% 0; /* Menos margen */
-    width: 90%; /* Más estrecho */
-    height: 40%; /* Aumentar la altura para cada botón */
+    margin: 1% 0;
+    width: 90%;
+    height: 40%;
     padding: 10px;
     background-color: rgb(208, 96, 18);
     color: white;
     border: none;
     cursor: pointer;
-    box-sizing: border-box; /* Asegurar que el padding no afecte el ancho total */
-    border-radius: 30px; /* Efecto redondeado */
+    box-sizing: border-box;
+    border-radius: 30px;
 }
 
 .profesor-button:hover {
@@ -66,15 +65,15 @@ main {
 }
 
 .departamento {
-    font-size: 0.8em; /* Tamaño de fuente más pequeño */
+    font-size: 0.8em;
 }
 
 #info-despacho {
     width: 60%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Alineación horizontal al centro */
-    text-align: center; /* Centrar el texto */
+    align-items: center;
+    text-align: center;
 }
 
 #texto-despacho {
@@ -84,17 +83,15 @@ main {
 
 #mapa-contenedor {
     position: relative;
-    width: 100%; /* O el ancho que prefieras */
-    height: auto; /* Ajusta esto según sea necesario para un tamaño más grande */
-    margin-top: 20px; /* Espacio entre el texto y la imagen del mapa */
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
 }
 
 #mapa-imagen {
-    width: 92%; /* Aumenta el tamaño de la imagen */
+    width: 92%;
     height: auto;
     margin-top:2%;
-     /* Añadir efecto de borde degradado */
-    /* Añadir efecto de borde degradado más suave */
     box-shadow: 0 0 30px 20px rgba(0, 0, 0, 1),
                 0 0 45px 30px rgba(255, 255, 255, 0.7);
 }
@@ -106,36 +103,36 @@ main {
 }
 
 #botones-filtro {
-    width: 80%; /* Ocupar todo el ancho */
-    margin-top: 15vh;
+    width: 80%;
+    margin-top: 12vh;
     margin-left: 10%;
     margin-right: 10%;
     display: flex;
-    justify-content: space-between; /* Distribuir espacio entre los botones */
-    padding: 10px 10px; /* Añadir algo de relleno arriba y abajo */
-    box-sizing: border-box; /* Incluir padding y border en el cálculo del ancho */
-    position: fixed; /* Fijar en la parte superior */
+    justify-content: space-between;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 101; /* Asegurarse de que esté por encima de icon-container */
+    z-index: 101;
 }
 
 .filtro-button {
     font-family: "Lemon/Milk", sans-serif;;
     font-size: 2em;
     height: 8vh;
-    background-color: rgb(208, 96, 18); /* Igual que los botones de profesor */
+    background-color: rgb(208, 96, 18);
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 30px; /* Efecto redondeado */
-    width: 44%; /* Cada botón es el 48% del ancho del contenedor para permitir el 4% de espacio (2% de margen en cada lado) */
-    margin: 1% 1%; /* Margen entre botones */
-    box-sizing: border-box; /* Incluye padding y border en el cálculo del ancho y altura */
+    border-radius: 30px;
+    width: 44%;
+    margin: 1% 1%;
+    box-sizing: border-box;
 }
 
 .filtro-button:hover {
-    background-color: rgb(208, 96, 18); /* Color al pasar el ratón por encima */
+    background-color: rgb(208, 96, 18);
 }
 
 .filtro-seleccionado {

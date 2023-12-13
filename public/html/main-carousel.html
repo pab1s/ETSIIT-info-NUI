@@ -6,16 +6,13 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>Menú Principal - ETSITT</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/bottomBar.css">
     <link rel="stylesheet" href="../css/carousel.css">
 </head>
 
 <body>
     <button id="vuelta-atras" style="display: none;" onclick="window.location.href='/';"></button>
-    <main id="swup" class="transition-fade">
-
-        <!-- Contenedor para el puntero -->
-        <div id="pointer"></div>
-
+    <main>
         <div class="header-container">
             <img src="../assets/etsiit-logo.png" alt="Icono ETSIIT">
             <div id="clock"></div>
@@ -25,7 +22,6 @@
             <h1>¿En qué podemos ayudarle?</h1>
             <h2>Podemos ayudarle a encontrar información sobre:</h2>
         </div>
-        
 
         <div class="responsive-slider">
             <ul class="list">
@@ -45,14 +41,12 @@
         
     </main>
 
-    <!-- bottom-bar.html -->
     <div id="bottom-bar">
         <div id="auth-status"></div>
         <div id="auth-actions">
             <button id="auth-button" onclick="window.location.href = '/'">Iniciar sesión</button>
         </div>
     </div>
-
 
     <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
     <script src="https://hammerjs.github.io/dist/hammer.js"></script>

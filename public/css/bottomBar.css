@@ -1,10 +1,10 @@
 /* bottom-bar.css */
 #bottom-bar {
     text-align: center;
-    background-color: rgba(208, 96, 18, 0.9); /* Usar RGBA para un poco de transparencia */
+    background-color: rgb(208, 96, 18, 0.9);
     color: white;
-    width: 100vw; /* Ancho completo de la ventana gráfica */
-    height: 10vh; /* Altura ajustada al diseño */
+    width: 100vw;
+    height: 10vh;
     margin: 0;
     font-size: 1.6vh;
     display: flex;
@@ -16,7 +16,7 @@
     bottom: 0;
     left: 0;
     z-index: 1000;
-    font-family: 'Arial', sans-serif;
+    font-family: "Gill Sans", sans-serif;
 }
 
 #auth-status {

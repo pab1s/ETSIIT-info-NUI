@@ -1,32 +1,10 @@
-@import url('https://fonts.cdnfonts.com/css/gill-sans-mt-2');
-
-
-h2 {
-    font-size: 32px;
-    color: #333;
-    margin-bottom: 50px;
-    text-align: center;
-}
-
-h3 {
-    font-size: 3.5vw;
-    font-family: 'Gill Sans MT', 'Gill Sans', sans-serif;
-    color: #333;
-    margin-bottom: 50px;
-    text-align: center;
-}
-
-.content {
-    position: relative;
-    flex: 1;
-    margin-bottom: 0;
-}
+/* COMEDORES STYLES */
 
 #comedores-container {
     width: 100%;
     height : 5%;
     display: flex;
-    flex-direction: row; /* Alinea los elementos en fila */
+    flex-direction: row;
     justify-content: start;
     align-items: center;
     overflow-x: auto;
@@ -72,13 +50,11 @@ h3 {
 
 #menu-container {
     position: flex;
-    /* background-color: #f9f9f9; */
     border-radius: 15px;
-    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
     margin: 1%;
     padding: 12px;
     z-index: 1;
-    max-height: 400px; /* Añade un límite de altura */
+    max-height: 400px;
     overflow-y: hidden;
 }
 
@@ -123,14 +99,14 @@ tr {
 }
 
 #message-container {
-    padding: 20px; /* Espaciado interno para no tocar los bordes */
-    background-color: rgb(208, 96, 18); /* Un fondo claro, pero no blanco puro */
-    border: 1px solid rgb(208, 96, 18); /* Un borde sutil */
-    border-radius: 25px; /* Bordes redondeados suavemente */
-    color: #333; /* Un color de texto oscuro para contraste */
-    text-align: center; /* Alinea el texto al centro */
-    margin-top: 20px; /* Espacio arriba del botón */
-    display: none; /* Asegurarse de que es un bloque y no inline */
+    padding: 20px;
+    background-color: rgb(208, 96, 18);
+    border: 1px solid rgb(208, 96, 18);
+    border-radius: 25px;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    display: none;
 }
 
 #auth-status {
@@ -154,62 +130,62 @@ tr {
 }
 
 #pay-button {
-    display: block; /* Hace que el botón sea un bloque para permitir el centrado */
-    margin: 0 auto; /* Centra el botón horizontalmente */
-    width: 50%; /* Ancho del botón como un porcentaje del contenedor */
-    padding: 1% 2%; /* Espaciado interno basado en porcentajes para mantener la proporción */
-    font-size: 4em; /* Tamaño de fuente relativo */
-    color: white; /* Color del texto */
-    background-color: rgb(208, 96, 18); /* Color de fondo (puedes cambiarlo) */
-    border: none; /* Sin bordes */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
-    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    padding: 1% 2%;
+    font-size: 4em;
+    color: white;
+    background-color: rgb(208, 96, 18);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
     display: none;
 }
 
 #pay-button:hover {
-    background-color: rgba(208, 96, 18, 0.9); /* Color de fondo al pasar el ratón por encima */
+    background-color: rgba(208, 96, 18, 0.9);
 }
 
 #message-area {
-    width: 80%; /* Ancho relativo a la ventana */
-    margin: 2% auto; /* Margen superior e inferior como porcentaje, centrado horizontal */
-    padding: 2%; /* Espaciado interno como porcentaje del ancho */
-    text-align: center; /* Texto centrado */
-    background-color: white; /* Fondo blanco */
-    border-radius: 5px; /* Bordes redondeados */
-    box-shadow: 0 2% 4% rgba(0, 0, 0, 0.1); /* Sombra suave, utilizando porcentajes */
-    transition: opacity 0.5s ease; /* Transición suave para el desvanecimiento */
-    opacity: 1; /* Visible inicialmente */
+    width: 80%;
+    margin: 2% auto;
+    padding: 2%;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2% 4% rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s ease;
+    opacity: 1;
     margin-top: 5%;
 }
 
 .boton-seleccionado {
-    transform: scale(1.1); /* Aumentar el tamaño del botón */
-    border: 4px solid rgb(208, 96, 18); /* Borde más grueso y de color naranja */
-    box-shadow: 0 0 10px rgb(208, 96, 18); /* Sombra para más énfasis */
+    transform: scale(1.1);
+    border: 4px solid rgb(208, 96, 18);
+    box-shadow: 0 0 10px rgb(208, 96, 18);
     box-sizing: border-box;
     outline: none;
-    transition: transform 0.3s ease; /* Animación suave al cambiar de tamaño */
+    transition: transform 0.3s ease;
 }
 
 #message-area button {
-    padding: 1% 2%; /* Espaciado interno como porcentaje */
-    font-size: 2em; /* Tamaño de fuente relativo */
-    aspect-ratio:3/1; /* Relación de aspecto 1:1 */
-    border: none; /* Sin bordes */
-    border-radius: 20px; /* Bordes redondeados */
-    cursor: pointer; /* Cursor tipo mano */
+    padding: 1% 2%;
+    font-size: 2em;
+    aspect-ratio:3/1;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
 /* Estilos adicionales para botones de acción */
 #message-area button.confirm {
-    background-color: #4CAF50; /* Verde */
+    background-color: #4CAF50;
     color: white;
 }
 
 #message-area button.cancel {
-    background-color: #f44336; /* Rojo */
+    background-color: #f44336;
     color: white;
 }

@@ -1,3 +1,5 @@
+/* SCHEDULE STYLES */
+
 .calendario-contenedor {
     width: 90%;
     height: 50%;
@@ -7,10 +9,10 @@
 }
 
 h1 {
-    font-size: 300%;    /* Set the font size to 48px */
-    font-family: "Lemon/Milk", sans-serif; /* Set the font family to "Lemon/Milk" */
-    color: #333; /* Set the font color to #333 (dark gray) */
-    text-align: center; /* Center the text */
+    font-size: 300%;
+    font-family: "Lemon/Milk", sans-serif;
+    color: #333;
+    text-align: center;
 }
 
 .calendario {

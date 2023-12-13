@@ -1,3 +1,4 @@
+/* CAROUSEL STYLES */
 
   .responsive-slider {
     position: relative;
@@ -35,13 +36,12 @@
     border-radius: 10%;
     background: #d06012;
     transition: transform 1s, opacity 1s;
-    border: none; /* Remove default border */
-    padding: 0; /* Remove default padding */
-    /* Add other necessary styling */
+    border: none;
+    padding: 0;
 }
 
   .list .act-button {
-    z-index: 2; /* Asegura que esté encima de otros elementos */
+    z-index: 2;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -51,9 +51,8 @@
     border-radius: 10%;
     background: #d06012;
     border: none;
-    padding: 0; /* Remove default padding */
+    padding: 0;
     cursor: pointer;
-    /* Add other necessary styling */
   }
 
   .list .act {

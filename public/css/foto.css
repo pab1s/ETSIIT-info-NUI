@@ -1,77 +1,79 @@
+/* PHOTO STYLES */
+
 /* Estilos para la tarjeta de identificación */
 .tarjeta {
-    position: relative; /* Posición relativa para poder posicionar elementos sobre la tarjeta */
-    left: -8%; /* Mover la tarjeta a la mitad del contenedor */
-    width: 35%; /* Ajustar al ancho de la página */
+    position: relative;
+    left: -8%;
+    width: 35%;
 }
 
 .tarjeta img {
     width: 150%;
     height: auto;
-    display: block; /* Asegurar que la imagen se muestre como bloque */
+    display: block;
 }
 
 /* Posicionar la información del usuario sobre la tarjeta */
 #info{
     position: absolute;
-    top: 470px; /* Ajustar según sea necesario para colocar el nombre debajo del icono amarillo */
-    left: 150px; /* Ajustar según sea necesario para alinear con el borde izquierdo de la tarjeta */
-    color: #000; /* El color del texto */
-    width: 200px; /* Ajustar según el ancho de la tarjeta */
+    top: 470px;
+    left: 150px;
+    color: #000;
+    width: 200px;
 }
 
 #foto-usuario {
-    position: absolute; /* Posicionar sobre el recuadro blanco */
-    top: 380px; /* Ajustar según sea necesario para colocar dentro del recuadro blanco */
-    left: 810px; /* Ajustar según sea necesario para alinear con el recuadro blanco */
-    width: 250px; /* Ajustar al tamaño del recuadro blanco */
-    height: 280px; /* Ajustar al tamaño del recuadro blanco */
-    object-fit: cover; /* Asegurar que la imagen cubra todo el espacio sin distorsionarse */
-    border-radius: 5px; /* Bordes redondeados para la foto, si es necesario */
+    position: absolute;
+    top: 380px;
+    left: 810px;
+    width: 250px; 
+    height: 280px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
 #qr-usuario {
-    position: absolute; /* Posicionar sobre el recuadro blanco */
-    top: 220px; /* Ajustar según sea necesario para colocar dentro del recuadro blanco */
-    left: 140px; /* Ajustar según sea necesario para alinear con el recuadro blanco */
-    width: 190px; /* Ajustar al tamaño del recuadro blanco */
-    height: 190px; /* Ajustar al tamaño del recuadro blanco */
-    object-fit: cover; /* Asegurar que la imagen cubra todo el espacio sin distorsionarse */
-    border-radius: 5px; /* Bordes redondeados para la foto, si es necesario */
+    position: absolute;
+    top: 220px;
+    left: 140px;
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 5px;
     z-index: 10;
 }
 
 #info {
-    font-size: 2em; /* Ajustar el tamaño de la fuente del nombre */
-    font-weight: bold; /* Hacer el nombre en negrita */
-    margin: 0; /* Eliminar márgenes por defecto */
-    padding-bottom: 10px; /* Espacio debajo del nombre */
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 10px;
 }
 
 #contenedor-camara {
-    width: 100%; /* Adjust to the desired size */
+    width: 100%;
     height: auto;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-    display: flex; /* Set to flex container to enable horizontal layout */
-    flex-direction: row; /* Arrange items horizontally */
+    display: flex;
+    flex-direction: row;
 
 }
 
 #contenedor-camara video {
-    width: 35%; /* Adjust the width of the video */
+    width: 35%;
 }
 
 #contenedor-camara block {
-    width: 35%; /* Adjust the width of the block */
+    width: 35%;
 }
 
 video, canvas {
     width: 100%;
     height: auto;
-    border-radius: 10px; /* Bordes redondeados */
+    border-radius: 10px;
 }
 
 #foto-capturada {
@@ -80,7 +82,7 @@ video, canvas {
 
 /* Estilos generales para los botones */
 #boton-activar-camara {
-    background-color: #4CAF50; /* Color de fondo verde */
+    background-color: #4CAF50;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     position: relative;
     left: 45%;
@@ -94,12 +96,12 @@ video, canvas {
 }
 
 #boton-capturar:hover {
-    background-color: #45a049; /* Color al pasar el mouse */
+    background-color: #45a049;
 }
 
 #boton-capturar {
-    background: none; /* Sin color de fondo */
-    border: none; /* Sin bordes */
+    background: none;
+    border: none;
     cursor: pointer;
     width: 10%;
     aspect-ratio: 1/1;
@@ -107,11 +109,11 @@ video, canvas {
 }
 
 #boton-capturar img {
-    height: 100%; /* Altura del icono de la cámara */
+    height: 100%;
 }
 
 #boton-capturar:hover {
-    background-color: rgba(0, 0, 0, 0.1); /* Ligera sombra al pasar el mouse */
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos para el mensaje de actualización */
