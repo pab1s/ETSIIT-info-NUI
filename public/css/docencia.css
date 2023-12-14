@@ -16,7 +16,7 @@ h1 {
 }
 
 .calendario {
-    font-size: 0.8vw;
+    font-size: 1vw;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(28, 1fr);
