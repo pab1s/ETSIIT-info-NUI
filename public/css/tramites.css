@@ -213,12 +213,12 @@
 
 /* Estilo para la lista de citas disponibles */
 #citas-disponibles {
-    margin-top: 20px;
+    margin-top: 2vh;
     padding: 20px;
     background-color: #ffffff;
     width: 100%;
     max-width: 1000px;
-    height: 1200px;
+    height: 30vh;
 }
 
 /* Estilo para cada cita disponible individual */
