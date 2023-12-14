@@ -22,7 +22,7 @@
 
 .comedor-button {
     font-size: 170%;
-    margin: 3%;
+    margin: 2%;
     height: 90%;
     width: 50%;
     display: block;
@@ -142,6 +142,7 @@ tr {
     margin: 0 auto;
     width: 50%;
     padding: 1% 2%;
+    font-family: "Gill Sans", sans-serif;
     font-size: 4em;
     color: white;
     background-color: rgb(208, 96, 18);
