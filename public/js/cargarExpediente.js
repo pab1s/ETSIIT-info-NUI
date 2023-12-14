@@ -1,48 +1,76 @@
-window.addEventListener('load', function() {
+/**
+ * @file cargarExpediente.js - Script para la página de cargar expediente de la aplicación web de la ETSIIT.
+ * @author Alvaro Carrillo
+ * @version 1.0
+ */
+
+/**
+ * Maneja el evento 'load' de la ventana y configura el contenido del iframe de expediente al cargar la página.
+ *
+ * @function
+ * @name handleWindowLoad
+ */
+window.addEventListener('load', function () {
+    /**
+     * Elemento iframe que mostrará el expediente.
+     *
+     * @type {HTMLIFrameElement}
+     */
     var iframe = document.getElementById('expediente-iframe');
+
+    /**
+     * Elemento modal que contiene el iframe de expediente.
+     *
+     * @type {HTMLElement}
+     */
     var modal = document.getElementById('expediente-modal');
 
-    // Verifica si el iframe y el modal existen
-    if (iframe && modal) {
-        // Establece la URL del iframe para cargar el expediente
-        iframe.src = '/api/expediente';
+    /**
+     * Configura la fuente del iframe y muestra el expediente en el modal.
+     *
+     * @function
+     * @name configureExpedienteIframe
+     */
+    var configureExpedienteIframe = function () {
+        if (iframe && modal) {
+            iframe.src = '/api/expediente';
 
-        // OPCIONAL: Añade un controlador de eventos para manejar errores de carga del iframe
-        iframe.onerror = function() {
-            console.error('Error al cargar el expediente.');
-            // Manejo del error
-        };
+            /**
+             * Manejador de eventos de error del iframe.
+             *
+             * @function
+             * @name handleIframeError
+             */
+            iframe.onerror = function () {
+                console.error('Error al cargar el expediente.');
+            };
 
-        // Llama a la función para mostrar el modal
-        mostrarExpediente();
-    } else {
-        console.error('Elementos del DOM no encontrados');
-    }
+            // Muestra el expediente
+            mostrarExpediente();
+        } else {
+            console.error('Elementos del DOM no encontrados');
+        }
+    };
+
+    // Configura el contenido del iframe al cargar la página
+    configureExpedienteIframe();
 });
 
-// Función para mostrar el modal del expediente
+/**
+ * Muestra el modal del expediente.
+ *
+ * @function
+ * @name mostrarExpediente
+ */
 function mostrarExpediente() {
+    /**
+     * Elemento modal que contiene el iframe de expediente.
+     *
+     * @type {HTMLElement}
+     */
     var modal = document.getElementById('expediente-modal');
+
     if (modal) {
-        modal.style.display = 'block'; // Muestra el modal
+        modal.style.display = 'block';
     }
 }
-
-
-/* Codigo html asociado
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Trámites Administrativos</title>
-        <link rel="stylesheet" href="../css/tramites.css"> <!-- Enlace a CSS -->
-        <script src="../js/cargarExpediente.js" defer></script> <!-- Enlace a JS -->
-    </head>
-    <body>
-        <div id="expediente-modal" width="100%" height="2000px" margin-top="20%" style="display:none;">
-            <iframe id="expediente-iframe" src="" width="100%" height="100%" style="border:none;"></iframe>
-        </div>
-    </body>
-</html>
-*/

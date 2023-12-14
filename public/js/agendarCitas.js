@@ -1,6 +1,6 @@
 /**
  * @file agendarCitas.js - Script para la página de agendar citas de la aplicación web de la ETSIT ULL.
- * @author Alvaro Carrión
+ * @author Alvaro Carrillo
  * @version 1.0
  */
 

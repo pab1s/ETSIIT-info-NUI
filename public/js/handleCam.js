@@ -1,5 +1,14 @@
+/**
+ * @file handleCam.js - Script para la página de autenticación de la aplicación web de la ETSIIT.
+ * @author Luis Crespo Orti
+ * @version 1.0
+ */
+
 let html5QrCodeScanner; // Variable global para controlar el escáner de QR
 
+/**
+ * Event listener que se ejecuta al hacer clic en el botón "authenticate".
+ */
 document.getElementById('authenticate').addEventListener('click', function() {
     var webcamContainer = document.getElementById('webcam-container');
 
@@ -25,6 +34,9 @@ document.getElementById('authenticate').addEventListener('click', function() {
     }
 });
 
+/**
+ * Inicia el escáner de QR y muestra el contenedor de la webcam.
+ */
 function startQRScanner() {
     html5QrCodeScanner = new Html5QrcodeScanner(
         "webcam-container", { fps: 10, qrbox: 250 }
@@ -32,6 +44,11 @@ function startQRScanner() {
     html5QrCodeScanner.render(onScanSuccess, onScanError);
 }
 
+
+/**
+ * Callback que se ejecuta al tener éxito en la decodificación de un código QR.
+ * @param {string} decodedText - Texto decodificado del código QR.
+ */
 function onScanSuccess(decodedText) {
     console.log(`Código QR decodificado: ${decodedText}`);
     fetch('/api/login?qr=' + encodeURIComponent(decodedText))
@@ -59,8 +76,11 @@ function onScanSuccess(decodedText) {
     html5QrCodeScanner.clear();
 }
 
-
-
+/**
+ * Callback que se ejecuta al producirse un error durante el escaneo de QR.
+ * @param {string} error - Mensaje de error.
+ */
 function onScanError(error) {
      console.error(`Error al escanear: ${error}`);
 }
+

@@ -1,5 +1,15 @@
-// citasManager.js
+/**
+ * @file citasManager.js - Script para la gestión de citas de la aplicación web de la ETSIT ULL.
+ * @author Alvaro Carrillo
+ * @version 1.0
+ */
 
+/**
+ * Elimina las citas pasadas de la base de datos.
+ * @param {Object} db - Objeto de base de datos SQLite.
+ * @returns {Promise<number>} - Promesa que resuelve con el número de filas afectadas.
+ * @throws {Error} - Error si hay algún problema al eliminar citas pasadas.
+ */
 function eliminarCitasPasadas(db) {
     return new Promise((resolve, reject) => {
         const ahora = new Date();
@@ -33,6 +43,13 @@ function eliminarCitasPasadas(db) {
     });
 }
 
+/**
+ * Verifica la disponibilidad de citas en una fecha específica.
+ * @param {Object} db - Objeto de base de datos SQLite.
+ * @param {string} fecha - Fecha en formato 'YYYY-MM-DD'.
+ * @returns {Promise<boolean>} - Promesa que resuelve con true si no hay citas disponibles, false en caso contrario.
+ * @throws {Error} - Error si hay algún problema al verificar citas disponibles.
+ */
 function verificarCitasDisponibles(db, fecha) {
     return new Promise((resolve, reject) => {
         db.get('SELECT COUNT(*) AS numCitas FROM citas WHERE fecha = ?', [fecha], (err, row) => {
@@ -45,6 +62,13 @@ function verificarCitasDisponibles(db, fecha) {
         });
     });
 }
+
+/**
+ * Agrega nuevas citas para los próximos días hábiles.
+ * @param {Object} db - Objeto de base de datos SQLite.
+ * @returns {Promise<void[]>} - Promesa que resuelve cuando todas las nuevas citas han sido agregadas.
+ * @throws {Error} - Error si hay algún problema al agregar nuevas citas.
+ */
 function agregarNuevasCitas(db) {
     let promesas = [];
     const ahora = new Date();
@@ -105,9 +129,12 @@ function agregarNuevasCitas(db) {
     return Promise.all(promesas);
 }
 
-// ... (El resto de tu código permanece igual)
-
-// Declara `inicializarCitas` como una función asíncrona
+/**
+ * Inicializa el proceso de citas eliminando las pasadas y agregando nuevas citas.
+ * @param {Object} db - Objeto de base de datos SQLite.
+ * @returns {Promise<void>} - Promesa que resuelve cuando el proceso de inicialización está completo.
+ * @throws {Error} - Error si hay algún problema durante la inicialización de citas.
+ */
 async function inicializarCitas(db) {
     try {
         await eliminarCitasPasadas(db);
@@ -118,6 +145,5 @@ async function inicializarCitas(db) {
     }
 }
 
-// Ahora puedes exportar `inicializarCitas` porque ha sido definida
 module.exports = { inicializarCitas };
 

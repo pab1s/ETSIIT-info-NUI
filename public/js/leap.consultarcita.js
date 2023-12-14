@@ -30,7 +30,6 @@ class LeapMotionController {
     });
   }
 
-
   onFrame(frame) {
     if (frame.hands.length > 0) {
       const hand = frame.hands[0];
@@ -79,7 +78,6 @@ class LeapMotionController {
     }
   }
 
-
   selectNextCancelButton() {
     const cancelButtons = document.querySelectorAll('.button-cancelar');
     if (cancelButtons.length > 0) {
@@ -94,7 +92,6 @@ class LeapMotionController {
     }
 }
 
-
   // Función para hacer clic en el botón de cancelación seleccionado
   clickSelectedCancelButton() {
     const cancelButtons = document.querySelectorAll('.button-cancelar');
@@ -102,7 +99,6 @@ class LeapMotionController {
       cancelButtons[this.selectedCancelBtnIndex].click();
     }
   }
-
 
   start() {
     this.controller.on('init', this.onInit.bind(this));

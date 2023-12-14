@@ -1,7 +1,18 @@
+/**
+ * @file extractMenu.js - Script para extraer el menú semanal de la aplicación web de la SCU UGR.
+ * @author Luis Crespo Orti
+ * @version 1.0
+ */
+
 const puppeteer = require('puppeteer');
 const { JSDOM } = require('jsdom');
 const fs = require('fs');
 
+/**
+ * Obtiene el contenido HTML de una página web utilizando Puppeteer.
+ * @param {string} url - La URL de la página web a consultar.
+ * @returns {Promise<string>} - Promesa que resuelve con el contenido HTML de la página.
+ */
 async function obtenerContenidoHTML(url) {
   const browser = await puppeteer.launch({ headless: 'new' }); // Usar la nueva implementación de headless
   const page = await browser.newPage();
@@ -18,6 +29,11 @@ async function obtenerContenidoHTML(url) {
   return contenidoHTML;
 }
 
+/**
+ * Extrae el menú de la página HTML proporcionada.
+ * @param {string} htmlString - El contenido HTML de la página.
+ * @returns {Object} - Objeto que contiene la información del menú indexada por facultad.
+ */
 function extractMenu(htmlString) {
   const dom = new JSDOM(htmlString);
   const document = dom.window.document;
@@ -33,7 +49,7 @@ function extractMenu(htmlString) {
       menuData.currentDate = currentDate;
     } else if (node.tagName === 'TD' && node.getAttribute('colspan') === "2") {
       const currentMenuType = node.textContent.trim();
-      if(currentMenuType.includes("Menú")){
+      if (currentMenuType.includes("Menú")) {
         menuData.dates[menuData.currentDate][currentMenuType] = [];
         menuData.currentMenuType = currentMenuType;
       }
@@ -87,8 +103,9 @@ function extractMenu(htmlString) {
   return menusByFaculty;
 }
 
-
-
+/**
+ * Función principal que ejecuta el proceso de obtener y extraer el menú de una página web.
+ */
 (async () => {
   // URL de la página web que deseas obtener
   const url = 'https://scu.ugr.es/';

@@ -1,3 +1,10 @@
+/**
+ * @file despachos.js - Script para la página de despachos de la aplicación web de la ETSIIT ULL.
+ * @author Luis Crespo Orti
+ * @version 1.0
+ */
+
+// Variables globales
 let profesoresTodos = [];
 let profesoresMis = [];
 let profesoresActuales = [];
@@ -6,7 +13,11 @@ let indiceFiltroActivo = 0;
 const botonTodos = document.getElementById('todos-profesores');
 const botonMis = document.getElementById('mis-profesores');
 
-document.addEventListener('DOMContentLoaded', function() {
+/**
+ * Event listener que se ejecuta cuando el DOM ha sido completamente cargado.
+ * @param {Event} event - El evento DOMContentLoaded.
+ */
+document.addEventListener('DOMContentLoaded', function () {
     // Carga inicial de ambos conjuntos de datos.
     Promise.all([
         cargarProfesores('/api/despachos').then(data => profesoresTodos = data),
@@ -14,37 +25,50 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error al cargar profesoresMis:', error);
         })
     ])
-    .then(() => {
-        // Verifica si se cargaron datos en ambos conjuntos antes de seleccionar un filtro
-        if (profesoresTodos.length > 0 || profesoresMis.length > 0) {
-            seleccionarFiltro();
-            console.log("Hola");
-        } else {
-            // Maneja el caso en el que no hay datos disponibles
-            console.log('No se pudieron cargar los datos de los profesores.');
-            // Puedes actualizar la interfaz de usuario aquí para reflejar que no hay datos
-        }
-    })
+        .then(() => {
+            // Verifica si se cargaron datos en ambos conjuntos antes de seleccionar un filtro
+            if (profesoresTodos.length > 0 || profesoresMis.length > 0) {
+                seleccionarFiltro();
+                console.log("Hola");
+            } else {
+                // Maneja el caso en el que no hay datos disponibles
+                console.log('No se pudieron cargar los datos de los profesores.');
+                // Puedes actualizar la interfaz de usuario aquí para reflejar que no hay datos
+            }
+        })
 })
 
-
-botonTodos.addEventListener('click', function() {
+/**
+ * Event listener que se ejecuta cuando se hace clic en el botón "Todos los profesores".
+ */
+botonTodos.addEventListener('click', function () {
     indiceFiltroActivo = 0;
     seleccionarFiltro();
 });
 
-botonMis.addEventListener('click', function() {
+
+/**
+ * Event listener que se ejecuta cuando se hace clic en el botón "Mis profesores".
+ */
+botonMis.addEventListener('click', function () {
     indiceFiltroActivo = 1;
     seleccionarFiltro();
 });
 
-window.addEventListener('resize', function() {
+/**
+ * Event listener que se ejecuta cuando se cambia el tamaño de la ventana.
+ */
+window.addEventListener('resize', function () {
     if (profesoresActuales.length > 0) {
         mostrarDespacho(botonActivo);
     }
 });
 
-document.addEventListener('keydown', function(event) {
+/**
+ * Event listener que se ejecuta cuando se presiona una tecla en el documento.
+ * @param {KeyboardEvent} event - El evento de teclado.
+ */
+document.addEventListener('keydown', function (event) {
     const botonesFiltro = document.querySelectorAll('.filtro-button');
     indiceFiltroActivo = Array.from(botonesFiltro).findIndex(boton => boton.classList.contains('filtro-seleccionado'));
 
@@ -52,12 +76,12 @@ document.addEventListener('keydown', function(event) {
     switch (event.key) {
         case 'ArrowLeft':
             // Mover hacia el botón "MIS PROFESORES"
-            indiceFiltroActivo = (indiceFiltroActivo +1)%2;
+            indiceFiltroActivo = (indiceFiltroActivo + 1) % 2;
             seleccionarFiltro();
             break;
         case 'ArrowRight':
             // Mover hacia el botón "TODOS LOS PROFESORES"
-            indiceFiltroActivo = (indiceFiltroActivo + 1)%2;
+            indiceFiltroActivo = (indiceFiltroActivo + 1) % 2;
             seleccionarFiltro();
             break;
         // Resto de tu manejo de teclas
@@ -72,6 +96,12 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+/**
+ * Carga la información de profesores desde el servidor.
+ * @param {string} ruta - La ruta del servidor para cargar la información.
+ * @param {boolean} esPost - Indica si la solicitud es de tipo POST.
+ * @returns {Promise<Object[]>} - Promesa que resuelve con la información de los profesores cargados.
+ */
 function cargarProfesores(ruta, esPost = false) {
     const opcionesFetch = {
         method: esPost ? 'POST' : 'GET',
@@ -100,6 +130,9 @@ function cargarProfesores(ruta, esPost = false) {
         });
 }
 
+/**
+ * Actualiza la interfaz de usuario según la información actual de profesores.
+ */
 function actualizarInterfaz() {
     contenedorBotones = document.getElementById('contenedor-botones');
     infoDespacho = document.getElementById('info-despacho');
@@ -112,8 +145,9 @@ function actualizarInterfaz() {
     }
 }
 
-
-// Llama esta función antes de inicializar la interfaz para limpiar el contenedor
+/**
+ * Limpia el contenedor de botones antes de inicializar la interfaz.
+ */
 function limpiarContenedorBotones() {
     // Comprueba si contenedorBotones ya está definido
     if (contenedorBotones) {
@@ -122,6 +156,9 @@ function limpiarContenedorBotones() {
     botones = []; // Resetea el array de botones
 }
 
+/**
+ * Limpia completamente la interfaz de usuario.
+ */
 function limpiarInterfaz() {
     // Asegúrate de que los elementos existen antes de intentar limpiarlos
     if (contenedorBotones) {
@@ -132,8 +169,10 @@ function limpiarInterfaz() {
     }
 }
 
+/**
+ * Inicializa la interfaz de usuario con la información de profesores actual.
+ */
 function inicializarInterfaz() {
-
     contenedorBotones = document.getElementById('contenedor-botones');
     infoDespacho = document.getElementById('info-despacho');
     botones = [];
@@ -160,12 +199,20 @@ function inicializarInterfaz() {
     seleccionarBoton(0); // Por ejemplo, selecciona el primer profesor
 }
 
+/**
+ * Selecciona el botón correspondiente al índice proporcionado y muestra su despacho.
+ * @param {number} index - Índice del botón seleccionado.
+ */
 function seleccionarBoton(index) {
     mostrarDespacho(index);
     botonActivo = index;
     reordenarBotones();
 }
 
+/**
+ * Muestra la información del despacho del profesor seleccionado en la interfaz.
+ * @param {number} index - Índice del profesor seleccionado.
+ */
 function mostrarDespacho(index) {
     let textoDespacho = document.getElementById('texto-despacho');
     let mapaImagen = document.getElementById('mapa-imagen');
@@ -179,7 +226,7 @@ function mostrarDespacho(index) {
     if (profesoresActuales[index].piso && profesoresActuales[index].porcX != null && profesoresActuales[index].porcY != null) {
         mapaImagen.src = `../assets/mapa-etsiit-${profesoresActuales[index].piso}.jpeg`;
 
-        mapaImagen.onload = function() {
+        mapaImagen.onload = function () {
             let marcadorHeight = marcador.offsetHeight;
             let imagenRect = mapaImagen.getBoundingClientRect();
 
@@ -188,14 +235,16 @@ function mostrarDespacho(index) {
             marcador.style.display = 'block'; // Ocultar el marcador
         };
     } else {
-        mapaImagen.onload = function() {
-        marcador.style.display = 'none'; // Ocultar el marcador
-    };
-    mapaImagen.src = '../assets/location.png'; // Asegúrate de que esta sea la ruta correcta a tu imagen
+        mapaImagen.onload = function () {
+            marcador.style.display = 'none'; // Ocultar el marcador
+        };
+        mapaImagen.src = '../assets/location.png'; // Asegúrate de que esta sea la ruta correcta a tu imagen
     }
 }
 
-
+/**
+ * Reordena los botones de profesores y resalta el botón activo.
+ */
 function reordenarBotones() {
     botones.forEach(boton => boton.classList.remove('profesor-seleccionado'));
     botones[botonActivo].classList.add('profesor-seleccionado');
@@ -208,8 +257,9 @@ function reordenarBotones() {
     contenedorBotones.scrollTop = alturaBotonSeleccionado - alturaContenedor / 2 + botones[0].offsetHeight / 2;
 }
 
-
-
+/**
+ * Selecciona el filtro correspondiente según el índice activo y actualiza la interfaz.
+ */
 function seleccionarFiltro() {
     const botonesFiltro = document.querySelectorAll('.filtro-button');
     botonesFiltro.forEach(boton => boton.classList.remove('filtro-seleccionado'));
