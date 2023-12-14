@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-    <title>OK page</title>
+    <title>Continuar Menú</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/bottomBar.css">
 </head>
@@ -12,28 +12,36 @@
 <body>
     <div class="content">
         <div class="header-container">
-            <img src="../assets/etsiit-logo.png" alt="UGR Icon">
+            <img src="../assets/etsiit-logo.png" alt="Icono ETSIIT">
             <div id="clock"></div>
         </div>
 
         <div class="welcome-message">
-            <h1>Su solicitud SE ha llevado a cabo correctamente</h1>
-            <h2>¡Gracias por usar nuestros servicios!</h2>
+            <h1>Operación realizada con éxito.</h1>
+            <h2>¿Quieres hacer algo más?</h2>
         </div>
 
         <div class="horizontal-container">
             <div class="button-container">
-                <button id="guest-access" onclick="window.location.href='/main'">
-                    <img src="../assets/check.png" alt="OK Icon">
-                    <p style="text-align: center;"> VOLVER AL INICIO </p>
+                <button id="reload-button" onclick="window.location.href='/main'">
+                    <img src="../assets/reload.png" alt="QR Icon">
+                    <p style="text-align: center;">CONTINUAR</p>
                 </button>
             </div>
+            <div class="button-container">
+                <button id="exit-button">
+                    <img src="../assets/exit.png" alt="Exit Icon">
+                    <p style="text-align: center;">CERRAR SESIÓN</p>
+                </button>
+            </div>
+        </div>
     </div>
 
     <div id="bottom-bar"></div>
 
     <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
     <script src="../js/leap-index.js"></script>
+    <script src="../js/logout.js"></script>
     <script src="../js/updateClock.js"></script>
 </body>
 

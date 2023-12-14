@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Profesores</title>
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" href="../css/bottomBar.css">
     <link rel="stylesheet" type="text/css" href="../css/despachos.css">
 </head>
+
 <body>
     <button id="vuelta-atras" style="display: none;" onclick="window.location.href='/';"></button>
 
@@ -13,7 +15,7 @@
         <img src="../assets/etsiit-logo.png" alt="Icono ETSIIT">
         <div id="clock"></div>
     </div>
-        
+
     <div class="location-scroll">
         <div id="botones-filtro">
             <button class="filtro-button" id="todos-profesores">TODOS LOS PROFESORES</button>
@@ -21,13 +23,13 @@
         </div>
         <div id="contenedor-botones"></div>
         <div id="info-despacho">
-        <span id="texto-despacho"></span> <!-- Elemento para el texto del despacho -->
-        <div id="mapa-contenedor">
-            <img id="mapa-imagen" src="" alt="Mapa ETSIIT">
-            <img id="marcador-posicion" src="../assets/marcador-de-posicion.png" alt="Marcador de Posición" style="position: absolute;">
+            <span id="texto-despacho"></span>
+            <div id="mapa-contenedor">
+                <img id="mapa-imagen" src="" alt="Mapa ETSIIT">
+                <img id="marcador-posicion" src="../assets/marcador-de-posicion.png" alt="Marcador de Posición"
+                    style="position: absolute;">
+            </div>
         </div>
-</div>
-
     </div>
 
     <div id="bottom-bar">
@@ -43,4 +45,5 @@
     <script src="../js/leap.main.js"></script>
     <script src="../js/updateClock.js"></script>
 </body>
+
 </html>

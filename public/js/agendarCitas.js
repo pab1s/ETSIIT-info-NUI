@@ -18,11 +18,8 @@ function formatearFecha(fecha) {
     const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     let fechaFormateada = new Date(fecha).toLocaleDateString('es-ES', opciones);
 
-    // Dividir la fecha en partes y convertir el día de la semana a mayúsculas
     const partes = fechaFormateada.split(' ');
-    partes[0] = partes[0].toUpperCase(); // Convierte el día de la semana a mayúsculas
-
-    // Volver a juntar las partes y devolver la fecha formateada
+    partes[0] = partes[0].toUpperCase();
     return partes.join(' ');
 }
 
@@ -38,18 +35,18 @@ function cargarCitasDisponibles(fecha) {
         .then(citas => {
             // Convertir la fecha a formato legible
             const fechaLegible = formatearFecha(fecha);
-    
-           // Selecciona el nuevo contenedor para el título
-           const tituloCitasDisponiblesContenedor = document.getElementById('titulo-citas-disponibles');
-           tituloCitasDisponiblesContenedor.classList.remove('oculto');
-           tituloCitasDisponiblesContenedor.classList.add('visible1');
-           tituloCitasDisponiblesContenedor.innerHTML = `<h2>Citas disponibles para el ${fechaLegible}</h2>`;
 
-           // Selecciona el contenedor para las citas disponibles
-           const citasDisponiblesContenedor = document.getElementById('citas-disponibles');
-           citasDisponiblesContenedor.classList.remove('oculto');
-           citasDisponiblesContenedor.classList.add('visible2');
-           citasDisponiblesContenedor.innerHTML = ''; // Limpia el contenedor para nuevas citas
+            // Selecciona el nuevo contenedor para el título
+            const tituloCitasDisponiblesContenedor = document.getElementById('titulo-citas-disponibles');
+            tituloCitasDisponiblesContenedor.classList.remove('oculto');
+            tituloCitasDisponiblesContenedor.classList.add('visible1');
+            tituloCitasDisponiblesContenedor.innerHTML = `<h2>Citas disponibles para el ${fechaLegible}</h2>`;
+
+            // Selecciona el contenedor para las citas disponibles
+            const citasDisponiblesContenedor = document.getElementById('citas-disponibles');
+            citasDisponiblesContenedor.classList.remove('oculto');
+            citasDisponiblesContenedor.classList.add('visible2');
+            citasDisponiblesContenedor.innerHTML = ''; // Limpia el contenedor para nuevas citas
             citas.forEach(cita => {
                 const citaDiv = document.createElement('div');
                 citaDiv.className = cita.ocupado ? 'cita-disponible reservado' : 'cita-disponible';
@@ -85,26 +82,33 @@ function reservarCita(citaId, fecha, horaInicio) {
             hora_inicio: horaInicio
         })
     })
-    .then(response => response.json())
-    .then(data => {
-        if(data.error) {
-            console.error('Error al reservar cita:', data.error);
-            alert('No se pudo reservar la cita: ' + data.error);
-        } else {
-            alert(data.message);
-            // Aquí actualizas la interfaz de usuario para reflejar la cita reservada
-            // Por ejemplo, puedes cambiar el texto del botón de la cita a "Reservado"
-            const citaDiv = document.querySelector(`[data-id="${citaId}"]`);
-            if (citaDiv) {
-                citaDiv.textContent = 'Cita reservada';
-                citaDiv.classList.add('reservado');
-                citaDiv.removeEventListener('click', reservarCita); // Remueve el evento de clic para evitar reservas múltiples
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                const errorButton = document.getElementById('error-button');
+                console.error('Error al reservar cita:', data.error);
+
+                if (errorButton) {
+                    errorButton.click();
+                }
+            } else {
+                const continueButton = document.getElementById('continue-button');
+                const citaDiv = document.querySelector(`[data-id="${citaId}"]`);
+
+                if (citaDiv) {
+                    citaDiv.textContent = 'Cita reservada';
+                    citaDiv.classList.add('reservado');
+                    citaDiv.removeEventListener('click', reservarCita); // Remueve el evento de clic para evitar reservas múltiples
+                }
+
+                if (continueButton) {
+                    continueButton.click();
+                }
             }
-        }
-    })
-    .catch(error => {
-        console.error('Error al realizar la solicitud:', error);
-    });
+        })
+        .catch(error => {
+            console.error('Error al realizar la solicitud:', error);
+        });
 
     document.querySelectorAll('.cita-item').forEach((elemento, indice) => {
         if (indice === indiceFechaActual) {
@@ -152,9 +156,9 @@ function cargarFechasDisponibles() {
                 fechaDiv.setAttribute('data-fecha', fecha);
                 console.log(fechaDiv);
                 fechaDiv.textContent = formatearFecha(fecha);
-                fechaDiv.addEventListener('click', function() {
-                     indiceFechaActual = Array.from(document.querySelectorAll('.fecha')).indexOf(fechaDiv);
-                     actualizarSeleccionFecha();
+                fechaDiv.addEventListener('click', function () {
+                    indiceFechaActual = Array.from(document.querySelectorAll('.fecha')).indexOf(fechaDiv);
+                    actualizarSeleccionFecha();
                 });
                 contenedorFechas.appendChild(fechaDiv);
             });
@@ -192,3 +196,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+

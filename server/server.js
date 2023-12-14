@@ -53,23 +53,23 @@ app.get('/comedores', (req, res) => {
 });
 
 app.get('/consultar-menu', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'comedoresconsultar.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'comedoresconsultar.html'));
 });
 
 app.get('/pagar-menu', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'comedorespagar.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'comedorespagar.html'));
 });
 
 app.get('/tramites', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'tramites.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'tramites.html'));
 });
 
 app.get('/docencia', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'docencia.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'docencia.html'));
 });
 
 app.get('/localizacion', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'localizacion.html')); // Asegúrate de proporcionar la ruta correcta al archivo comedores.html
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'localizacion.html'));
 });
 
 app.get('/api/comedores', (req, res) => {
@@ -80,6 +80,14 @@ app.get('/api/comedores', (req, res) => {
             res.json(JSON.parse(data));
         }
     });
+});
+
+app.get('/error', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'error.html'));
+});
+
+app.get('/continue', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'continue.html'));
 });
 
 app.get('/api/login', (req, res) => {
@@ -129,9 +137,19 @@ app.get('/api/userinfo', (req, res) => {
 // Ruta para cerrar sesión
 app.get('/api/logout', (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
-    res.clearCookie('authToken');
-    res.json({ message: 'Sesión cerrada' });
+
+    const token = req.cookies.authToken;
+    if (!token) {
+        return res.status(401).json({ error: 'No autenticado' });
+    } try {
+        jwt.verify(token, SECRET_KEY);
+        res.clearCookie('authToken');
+        res.json({ message: 'Sesión cerrada' });
+    } catch (error) {
+        res.status(401).json({ error: 'Token inválido o expirado' });
+    }
 });
+
 
 // Ruta para obtener información de docencia
 app.get('/api/docencia/', (req, res) => {
