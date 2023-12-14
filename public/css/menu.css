@@ -1,5 +1,13 @@
 /* COMEDORES STYLES */
 
+#dia-pasado {
+    font-size: 2.5vw;
+    font-family: "Gill Sans", sans-serif;
+    font-weight: bold;
+    color: black;
+}
+
+
 #comedores-container {
     width: 100%;
     height : 5%;

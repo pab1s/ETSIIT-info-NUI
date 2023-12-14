@@ -94,19 +94,13 @@ function mostrarMenus(menus, esPasado) {
     }
 
     if (esPasado) {
-        let mensaje = document.createElement('p');
-        let mensajeTexto = "Está consultando el menú de un día pasado";
-        
-        // Crear un elemento <strong> y establecer el texto en negrita
-        let textoEnNegrita = document.createElement('strong');
-        textoEnNegrita.textContent = mensajeTexto;
-
-        // Agregar el elemento <strong> como hijo del párrafo
-        mensaje.appendChild(textoEnNegrita);
-
-        // Agregar el párrafo al contenedor
-        menusDetailContainer.appendChild(mensaje);
+        let mensaje = document.getElementById('dia-pasado');
+        mensaje.style.display = 'block';  // Mostrar el mensaje si es un día pasado
+    } else {
+        let mensaje = document.getElementById('dia-pasado');
+        mensaje.style.display = 'none';   // Ocultar el mensaje si no es un día pasado
     }
+
 
 }
 
