@@ -13,7 +13,7 @@ body {
     font-size: 1.5vw;
     display: flex-inline;
     flex-direction: column;
-    overflow: hidden;
+    
 }
 
 p {
