@@ -1,3 +1,5 @@
+
+// Luis Crespo Orti
 document.addEventListener('DOMContentLoaded', (event) => {
     const payButton = document.getElementById('pay-button');
     if (payButton) {

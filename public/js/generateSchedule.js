@@ -1,6 +1,6 @@
 /**
  * @file generateSchedule.js - Script para la página de generar horario de la aplicación web de la ETSIT ULL.
- * @author Alvaro Carrillo
+ * @author Luis Crespo Orti
  * @version 1.0
  */
 
