@@ -76,6 +76,16 @@ app.get('/loggearse', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'html', 'loggearse.html'));
 });
 
+app.get('/logximo', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'ximo.html'));
+});
+app.get('/logpablo', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'pablo.html'));
+});
+app.get('/logluis', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'luis.html'));
+});
+
 app.get('/api/comedores', (req, res) => {
     fs.readFile('../public/sources/menu.json', 'utf8', (err, data) => {
         if (err) {

@@ -5,7 +5,7 @@
  */
 
 // Hay que cambiar las URL
-const urls = ["/docencia", "/tramites", "/comedores"];
+const urls = ["/logluis","/logximo","/logpablo"];
 const images = ["../qr-codes/luiscrespo-QR.png", "../qr-codes/pablolivares-QR.png", "../qr-codes/ximosanz-QR.png"];
 const titles = ["LUIS", "XIMO", "PABLO"];
 let currentUrlIndex = 0;
