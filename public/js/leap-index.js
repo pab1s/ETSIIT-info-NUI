@@ -145,6 +145,68 @@ class LeapMotionController {
     }
 }
 
+/* AÑADIENDO EL GESTO DE BAJAR LOS DEDOS
+onFrame(frame) {
+    let gestureString = "";
+
+    if (frame.gestures.length > 0) {
+        for (var i = 0; i < frame.gestures.length; i++) {
+            var gesture = frame.gestures[i];
+
+            switch (gesture.type) {
+                case "swipe":
+                    let isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
+
+                    if (gesture_timer > 1500) {
+                        if (isHorizontal) {
+                            if (gesture.direction[0] > 0) {
+                                swipeDirection = "right";
+                                this.toggleSelectedButton();
+                            } else {
+                                swipeDirection = "left";
+                            }
+                        } else {
+                            if (gesture.direction[1] > 0) {
+                                swipeDirection = "up";
+                            } else {
+                                swipeDirection = "down";
+                            }
+                        }
+                        console.log(swipeDirection);
+                        gesture_timer = 0;
+                    }
+                    break;
+
+                case "screenTap":
+                    console.log("Ha tocado la pantalla");
+                    this.clickSelectedButton();
+                    break;
+
+                case "keyTap":
+                    console.log("Ha tocado una tecla");
+                    break;
+
+                default:
+                    gestureString += "unknown gesture type";
+            }
+        }
+    }
+
+    // Lógica para detectar el nuevo gesto de bajar los dedos
+    if (frame.hands.length > 0) {
+        const hand = frame.hands[0];
+
+        if (this.isHandValid(hand)) {
+            const currentTime = new Date().getTime();
+            if (currentTime - this.lastClickTime > 400) {
+                this.clickNextButtonInList();
+                this.lastClickTime = currentTime;
+            }
+        }
+    }
+}
+*/
+
 // DOM Ready Event
 window.addEventListener('DOMContentLoaded', (event) => {
     const leapMotionController = new LeapMotionController();
