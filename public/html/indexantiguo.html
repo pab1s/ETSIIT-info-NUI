@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>Bienvenidos a la ETSIIT</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/bottomBar.css">
 </head>
@@ -29,7 +30,7 @@
                 </button>
             </div>
             <div class="button-container">
-                <button id="authenticate" onclick="window.location.href='/loggearse'">
+                <button id="authenticate">
                     <img src="../assets/icon-qr.png" alt="QR Icon">
                     <p style="text-align: center;">Iniciar sesión</p>
                 </button>
@@ -38,10 +39,14 @@
 
     </div>
 
+    <div id="webcam-container">
+        <video id="webcam" autoplay></video>
+    </div>
 
     <div id="bottom-bar"></div>
 
     <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
+    <script src="../js/handleCam.js"></script>
     <script src="../js/leap-index.js"></script>
     <script src="../js/updateClock.js"></script>
 </body>
