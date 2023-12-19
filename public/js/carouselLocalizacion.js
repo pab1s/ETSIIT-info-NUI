@@ -5,7 +5,7 @@
  */
 
 // Array of URLs
-const urls = ["/despachos", "/clases", "/comunes"];
+const urls = ["/despachos", "", ""];
 const images = ["../assets/profesorado-icon.png", "../assets/clases-icon.png", "../assets/espacios-comunes-icon.png"];
 const titles = ["DESPACHOS", "CLASES", "ESPACIOS COMUNES"];
 let currentUrlIndex = 0;
