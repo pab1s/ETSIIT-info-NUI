@@ -148,6 +148,11 @@ class LeapMotionController {
 // DOM Ready Event
 window.addEventListener('DOMContentLoaded', (event) => {
     const leapMotionController = new LeapMotionController();
+    // setInterval();
+    // setInterval();
+    // setInterval();
+    // setInterval();
+    // setInterval();
     leapMotionController.start();
 });
 
