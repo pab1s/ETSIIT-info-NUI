@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>Menú Principal - ETSITT</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/bottomBar.css">
     <link rel="stylesheet" href="../css/carousel.css">
@@ -22,6 +23,8 @@
             <h1>¿Cual es su usuario?</h1>
         </div>
 
+        <div id="reader" style="display: none;"></div>
+
         <div class="responsive-slider">
             <ul class="list">
                 <div class="hide"></div>
@@ -29,7 +32,7 @@
                 <div class="prev"></div>
                 <div class="next"></div>
                 <div class="act">
-                    <button class="act-button">
+                    <button class="act-button" onclick="scanQRCodeLuis()">
                         <img src="../qr-codes/luiscrespo-QR.png" alt="Luis">
                         <p>Luis</p>
                     </button>
@@ -50,7 +53,7 @@
     <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
     <script src="https://hammerjs.github.io/dist/hammer.js"></script>
     <script src="../js/carouselLOG.js"></script>
-    <script src="../js/handleCam.js"></script>
+    <script src="../js/handleCam2.js"></script>
     <script src="../js/leap.main.js"></script>
     <script src="../js/bottomBar.js"></script>
     <script src="../js/updateClock.js"></script>

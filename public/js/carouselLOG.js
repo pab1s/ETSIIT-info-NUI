@@ -5,7 +5,7 @@
  */
 
 // Hay que cambiar las URL
-const urls = ["/logluis","/logximo","/logpablo"];
+const urls = ["scanQRCodeLuis()","scanQRCodeXimo()","scanQRCodePablo()"];
 const images = ["../qr-codes/luiscrespo-QR.png", "../qr-codes/pablolivares-QR.png", "../qr-codes/ximosanz-QR.png"];
 const titles = ["LUIS", "XIMO", "PABLO"];
 let currentUrlIndex = 0;
@@ -50,127 +50,83 @@ const $ = selector => {
     return document.querySelector(selector);
 };
 
-/**
- * Función para manejar la acción "siguiente" en la interfaz de usuario.
- *
- * @function
- */
 function next() {
-    // Check if an element with class "hide" exists
+    // Actualizar el índice actual antes de hacer cambios
+    currentUrlIndex = (currentUrlIndex + 1) % urls.length;
+
     if ($(".hide")) {
-        // If it exists, remove it from the DOM
         $(".hide").remove();
     }
 
-    /* Step */
-
-    // Remove the "act-button" from the DOM
     if ($(".act-button")) {
         $(".act-button").remove();
     }
 
-    // Check if an element with class "prev" exists
     if ($(".prev")) {
-        // If it exists, update its class to "hide" and remove the "prev" class
         $(".prev").classList.add("hide");
         $(".prev").classList.remove("prev");
     }
 
-    // Update the class of the element with class "act" to "prev"
     $(".act").classList.add("prev");
     $(".act").classList.remove("act");
 
-    // Update the class of the element with class "next" to "act"
     $(".next").classList.add("act");
     $(".next").classList.remove("next");
 
-    /* New Next */
-
-    // Remove the "new-next" class from the element with class "new-next"
     $(".new-next").classList.add("next");
     $(".new-next").classList.remove("new-next");
 
-    // Create a new div element
     const addedEl = document.createElement('div');
-
-    // Append the new div element to an element with class "list"
     $(".list").appendChild(addedEl);
-
-    // Add classes "next" and "new-next" to the new div element
     addedEl.classList.add("next", "new-next");
 
-    // If there is no 'act-button' button in the DOM, create it in the element with class "act"
     if (!$(".act-button")) {
         $(".act").innerHTML += "<button class='act-button'></button>";
     }
 
-    // Assign the next URL to the "act-button" button
-    $(".act-button").setAttribute("onclick", "location.href='" + getNextUrl() + "'");
-
-    // If there is no image in act-button, create it in the button
-    if (!$(".act-button").innerHTML.includes("img")) {
-        $(".act-button").innerHTML = "<img src='" + getImage() + "' alt='icon' class='icon'>" + $(".act-button").innerHTML;
-        $(".act-button").innerHTML += "<p>" + titles[currentUrlIndex] + "</p>";
-    }
+    // Ejecutar la función correspondiente y actualizar la imagen y el título
+    $(".act-button").setAttribute("onclick", urls[currentUrlIndex]);
+    $(".act-button").innerHTML = "<img src='" + images[currentUrlIndex] + "' alt='icon' class='icon'>";
+    $(".act-button").innerHTML += "<p>" + titles[currentUrlIndex] + "</p>";
 }
 
-/**
- * Función para manejar la acción "anterior" en la interfaz de usuario.
- *
- * @function
- */
 function prev() {
-    // Remove the element with class "new-next" from the DOM
+    // Actualizar el índice actual antes de hacer cambios
+    currentUrlIndex = (currentUrlIndex - 1 + urls.length) % urls.length;
+
     $(".new-next").remove();
 
-    /* Step */
-
-    // Remove the "act-button" from the DOM
     if ($(".act-button")) {
         $(".act-button").remove();
     }
 
-    // Update the class of the element with class "next" to "new-next"
     $(".next").classList.add("new-next");
+    $(".next").classList.remove("next");
 
-    // Update the class of the element with class "act" to "next"
     $(".act").classList.remove("act-button");
     $(".act").classList.add("next");
     $(".act").classList.remove("act");
 
-    // Update the class of the element with class "prev" to "act"
     $(".prev").classList.add("act");
     $(".prev").classList.remove("prev");
 
-    /* New Prev */
-
-    // Update the class of the element with class "hide" to "prev"
     $(".hide").classList.add("prev");
     $(".hide").classList.remove("hide");
 
-    // Create a new div element
     const addedEl = document.createElement('div');
-
-    // Insert the new div element at the beginning of an element with class "list"
     $(".list").insertBefore(addedEl, $(".list").firstChild);
-
-    // Add class "hide" to the new div element
     addedEl.classList.add("hide");
 
-    // If there is no 'act-button' button in the DOM, create it in the element with class "act"
     if (!$(".act-button")) {
         $(".act").innerHTML += "<button class='act-button'></button>";
     }
 
-    // Assign the next URL to the "act-button" button
-    $(".act-button").setAttribute("onclick", "location.href='" + getPrevUrl() + "'");
-
-    // If there is no image in act-button, create it in the button
-    if (!$(".act-button").innerHTML.includes("img")) {
-        $(".act-button").innerHTML = "<img src='" + getImage() + "' alt='icon' class='icon'>" + $(".act-button").innerHTML;
-        $(".act-button").innerHTML += "<p>" + titles[currentUrlIndex] + "</p>";
-    }
+    // Ejecutar la función correspondiente y actualizar la imagen y el título
+    $(".act-button").setAttribute("onclick", urls[currentUrlIndex]);
+    $(".act-button").innerHTML = "<img src='" + images[currentUrlIndex] + "' alt='icon' class='icon'>";
+    $(".act-button").innerHTML += "<p>" + titles[currentUrlIndex] + "</p>";
 }
+
 
 // Function to handle sliding based on the clicked element
 const slide = element => {

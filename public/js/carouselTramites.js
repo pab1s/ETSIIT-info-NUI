@@ -5,9 +5,9 @@
  */
 
 // Array of URLs
-const urls = ["/pedir-cita", "/mis-citas", "/fotoUGR" , "/expediente"];
-const images = ["../assets/new-cites-icon.png", "../assets/cites-icon.png", "../assets/camera-icon.png" , "../assets/grades-icon.png"];
-const titles = ["PEDIR CITA", "MIS CITAS", "FOTO UGR" , "EXPEDIENTE"];
+const urls = ["/pedir-cita", "/mis-citas"/*, "/fotoUGR"*/ , "/expediente"];
+const images = ["../assets/new-cites-icon.png", "../assets/cites-icon.png"/*, "../assets/camera-icon.png"*/ , "../assets/grades-icon.png"];
+const titles = ["PEDIR CITA", "MIS CITAS",/* "FOTO UGR" ,*/ "EXPEDIENTE"];
 let currentUrlIndex = 0;
 
 
