@@ -1,116 +1,134 @@
+/**
+ * @file Controlador Leap Motion para la página de inicio de sesión.
+ * @author Ximo Sanz Tornero & Pablo Olivares Martinez
+ * @version 1.3
+ */
+
+// Variables globales
+let gesture_timer = 0
+let swipeDirection = ""
+
 class LeapMotionController {
-  constructor() {
-    this.controller = new Leap.Controller();
-    this.tapCooldown = false;
-    this.forwardGestureDetected = false;
-    this.leftGestureDetected = false;
-    this.lastClickTime = 0;
-  }
-
-  onInit() {
-    console.log('Leap Motion se ha inicializado.');
-  }
-
-  onExit() {
-    console.log('Leap Motion se ha cerrado.');
-  }
-
-  onConnect() {
-    console.log('Leap Motion se ha conectado.');
-  }
-
-  onDisconnect() {
-    console.log('Leap Motion se ha desconectado.');
-  }
-
-  isHandValid(hand) {
-    return hand.fingers.filter(finger => finger.type !== 0).every(finger => {
-        return finger.extended && finger.direction[1] < -0.7;
-    });
-  }
-
-
-  onFrame(frame) {
-    if (frame.hands.length > 0) {
-      const hand = frame.hands[0];
-
-      // Gestos para moverse en la lista
-      if (this.isHandValid(hand)) {
-        const currentTime = new Date().getTime();
-        if (currentTime - this.lastClickTime > 400) {
-            this.clickNextButtonInList();
-            this.lastClickTime = currentTime;
-        }
-      }
-
-      // Gestos de swipe
-      if (!this.leftGestureDetected && hand.palmVelocity[0] < -300) { // Ajusta la sensibilidad según sea necesario
-        this.leftGestureDetected = true;
-      }
-
-      if (this.leftGestureDetected && hand.palmVelocity[0] > 300) { // Ajusta la sensibilidad según sea necesario
-        this.clickBackButton();
-        this.leftGestureDetected = false;
-      }
-
-      // Gestos de tap in
-      if (!this.forwardGestureDetected && hand.palmVelocity[2] < -700) {
-        this.forwardGestureDetected = true;
-      }
-      if (this.forwardGestureDetected && hand.palmVelocity[2] > 700) {
-        this.clickCurrentItemButton();
+    constructor() {
+        this.tapCooldown = false;
         this.forwardGestureDetected = false;
+        this.lastClickTime = 0;
+    }
+
+    clickCurrentItemButton() {
+      const currentItemButton = document.querySelector('.responsive-slider .act .act-button'); // Asumiendo que el botón del elemento actual tiene la clase 'act-button'
+      if (currentItemButton) {
+        currentItemButton.click();
       }
     }
-  }
 
-  startCooldown() {
-    this.isInCooldown = true;
-    setTimeout(() => {
-      this.isInCooldown = false;
-    }, 400); // Cooldown de 1 segundo, ajustable según necesidad
-  }
 
-  clickBackButton() {
-    const backButton = document.getElementById('vuelta-atras');
-    if (backButton) {
-      backButton.click();
+      // Función para hacer clic en el botón "Siguiente"
+    clickNextButtonInList() {
+      const nextButton = document.querySelector('.responsive-slider .next'); // Asumiendo que el botón "Siguiente" tiene la clase 'next'
+      if (nextButton) {
+        nextButton.click();
+      }
     }
-  }
 
-  // Función para hacer clic en el botón "Siguiente"
-  clickNextButtonInList() {
-    const nextButton = document.querySelector('.responsive-slider .next'); // Asumiendo que el botón "Siguiente" tiene la clase 'next'
-    if (nextButton) {
-      nextButton.click();
+    isHandValid(hand) {
+      return hand.fingers.filter(finger => finger.type !== 0).every(finger => {
+          return finger.extended && finger.direction[1] < -0.7;
+      });
     }
-  }
 
-  // Función para hacer clic en el botón del elemento actual
-  clickCurrentItemButton() {
-    const currentItemButton = document.querySelector('.responsive-slider .act .act-button'); // Asumiendo que el botón del elemento actual tiene la clase 'act-button'
-    if (currentItemButton) {
-      currentItemButton.click();
+    clickBackButton() {
+      const backButton = document.getElementById('vuelta-atras');
+      if (backButton) {
+        backButton.click();
+      }
     }
-  }
 
-  start() {
-    this.controller.on('init', this.onInit.bind(this));
-    this.controller.on('exit', this.onExit.bind(this));
-    this.controller.on('connect', this.onConnect.bind(this));
-    this.controller.on('disconnect', this.onDisconnect.bind(this));
-    this.controller.on('frame', this.onFrame.bind(this));
 
-    this.controller.connect();
-  }
+    /**
+     * Inicia el controlador Leap Motion y establece los manejadores de eventos.
+     */
+    start() {
+        Leap.loop({ enableGestures: true }, (frame) => {
+            this.onFrame(frame);
+        });
+    }
 
-  stop() {
-    this.controller.disconnect();
-  }
+    /**
+     * Manejador de eventos cuando se obtiene un nuevo frame del Leap Motion.
+     *
+     * @param {Leap.Frame} frame - Marco de Leap Motion.
+     */
+onFrame(frame) {
+    let gestureString = "";
+
+    if (frame.gestures.length > 0) {
+        for (var i = 0; i < frame.gestures.length; i++) {
+            var gesture = frame.gestures[i];
+
+            switch (gesture.type) {
+                case "swipe":
+                    let isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
+
+                    if (gesture_timer > 1500) {
+                        if (isHorizontal) {
+                            if (gesture.direction[0] > 0) {
+                                swipeDirection = "right";
+                                console.log("Moviste hacia la derecha");
+                            } else {
+                                swipeDirection = "left";
+                                this.clickNextButtonInList();
+                            }
+                        } else {
+                            if (gesture.direction[1] > 0) {
+                                swipeDirection = "up";
+                                this.clickBackButton();
+                            } else {
+                                swipeDirection = "down";
+                                console.log("Debería iniciar sesión");
+                            }
+                        }
+                        console.log(swipeDirection);
+                        gesture_timer = 0;
+                    }
+                    break;
+
+                case "screenTap":
+                    this.clickCurrentItemButton();
+                    break;
+
+                case "keyTap":
+                    console.log("Ha tocado una tecla");
+                    break;
+
+                default:
+                    gestureString += "unknown gesture type";
+            }
+        }
+    }
+  
+    // Lógica para detectar el nuevo gesto de bajar los dedos
+    if (frame.hands.length > 0) {
+        const hand = frame.hands[0];
+
+        if (this.isHandValid(hand)) {
+            const currentTime = new Date().getTime();
+            if (currentTime - this.lastClickTime > 400) {
+              console.log("BAJASTE LOS DEDOS");
+              this.lastClickTime = currentTime;
+            }
+        }
+    }
 }
 
-// Cuando el DOM esté listo, instancia y arranca el Leap Motion Controller
+
+// DOM Ready Event
 window.addEventListener('DOMContentLoaded', (event) => {
-  const leapMotionController = new LeapMotionController();
-  leapMotionController.start();
+    const leapMotionController = new LeapMotionController();
+    leapMotionController.start();
 });
+
+// Timer
+setInterval(() => {
+    gesture_timer += 200;
+  }, 200);
