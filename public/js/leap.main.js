@@ -59,63 +59,64 @@ class LeapMotionController {
      *
      * @param {Leap.Frame} frame - Marco de Leap Motion.
      */
-onFrame(frame) {
-    let gestureString = "";
+    onFrame(frame) {
+        let gestureString = "";
 
-    if (frame.gestures.length > 0) {
-        for (var i = 0; i < frame.gestures.length; i++) {
-            var gesture = frame.gestures[i];
+        if (frame.gestures.length > 0) {
+            for (var i = 0; i < frame.gestures.length; i++) {
+                var gesture = frame.gestures[i];
 
-            switch (gesture.type) {
-                case "swipe":
-                    let isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
+                switch (gesture.type) {
+                    case "swipe":
+                        let isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
 
-                    if (gesture_timer > 1500) {
-                        if (isHorizontal) {
-                            if (gesture.direction[0] > 0) {
-                                swipeDirection = "right";
-                                console.log("Moviste hacia la derecha");
+                        if (gesture_timer > 1500) {
+                            if (isHorizontal) {
+                                if (gesture.direction[0] > 0) {
+                                    swipeDirection = "right";
+                                    console.log("Moviste hacia la derecha");
+                                } else {
+                                    swipeDirection = "left";
+                                    this.clickNextButtonInList();
+                                }
                             } else {
-                                swipeDirection = "left";
-                                this.clickNextButtonInList();
+                                if (gesture.direction[1] > 0) {
+                                    swipeDirection = "up";
+                                    this.clickBackButton();
+                                } else {
+                                    swipeDirection = "down";
+                                    console.log("Debería iniciar sesión");
+                                }
                             }
-                        } else {
-                            if (gesture.direction[1] > 0) {
-                                swipeDirection = "up";
-                                this.clickBackButton();
-                            } else {
-                                swipeDirection = "down";
-                                console.log("Debería iniciar sesión");
-                            }
+                            console.log(swipeDirection);
+                            gesture_timer = 0;
                         }
-                        console.log(swipeDirection);
-                        gesture_timer = 0;
-                    }
-                    break;
+                        break;
 
-                case "screenTap":
-                    this.clickCurrentItemButton();
-                    break;
+                    case "screenTap":
+                        this.clickCurrentItemButton();
+                        break;
 
-                case "keyTap":
-                    console.log("Ha tocado una tecla");
-                    break;
+                    case "keyTap":
+                        console.log("Ha tocado una tecla");
+                        break;
 
-                default:
-                    gestureString += "unknown gesture type";
+                    default:
+                        gestureString += "unknown gesture type";
+                }
             }
         }
-    }
-  
-    // Lógica para detectar el nuevo gesto de bajar los dedos
-    if (frame.hands.length > 0) {
-        const hand = frame.hands[0];
+      
+        // Lógica para detectar el nuevo gesto de bajar los dedos
+        if (frame.hands.length > 0) {
+            const hand = frame.hands[0];
 
-        if (this.isHandValid(hand)) {
-            const currentTime = new Date().getTime();
-            if (currentTime - this.lastClickTime > 400) {
-              console.log("BAJASTE LOS DEDOS");
-              this.lastClickTime = currentTime;
+            if (this.isHandValid(hand)) {
+                const currentTime = new Date().getTime();
+                if (currentTime - this.lastClickTime > 400) {
+                  console.log("BAJASTE LOS DEDOS");
+                  this.lastClickTime = currentTime;
+                }
             }
         }
     }
