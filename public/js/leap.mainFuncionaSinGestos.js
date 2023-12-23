@@ -1,13 +1,3 @@
-/**
- * @file Controlador Leap Motion para la página de inicio de sesión.
- * @author Ximo Sanz Tornero & Pablo Olivares Martinez
- * @version 1.3
- */
-
-// Variables globales
-let gesture_timer = 0
-let swipeDirection = ""
-
 class LeapMotionController {
   constructor() {
     this.controller = new Leap.Controller();
@@ -55,36 +45,8 @@ class LeapMotionController {
 
  
 
-  // Importante le quito funcionalidades al leap normal porque lo implementamos nosotros.
+
   onFrame(frame) {
-    let gestureString = "";
-
-    if (frame.gestures.length > 0) {
-        for (var i = 0; i < frame.gestures.length; i++) {
-            var gesture = frame.gestures[i];
-
-            switch (gesture.type) {
-                case "swipe":
-                    let isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
-
-                    if (gesture_timer > 1500) {
-                        if (!isHorizontal) {
-                            if (gesture.direction[1] > 0) {
-                                swipeDirection = "up";
-                                this.clickLoginButton();
-                            } 
-                        }
-                        console.log(swipeDirection);
-                        gesture_timer = 0;
-                    }
-                    break;
-
-                default:
-                    gestureString += "unknown gesture type";
-            }
-        }
-    }
-
     if (frame.hands.length > 0) {
       const hand = frame.hands[0];
 
@@ -173,22 +135,15 @@ class LeapMotionController {
     }
   }
 
-  // Función para presionar el boton de iniciar / cerrar sesión
-  clickLoginButton() {
-    const loginButton = document.getElementById('auth-button');
-    if (loginButton) {
-      loginButton.click();
-    }
-  }
+  start() {
+    this.controller.on('init', this.onInit.bind(this));
+    this.controller.on('exit', this.onExit.bind(this));
+    this.controller.on('connect', this.onConnect.bind(this));
+    this.controller.on('disconnect', this.onDisconnect.bind(this));
+    this.controller.on('frame', this.onFrame.bind(this));
 
-   /**
-     * Inicia el controlador Leap Motion y establece los manejadores de eventos.
-     */
-   start() {
-        Leap.loop({ enableGestures: true }, (frame) => {
-            this.onFrame(frame);
-        });
-    }
+    this.controller.connect();
+  }
 
   stop() {
     this.controller.disconnect();
@@ -200,8 +155,3 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const leapMotionController = new LeapMotionController();
   leapMotionController.start();
 });
-
-// Timer
-setInterval(() => {
-  gesture_timer += 200;
-}, 200);
