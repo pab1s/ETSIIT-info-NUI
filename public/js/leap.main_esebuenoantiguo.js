@@ -28,6 +28,7 @@ class LeapMotionController {
         return finger.extended && finger.direction[1] < -0.7;
     });
   }
+  
 
 
   onFrame(frame) {
