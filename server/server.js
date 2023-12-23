@@ -76,6 +76,10 @@ app.get('/loggearse', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'html', 'loggearse.html'));
 });
 
+app.get('/presentacion', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'html', 'presentacion.html'));
+});
+
 
 app.get('/api/comedores', (req, res) => {
     fs.readFile('../public/sources/menu.json', 'utf8', (err, data) => {

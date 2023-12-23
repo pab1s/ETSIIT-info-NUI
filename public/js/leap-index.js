@@ -124,6 +124,14 @@ class LeapMotionController {
     }, 400); // Cooldown de 1 segundo, ajustable según necesidad
   }
 
+  // Con este boton se vuelve a la presentación de la página
+  clickBackButton() {
+    const backButton = document.getElementById('vuelta-atras');
+    if (backButton) {
+      backButton.click();
+    }
+  }
+
 
   /**
      * Alterna entre los botones 'guest' e 'id' y actualiza su color.
