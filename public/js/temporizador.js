@@ -10,11 +10,11 @@ function verificarTiempo() {
 
   if (tiempoTranscurrido > 60000) { // Si no se hace nada en un minuto se vuelve a presentacion 
     // Realizar acciones o pulsar el botón automáticamente
-    document.getElementById('vuelta-atras').click();
+    document.getElementById('timeout').click();
   }
 }
 
 // Configurar eventos
-document.getElementById('vuelta-atras').addEventListener('click', resetearTiempo);
+document.getElementById('timeout').addEventListener('click', resetearTiempo);
 
 setInterval(verificarTiempo, 5000); // Verificar cada 5 segundos
