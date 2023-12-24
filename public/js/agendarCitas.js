@@ -57,6 +57,7 @@ function cargarCitasDisponibles(fecha) {
                 }
                 citasDisponiblesContenedor.appendChild(citaDiv);
             });
+            actualizarSeleccionHora();
         })
         .catch(error => {
             console.error('Error al obtener citas disponibles:', error);
@@ -197,3 +198,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Prueba para facilitar el leap
+let indiceHoraActual = 0;
+
+function actualizarSeleccionHora() {
+    const todasLasHoras = document.querySelectorAll('#citas-disponibles .cita-disponible');
+    todasLasHoras.forEach((hora, indice) => {
+        hora.classList.remove('hora-seleccionada');
+        if (indice === indiceHoraActual) {
+            hora.classList.add('hora-seleccionada');
+            hora.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+    });
+}
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown') {
+        event.preventDefault(); // Previene el desplazamiento por defecto de la página
+        const todasLasHoras = document.querySelectorAll('#citas-disponibles .cita-disponible');
+        if (todasLasHoras.length > 0) {
+            indiceHoraActual = (indiceHoraActual + 1) % todasLasHoras.length;
+            actualizarSeleccionHora();
+        }
+    }
+});
+
+function seleccionarHoraConEnter() {
+    const horaSeleccionada = document.querySelector('#citas-disponibles .cita-disponible.hora-seleccionada');
+    if (horaSeleccionada) {
+        horaSeleccionada.click();
+    }
+}
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        seleccionarHoraConEnter();
+    }
+});

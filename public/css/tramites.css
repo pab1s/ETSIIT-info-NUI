@@ -332,7 +332,11 @@
     margin: 0;
 }
 
-
+.cita-disponible.hora-seleccionada {
+    background-color: #4CAF50; /* Cambia el color de fondo para resaltar */
+    color: white; /* Cambia el color del texto para mejorar la visibilidad */
+    border: 1px solid #388E3C; /* Opcional: añade un borde para mayor énfasis */
+}
 
 
 
