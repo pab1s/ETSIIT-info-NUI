@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>Bienvenidos a la ETSIIT</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <button id="confirma-entender" style="display: none;" onclick="window.location.href='/';"></button>
+    <div class="presentacion">
+        <div class="video-message">
+            <h1>Bajar los dedos</h1>
+        </div>
+        <div class="video-section">
+            <video src="../assets/vid.mp4" autoplay loop muted controls></video>
+        </div>
+        <div class="video-message">
+            <h1>Movimiento lateral hacia la izquierda seguido de hacia la derecha</h1>
+        </div>
+        <div class="video-section">
+            <video src="../assets/vid.mp4" autoplay loop muted controls></video>
+        </div>
+        <div class="video-message">
+            <h1>Apuntar con el dedo índice</h1>
+        </div>
+        <div class="video-section">
+            <video src="../assets/vid.mp4" autoplay loop muted controls></video>
+        </div>
+        <div class="video-message">
+            <h1>Desplazar la mano hacia arriba</h1>
+        </div>
+        <div class="video-section">
+            <video src="../assets/vid.mp4" autoplay loop muted controls></video>
+        </div>
+        
+    </div>
+
+    <script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
+    <script src="../js/leap.presentacion.js"></script>
+    <script src="../js/temporizador.js"></script>
+    <script>
+        document.addEventListener('keydown', function(event) {
+            // Comprobar si la tecla presionada es 'Enter'
+            if (event.key === 'Enter') {
+                var boton = document.getElementById('confirma-entender');
+                // Simular un clic en el botón
+                boton.click();
+            }
+        });
+    </script>
+</body>
+</html>

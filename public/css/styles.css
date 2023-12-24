@@ -268,3 +268,30 @@ main {
     box-sizing: border-box;
 }
 
+/* Para la pagina de presentacion*/
+.presentacion {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.video-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+video {
+    max-height: 10%; /* Ajustar según necesidad */
+    max-width: 80%;
+}
+
+.video-message h1 {
+    font-size: 100%;
+    font-family: "Lemon/Milk", sans-serif;
+    color: #333;
+    text-align: center;
+}
