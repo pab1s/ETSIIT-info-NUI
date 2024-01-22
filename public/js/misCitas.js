@@ -73,8 +73,8 @@ function cancelarCita(citaId) {
         if (data.error) {
             alert('Error al cancelar cita: ' + data.error);
         } else {
-            alert('Cita cancelada con éxito');
             cargarCitasUsuario(); // Recargar citas
+            window.location.href='/continue';
         }
     })
     .catch(error => {

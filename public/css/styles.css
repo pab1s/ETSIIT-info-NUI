@@ -269,29 +269,40 @@ main {
 }
 
 /* Para la pagina de presentacion*/
+
 .presentacion {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     height: 100%;
     width: 100%;
 }
 
-.video-section {
-    flex: 1;
+.video-message, .video-section {
+    width: 40%; /* Cada sección ocupa la mitad del ancho */
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
 }
 
-video {
-    max-height: 10%; /* Ajustar según necesidad */
-    max-width: 80%;
+.video-section video {
+    width: 80%; /* Ajusta el tamaño del video dentro de su sección */
+    height: auto;
+    border-radius: 30px;
 }
 
-.video-message h1 {
-    font-size: 100%;
-    font-family: "Lemon/Milk", sans-serif;
-    color: #333;
+.textopres {
     text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
 }
+
+#pres {
+    height: 3840px;
+    width: 2900px;
+    background-color: white;
+    font-weight: bold;
+    font-size: 50px;
+  }
+  

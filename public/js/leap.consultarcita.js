@@ -1,13 +1,3 @@
-/**
- * @file Controlador Leap Motion para la página consultar citas.
- * @author Ximo Sanz Tornero & Pablo Olivares Martinez
- * @version 1.3
- */
-
-// Variables globales
-let gesture_timer = 0
-let swipeDirection = ""
-
 class LeapMotionController {
   constructor() {
     this.controller = new Leap.Controller();
@@ -15,6 +5,7 @@ class LeapMotionController {
     this.forwardGestureDetected = false;
     this.leftGestureDetected = false;
     this.lastClickTime = 0;
+    this.selectedCancelBtnIndex = 0; // Índice del botón de cancelación seleccionado
   }
 
   onInit() {
@@ -53,9 +44,7 @@ class LeapMotionController {
     return false;
   }
 
- 
 
-  // Importante le quito funcionalidades al leap normal porque lo implementamos nosotros.
   onFrame(frame) {
     let gestureString = "";
 
@@ -84,11 +73,10 @@ class LeapMotionController {
             }
         }
     }
-
     if (frame.hands.length > 0) {
       const hand = frame.hands[0];
 
-      // Gesto para aceptar en los menús
+      // Aceptar
       if (this.isIndexPointingForward(hand)) {
         if (!this.forwardGestureDetected) {
           this.forwardGestureDetected = true;
@@ -103,8 +91,8 @@ class LeapMotionController {
       if (this.isHandValid(hand)) {
         const currentTime = new Date().getTime();
         if (currentTime - this.lastClickTime > 400) {
-            this.selectNextCancelButton();
-            this.lastClickTime = currentTime;
+          this.selectNextCancelButton();
+          this.lastClickTime = currentTime;
         }
       }
 
@@ -118,7 +106,7 @@ class LeapMotionController {
         this.leftGestureDetected = false;
       }
 
-      // Gestos de tap in equivalente al del dedo índice cuando haya mejores condiciones de luz
+      // Gestos de tap in
       if (!this.forwardGestureDetected && hand.palmVelocity[2] < -700) {
         this.forwardGestureDetected = true;
       }
@@ -157,6 +145,7 @@ class LeapMotionController {
     }
   }
 
+
   selectNextCancelButton() {
     const cancelButtons = document.querySelectorAll('.button-cancelar');
     if (cancelButtons.length > 0) {
@@ -169,7 +158,8 @@ class LeapMotionController {
         // Añadir la clase 'selected' al nuevo botón seleccionado
         cancelButtons[this.selectedCancelBtnIndex].classList.add('selected');
     }
-  }
+}
+
 
   // Función para hacer clic en el botón de cancelación seleccionado
   clickSelectedCancelButton() {
@@ -180,22 +170,15 @@ class LeapMotionController {
   }
 
 
-  // Función para presionar el boton de iniciar / cerrar sesión
-  clickLoginButton() {
-    const loginButton = document.getElementById('auth-button');
-    if (loginButton) {
-      loginButton.click();
-    }
-  }
+  start() {
+    this.controller.on('init', this.onInit.bind(this));
+    this.controller.on('exit', this.onExit.bind(this));
+    this.controller.on('connect', this.onConnect.bind(this));
+    this.controller.on('disconnect', this.onDisconnect.bind(this));
+    this.controller.on('frame', this.onFrame.bind(this));
 
-   /**
-     * Inicia el controlador Leap Motion y establece los manejadores de eventos.
-     */
-   start() {
-        Leap.loop({ enableGestures: true }, (frame) => {
-            this.onFrame(frame);
-        });
-    }
+    this.controller.connect();
+  }
 
   stop() {
     this.controller.disconnect();
@@ -208,10 +191,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
   leapMotionController.start();
 });
 
-// Timer
-setInterval(() => {
-  gesture_timer += 200;
-}, 200);
+
+
+
+
+
+
+
+
+
+
 
 
 /*class LeapMotionController {

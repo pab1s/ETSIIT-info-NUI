@@ -7,6 +7,8 @@
 // Variables globales
 let gesture_timer = 0
 let swipeDirection = ""
+let navegandoFechas = true;
+
 
 class LeapMotionController {
   constructor() {
@@ -15,7 +17,6 @@ class LeapMotionController {
     this.forwardGestureDetected = false;
     this.leftGestureDetected = false;
     this.lastClickTime = 0;
-    this.navegandoFechas = true;
   }
 
   onInit() {
@@ -166,6 +167,7 @@ class LeapMotionController {
   clickSelectedDate() {
     if (navegandoFechas) {
         navegandoFechas = false; // Cambia al modo de navegación a horas
+        this.changeButtonColorToRedForOneSecond();
     } else {
         navegandoFechas = true;
         // Simula la presión de la tecla Enter
@@ -178,6 +180,21 @@ class LeapMotionController {
         document.dispatchEvent(event);
     }
   }
+
+  // AQUI HABRIA QUE HACER ALGO PARA QUE SE VIERA REALMENTE EL CAMBIO
+  changeButtonColorToRedForOneSecond() {
+    // Reemplaza 'current-hour-button-id' con el ID real del botón de la hora actual
+    const currentHourButton = document.getElementById('body');
+    if (currentHourButton) {
+      currentHourButton.style.backgroundColor = 'red';
+
+      // Cambia el color de vuelta después de 1 segundo
+      setTimeout(() => {
+          currentHourButton.style.backgroundColor = 'white';
+      }, 1000);
+    }
+  }
+
 
 
   clickBackButton() {
