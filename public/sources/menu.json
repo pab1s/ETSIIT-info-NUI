@@ -1,104 +1,12 @@
 {
   "Comedores de Fuentenueva, Aynadamar y Cartuja -Carlos V-": {
     "dates": {
-      "LUNES,  18  DE  DICIEMBRE  DE  2023": {
+      "VIERNES,  26  DE  ENERO  DE  2024": {
         "Menú 1": [
           {
             "item": "Primero",
-            "description": "Estofado de lentejas",
-            "allergens": "Gluten*"
-          },
-          {
-            "item": "Segundo",
-            "description": "Filete de cerdo a la parrilla",
-            "allergens": ""
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Huevo frito con patatas española",
-            "allergens": "Gluten*  Huevos  Sulfitos"
-          },
-          {
-            "item": "Postre",
-            "description": "Manzana",
-            "allergens": ""
-          }
-        ],
-        "Menú 2": [
-          {
-            "item": "Primero",
-            "description": "Estofado de lentejas",
-            "allergens": "Gluten*"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Huevo frito con patatas española",
-            "allergens": "Gluten*  Huevos  Sulfitos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Croquetas de setas (OV)",
-            "allergens": "Apio  Gluten  Huevos  Lácteos  Mostaza  Soja"
-          },
-          {
-            "item": "Postre",
-            "description": "Manzana",
-            "allergens": ""
-          }
-        ]
-      },
-      "MARTES,  19  DE  DICIEMBRE  DE  2023": {
-        "Menú 1": [
-          {
-            "item": "Primero",
-            "description": "Pizza jamón cocido y queso",
-            "allergens": "Gluten  Lácteos  Soja  Sulfitos"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Ensalada de ave",
-            "allergens": "Huevos  Lácteos  Soja  Sulfitos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Merluza a la marinera",
-            "allergens": "Crustáceos  Gluten  Moluscos  Pescado  Sulfitos"
-          },
-          {
-            "item": "Postre",
-            "description": "Pera",
-            "allergens": ""
-          }
-        ],
-        "Menú 2": [
-          {
-            "item": "Primero",
-            "description": "Pizza 4 quesos",
-            "allergens": "Gluten  Lácteos"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Ensalada",
-            "allergens": ""
-          },
-          {
-            "item": "Segundo",
-            "description": "Milhojas de verduras gratinadas en salsa romesco (OV)",
-            "allergens": "Frutos secos (almendras)  Gluten  Lácteos  Sulfitos"
-          },
-          {
-            "item": "Postre",
-            "description": "Pera",
-            "allergens": ""
-          }
-        ]
-      },
-      "MIÉRCOLES,  20  DE  DICIEMBRE  DE  2023": {
-        "Menú 1": [
-          {
-            "item": "Primero",
-            "description": "Patatas en ajo pollo",
-            "allergens": "Frutos secos (almendra)  Gluten  Sulfitos"
+            "description": "Sopa minestrone piamontesa",
+            "allergens": "Apio  Gluten"
           },
           {
             "item": "Segundo",
@@ -107,8 +15,182 @@
           },
           {
             "item": "Acompañamiento",
+            "description": "Salteado de verdura",
+            "allergens": ""
+          },
+          {
+            "item": "Postre",
+            "description": "Plátano",
+            "allergens": ""
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Sopa minestrone piamontesa",
+            "allergens": "Apio  Gluten"
+          },
+          {
+            "item": "Segundo",
+            "description": "Hamburguesas de espinacas y tofu",
+            "allergens": "Gluten  Huevos  Soja"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Salteado de verdura",
+            "allergens": ""
+          },
+          {
+            "item": "Postre",
+            "description": "Plátano",
+            "allergens": ""
+          }
+        ]
+      },
+      "SÁBADO,  27  DE  ENERO  DE  2024": {
+        "Menú 1": [
+          {
+            "item": "Primero",
+            "description": "Migas de sémola",
+            "allergens": "Gluten"
+          },
+          {
+            "item": "Segundo",
+            "description": "Albóndigas de bacalao a la jardinera",
+            "allergens": "Gluten  Huevos  Pescado  Sulfitos"
+          },
+          {
+            "item": "Postre",
+            "description": "Tortitas",
+            "allergens": "Gluten  Huevos  Lácteos"
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Migas de sémola (OV)",
+            "allergens": "Gluten"
+          },
+          {
+            "item": "Segundo",
+            "description": "Albóndigas de verdura en salsa de almendras",
+            "allergens": "Apio  Gluten  Huevos  Sulfitos"
+          },
+          {
+            "item": "Postre",
+            "description": "Tortitas",
+            "allergens": "Gluten  Huevos  Lácteos"
+          }
+        ]
+      },
+      "LUNES,  29  DE  ENERO  DE  2024": {
+        "Menú 1": [
+          {
+            "item": "Primero",
+            "description": "Raviolis a la carbonara",
+            "allergens": "Apio  Gluten  Huevos  Lácteos  Pescado  Soja"
+          },
+          {
+            "item": "Segundo",
+            "description": "Pechuga de pollo empanada",
+            "allergens": "Gluten  Huevos  Lácteos"
+          },
+          {
+            "item": "Acompañamiento",
             "description": "Calabacín frito",
             "allergens": "Gluten"
+          },
+          {
+            "item": "Postre",
+            "description": "Piña",
+            "allergens": ""
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Macarrones con tofu y espinacas",
+            "allergens": "Gluten  Soja"
+          },
+          {
+            "item": "Segundo",
+            "description": "Salchichas vegetales",
+            "allergens": "Huevos  Lácteos  Soja  Sulfitos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Calabacín frito",
+            "allergens": "Gluten"
+          },
+          {
+            "item": "Postre",
+            "description": "Piña",
+            "allergens": ""
+          }
+        ]
+      },
+      "MARTES,  30  DE  ENERO  DE  2024": {
+        "Menú 1": [
+          {
+            "item": "Primero",
+            "description": "Garbanzos a la catalana (VG)",
+            "allergens": "Apio"
+          },
+          {
+            "item": "Segundo",
+            "description": "Tortilla campesina",
+            "allergens": "Huevos  Pescado  Soja  Sulfitos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Ensalada Judith",
+            "allergens": "Lácteos*  Soja"
+          },
+          {
+            "item": "Postre",
+            "description": "Manzana",
+            "allergens": ""
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Garbanzos a la catalana (VG)",
+            "allergens": "Apio"
+          },
+          {
+            "item": "Segundo",
+            "description": "Tortilla campesina (OV)",
+            "allergens": "Apio  Gluten"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Ensalada Judith (VG)",
+            "allergens": "Sulfitos"
+          },
+          {
+            "item": "Postre",
+            "description": "Manzana",
+            "allergens": ""
+          }
+        ]
+      },
+      "MIÉRCOLES,  31  DE  ENERO  DE  2024": {
+        "Menú 1": [
+          {
+            "item": "Primero",
+            "description": "Arroz pilaf con ternera cazadora",
+            "allergens": "Apio  Lácteos  Sulfitos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Aguja a la parrilla",
+            "allergens": "Pescado"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Escalibada",
+            "allergens": ""
           },
           {
             "item": "Postre",
@@ -119,18 +201,18 @@
         "Menú 2": [
           {
             "item": "Primero",
-            "description": "Patatas en ajo pollo - Vegetariano (VG)",
-            "allergens": "Apio  Frutos secos (almendras)  Gluten  Sulfitos"
+            "description": "Arroz con fritada",
+            "allergens": "Apio  Lácteos"
           },
           {
             "item": "Segundo",
-            "description": "Rollitos de primavera",
-            "allergens": "Gluten"
+            "description": "Tarta de coliflor y ajo gratinada",
+            "allergens": "Gluten  Huevos  Lácteos"
           },
           {
             "item": "Acompañamiento",
-            "description": "Calabacín frito",
-            "allergens": "Gluten"
+            "description": "Escalibada",
+            "allergens": ""
           },
           {
             "item": "Postre",
@@ -139,7 +221,7 @@
           }
         ]
       },
-      "JUEVES,  21  DE  DICIEMBRE  DE  2023": {
+      "JUEVES,  1  DE  FEBRERO  DE  2024": {
         "Menú 1": [
           {
             "item": "Primero",
@@ -148,25 +230,122 @@
           },
           {
             "item": "Segundo",
-            "description": "Pechuga de pollo a la parrilla",
+            "description": "Merluza a la andaluza",
+            "allergens": "Gluten  Pescado"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Filete de cerdo a la parrilla",
             "allergens": ""
           },
           {
             "item": "Acompañamiento",
-            "description": "Ensalada de col",
+            "description": "Ensalada hortelana",
             "allergens": "Sulfitos"
           },
           {
             "item": "Postre",
-            "description": "Manzana",
+            "description": "Flan de queso y fruta",
+            "allergens": "Lácteos  Pescado"
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Macarrones a la crema con brócolis",
+            "allergens": "Gluten  Lácteos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Queso rebozado en crocante",
+            "allergens": "Gluten  Huevos  Lácteos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Huevo frito",
+            "allergens": "Huevos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Ensalada hortelana",
+            "allergens": "Sulfitos"
+          },
+          {
+            "item": "Postre",
+            "description": "Flan de queso y fruta (Semi frio)",
+            "allergens": "Lácteos"
+          }
+        ]
+      },
+      "VIERNES,  2  DE  FEBRERO  DE  2024": {
+        "Menú 1": [
+          {
+            "item": "Primero",
+            "description": "Estofado de lentejas",
+            "allergens": "Gluten"
+          },
+          {
+            "item": "Segundo",
+            "description": "Cerdo al curry con arroz",
+            "allergens": ""
+          },
+          {
+            "item": "Postre",
+            "description": "Plátano",
             "allergens": ""
           }
         ],
         "Menú 2": [
           {
             "item": "Primero",
-            "description": "Macarrones con fritada",
-            "allergens": "Huevos*  Lácteos"
+            "description": "Ceviche de plátano",
+            "allergens": ""
+          },
+          {
+            "item": "Segundo",
+            "description": "Estofado de lentejas",
+            "allergens": "Gluten*"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Fricandó de alcachofas (VG)",
+            "allergens": "Sulfitos"
+          },
+          {
+            "item": "Postre",
+            "description": "Plátano",
+            "allergens": ""
+          }
+        ]
+      },
+      "SÁBADO,  3  DE  FEBRERO  DE  2024": {
+        "Menú 1": [
+          {
+            "item": "Primero",
+            "description": "Sopa de ajo a la castellana",
+            "allergens": "Gluten  Huevos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Pecho de ternera relleno",
+            "allergens": "Apio  Gluten  Huevos  Sulfitos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Judías, zanahorias y patatas",
+            "allergens": "Sulfitos"
+          },
+          {
+            "item": "Postre",
+            "description": "Leche frita",
+            "allergens": "Gluten  Huevos  Lácteos"
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Sopa de ajo a la castellana",
+            "allergens": "Gluten  Huevos"
           },
           {
             "item": "Segundo",
@@ -175,13 +354,13 @@
           },
           {
             "item": "Acompañamiento",
-            "description": "Ensalada de col",
+            "description": "Judías, zanahorias y patatas",
             "allergens": "Sulfitos"
           },
           {
             "item": "Postre",
-            "description": "Manzana",
-            "allergens": ""
+            "description": "Leche frita",
+            "allergens": "Gluten  Huevos  Lácteos"
           }
         ]
       }
@@ -189,104 +368,12 @@
   },
   "Comedor del Parque Tecnológico de Ciencias de la Salud (PTS)": {
     "dates": {
-      "LUNES,  18  DE  DICIEMBRE  DE  2023": {
+      "VIERNES,  26  DE  ENERO  DE  2024": {
         "Menú 1": [
           {
             "item": "Primero",
-            "description": "Estofado de lentejas",
-            "allergens": "Gluten*"
-          },
-          {
-            "item": "Segundo",
-            "description": "Filete de cerdo a la parrilla",
-            "allergens": ""
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Huevo frito con patatas a la española",
-            "allergens": "Huevos"
-          },
-          {
-            "item": "Postre",
-            "description": "Manzana",
-            "allergens": ""
-          }
-        ],
-        "Menú 2": [
-          {
-            "item": "Primero",
-            "description": "Estofado de lentejas",
-            "allergens": "Gluten*"
-          },
-          {
-            "item": "Segundo",
-            "description": "Queso rebozado en crocante",
-            "allergens": "Frutos secos (almendras)  Huevos  Lácteos"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Huevo frito con patatas a la española",
-            "allergens": "Huevos"
-          },
-          {
-            "item": "Postre",
-            "description": "Manzana",
-            "allergens": ""
-          }
-        ]
-      },
-      "MARTES,  19  DE  DICIEMBRE  DE  2023": {
-        "Menú 1": [
-          {
-            "item": "Primero",
-            "description": "Estofado de judías",
-            "allergens": "Sulfitos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Merluza a la marinera",
-            "allergens": "Crustáceos  Moluscos  Pescado  Sulfitos"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Ensalada de ave",
-            "allergens": "Huevos  Lácteos  Soja  Sulfitos"
-          },
-          {
-            "item": "Postre",
-            "description": "Pera",
-            "allergens": ""
-          }
-        ],
-        "Menú 2": [
-          {
-            "item": "Primero",
-            "description": "Estofado de judías",
-            "allergens": "Sulfitos"
-          },
-          {
-            "item": "Segundo",
-            "description": "Parmesana de berenjenas",
-            "allergens": "Apio  Lácteos  Sulfitos"
-          },
-          {
-            "item": "Acompañamiento",
-            "description": "Ensalada",
-            "allergens": ""
-          },
-          {
-            "item": "Postre",
-            "description": "Pera",
-            "allergens": ""
-          }
-        ]
-      },
-      "MIÉRCOLES,  20  DE  DICIEMBRE  DE  2023": {
-        "Menú 1": [
-          {
-            "item": "Primero",
-            "description": "Patatas en ajo pollo 1",
-            "allergens": "Frutos secos  Sulfitos"
+            "description": "Sopa minestrone piamontesa",
+            "allergens": "Apio"
           },
           {
             "item": "Segundo",
@@ -295,7 +382,145 @@
           },
           {
             "item": "Acompañamiento",
+            "description": "Salteado de verdura",
+            "allergens": ""
+          },
+          {
+            "item": "Postre",
+            "description": "Plátano",
+            "allergens": ""
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Sopa minestrone piamontesa",
+            "allergens": "Apio"
+          },
+          {
+            "item": "Segundo",
+            "description": "Hamburguesas de espinacas y tofu",
+            "allergens": "Huevos  Lácteos  Soja"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Salteado de verdura",
+            "allergens": ""
+          },
+          {
+            "item": "Postre",
+            "description": "Plátano",
+            "allergens": ""
+          }
+        ]
+      },
+      "LUNES,  29  DE  ENERO  DE  2024": {
+        "Menú 1": [
+          {
+            "item": "Primero",
+            "description": "Macarrones a la crema Strofonoff",
+            "allergens": "Huevos  Lácteos  Mostaza"
+          },
+          {
+            "item": "Segundo",
+            "description": "Pechuga de pollo a la parrilla",
+            "allergens": ""
+          },
+          {
+            "item": "Acompañamiento",
             "description": "Menestra",
+            "allergens": "Apio"
+          },
+          {
+            "item": "Postre",
+            "description": "Piña",
+            "allergens": ""
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Macarrones con tofu y espinacas",
+            "allergens": "Soja"
+          },
+          {
+            "item": "Segundo",
+            "description": "Salchichas vegetales",
+            "allergens": "Huevos  Lácteos  Soja  Sulfitos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Menestra",
+            "allergens": ""
+          },
+          {
+            "item": "Postre",
+            "description": "Piña",
+            "allergens": ""
+          }
+        ]
+      },
+      "MARTES,  30  DE  ENERO  DE  2024": {
+        "Menú 1": [
+          {
+            "item": "Primero",
+            "description": "Garbanzos a la catalana (VG)",
+            "allergens": "Apio"
+          },
+          {
+            "item": "Segundo",
+            "description": "Tortilla campesina",
+            "allergens": "Huevos  Pescado  Soja  Sulfitos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Ensalada Judith",
+            "allergens": "Lácteos*  Soja"
+          },
+          {
+            "item": "Postre",
+            "description": "Manzana",
+            "allergens": ""
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Garbanzos a la catalana (VG)",
+            "allergens": "Apio"
+          },
+          {
+            "item": "Segundo",
+            "description": "Tortilla campesina",
+            "allergens": "Huevos  Pescado  Soja  Sulfitos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Ensalada Judith (VG)",
+            "allergens": "Sulfitos"
+          },
+          {
+            "item": "Postre",
+            "description": "Manzana",
+            "allergens": ""
+          }
+        ]
+      },
+      "MIÉRCOLES,  31  DE  ENERO  DE  2024": {
+        "Menú 1": [
+          {
+            "item": "Primero",
+            "description": "Arroz pilaf con ternera cazadora",
+            "allergens": "Apio  Lácteos  Sulfitos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Aguja a la parrilla",
+            "allergens": "Pescado"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Escalibada",
             "allergens": ""
           },
           {
@@ -307,17 +532,17 @@
         "Menú 2": [
           {
             "item": "Primero",
-            "description": "Patatas en ajo pollo",
-            "allergens": "Apio  Frutos secos (almendra)  Sulfitos"
+            "description": "Arroz con fritada",
+            "allergens": "Apio  Lácteos"
           },
           {
             "item": "Segundo",
-            "description": "Tortilla paisana",
-            "allergens": "Gluten*  Huevos  Lácteos*  Soja"
+            "description": "Milhojas de verduras gratinadas con salsa Aurora",
+            "allergens": "Lácteos  Sulfitos"
           },
           {
-            "item": "Segundo",
-            "description": "Menestra de verduras (OV)",
+            "item": "Acompañamiento",
+            "description": "Escalibada",
             "allergens": ""
           },
           {
@@ -327,7 +552,7 @@
           }
         ]
       },
-      "JUEVES,  21  DE  DICIEMBRE  DE  2023": {
+      "JUEVES,  1  DE  FEBRERO  DE  2024": {
         "Menú 1": [
           {
             "item": "Primero",
@@ -336,39 +561,90 @@
           },
           {
             "item": "Segundo",
-            "description": "Pechuga de pollo a la parrilla",
-            "allergens": ""
+            "description": "Merluza a la parrilla",
+            "allergens": "Pescado"
           },
           {
             "item": "Acompañamiento",
-            "description": "Ensalada de col",
+            "description": "Filete de cerdo a la parrilla",
+            "allergens": ""
+          },
+          {
+            "item": "Postre",
+            "description": "Flan de queso y fruta",
+            "allergens": "Lácteos  Pescado"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Ensalada hortelana",
+            "allergens": "Sulfitos"
+          }
+        ],
+        "Menú 2": [
+          {
+            "item": "Primero",
+            "description": "Macarrones a la crema con brócolis",
+            "allergens": "Lácteos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Queso rebozado en crocante",
+            "allergens": "Huevos  Lácteos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Huevo frito",
+            "allergens": "Huevos"
+          },
+          {
+            "item": "Acompañamiento",
+            "description": "Ensalada hortelana",
             "allergens": "Sulfitos"
           },
           {
             "item": "Postre",
-            "description": "Manzana",
+            "description": "Flan de queso y fruta (Semi frio)",
+            "allergens": "Lácteos"
+          }
+        ]
+      },
+      "VIERNES,  2  DE  FEBRERO  DE  2024": {
+        "Menú 1": [
+          {
+            "item": "Primero",
+            "description": "Estofado de lentejas",
+            "allergens": "Sulfitos"
+          },
+          {
+            "item": "Segundo",
+            "description": "Cerdo al curry con arroz",
+            "allergens": ""
+          },
+          {
+            "item": "Postre",
+            "description": "Plátano",
             "allergens": ""
           }
         ],
         "Menú 2": [
           {
             "item": "Primero",
-            "description": "Macarrones con verduras",
-            "allergens": "Lácteos"
+            "description": "Estofado de lentejas",
+            "allergens": "Sulfitos"
           },
           {
             "item": "Segundo",
-            "description": "Hamburguesas de espinacas y tofu",
-            "allergens": "Frutos secos (almendra)  Huevos  Lácteos  Soja"
+            "description": "Ceviche de plátano",
+            "allergens": ""
           },
           {
             "item": "Acompañamiento",
-            "description": "Ensalada de col",
+            "description": "Fricandó de alcachofas (VG)",
             "allergens": "Sulfitos"
           },
           {
             "item": "Postre",
-            "description": "Manzana",
+            "description": "Plátano",
             "allergens": ""
           }
         ]
